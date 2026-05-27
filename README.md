@@ -1,8 +1,8 @@
 # 🛡️ Tenant Integrity™ Portal — Multi-Role Sandbox Engine
 
-A modern, enterprise-grade, high-fidelity portal for Tenants, Applicants, Landlords, and Super Admins. Built with **Next.js 16 (Turbopack)**, **React 18**, **TypeScript**, and Vanilla CSS, featuring a real-time reactive **Clearance Sandbox Switcher** that allows instant role switching between all four profiles for live dynamic evaluation and testing.
+A modern, enterprise-grade, high-fidelity portal for Tenants, Applicants, Landlords, Super Admins, and Affiliate Partners. Built with **Next.js 16 (Turbopack)**, **React 18**, **TypeScript**, and Vanilla CSS, featuring a real-time reactive **Clearance Sandbox Switcher** that allows instant role switching between all five profiles for live dynamic evaluation and testing.
 
-> **Build Status**: ✅ 28 routes · 0 TS errors · 0 warnings
+> **Build Status**: ✅ 31 routes · 0 TS errors · 0 warnings
 
 ---
 
@@ -54,6 +54,14 @@ A gamified applicant center for 7-day behavioral check-in programs — 5 dashboa
 
 ---
 
+### 5. 🤝 Affiliate Portal (`/affiliate/*`)
+A comprehensive performance tracking and revenue-sharing suite for affiliate partners — 3 full dashboards:
+- **Referrals** (`/affiliate/referrals`): Affiliate Partner Dashboard with a unique copyable partner link widget, quick-share social buttons, 3 real-time metrics cards, and a Recent Conversions table.
+- **Commissions** (`/affiliate/commissions`): Commissions & Earnings breakdown featuring Standard Plan alert banners, 4 detail cards, Stripe Connect info, a weekly Earnings Growth inline SVG bar chart, and a commission breakdown list.
+- **Pay out** (`/affiliate/payouts`): Stripe payouts manager featuring pending balances, a functional "Request Early Payout" button, payout transaction records, and an accordion step guide.
+
+---
+
 ## 📂 Project Directory Map
 
 ```
@@ -72,6 +80,10 @@ src/
 │   │   │   └── [day]/            # Dynamic daily check-in page
 │   │   └── support/              # FAQ accordion
 │   │       └── [article]/        # Dynamic FAQ article page
+│   ├── affiliate/                # 🤝 Affiliate (3 pages)
+│   │   ├── referrals/            # Referral link & conversion logs
+│   │   ├── commissions/          # Revenue-share & SVG earnings chart
+│   │   └── payouts/              # Stripe transfers & onboarding guide
 │   ├── landlord/                 # 🏢 Landlord (9 pages)
 │   │   ├── overview/             # Multi-layout stateful dashboard
 │   │   ├── pre-tenancy/          # Applicant cycle monitoring
@@ -118,13 +130,15 @@ Every page layout uses `DashboardLayout.tsx` which enforces role-based path auth
   - `LANDLORD` → `/landlord/overview`
   - `TENANT` → `/tenant/dashboard`
   - `APPLICANT` → `/applicant/progress`
+  - `AFFILIATE` → `/affiliate/referrals`
 
 ### 🔄 Clearance Sandbox Switcher
-A floating pill UI (bottom-right corner) allows instant switching between all 4 roles:
+A floating pill UI (bottom-right corner) allows instant switching between all 5 roles:
 - **Super Admin Role** — purple/blue system dashboard
 - **Landlord Role** — portfolio & behavioral monitoring suite
 - **Tenant Role** — daily check-in and messaging portal
 - **Applicant Role** — gamified 7-day cycle participation
+- **Affiliate Role** — commission revenue-share and payout suite
 
 Role selection is persisted to `localStorage` so it survives page refreshes.
 
@@ -162,7 +176,7 @@ Open `http://localhost:3000` in your browser.
 
 ### 3. Live Evaluation
 - The app loads as **Alex Johnson** (Tenant by default).
-- Use the floating **Clearance Sandbox** pill (bottom-right) to instantly switch between all 4 role views.
+- Use the floating **Clearance Sandbox** pill (bottom-right) to instantly switch between all 5 role views.
 
 ### 4. Type Check & Build
 ```bash

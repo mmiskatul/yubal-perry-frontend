@@ -34,6 +34,8 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           router.push('/landlord/overview');
         } else if (user.role === 'TENANT') {
           router.push('/tenant/dashboard');
+        } else if (user.role === 'AFFILIATE') {
+          router.push('/affiliate/referrals');
         } else {
           router.push('/applicant/progress');
         }

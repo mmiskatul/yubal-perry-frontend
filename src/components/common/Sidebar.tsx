@@ -76,6 +76,11 @@ export const Sidebar: React.FC = () => {
       { label: 'Messages', href: '/applicant/messages', icon: <LuMessageSquare /> },
       { label: 'Help & Support', href: '/applicant/support', icon: <LuCircleHelp /> },
     ],
+    AFFILIATE: [
+      { label: 'Referrals', href: '/affiliate/referrals', icon: <LuUsers /> },
+      { label: 'Commissions', href: '/affiliate/commissions', icon: <LuCreditCard /> },
+      { label: 'Pay out', href: '/affiliate/payouts', icon: <LuFileText /> },
+    ],
   };
 
   const currentMenu = menuItems[user.role] || [];
@@ -137,7 +142,7 @@ export const Sidebar: React.FC = () => {
               marginTop: '4px'
             } as React.CSSProperties}
           >
-            {user.role === 'SUPER_ADMIN' ? 'Super Admin' : user.role === 'TENANT' ? 'Tenant' : user.role === 'LANDLORD' ? 'Landlord' : 'Applicant'}
+            {user.role === 'SUPER_ADMIN' ? 'Super Admin' : user.role === 'TENANT' ? 'Tenant' : user.role === 'LANDLORD' ? 'Landlord' : user.role === 'APPLICANT' ? 'Applicant' : 'Affiliate'}
           </span>
         </div>
       </div>

@@ -12,10 +12,21 @@ interface AuthContextType {
   isLoading: boolean;
   login: (email: string, role: Role) => Promise<User>;
   logout: () => void;
-  switchRole: (role: 'SUPER_ADMIN' | 'TENANT' | 'APPLICANT' | 'LANDLORD') => void;
+  switchRole: (role: 'SUPER_ADMIN' | 'TENANT' | 'APPLICANT' | 'LANDLORD' | 'AFFILIATE') => void;
   checkPermission: (permission: string) => boolean;
   hasRole: (roles: Role | Role[]) => boolean;
 }
+
+const staticAffiliate: User = {
+  id: 'usr_affiliate_alex',
+  name: 'Alex Johnson',
+  email: 'alex.johnson@email.com',
+  role: 'AFFILIATE',
+  avatarUrl: `https://api.dicebear.com/7.x/adventurer/svg?seed=affiliate`,
+  phoneNumber: '(512) 555-0198',
+  createdAt: new Date().toISOString(),
+  lastLogin: new Date().toISOString(),
+};
 
 const staticTenant: User = {
   id: 'usr_tenant_alex',
@@ -80,6 +91,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setUser(staticSuperAdmin);
       } else if (storedRole === 'LANDLORD') {
         setUser(staticLandlord);
+      } else if (storedRole === 'AFFILIATE') {
+        setUser(staticAffiliate);
       } else {
         setUser(staticTenant);
       }
@@ -87,12 +100,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const switchRole = (newRole: 'SUPER_ADMIN' | 'TENANT' | 'APPLICANT' | 'LANDLORD') => {
+  const switchRole = (newRole: 'SUPER_ADMIN' | 'TENANT' | 'APPLICANT' | 'LANDLORD' | 'AFFILIATE') => {
     setIsLoading(true);
     let targetUser = staticTenant;
     if (newRole === 'APPLICANT') targetUser = staticApplicant;
     else if (newRole === 'SUPER_ADMIN') targetUser = staticSuperAdmin;
     else if (newRole === 'LANDLORD') targetUser = staticLandlord;
+    else if (newRole === 'AFFILIATE') targetUser = staticAffiliate;
     
     if (typeof window !== 'undefined') {
       localStorage.setItem('sandbox_active_role', newRole);
@@ -230,6 +244,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
               }}
             >
               Applicant Role
+            </button>
+            <button
+              onClick={() => switchRole('AFFILIATE')}
+              style={{
+                padding: '4px 12px',
+                borderRadius: '9999px',
+                fontSize: '0.725rem',
+                fontWeight: 700,
+                border: 'none',
+                cursor: 'pointer',
+                backgroundColor: user.role === 'AFFILIATE' ? '#0a57e3' : 'transparent',
+                color: user.role === 'AFFILIATE' ? '#ffffff' : '#475569',
+                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+            >
+              Affiliate Role
             </button>
           </div>
           <style dangerouslySetInnerHTML={{__html: `

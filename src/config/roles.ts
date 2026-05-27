@@ -27,6 +27,15 @@ export const ROLES_CONFIG: Record<Role, RoleConfig> = {
       'tenants:observe', 'tenants:read'
     ],
   },
+  AFFILIATE: {
+    displayName: 'Affiliate',
+    themeColor: '#0a57e3', // Tenant Integrity Corporate Blue
+    allowedRoutes: ['/affiliate'],
+    permissions: [
+      'profile:read', 'profile:update',
+      'referrals:read', 'commissions:read', 'payouts:manage'
+    ],
+  },
   APPLICANT: {
     displayName: 'Applicant',
     themeColor: '#0a57e3', // Tenant Integrity Corporate Blue
@@ -50,5 +59,6 @@ export const DEFAULT_ROLE_REDIRECTS: Record<Role, string> = {
   TENANT: '/tenant/dashboard',
   APPLICANT: '/applicant/progress',
   LANDLORD: '/landlord/overview',
+  AFFILIATE: '/affiliate/referrals',
   GUEST: '/login',
 };
