@@ -1,219 +1,194 @@
 'use client';
 
 import React, { useState } from 'react';
-import {
-  LuClock,
-  LuPlus,
-  LuCircleCheck,
-  LuChevronRight,
-  LuCalendar,
-  LuUserPlus,
-  LuInfo,
-  LuActivity,
-  LuHouse,
-  LuTriangleAlert
-} from 'react-icons/lu';
+import { LuSearch, LuCalendar, LuRefreshCw, LuEllipsisVertical } from 'react-icons/lu';
 
 const applicants = [
   {
-    name: 'Jordan Mitchell',
-    property: 'Maple Heights A-12',
-    day: 3,
-    totalDays: 7,
-    score: 82,
-    status: 'Active',
-    color: '#0a57e3',
-    bg: '#eff6ff',
-    avatar: 'JM',
-    tasks: ['Morning Routine ✓', 'Evening Check-In ✓', 'Weekend Engagement ✓'],
-    lastActive: '2 hours ago'
+    initials: 'AT', color: '#0a57e3', bg: '#eff6ff',
+    name: 'Alex Thompson', unit: 'Maple Heights A-12',
+    property: 'Maple Heights', propUnit: 'A-12',
+    day: 3, totalDays: 7, progress: 43,
+    participation: 82, trend: 'Increasing', trendUp: true,
+    signal: 'CONSISTENT ENGAGEMENT', signalColor: '#10b981', signalBg: '#e6fbf3'
   },
   {
-    name: 'Priya Nair',
-    property: 'Riverside Apt 402',
-    day: 5,
-    totalDays: 7,
-    score: 91,
-    status: 'Active',
-    color: '#10b981',
-    bg: '#e6fbf3',
-    avatar: 'PN',
-    tasks: ['Morning Routine ✓', 'Evening Check-In ✓', 'Weekend Engagement ✓'],
-    lastActive: '30 minutes ago'
+    initials: 'SJ', color: '#10b981', bg: '#e6fbf3',
+    name: 'Sarah Jenkins', unit: 'Oakwood Villas B-203',
+    property: 'Oakwood Villas', propUnit: 'B-203',
+    day: 7, totalDays: 7, progress: 100,
+    participation: 92, trend: 'Strong', trendUp: true,
+    signal: 'CONSISTENT ENGAGEMENT', signalColor: '#10b981', signalBg: '#e6fbf3'
   },
   {
-    name: 'Carlos Rivera',
-    property: 'Grand Plaza 6A',
-    day: 7,
-    totalDays: 7,
-    score: 76,
-    status: 'Completed',
-    color: '#10b981',
-    bg: '#e6fbf3',
-    avatar: 'CR',
-    tasks: ['Morning Routine ✓', 'Evening Check-In ✓', 'Weekend Engagement ✓'],
-    lastActive: 'Completed'
+    initials: 'WC', color: '#f59e0b', bg: '#fffbeb',
+    name: 'William Carter', unit: 'Pinecrest Place C-301',
+    property: 'Pinecrest Place', propUnit: 'C-301',
+    day: 5, totalDays: 7, progress: 71,
+    participation: 52, trend: 'Decreasing', trendUp: false,
+    signal: 'SLOWER RESPONSE PATTERN', signalColor: '#f59e0b', signalBg: '#fffbeb'
   },
   {
-    name: 'Dana Weiss',
-    property: 'Oak Ridge Tower 3B',
-    day: 2,
-    totalDays: 7,
-    score: 58,
-    status: 'At Risk',
-    color: '#ef4444',
-    bg: '#fff5f5',
-    avatar: 'DW',
-    tasks: ['Morning Routine ✗', 'Evening Check-In ✓', 'Weekend Engagement ✗'],
-    lastActive: '1 day ago'
+    initials: 'LP', color: '#f59e0b', bg: '#fffbeb',
+    name: 'Linda Patel', unit: 'Maple Heights A-201',
+    property: 'Maple Heights', propUnit: 'A-201',
+    day: 4, totalDays: 7, progress: 57,
+    participation: 45, trend: 'Decreasing', trendUp: false,
+    signal: 'SLOWER RESPONSE PATTERN', signalColor: '#f59e0b', signalBg: '#fffbeb'
+  },
+  {
+    initials: 'MJ', color: '#10b981', bg: '#e6fbf3',
+    name: 'Michael Jhonson', unit: 'Oakwood Villas B-101',
+    property: 'Oakwood Villas', propUnit: 'B-101',
+    day: 7, totalDays: 7, progress: 100,
+    participation: 88, trend: 'Strong', trendUp: true,
+    signal: 'CONSISTENT ENGAGEMENT', signalColor: '#10b981', signalBg: '#e6fbf3'
+  },
+  {
+    initials: 'EM', color: '#10b981', bg: '#e6fbf3',
+    name: 'Emily Martinez', unit: 'Maple Heights A-15',
+    property: 'Maple Heights', propUnit: 'A-15',
+    day: 7, totalDays: 7, progress: 100,
+    participation: 85, trend: 'Increasing', trendUp: true,
+    signal: 'CONSISTENT ENGAGEMENT', signalColor: '#10b981', signalBg: '#e6fbf3'
   }
 ];
 
 export default function LandlordPreTenancyPage() {
-  const [selectedApplicant, setSelectedApplicant] = useState<typeof applicants[0] | null>(null);
+  const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
+
+  const filtered = applicants.filter(a =>
+    a.name.toLowerCase().includes(search.toLowerCase()) ||
+    a.property.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
-    <div style={{ padding: '0px' }} className="animate-fade-in">
+    <div className="animate-fade-in" style={{ padding: '0' }}>
+      {/* Page Header */}
+      <div style={{ marginBottom: '28px', textAlign: 'left' }}>
+        <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
+          Pre-Tenancy Process (7-Day behavioral Process)
+        </h1>
+        <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginTop: '6px' }}>
+          Track applicant engagement and response behavior during the 7-day pre tenancy process
+        </p>
+      </div>
 
-        {/* Page Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px' }}>
-          <div>
-            <h1 style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.03em' }}>
-              Pre-Tenancy
-            </h1>
-            <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', marginTop: '4px' }}>
-              Monitor applicants completing their 7-day behavioral assessment cycle
-            </p>
-          </div>
-          <button
-            className="premium-btn premium-btn-primary"
-            style={{ '--btn-color': '#7c3aed', padding: '10px 20px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '6px' } as React.CSSProperties}
-            onClick={() => alert('Sandbox: Add new applicant to pre-tenancy')}
-          >
-            <LuUserPlus /> Add Applicant
-          </button>
+      {/* Search + Filter Bar */}
+      <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '16px 20px', marginBottom: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: 'var(--shadow-sm)' }}>
+        <div style={{ position: 'relative', flex: 1, maxWidth: '520px' }}>
+          <LuSearch style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', fontSize: '0.95rem' }} />
+          <input
+            type="text"
+            placeholder="Search applicants, properties..."
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            style={{ width: '100%', padding: '9px 14px 9px 40px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.85rem', outline: 'none', color: 'var(--text-primary)', backgroundColor: '#ffffff', boxSizing: 'border-box' }}
+            onFocus={e => e.currentTarget.style.borderColor = '#0a57e3'}
+            onBlur={e => e.currentTarget.style.borderColor = 'var(--border-color)'}
+          />
         </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '9px 16px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.85rem', color: 'var(--text-secondary)', cursor: 'pointer', backgroundColor: '#ffffff', fontWeight: 600 }}>
+          <LuCalendar style={{ fontSize: '0.95rem' }} /> Last 30 Days
+          <span style={{ marginLeft: '4px', fontSize: '0.75rem' }}>▾</span>
+        </div>
+      </div>
 
-        {/* 4 Metric Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '32px' }}>
-          {[
-            { label: 'Active Applicants', value: '3', sub: '+1 this week', color: '#0a57e3', bg: '#eff6ff', icon: <LuActivity /> },
-            { label: 'Completed This Week', value: '1', sub: 'Ready to select', color: '#10b981', bg: '#e6fbf3', icon: <LuCircleCheck /> },
-            { label: 'At Risk', value: '1', sub: 'Needs attention', color: '#ef4444', bg: '#fff5f5', icon: <LuTriangleAlert /> },
-            { label: 'Avg. Integrity Score', value: '76%', sub: 'Across all active', color: '#7c3aed', bg: '#f5f3ff', icon: <LuClock /> }
-          ].map((card, i) => (
-            <div key={i} style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '20px 24px', boxShadow: 'var(--shadow-sm)', textAlign: 'left', position: 'relative' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <span style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{card.label}</span>
-                <span style={{ fontSize: '1.1rem', color: card.color, display: 'flex', padding: '6px', backgroundColor: card.bg, borderRadius: '8px' }}>{card.icon}</span>
-              </div>
-              <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-primary)', margin: '0 0 4px 0' }}>{card.value}</h2>
-              <span style={{ fontSize: '0.725rem', color: 'var(--text-secondary)' }}>{card.sub}</span>
-            </div>
+      {/* Table */}
+      <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
+        {/* Table Head */}
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1.5fr 1.8fr 1.5fr 1.8fr 1.2fr 40px', padding: '12px 24px', backgroundColor: '#f8fafc', borderBottom: '1px solid var(--border-color)' }}>
+          {['APPLICANT', 'PROPERTY', 'PROGRESS', 'PARTICIPATION LEVEL', 'BEHAVIOURAL SIGNAL', 'HISTORY', ''].map((h, i) => (
+            <div key={i} style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', textAlign: i === 5 ? 'center' : 'left' }}>{h}</div>
           ))}
         </div>
 
-        {/* Main Grid: Applicant Cards + Detail */}
-        <div style={{ display: 'grid', gridTemplateColumns: selectedApplicant ? '1fr 1.4fr' : '1fr', gap: '24px' }}>
-
-          {/* Applicant List */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {applicants.map((app, i) => (
-              <div
-                key={i}
-                onClick={() => setSelectedApplicant(app)}
-                style={{
-                  backgroundColor: '#ffffff',
-                  border: `1.5px solid ${selectedApplicant?.name === app.name ? app.color : 'var(--border-color)'}`,
-                  borderRadius: '12px',
-                  padding: '20px 24px',
-                  boxShadow: 'var(--shadow-sm)',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  textAlign: 'left'
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: app.bg, color: app.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.85rem', border: `2px solid ${app.color}30` }}>
-                      {app.avatar}
-                    </div>
-                    <div>
-                      <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)' }}>{app.name}</h4>
-                      <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '2px' }}>
-                        <LuHouse style={{ fontSize: '0.8rem' }} /> {app.property}
-                      </span>
-                    </div>
-                  </div>
-                  <span style={{ fontSize: '0.675rem', padding: '3px 10px', borderRadius: '6px', backgroundColor: app.bg, color: app.color, fontWeight: 700 }}>
-                    {app.status}
-                  </span>
-                </div>
-
-                {/* Progress Bar */}
-                <div style={{ marginTop: '16px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.725rem', marginBottom: '6px' }}>
-                    <span style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>Day {app.day} of {app.totalDays}</span>
-                    <span style={{ color: app.color, fontWeight: 700 }}>Integrity Score: {app.score}%</span>
-                  </div>
-                  <div style={{ height: '6px', borderRadius: '3px', backgroundColor: '#e2e8f0', overflow: 'hidden' }}>
-                    <div style={{ height: '100%', width: `${(app.day / app.totalDays) * 100}%`, borderRadius: '3px', backgroundColor: app.color, transition: 'width 0.4s ease' }} />
-                  </div>
-                  <span style={{ fontSize: '0.675rem', color: 'var(--text-muted)', marginTop: '4px', display: 'block' }}>Last active: {app.lastActive}</span>
-                </div>
+        {/* Rows */}
+        {filtered.map((a, i) => (
+          <div
+            key={i}
+            style={{ display: 'grid', gridTemplateColumns: '2fr 1.5fr 1.8fr 1.5fr 1.8fr 1.2fr 40px', alignItems: 'center', padding: '16px 24px', borderBottom: i < filtered.length - 1 ? '1px solid var(--border-color)' : 'none', transition: 'background 0.15s' }}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = '#fafbfc'}
+            onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
+          >
+            {/* Applicant */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', textAlign: 'left' }}>
+              <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: a.bg, color: a.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.775rem', flexShrink: 0 }}>
+                {a.initials}
               </div>
-            ))}
-          </div>
-
-          {/* Detail Panel */}
-          {selectedApplicant && (
-            <div style={{ backgroundColor: '#ffffff', border: `2px solid ${selectedApplicant.color}30`, borderTop: `4px solid ${selectedApplicant.color}`, borderRadius: '0 0 12px 12px', padding: '28px 32px', boxShadow: 'var(--shadow-sm)', textAlign: 'left', position: 'sticky', top: '24px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-primary)' }}>{selectedApplicant.name}</h3>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>{selectedApplicant.property}</span>
-                </div>
-                <button style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.25rem', color: 'var(--text-muted)' }} onClick={() => setSelectedApplicant(null)}>×</button>
-              </div>
-
-              {/* Score Ring + Status */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '20px', backgroundColor: selectedApplicant.bg, borderRadius: '12px', padding: '20px', marginBottom: '24px' }}>
-                <div style={{ width: '72px', height: '72px', borderRadius: '50%', border: `4px solid ${selectedApplicant.color}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-                  <strong style={{ fontSize: '1.25rem', color: selectedApplicant.color, fontWeight: 800 }}>{selectedApplicant.score}</strong>
-                  <span style={{ fontSize: '0.6rem', color: selectedApplicant.color, fontWeight: 600 }}>SCORE</span>
-                </div>
-                <div>
-                  <h4 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)' }}>Integrity Score</h4>
-                  <p style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', marginTop: '4px' }}>Day {selectedApplicant.day} of {selectedApplicant.totalDays} completed</p>
-                  <span style={{ fontSize: '0.675rem', padding: '3px 10px', borderRadius: '6px', backgroundColor: `${selectedApplicant.color}20`, color: selectedApplicant.color, fontWeight: 700, display: 'inline-block', marginTop: '6px' }}>{selectedApplicant.status}</span>
-                </div>
-              </div>
-
-              {/* Task Completion */}
-              <h5 style={{ fontSize: '0.725rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>Task Completion Log</h5>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' }}>
-                {selectedApplicant.tasks.map((task, idx) => (
-                  <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 14px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.8rem', color: 'var(--text-primary)' }}>
-                    <LuCircleCheck style={{ color: '#10b981', fontSize: '1rem' }} />
-                    {task}
-                  </div>
-                ))}
-              </div>
-
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <button className="premium-btn premium-btn-primary" style={{ '--btn-color': '#7c3aed', flex: 1, padding: '10px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 700 } as React.CSSProperties}
-                  onClick={() => alert(`Sandbox: View full report for ${selectedApplicant.name}`)}>
-                  Full Report <LuChevronRight style={{ display: 'inline' }} />
-                </button>
-                <button className="premium-btn premium-btn-secondary" style={{ padding: '10px 16px', borderRadius: '8px', fontSize: '0.8rem' }}
-                  onClick={() => alert(`Sandbox: Send message to ${selectedApplicant.name}`)}>
-                  Message
-                </button>
+              <div>
+                <div style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--text-primary)' }}>{a.name}</div>
+                <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)', marginTop: '2px' }}>{a.unit}</div>
               </div>
             </div>
-          )}
-        </div>
 
+            {/* Property */}
+            <div style={{ textAlign: 'left' }}>
+              <div style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)' }}>{a.property}</div>
+              <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)', marginTop: '2px' }}>{a.propUnit}</div>
+            </div>
+
+            {/* Progress */}
+            <div style={{ textAlign: 'left' }}>
+              <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '6px' }}>
+                {a.progress === 100 ? 'Complete' : `Day ${a.day} of ${a.totalDays}`}
+              </div>
+              <div style={{ height: '6px', borderRadius: '3px', backgroundColor: '#e2e8f0', overflow: 'hidden', width: '120px' }}>
+                <div style={{ height: '100%', width: `${a.progress}%`, borderRadius: '3px', backgroundColor: a.progress === 100 ? '#10b981' : a.trendUp ? '#0a57e3' : '#f59e0b', transition: 'width 0.4s' }} />
+              </div>
+            </div>
+
+            {/* Participation Level */}
+            <div style={{ textAlign: 'left' }}>
+              <div style={{ fontSize: '0.925rem', fontWeight: 800, color: 'var(--text-primary)' }}>{a.participation}%</div>
+              <div style={{ fontSize: '0.725rem', marginTop: '2px', color: a.trendUp ? '#10b981' : '#ef4444', fontWeight: 600 }}>{a.trend}</div>
+            </div>
+
+            {/* Behavioural Signal */}
+            <div style={{ textAlign: 'left' }}>
+              <span style={{ fontSize: '0.675rem', fontWeight: 800, padding: '4px 10px', borderRadius: '6px', backgroundColor: a.signalBg, color: a.signalColor, letterSpacing: '0.04em' }}>
+                {a.signal}
+              </span>
+            </div>
+
+            {/* History */}
+            <div style={{ textAlign: 'center' }}>
+              <button
+                style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#0a57e3', fontSize: '0.8rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '4px' }}
+                onClick={() => alert(`Sandbox: View progress for ${a.name}`)}
+              >
+                <LuRefreshCw style={{ fontSize: '0.8rem' }} /> View Progress
+              </button>
+            </div>
+
+            {/* More */}
+            <div style={{ textAlign: 'center' }}>
+              <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                onClick={() => alert(`Sandbox: More options for ${a.name}`)}>
+                <LuEllipsisVertical />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Pagination */}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px', marginTop: '20px', alignItems: 'center' }}>
+        {[1, 2].map(p => (
+          <button
+            key={p}
+            onClick={() => setPage(p)}
+            style={{ width: '32px', height: '32px', borderRadius: '6px', border: '1px solid', borderColor: page === p ? '#0a57e3' : 'var(--border-color)', backgroundColor: page === p ? '#0a57e3' : '#ffffff', color: page === p ? '#ffffff' : 'var(--text-secondary)', fontSize: '0.825rem', fontWeight: 700, cursor: 'pointer' }}
+          >
+            {p}
+          </button>
+        ))}
+        <button style={{ width: '32px', height: '32px', borderRadius: '6px', border: '1px solid var(--border-color)', backgroundColor: '#ffffff', color: 'var(--text-secondary)', fontSize: '0.9rem', cursor: 'pointer' }}
+          onClick={() => setPage(Math.min(2, page + 1))}>
+          ›
+        </button>
+      </div>
     </div>
   );
 }

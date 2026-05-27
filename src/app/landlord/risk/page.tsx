@@ -1,197 +1,218 @@
 'use client';
 
 import React, { useState } from 'react';
-import {
-  LuShieldAlert,
-  LuTriangleAlert,
-  LuInfo,
-  LuActivity,
-  LuClock,
-  LuHouse,
-  LuChevronRight
-} from 'react-icons/lu';
+import { LuSearch, LuHouse, LuUsers, LuEllipsisVertical, LuInfo } from 'react-icons/lu';
 
-const riskTenants = [
+const tenants = [
   {
-    name: 'Marcus Villanueva',
-    unit: 'Lakeview A-02',
-    riskLevel: 'High',
-    riskScore: 88,
-    factors: [
-      { label: 'Participation Drop', value: '-14%', severity: 'critical' },
-      { label: 'Missed Check-Ins', value: '3 in a row', severity: 'critical' },
-      { label: 'Response Time', value: '>48 hrs', severity: 'warning' }
-    ],
-    recommendation: 'Schedule an in-person meeting immediately.',
-    initials: 'MV',
-    color: '#ef4444',
-    bg: '#fff5f5'
+    initials: 'JH', color: '#ef4444', bg: '#fff5f5',
+    name: 'Jordan Hayes', since: 'Tenant since Mar 2024',
+    property: 'Maple Heights', unit: 'A-102',
+    participation: 58,
+    engagement: 'Lower engagement', engColor: '#ef4444',
+    timing: 'Delayed', timingColor: '#ef4444',
+    followThrough: 'Inconsistent', followColor: '#ef4444',
+    communication: 'Limited', commColor: '#ef4444',
+    riskLevel: 'Requires Attention', riskColor: '#ef4444', riskBg: '#fff5f5'
   },
   {
-    name: 'Elena Rossi',
-    unit: 'Grand Plaza 6A',
-    riskLevel: 'Medium',
-    riskScore: 54,
-    factors: [
-      { label: 'Integrity Score Decline', value: '-17 pts', severity: 'warning' },
-      { label: 'Engagement Quality', value: 'Reduced', severity: 'warning' },
-      { label: 'Check-In Streak', value: '4 days', severity: 'info' }
-    ],
-    recommendation: 'Send a follow-up message and monitor closely.',
-    initials: 'ER',
-    color: '#f59e0b',
-    bg: '#fffbeb'
+    initials: 'ER', color: '#f59e0b', bg: '#fffbeb',
+    name: 'Elena Rossi', since: 'Tenant since Feb 2024',
+    property: 'Maple Heights', unit: 'A-105',
+    participation: 62,
+    engagement: 'Moderate engagement', engColor: '#f59e0b',
+    timing: 'Mostly On Time', timingColor: '#f59e0b',
+    followThrough: 'Partial', followColor: '#f59e0b',
+    communication: 'Adequate', commColor: '#10b981',
+    riskLevel: 'Monitor', riskColor: '#f59e0b', riskBg: '#fffbeb'
+  },
+  {
+    initials: 'MT', color: '#f59e0b', bg: '#fffbeb',
+    name: 'Marcus Thompson', since: 'Tenant since Jan 2024',
+    property: 'Oakwood Villas', unit: 'B-203',
+    participation: 71,
+    engagement: 'Moderate engagement', engColor: '#f59e0b',
+    timing: 'On Time', timingColor: '#10b981',
+    followThrough: 'Partial', followColor: '#f59e0b',
+    communication: 'Clear', commColor: '#10b981',
+    riskLevel: 'Monitor', riskColor: '#f59e0b', riskBg: '#fffbeb'
+  },
+  {
+    initials: 'LW', color: '#10b981', bg: '#e6fbf3',
+    name: 'Linda Wu', since: 'Tenant since Jan 2023',
+    property: 'Maple Heights', unit: 'A-201',
+    participation: 91,
+    engagement: 'High engagement', engColor: '#10b981',
+    timing: 'On Time', timingColor: '#10b981',
+    followThrough: 'Consistent', followColor: '#10b981',
+    communication: 'Clear', commColor: '#10b981',
+    riskLevel: 'Stable', riskColor: '#10b981', riskBg: '#e6fbf3'
+  },
+  {
+    initials: 'SC', color: '#10b981', bg: '#e6fbf3',
+    name: 'Sarah Chen', since: 'Tenant since Jun 2022',
+    property: 'Pinecrest Place', unit: 'C-301',
+    participation: 88,
+    engagement: 'High engagement', engColor: '#10b981',
+    timing: 'On Time', timingColor: '#10b981',
+    followThrough: 'Consistent', followColor: '#10b981',
+    communication: 'Clear', commColor: '#10b981',
+    riskLevel: 'Stable', riskColor: '#10b981', riskBg: '#e6fbf3'
+  },
+  {
+    initials: 'RW', color: '#10b981', bg: '#e6fbf3',
+    name: 'Robert Wilson', since: 'Tenant since Apr 2022',
+    property: 'Oakwood Villas', unit: 'B-101',
+    participation: 85,
+    engagement: 'High engagement', engColor: '#10b981',
+    timing: 'On Time', timingColor: '#10b981',
+    followThrough: 'Consistent', followColor: '#10b981',
+    communication: 'Clear', commColor: '#10b981',
+    riskLevel: 'Stable', riskColor: '#10b981', riskBg: '#e6fbf3'
   }
 ];
 
-const riskMatrix = [
-  { label: 'Participation Rate', weight: 35, desc: 'Percentage of completed check-ins over the last 30 days' },
-  { label: 'Response Time Consistency', weight: 25, desc: 'Average delay between task release and submission' },
-  { label: 'Integrity Score Trend', weight: 20, desc: 'Weekly trajectory of the composite behavioral score' },
-  { label: 'Communication Quality', weight: 15, desc: 'Tone, detail level, and coherence of text submissions' },
-  { label: 'External Event Flags', weight: 5, desc: 'Sudden pattern breaks flagged by the system' }
-];
-
 export default function LandlordRiskPage() {
-  const [expanded, setExpanded] = useState<number | null>(0);
+  const [search, setSearch] = useState('');
+
+  const filtered = tenants.filter(t =>
+    t.name.toLowerCase().includes(search.toLowerCase()) ||
+    t.property.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
-    <div style={{ padding: '0px' }} className="animate-fade-in">
-
-        {/* Header */}
-        <div style={{ marginBottom: '32px' }}>
-          <h1 style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.03em' }}>Behavioral Risk</h1>
-          <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', marginTop: '4px' }}>
-            Identify tenants with elevated behavioral risk based on multi-factor analysis
+    <div className="animate-fade-in" style={{ padding: '0' }}>
+      {/* Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '4px', textAlign: 'left' }}>
+        <div>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>Behavioral Risk</h1>
+          <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginTop: '6px', maxWidth: '560px' }}>
+            Snapshot of tenant behaviour across your portfolio. Reflects current state, not changes. Based on participation and interaction patterns.
           </p>
         </div>
+        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px', paddingTop: '8px', whiteSpace: 'nowrap' }}>
+          <LuInfo style={{ fontSize: '0.85rem' }} /> DATA AS OF TODAY, 9:00 AM
+        </div>
+      </div>
 
-        {/* Summary Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', marginBottom: '32px' }}>
-          {[
-            { label: 'High Risk', value: '1', desc: 'Immediate action required', color: '#ef4444', bg: '#fff5f5', border: '#fca5a5', icon: <LuShieldAlert /> },
-            { label: 'Medium Risk', value: '1', desc: 'Monitor closely', color: '#f59e0b', bg: '#fffbeb', border: '#fde68a', icon: <LuTriangleAlert /> },
-            { label: 'Low Risk / Stable', value: '2', desc: 'No action required', color: '#10b981', bg: '#e6fbf3', border: '#a7f3d0', icon: <LuActivity /> }
-          ].map((c, i) => (
-            <div key={i} style={{ backgroundColor: c.bg, border: `1.5px solid ${c.border}`, borderRadius: '12px', padding: '24px', textAlign: 'left', boxShadow: 'var(--shadow-sm)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-                <span style={{ fontSize: '1.4rem', color: c.color, display: 'flex' }}>{c.icon}</span>
-                <h3 style={{ fontSize: '0.85rem', fontWeight: 800, color: c.color }}>{c.label}</h3>
-              </div>
-              <strong style={{ fontSize: '2.2rem', fontWeight: 800, color: c.color, display: 'block' }}>{c.value}</strong>
-              <span style={{ fontSize: '0.725rem', color: 'var(--text-secondary)' }}>{c.desc}</span>
+      {/* Summary Cards */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0', marginBottom: '24px', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
+        {[
+          { label: 'AT RISK', count: 2, pct: '10% OF TENANTS', color: '#ef4444', linkText: 'View tenants ›' },
+          { label: 'REQUIRES MONITORING', count: 4, pct: '20% OF TENANTS', color: '#f59e0b', linkText: 'View tenants ›' },
+          { label: 'STABLE', count: 14, pct: '70% OF TENANTS', color: '#10b981', linkText: 'View tenants ›' },
+          { label: 'TOTAL TENANTS', count: 20, pct: '', color: '#0a57e3', linkText: 'View all ›' }
+        ].map((card, i) => (
+          <div key={i} style={{ padding: '24px', borderRight: i < 3 ? '1px solid var(--border-color)' : 'none', backgroundColor: '#ffffff', textAlign: 'left' }}>
+            <div style={{ fontSize: '0.675rem', fontWeight: 800, color: card.color, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '10px' }}>{card.label}</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '4px' }}>
+              <span style={{ fontSize: '0.9rem', color: card.color }}>{i < 3 ? <LuUsers /> : <LuUsers />}</span>
+              <span style={{ fontSize: '2.2rem', fontWeight: 800, color: card.color, lineHeight: 1 }}>{card.count}</span>
             </div>
+            {card.pct && <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)', marginBottom: '10px' }}>{card.pct}</div>}
+            <div style={{ fontSize: '0.8rem', color: card.color, fontWeight: 600, cursor: 'pointer' }} onClick={() => alert(`Sandbox: View ${card.label} tenants`)}>{card.linkText}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Table Filter Bar */}
+      <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px 12px 0 0', padding: '14px 20px', display: 'flex', gap: '12px', alignItems: 'center', borderBottom: 'none' }}>
+        <div style={{ position: 'relative', flex: 1 }}>
+          <LuSearch style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', fontSize: '0.9rem' }} />
+          <input type="text" placeholder="Search by tenant or property..." value={search} onChange={e => setSearch(e.target.value)}
+            style={{ width: '100%', padding: '8px 14px 8px 38px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.825rem', outline: 'none', boxSizing: 'border-box' }}
+            onFocus={e => e.currentTarget.style.borderColor = '#0a57e3'} onBlur={e => e.currentTarget.style.borderColor = 'var(--border-color)'} />
+        </div>
+        {[
+          { icon: <LuHouse style={{ fontSize: '0.85rem' }} />, label: 'All Properties' },
+          { icon: <LuUsers style={{ fontSize: '0.85rem' }} />, label: 'All Tenants' }
+        ].map((btn, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '7px', padding: '8px 14px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.825rem', color: 'var(--text-secondary)', cursor: 'pointer', whiteSpace: 'nowrap', fontWeight: 600, backgroundColor: '#ffffff' }}>
+            {btn.icon} {btn.label} <span style={{ fontSize: '0.7rem', marginLeft: '2px' }}>▾</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Table */}
+      <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '0 0 12px 12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
+        {/* Head */}
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1.3fr 1.2fr 1.2fr 1.2fr 1.3fr 40px', padding: '10px 24px', backgroundColor: '#f8fafc', borderBottom: '1px solid var(--border-color)', borderTop: '1px solid var(--border-color)' }}>
+          {['TENANT', 'PROPERTY', 'PARTICIPATION', 'ENGAGEMENT', 'RESPONSE TIMING', 'FOLLOW-THROW', 'COMMUNICATION', 'RISK LEVEL', ''].map((h, i) => (
+            <div key={i} style={{ fontSize: '0.625rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', textAlign: 'left' }}>{h}</div>
           ))}
         </div>
 
-        {/* 2-Col Layout: Risk cards + Risk Matrix */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: '24px', alignItems: 'start' }}>
-
-          {/* Flagged Tenant Risk Cards */}
-          <div>
-            <h3 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '16px', textAlign: 'left' }}>Flagged Tenants</h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {riskTenants.map((t, i) => (
-                <div
-                  key={i}
-                  style={{ backgroundColor: '#ffffff', border: `1.5px solid ${t.color}40`, borderLeft: `4px solid ${t.color}`, borderRadius: '0 12px 12px 0', padding: '20px 24px', boxShadow: 'var(--shadow-sm)', textAlign: 'left', cursor: 'pointer' }}
-                  onClick={() => setExpanded(expanded === i ? null : i)}
-                >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: t.bg, color: t.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.85rem' }}>
-                        {t.initials}
-                      </div>
-                      <div>
-                        <strong style={{ fontSize: '0.925rem', color: 'var(--text-primary)', display: 'block' }}>{t.name}</strong>
-                        <span style={{ fontSize: '0.725rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                          <LuHouse style={{ fontSize: '0.75rem' }} /> {t.unit}
-                        </span>
-                      </div>
-                    </div>
-                    <div style={{ textAlign: 'right' }}>
-                      <span style={{ fontSize: '0.675rem', padding: '3px 10px', borderRadius: '6px', backgroundColor: t.bg, color: t.color, fontWeight: 700, display: 'block' }}>
-                        {t.riskLevel} Risk
-                      </span>
-                      <strong style={{ fontSize: '1.2rem', color: t.color, fontWeight: 800 }}>{t.riskScore}</strong>
-                      <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', display: 'block' }}>Risk Index</span>
-                    </div>
-                  </div>
-
-                  {expanded === i && (
-                    <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '16px' }}>
-                      {/* Risk Factors */}
-                      <h5 style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '10px' }}>Risk Factors</h5>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '16px' }}>
-                        {t.factors.map((f, fi) => (
-                          <div key={fi} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', borderRadius: '8px', backgroundColor: f.severity === 'critical' ? '#fff5f5' : f.severity === 'warning' ? '#fffbeb' : '#f8fafc', border: `1px solid ${f.severity === 'critical' ? '#fca5a5' : f.severity === 'warning' ? '#fde68a' : 'var(--border-color)'}` }}>
-                            <span style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', fontWeight: 600 }}>{f.label}</span>
-                            <span style={{ fontSize: '0.775rem', fontWeight: 800, color: f.severity === 'critical' ? '#ef4444' : f.severity === 'warning' ? '#f59e0b' : '#0a57e3' }}>{f.value}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Recommendation */}
-                      <div style={{ backgroundColor: '#f0f4ff', border: '1px solid #dbeafe', borderRadius: '8px', padding: '12px 16px', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                        <LuInfo style={{ color: '#0a57e3', fontSize: '1rem', flexShrink: 0, marginTop: '1px' }} />
-                        <span style={{ fontSize: '0.775rem', color: '#1e40af', lineHeight: '1.4' }}><strong>Recommendation:</strong> {t.recommendation}</span>
-                      </div>
-
-                      <div style={{ display: 'flex', gap: '8px', marginTop: '16px' }}>
-                        <button className="premium-btn premium-btn-primary" style={{ '--btn-color': t.color, flex: 1, padding: '8px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 700 } as React.CSSProperties}
-                          onClick={(e) => { e.stopPropagation(); alert(`Sandbox: Take action on ${t.name}`); }}>
-                          Take Action <LuChevronRight style={{ display: 'inline' }} />
-                        </button>
-                        <button className="premium-btn premium-btn-secondary" style={{ padding: '8px 14px', borderRadius: '8px', fontSize: '0.8rem' }}
-                          onClick={(e) => { e.stopPropagation(); alert(`Sandbox: View full behavioral report for ${t.name}`); }}>
-                          Full Report
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Risk Matrix Explainer */}
-          <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
-            <h3 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>Risk Scoring Matrix</h3>
-            <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>How the Behavioral Risk Index is calculated</p>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {riskMatrix.map((factor, i) => (
-                <div key={i}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-primary)' }}>{factor.label}</span>
-                    <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#0a57e3' }}>{factor.weight}%</span>
-                  </div>
-                  <div style={{ height: '6px', borderRadius: '3px', backgroundColor: '#e2e8f0', overflow: 'hidden', marginBottom: '4px' }}>
-                    <div style={{ height: '100%', width: `${factor.weight * 3}%`, backgroundColor: '#0a57e3', borderRadius: '3px' }} />
-                  </div>
-                  <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', lineHeight: '1.3' }}>{factor.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ marginTop: '24px', padding: '14px', backgroundColor: '#f8fafc', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-              <span style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '6px' }}>Score Thresholds</span>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                {[
-                  { range: '75–100', label: 'High Risk', color: '#ef4444' },
-                  { range: '40–74', label: 'Medium Risk', color: '#f59e0b' },
-                  { range: '0–39', label: 'Low Risk / Stable', color: '#10b981' }
-                ].map((t, i) => (
-                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem' }}>
-                    <span style={{ color: 'var(--text-secondary)' }}>{t.range}</span>
-                    <span style={{ color: t.color, fontWeight: 700 }}>{t.label}</span>
-                  </div>
-                ))}
+        {/* Rows */}
+        {filtered.map((t, i) => (
+          <div
+            key={i}
+            style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1.3fr 1.2fr 1.2fr 1.2fr 1.3fr 40px', alignItems: 'center', padding: '16px 24px', borderBottom: i < filtered.length - 1 ? '1px solid var(--border-color)' : 'none', transition: 'background 0.15s' }}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = '#fafbfc'}
+            onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
+          >
+            {/* Tenant */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', textAlign: 'left' }}>
+              <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: t.bg, color: t.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.775rem', flexShrink: 0 }}>{t.initials}</div>
+              <div>
+                <div style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--text-primary)' }}>{t.name}</div>
+                <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '2px' }}>{t.since}</div>
               </div>
             </div>
-          </div>
-        </div>
 
+            {/* Property */}
+            <div style={{ textAlign: 'left' }}>
+              <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-primary)' }}>{t.property}</div>
+              <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{t.unit}</div>
+            </div>
+
+            {/* Participation */}
+            <div style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--text-primary)', textAlign: 'left' }}>{t.participation}%</div>
+
+            {/* Engagement */}
+            <div style={{ fontSize: '0.775rem', fontWeight: 600, color: t.engColor, textAlign: 'left' }}>{t.engagement}</div>
+
+            {/* Response Timing */}
+            <div style={{ fontSize: '0.775rem', fontWeight: 600, color: t.timingColor, textAlign: 'left' }}>{t.timing}</div>
+
+            {/* Follow-through */}
+            <div style={{ fontSize: '0.775rem', fontWeight: 600, color: t.followColor, textAlign: 'left' }}>{t.followThrough}</div>
+
+            {/* Communication */}
+            <div style={{ fontSize: '0.775rem', fontWeight: 600, color: t.commColor, textAlign: 'left' }}>{t.communication}</div>
+
+            {/* Risk Level */}
+            <div style={{ textAlign: 'left' }}>
+              <span style={{ fontSize: '0.725rem', fontWeight: 700, color: t.riskColor }}>{t.riskLevel}</span>
+            </div>
+
+            {/* More */}
+            <div>
+              <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', padding: '4px', display: 'flex', alignItems: 'center' }}
+                onClick={() => alert(`Sandbox: More options for ${t.name}`)}>
+                <LuEllipsisVertical />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Footer */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '14px' }}>
+        <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Showing 1 to {filtered.length} of 20 tenants</span>
+        <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+          <button style={{ width: '30px', height: '30px', borderRadius: '6px', border: '1px solid var(--border-color)', backgroundColor: '#ffffff', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.9rem' }}>‹</button>
+          {[1, 2, 3, 4].map(p => (
+            <button key={p} style={{ width: '30px', height: '30px', borderRadius: '6px', border: '1px solid', borderColor: p === 1 ? '#0a57e3' : 'var(--border-color)', backgroundColor: p === 1 ? '#0a57e3' : '#ffffff', color: p === 1 ? '#ffffff' : 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer' }}>{p}</button>
+          ))}
+          <button style={{ width: '30px', height: '30px', borderRadius: '6px', border: '1px solid var(--border-color)', backgroundColor: '#ffffff', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.9rem' }}>›</button>
+        </div>
+      </div>
+
+      {/* Info Footer */}
+      <div style={{ marginTop: '16px', padding: '12px 16px', backgroundColor: '#f0f4ff', border: '1px solid #dbeafe', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <LuInfo style={{ color: '#0a57e3', fontSize: '1rem', flexShrink: 0 }} />
+        <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Behavioural Risk reflects the current state of tenant behaviour based on participation and interaction patterns.</span>
+      </div>
     </div>
   );
 }

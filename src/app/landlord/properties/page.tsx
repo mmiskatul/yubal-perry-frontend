@@ -1,74 +1,86 @@
 'use client';
 
 import React, { useState } from 'react';
-import {
-  LuPlus,
-  LuHouse,
-  LuCircleCheck,
-  LuClock,
-  LuActivity,
-  LuTriangleAlert,
-  LuEye,
-  LuSettings,
-  LuInfo
-} from 'react-icons/lu';
+import { LuPlus, LuEllipsisVertical, LuClock, LuFileText, LuActivity } from 'react-icons/lu';
 
 const properties = [
   {
     id: 1,
     name: 'Maple Heights A-12',
-    address: '123 Maple Street, Austin TX 78701',
-    type: 'Residential',
-    occupancy: 'Occupied',
-    tenant: 'Amara Okafor',
-    status: 'Active Monitoring',
-    integrityScore: 88,
-    setupStep: 3,
-    setupTotal: 3,
-    statusColor: '#10b981',
-    statusBg: '#e6fbf3'
+    address: '123 Maple Street',
+    status: 'VACANT', statusColor: '#64748b', statusBg: '#f1f5f9',
+    image: '🏡',
+    section: 'Pre-Tenancy',
+    sectionDetail: 'Not started',
+    sectionIcon: <LuClock />,
+    sectionColor: '#94a3b8',
+    actionLabel: 'Start Pre-Tenancy Process',
+    actionColor: '#0a57e3',
+    actionIcon: '▷',
+    actionStyle: 'outline'
   },
   {
     id: 2,
-    name: 'Lakeview A-02',
-    address: '458 Oak Avenue, Austin TX 78702',
-    type: 'Residential',
-    occupancy: 'Occupied',
-    tenant: 'Marcus Villanueva',
-    status: 'Requires Attention',
-    integrityScore: 68,
-    setupStep: 3,
-    setupTotal: 3,
-    statusColor: '#ef4444',
-    statusBg: '#fff5f5'
+    name: 'Riverside Apt 402',
+    address: '45 Riverwalk Drive',
+    status: 'VACANT', statusColor: '#64748b', statusBg: '#f1f5f9',
+    image: '🏊',
+    section: 'Pre-Tenancy',
+    sectionDetail: 'Day 3 of 7 · Active',
+    sectionProgress: 43,
+    sectionProgressColor: '#0a57e3',
+    sectionIcon: null,
+    sectionColor: '#0a57e3',
+    actionLabel: 'View Progress',
+    actionColor: '#0a57e3',
+    actionIcon: '📄',
+    actionStyle: 'outline'
   },
   {
     id: 3,
     name: 'Grand Plaza 6A',
-    address: '8 Grand Plaza, Austin TX 78703',
-    type: 'Residential',
-    occupancy: 'Pre-Tenancy',
-    tenant: 'Carlos Rivera',
-    status: 'Pre-Tenancy Active',
-    integrityScore: 76,
-    setupStep: 2,
-    setupTotal: 3,
-    statusColor: '#0a57e3',
-    statusBg: '#eff6ff'
+    address: '789 Grand Plaza',
+    status: 'OCCUPIED', statusColor: '#10b981', statusBg: '#e6fbf3',
+    image: '🏙️',
+    section: 'Monitoring',
+    sectionDetail: 'Participation: 68%\nTrend: Slight Decline',
+    sectionIcon: <LuActivity />,
+    sectionColor: '#f59e0b',
+    actionLabel: 'View Monitoring',
+    actionColor: '#0a57e3',
+    actionIcon: '📈',
+    actionStyle: 'outline'
   },
   {
     id: 4,
-    name: 'Oak Ridge Tower 3B',
-    address: '10 Ridge Blvd, Austin TX 78704',
-    type: 'Residential',
-    occupancy: 'Vacant',
-    tenant: null,
-    status: 'Vacant',
-    integrityScore: null,
-    setupStep: 0,
-    setupTotal: 3,
-    statusColor: 'var(--text-muted)',
-    statusBg: '#f1f5f9'
+    name: 'Grand Plaza 6A',
+    address: '789 Grand Plaza',
+    status: 'VACANT', statusColor: '#64748b', statusBg: '#f1f5f9',
+    image: '🏙️',
+    section: 'Pre-Tenancy',
+    sectionDetail: 'Completed',
+    sectionIcon: null,
+    sectionColor: '#10b981',
+    sectionCompleted: true,
+    actionLabel: 'View Report',
+    actionColor: '#0a57e3',
+    actionIcon: '📄',
+    actionStyle: 'outline'
+  },
+  {
+    id: 5,
+    name: 'Maple Heights A-12',
+    address: '123 Maple Street',
+    status: 'OCCUPIED', statusColor: '#10b981', statusBg: '#e6fbf3',
+    image: '🏡',
+    section: 'Monitoring',
+    sectionDetail: 'Participation: 82%\nTrend: Stable ···',
+    sectionIcon: <LuActivity />,
+    sectionColor: '#10b981',
+    actionLabel: 'View Monitoring',
+    actionColor: '#0a57e3',
+    actionIcon: '📈',
+    actionStyle: 'outline'
   }
 ];
 
@@ -84,182 +96,162 @@ export default function LandlordPropertiesPage() {
       id: propList.length + 1,
       name: newName.trim(),
       address: 'Address to be confirmed',
-      type: 'Residential',
-      occupancy: newType,
-      tenant: null,
-      status: newType === 'Occupied' ? 'Setup Required' : 'Vacant',
-      integrityScore: null,
-      setupStep: 0,
-      setupTotal: 3,
-      statusColor: '#f59e0b',
-      statusBg: '#fffbeb'
+      status: newType === 'Occupied' ? 'OCCUPIED' : 'VACANT',
+      statusColor: newType === 'Occupied' ? '#10b981' : '#64748b',
+      statusBg: newType === 'Occupied' ? '#e6fbf3' : '#f1f5f9',
+      image: '🏠',
+      section: 'Pre-Tenancy',
+      sectionDetail: 'Not started',
+      sectionIcon: <LuClock />,
+      sectionColor: '#94a3b8',
+      actionLabel: 'Start Pre-Tenancy Process',
+      actionColor: '#0a57e3',
+      actionIcon: '▷',
+      actionStyle: 'outline'
     }]);
     setIsAddOpen(false);
     setNewName('');
   };
 
   return (
-    <div style={{ padding: '0px' }} className="animate-fade-in">
-
-        {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px' }}>
-          <div>
-            <h1 style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.03em' }}>Properties</h1>
-            <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', marginTop: '4px' }}>
-              Manage and configure all your properties in one place
-            </p>
-          </div>
-          <button
-            className="premium-btn premium-btn-primary"
-            style={{ '--btn-color': '#7c3aed', padding: '10px 20px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '6px' } as React.CSSProperties}
-            onClick={() => setIsAddOpen(true)}
-          >
-            <LuPlus /> Add Property
-          </button>
+    <div className="animate-fade-in" style={{ padding: '0' }}>
+      {/* Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', textAlign: 'left' }}>
+        <div>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>Properties</h1>
+          <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginTop: '6px' }}>
+            Manage your properties and track their current status.
+          </p>
         </div>
+        <button
+          style={{ padding: '10px 20px', borderRadius: '8px', border: 'none', backgroundColor: '#0a57e3', color: '#ffffff', fontSize: '0.875rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
+          onClick={() => setIsAddOpen(true)}
+        >
+          <LuPlus /> + Add Property
+        </button>
+      </div>
 
-        {/* Stats Row */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '32px' }}>
-          {[
-            { label: 'Total Properties', value: propList.length.toString(), icon: <LuHouse />, color: '#0a57e3', bg: '#eff6ff' },
-            { label: 'Active Monitoring', value: propList.filter(p => p.status.includes('Monitoring') || p.status === 'Requires Attention').length.toString(), icon: <LuActivity />, color: '#7c3aed', bg: '#f5f3ff' },
-            { label: 'Pre-Tenancy', value: propList.filter(p => p.occupancy === 'Pre-Tenancy').length.toString(), icon: <LuClock />, color: '#0a57e3', bg: '#eff6ff' },
-            { label: 'Vacant', value: propList.filter(p => p.occupancy === 'Vacant').length.toString(), icon: <LuTriangleAlert />, color: '#f59e0b', bg: '#fffbeb' }
-          ].map((c, i) => (
-            <div key={i} style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '20px 24px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <span style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{c.label}</span>
-                <span style={{ fontSize: '1.1rem', color: c.color, display: 'flex', padding: '6px', backgroundColor: c.bg, borderRadius: '8px' }}>{c.icon}</span>
-              </div>
-              <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>{c.value}</h2>
+      {/* Summary Cards */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0', marginBottom: '28px', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
+        {[
+          { icon: '🏢', label: 'Total Properties', value: propList.length, iconBg: '#eff6ff' },
+          { icon: '🔴', label: 'Vacant', value: propList.filter(p => p.status === 'VACANT').length, iconBg: '#fff5f5' },
+          { icon: '👥', label: 'Occupied', value: propList.filter(p => p.status === 'OCCUPIED').length, iconBg: '#e6fbf3' },
+          { icon: '📋', label: 'Under Review', value: 1, iconBg: '#fffbeb' }
+        ].map((c, i) => (
+          <div key={i} style={{ padding: '20px 24px', borderRight: i < 3 ? '1px solid var(--border-color)' : 'none', backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', gap: '14px', textAlign: 'left' }}>
+            <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: c.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.3rem', flexShrink: 0 }}>{c.icon}</div>
+            <div>
+              <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)', fontWeight: 600, marginBottom: '2px' }}>{c.label}</div>
+              <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>{c.value}</div>
             </div>
-          ))}
-        </div>
-
-        {/* Properties Table */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
-          {/* Table Header */}
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 0.8fr 1.2fr 1fr 1.2fr 1fr', gap: '0', padding: '12px 24px', backgroundColor: '#f8fafc', borderBottom: '1px solid var(--border-color)', fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            <div>Property</div>
-            <div>Type</div>
-            <div>Status</div>
-            <div>Score</div>
-            <div>Setup Progress</div>
-            <div style={{ textAlign: 'right' }}>Actions</div>
           </div>
+        ))}
+      </div>
 
-          {propList.map((prop, idx) => (
-            <div
-              key={idx}
-              style={{ display: 'grid', gridTemplateColumns: '2fr 0.8fr 1.2fr 1fr 1.2fr 1fr', alignItems: 'center', padding: '18px 24px', borderBottom: idx < propList.length - 1 ? '1px solid var(--border-color)' : 'none' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-            >
-              {/* Name */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', textAlign: 'left' }}>
-                <div style={{ width: '36px', height: '36px', borderRadius: '8px', backgroundColor: prop.statusBg, color: prop.statusColor, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem' }}>
-                  <LuHouse />
-                </div>
+      {/* Property Cards Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+        {propList.map((prop, i) => (
+          <div key={prop.id * 100 + i} style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+            {/* Property Image */}
+            <div style={{ height: '130px', backgroundColor: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', position: 'relative' }}>
+              {prop.image}
+              {/* More button */}
+              <button style={{ position: 'absolute', top: '10px', right: '10px', background: 'rgba(255,255,255,0.9)', border: 'none', borderRadius: '6px', padding: '4px 6px', cursor: 'pointer', color: 'var(--text-muted)', display: 'flex', alignItems: 'center' }}
+                onClick={() => alert(`Sandbox: More options for ${prop.name}`)}>
+                <LuEllipsisVertical style={{ fontSize: '1rem' }} />
+              </button>
+            </div>
+
+            {/* Card Body */}
+            <div style={{ padding: '16px 18px' }}>
+              {/* Name + address + badge */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
                 <div>
-                  <strong style={{ fontSize: '0.875rem', color: 'var(--text-primary)', display: 'block' }}>{prop.name}</strong>
-                  <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{prop.address}</span>
+                  <div style={{ fontSize: '0.925rem', fontWeight: 800, color: 'var(--text-primary)' }}>{prop.name}</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>{prop.address}</div>
                 </div>
-              </div>
-
-              {/* Occupancy */}
-              <div>
-                <span style={{ fontSize: '0.725rem', padding: '3px 8px', borderRadius: '4px', backgroundColor: prop.occupancy === 'Occupied' ? '#e6fbf3' : prop.occupancy === 'Pre-Tenancy' ? '#eff6ff' : '#f1f5f9', color: prop.occupancy === 'Occupied' ? '#10b981' : prop.occupancy === 'Pre-Tenancy' ? '#0a57e3' : 'var(--text-muted)', fontWeight: 700 }}>
-                  {prop.occupancy}
-                </span>
-              </div>
-
-              {/* Status */}
-              <div>
-                <span style={{ fontSize: '0.725rem', padding: '3px 8px', borderRadius: '4px', backgroundColor: prop.statusBg, color: prop.statusColor, fontWeight: 700 }}>
+                <span style={{ fontSize: '0.625rem', fontWeight: 800, padding: '3px 8px', borderRadius: '4px', backgroundColor: prop.statusBg, color: prop.statusColor, border: `1px solid ${prop.statusColor}20`, letterSpacing: '0.05em', whiteSpace: 'nowrap', marginLeft: '8px' }}>
                   {prop.status}
                 </span>
               </div>
 
-              {/* Score */}
-              <div style={{ textAlign: 'left' }}>
-                {prop.integrityScore !== null ? (
-                  <strong style={{ fontSize: '1.1rem', color: prop.statusColor, fontWeight: 800 }}>{prop.integrityScore}</strong>
+              {/* Divider */}
+              <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '12px', marginBottom: '12px' }}>
+                <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '6px' }}>{prop.section}</div>
+
+                {/* Section detail */}
+                {prop.sectionCompleted ? (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span style={{ fontSize: '0.85rem', color: '#10b981' }}>●</span>
+                    <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#10b981' }}>Completed</span>
+                  </div>
+                ) : prop.sectionProgress !== undefined ? (
+                  <div>
+                    <div style={{ fontSize: '0.775rem', color: prop.sectionColor, fontWeight: 600, marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <LuClock style={{ fontSize: '0.8rem' }} /> {prop.sectionDetail}
+                    </div>
+                    <div style={{ height: '5px', borderRadius: '3px', backgroundColor: '#e2e8f0', overflow: 'hidden' }}>
+                      <div style={{ height: '100%', width: `${prop.sectionProgress}%`, borderRadius: '3px', backgroundColor: prop.sectionProgressColor || '#0a57e3' }} />
+                    </div>
+                  </div>
                 ) : (
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>—</span>
+                  <div style={{ fontSize: '0.775rem', color: prop.sectionColor, display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                    {prop.sectionDetail.split('\n').map((line, li) => (
+                      <div key={li} style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                        {li === 0 && prop.sectionIcon && <span style={{ fontSize: '0.8rem' }}>{prop.sectionIcon}</span>}
+                        <span style={{ fontWeight: li === 0 ? 600 : 500 }}>{line}</span>
+                      </div>
+                    ))}
+                  </div>
                 )}
               </div>
 
-              {/* Setup Progress */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                {[1, 2, 3].map((step) => {
-                  const done = step <= prop.setupStep;
-                  return (
-                    <React.Fragment key={step}>
-                      <span style={{ width: '20px', height: '20px', borderRadius: '50%', backgroundColor: done ? '#10b981' : '#e2e8f0', color: done ? '#ffffff' : 'var(--text-muted)', fontSize: '0.675rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                        {done ? '✓' : step}
-                      </span>
-                      {step < 3 && <div style={{ width: '14px', height: '1.5px', backgroundColor: done && step < prop.setupStep ? '#10b981' : '#e2e8f0' }} />}
-                    </React.Fragment>
-                  );
-                })}
-                <span style={{ fontSize: '0.675rem', color: 'var(--text-muted)', marginLeft: '4px' }}>
-                  {prop.setupStep}/{prop.setupTotal}
-                </span>
-              </div>
-
-              {/* Actions */}
-              <div style={{ display: 'flex', gap: '6px', justifyContent: 'flex-end' }}>
-                <button className="premium-btn premium-btn-secondary" style={{ padding: '6px 10px', borderRadius: '6px', fontSize: '0.725rem', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
-                  onClick={() => alert(`Sandbox: View property ${prop.name}`)}>
-                  <LuEye />
-                </button>
-                <button className="premium-btn premium-btn-secondary" style={{ padding: '6px 10px', borderRadius: '6px', fontSize: '0.725rem', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
-                  onClick={() => alert(`Sandbox: Configure property ${prop.name}`)}>
-                  <LuSettings />
-                </button>
-                {prop.occupancy === 'Vacant' && (
-                  <button className="premium-btn premium-btn-primary" style={{ '--btn-color': '#7c3aed', padding: '6px 12px', borderRadius: '6px', fontSize: '0.725rem', fontWeight: 700 } as React.CSSProperties}
-                    onClick={() => alert(`Sandbox: Start pre-tenancy for ${prop.name}`)}>
-                    Start
-                  </button>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Add Property Modal */}
-        {isAddOpen && (
-          <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(15, 23, 42, 0.4)', backdropFilter: 'blur(4px)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => setIsAddOpen(false)}>
-            <div style={{ backgroundColor: '#ffffff', borderRadius: '16px', padding: '32px', width: '480px', boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1)', position: 'relative', textAlign: 'left' }} onClick={e => e.stopPropagation()}>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>Add New Property</h3>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '24px' }}>Choose whether this property is currently occupied or vacant.</p>
-              <button style={{ position: 'absolute', right: '24px', top: '24px', background: 'none', border: 'none', fontSize: '1.25rem', cursor: 'pointer', color: 'var(--text-muted)' }} onClick={() => setIsAddOpen(false)}>×</button>
-
-              <label style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>PROPERTY NAME *</label>
-              <input type="text" placeholder="e.g. Maple Heights A-12" value={newName} onChange={e => setNewName(e.target.value)}
-                style={{ width: '100%', padding: '10px 14px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.825rem', marginTop: '6px', marginBottom: '20px', outline: 'none', boxSizing: 'border-box' }}
-                onFocus={e => e.currentTarget.style.borderColor = '#0a57e3'}
-                onBlur={e => e.currentTarget.style.borderColor = 'var(--border-color)'}
-              />
-
-              <label style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '10px' }}>OCCUPANCY TYPE *</label>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '24px' }}>
-                {(['Occupied', 'Vacant'] as const).map((type) => (
-                  <button key={type} onClick={() => setNewType(type)} style={{ padding: '16px', borderRadius: '10px', border: `1.5px solid ${newType === type ? '#7c3aed' : 'var(--border-color)'}`, backgroundColor: newType === type ? '#f5f3ff' : '#ffffff', color: newType === type ? '#7c3aed' : 'var(--text-secondary)', fontWeight: 700, cursor: 'pointer', fontSize: '0.875rem' }}>
-                    {type === 'Occupied' ? '👥 ' : '🏠 '}{type}
-                  </button>
-                ))}
-              </div>
-
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <button className="premium-btn premium-btn-secondary" style={{ flex: 1, padding: '10px', borderRadius: '8px', fontSize: '0.85rem' }} onClick={() => setIsAddOpen(false)}>Cancel</button>
-                <button className="premium-btn premium-btn-primary" style={{ '--btn-color': '#7c3aed', flex: 1, padding: '10px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700 } as React.CSSProperties} onClick={handleAdd}>Add Property</button>
-              </div>
+              {/* Action Button */}
+              <button
+                style={{ width: '100%', padding: '9px 16px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: '#ffffff', color: '#0a57e3', fontSize: '0.825rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'all 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a57e3'; e.currentTarget.style.backgroundColor = '#eff6ff'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.backgroundColor = '#ffffff'; }}
+                onClick={() => alert(`Sandbox: ${prop.actionLabel} — ${prop.name}`)}
+              >
+                {prop.actionIcon} {prop.actionLabel}
+              </button>
             </div>
           </div>
-        )}
+        ))}
+      </div>
 
+      {/* Add Property Modal */}
+      {isAddOpen && (
+        <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(15, 23, 42, 0.45)', backdropFilter: 'blur(4px)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => setIsAddOpen(false)}>
+          <div style={{ backgroundColor: '#ffffff', borderRadius: '16px', padding: '32px', width: '480px', boxShadow: '0 20px 40px rgba(0,0,0,0.12)', position: 'relative', textAlign: 'left' }} onClick={e => e.stopPropagation()}>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>Add New Property</h3>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '24px' }}>Enter property details to add it to your portfolio.</p>
+            <button style={{ position: 'absolute', right: '24px', top: '24px', background: 'none', border: 'none', fontSize: '1.4rem', cursor: 'pointer', color: 'var(--text-muted)' }} onClick={() => setIsAddOpen(false)}>×</button>
+
+            <label style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '6px' }}>PROPERTY NAME *</label>
+            <input type="text" placeholder="e.g. Maple Heights A-12" value={newName} onChange={e => setNewName(e.target.value)}
+              style={{ width: '100%', padding: '10px 14px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.825rem', marginBottom: '20px', outline: 'none', boxSizing: 'border-box' }}
+              onFocus={e => e.currentTarget.style.borderColor = '#0a57e3'}
+              onBlur={e => e.currentTarget.style.borderColor = 'var(--border-color)'}
+            />
+
+            <label style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '10px' }}>OCCUPANCY *</label>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '24px' }}>
+              {(['Occupied', 'Vacant'] as const).map((type) => (
+                <button key={type} onClick={() => setNewType(type)} style={{ padding: '14px', borderRadius: '10px', border: `1.5px solid ${newType === type ? '#0a57e3' : 'var(--border-color)'}`, backgroundColor: newType === type ? '#eff6ff' : '#ffffff', color: newType === type ? '#0a57e3' : 'var(--text-secondary)', fontWeight: 700, cursor: 'pointer', fontSize: '0.875rem' }}>
+                  {type === 'Occupied' ? '👥 ' : '🏠 '}{type}
+                </button>
+              ))}
+            </div>
+
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <button style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: '#ffffff', fontSize: '0.85rem', cursor: 'pointer', fontWeight: 600 }} onClick={() => setIsAddOpen(false)}>Cancel</button>
+              <button style={{ flex: 1, padding: '10px', borderRadius: '8px', border: 'none', backgroundColor: '#0a57e3', color: '#ffffff', fontSize: '0.85rem', cursor: 'pointer', fontWeight: 700 }} onClick={handleAdd}>Add Property</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
