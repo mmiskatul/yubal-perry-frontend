@@ -2,25 +2,13 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/hooks/useAuth';
-import { DEFAULT_ROLE_REDIRECTS } from '@/config/roles';
 
 export default function RootIndexRouter() {
-  const { user, isAuthenticated, isLoading } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!isLoading) {
-      if (isAuthenticated && user) {
-        // Logged in: redirect to respective dashboard
-        const redirectPath = DEFAULT_ROLE_REDIRECTS[user.role] || '/user/dashboard';
-        router.push(redirectPath);
-      } else {
-        // Not logged in: redirect to login screen
-        router.push('/login');
-      }
-    }
-  }, [isLoading, isAuthenticated, user, router]);
+    router.push('/tenant/dashboard');
+  }, [router]);
 
   // Premium loading spinner while determining role redirect
   return (
@@ -40,7 +28,7 @@ export default function RootIndexRouter() {
           height: '40px', 
           borderRadius: '50%', 
           border: '2px solid var(--border-color)',
-          borderTopColor: '#7c3aed',
+          borderTopColor: '#0a57e3',
           animation: 'spin 1s linear infinite',
           marginBottom: '16px'
         }}
@@ -51,7 +39,7 @@ export default function RootIndexRouter() {
         }
       `}} />
       <p style={{ color: 'var(--text-secondary)', fontWeight: 500, fontSize: '0.85rem' }}>
-        Loading Secure Sandbox Portal...
+        Loading Tenant Portal...
       </p>
     </div>
   );

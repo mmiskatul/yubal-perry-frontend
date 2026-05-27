@@ -46,7 +46,7 @@ export default function SupportPage() {
               Send us a message and we'll get back to you as soon as possible.
             </p>
             <Link 
-              href="/user/messages" 
+              href="/tenant/messages" 
               className="premium-btn premium-btn-primary" 
               style={{ '--btn-color': '#0a57e3', padding: '10px 20px', borderRadius: '8px', fontSize: '0.8rem', textDecoration: 'none' } as React.CSSProperties}
             >
@@ -131,7 +131,7 @@ export default function SupportPage() {
       <div className="glass-card" style={{ '--role-color': '#0a57e3' } as React.CSSProperties}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
           <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-primary)' }}>Recent Messages</h3>
-          <Link href="/user/messages" style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0a57e3', textDecoration: 'none' }}>
+          <Link href="/tenant/messages" style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0a57e3', textDecoration: 'none' }}>
             Go to Messages
           </Link>
         </div>

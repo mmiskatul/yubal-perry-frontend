@@ -7,6 +7,9 @@ import { Role } from '@/types/auth';
 import Sidebar from './Sidebar';
 import { ROLES_CONFIG } from '@/config/roles';
 
+// Import vector icons
+import { LuSearch, LuCircleHelp, LuBell, LuChevronDown } from 'react-icons/lu';
+
 interface DashboardLayoutProps {
   children: React.ReactNode;
   allowedRoles: Role[];
@@ -24,7 +27,8 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       if (!isAuthenticated) {
         router.push('/login');
       } else if (user && !allowedRoles.includes(user.role)) {
-        router.push('/unauthorized');
+        // Safe redirection if accessing unauthorized paths
+        router.push(user.role === 'TENANT' ? '/tenant/dashboard' : '/applicant/progress');
       }
     }
   }, [isLoading, isAuthenticated, user, allowedRoles, router]);
@@ -48,7 +52,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
             height: '48px', 
             borderRadius: '50%', 
             border: '3px solid var(--border-color)',
-            borderTopColor: '#7c3aed',
+            borderTopColor: '#0a57e3',
             animation: 'spin 1s linear infinite',
             marginBottom: '16px'
           }}
@@ -58,9 +62,6 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
             to { transform: rotate(360deg); }
           }
         `}} />
-        <p style={{ color: 'var(--text-secondary)', fontWeight: 500, fontSize: '0.9rem', letterSpacing: '0.025em' }}>
-          Authorizing Session...
-        </p>
       </div>
     );
   }
@@ -70,7 +71,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
     return null;
   }
 
-  const roleColor = user ? ROLES_CONFIG[user.role]?.themeColor : '#7c3aed';
+  const roleColor = user ? ROLES_CONFIG[user.role]?.themeColor : '#0a57e3';
 
   return (
     <div className="app-container">
@@ -106,7 +107,9 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         >
           {/* Search bar */}
           <div style={{ display: 'flex', alignItems: 'center', width: '380px', position: 'relative' }}>
-            <span style={{ position: 'absolute', left: '14px', color: 'var(--text-muted)', fontSize: '0.95rem', top: '10px' }}>🔍</span>
+            <span style={{ position: 'absolute', left: '14px', color: 'var(--text-muted)', fontSize: '1rem', top: '12px', display: 'flex', alignItems: 'center' }}>
+              <LuSearch />
+            </span>
             <input 
               type="text" 
               placeholder="Search documents, messages, or help..." 
@@ -129,7 +132,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           {/* Right controls */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
             <a 
-              href="/user/support" 
+              href={user?.role === 'TENANT' ? '/tenant/support' : '/applicant/support'} 
               style={{ 
                 display: 'flex', 
                 alignItems: 'center', 
@@ -142,14 +145,14 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
               onMouseEnter={(e)=>e.currentTarget.style.color='#0a57e3'}
               onMouseLeave={(e)=>e.currentTarget.style.color='var(--text-secondary)'}
             >
-              <span>❓</span> Help
+              <span style={{ display: 'flex', alignItems: 'center' }}><LuCircleHelp /></span> Help
             </a>
 
             <div 
               style={{ position: 'relative', cursor: 'pointer', display: 'flex', alignItems: 'center' }} 
-              onClick={() => router.push('/user/messages')}
+              onClick={() => router.push(user?.role === 'TENANT' ? '/tenant/messages' : '/applicant/messages')}
             >
-              <span style={{ fontSize: '1.25rem' }}>🔔</span>
+              <span style={{ fontSize: '1.25rem', display: 'flex', alignItems: 'center' }}><LuBell /></span>
               <div 
                 style={{ 
                   position: 'absolute', 
@@ -172,7 +175,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                 paddingLeft: '20px',
                 cursor: 'pointer'
               }}
-              onClick={() => router.push('/user/settings')}
+              onClick={() => router.push(user?.role === 'TENANT' ? '/tenant/settings' : '/tenant/settings')}
             >
               <div 
                 style={{ 
@@ -189,17 +192,19 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                   border: `2px solid ${roleColor}` 
                 }}
               >
-                {user?.role === 'USER' ? 'AJ' : user?.name?.substring(0, 2) || 'U'}
+                AJ
               </div>
               <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column' }}>
                 <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)', lineHeight: '1.2' }}>
-                  {user?.role === 'USER' ? 'Alex Johnson' : user?.name || 'User'}
+                  Alex Johnson
                 </span>
                 <span style={{ fontSize: '0.725rem', color: 'var(--text-muted)', fontWeight: 600 }}>
-                  {user?.role === 'USER' ? 'Applicant' : user?.role || ''}
+                  {user?.role === 'TENANT' ? 'Tenant' : 'Applicant'}
                 </span>
               </div>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginLeft: '4px' }}>▼</span>
+              <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginLeft: '4px', display: 'flex', alignItems: 'center' }}>
+                <LuChevronDown />
+              </span>
             </div>
           </div>
         </header>

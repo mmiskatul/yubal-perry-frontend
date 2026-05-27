@@ -247,7 +247,7 @@ export default function TenantDashboard() {
           </div>
 
           <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '16px', marginTop: '16px' }}>
-            <a href="/user/check-ins" style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0a57e3', textDecoration: 'none' }}>
+            <a href="/tenant/check-ins" style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0a57e3', textDecoration: 'none' }}>
               View all activity ➔
             </a>
           </div>
@@ -299,7 +299,7 @@ export default function TenantDashboard() {
           </div>
 
           <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '16px', marginTop: '20px' }}>
-            <a href="/user/support" style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0a57e3', textDecoration: 'none' }}>
+            <a href="/tenant/support" style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0a57e3', textDecoration: 'none' }}>
               Visit Help Center ➔
             </a>
           </div>

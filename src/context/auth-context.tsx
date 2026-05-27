@@ -1,10 +1,9 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { User, Role } from '@/types/auth';
 import { DEFAULT_ROLE_REDIRECTS } from '@/config/roles';
-import { hasPermission, canAccessRoute } from '@/utils/role-helper';
 
 interface AuthContextType {
   user: User | null;
@@ -13,93 +12,96 @@ interface AuthContextType {
   isLoading: boolean;
   login: (email: string, role: Role) => Promise<User>;
   logout: () => void;
+  switchRole: (role: 'SUPER_ADMIN' | 'TENANT' | 'APPLICANT') => void;
   checkPermission: (permission: string) => boolean;
   hasRole: (roles: Role | Role[]) => boolean;
 }
+
+const staticTenant: User = {
+  id: 'usr_tenant_alex',
+  name: 'Alex Johnson',
+  email: 'alex.johnson@email.com',
+  role: 'TENANT',
+  avatarUrl: `https://api.dicebear.com/7.x/adventurer/svg?seed=tenant`,
+  phoneNumber: '(512) 555-0198',
+  createdAt: new Date().toISOString(),
+  lastLogin: new Date().toISOString(),
+};
+
+const staticApplicant: User = {
+  id: 'usr_applicant_alex',
+  name: 'Alex Johnson',
+  email: 'alex.johnson@email.com',
+  role: 'APPLICANT',
+  avatarUrl: `https://api.dicebear.com/7.x/adventurer/svg?seed=applicant`,
+  phoneNumber: '(512) 555-0198',
+  createdAt: new Date().toISOString(),
+  lastLogin: new Date().toISOString(),
+};
+
+const staticSuperAdmin: User = {
+  id: 'usr_admin_alex',
+  name: 'Alex Johnson',
+  email: 'alex.johnson@email.com',
+  role: 'SUPER_ADMIN',
+  avatarUrl: `https://api.dicebear.com/7.x/adventurer/svg?seed=admin`,
+  phoneNumber: '(512) 555-0198',
+  createdAt: new Date().toISOString(),
+  lastLogin: new Date().toISOString(),
+};
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [token, setToken] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [token, setToken] = useState<string | null>('static_sandbox_jwt');
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const pathname = usePathname();
 
-  // Load session from localStorage on mount
+  // Load session from storage or default to TENANT
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      try {
-        const storedUser = localStorage.getItem('user_data');
-        const storedToken = localStorage.getItem('auth_token');
-
-        if (storedUser && storedToken) {
-          setUser(JSON.parse(storedUser));
-          setToken(storedToken);
-        }
-      } catch (err) {
-        console.error('Failed to parse stored auth session', err);
-      } finally {
-        setIsLoading(false);
+      const storedRole = localStorage.getItem('sandbox_active_role');
+      if (storedRole === 'APPLICANT') {
+        setUser(staticApplicant);
+      } else if (storedRole === 'SUPER_ADMIN') {
+        setUser(staticSuperAdmin);
+      } else {
+        setUser(staticTenant);
       }
+      setIsLoading(false);
     }
   }, []);
 
-  // Mock-login supporting quick role switching
-  const login = async (email: string, role: Role): Promise<User> => {
+  const switchRole = (newRole: 'SUPER_ADMIN' | 'TENANT' | 'APPLICANT') => {
     setIsLoading(true);
+    let targetUser = staticTenant;
+    if (newRole === 'APPLICANT') targetUser = staticApplicant;
+    else if (newRole === 'SUPER_ADMIN') targetUser = staticSuperAdmin;
     
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 800));
-
-    // Preset mock user info based on selected role
-    const mockUser: User = {
-      id: `usr_${Math.random().toString(36).substring(2, 9)}`,
-      name: email.split('@')[0].toUpperCase(),
-      email: email,
-      role: role,
-      avatarUrl: `https://api.dicebear.com/7.x/adventurer/svg?seed=${role.toLowerCase()}`,
-      phoneNumber: '+1 (555) 019-2834',
-      createdAt: new Date().toISOString(),
-      lastLogin: new Date().toISOString(),
-    };
-
-    const mockToken = `mock_jwt_token_for_${role.toLowerCase()}_${Date.now()}`;
-
-    // Store in state
-    setUser(mockUser);
-    setToken(mockToken);
-
-    // Save in storage for page refreshes & Axios client usage
     if (typeof window !== 'undefined') {
-      localStorage.setItem('user_data', JSON.stringify(mockUser));
-      localStorage.setItem('auth_token', mockToken);
-      localStorage.setItem('refresh_token', `mock_refresh_token_for_${role.toLowerCase()}`);
+      localStorage.setItem('sandbox_active_role', newRole);
     }
 
+    setUser(targetUser);
     setIsLoading(false);
 
-    // Redirect to respective dashboard
-    const redirectPath = DEFAULT_ROLE_REDIRECTS[role] || '/';
+    // Redirect to default dashboard
+    const redirectPath = DEFAULT_ROLE_REDIRECTS[newRole];
     router.push(redirectPath);
+  };
 
-    return mockUser;
+  const login = async (email: string, role: Role): Promise<User> => {
+    return staticTenant;
   };
 
   const logout = () => {
-    setUser(null);
-    setToken(null);
-
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('user_data');
-      localStorage.removeItem('auth_token');
-      localStorage.removeItem('refresh_token');
-    }
-
-    router.push('/login');
+    console.log('Sandbox sessions are static.');
   };
 
   const checkPermission = (permission: string): boolean => {
-    return hasPermission(user?.role, permission);
+    return true;
   };
 
   const hasRole = (roles: Role | Role[]): boolean => {
@@ -119,11 +121,95 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isLoading,
         login,
         logout,
+        switchRole,
         checkPermission,
         hasRole,
       }}
     >
       {children}
+
+      {/* Floating Sandbox Pill for Dynamic Testing */}
+      {!isLoading && user && (
+        <div
+          style={{
+            position: 'fixed',
+            bottom: '24px',
+            right: '24px',
+            backgroundColor: 'rgba(255, 255, 255, 0.85)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            border: '1.5px solid rgba(10, 87, 227, 0.25)',
+            borderRadius: '9999px',
+            padding: '8px 14px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            boxShadow: '0 10px 30px rgba(10, 87, 227, 0.15)',
+            zIndex: 9999,
+            animation: 'fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+          }}
+        >
+          <span style={{ fontSize: '0.725rem', fontWeight: 800, color: '#0a57e3', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            clearance sandbox:
+          </span>
+          <div style={{ display: 'flex', gap: '6px' }}>
+            <button
+              onClick={() => switchRole('SUPER_ADMIN')}
+              style={{
+                padding: '4px 12px',
+                borderRadius: '9999px',
+                fontSize: '0.725rem',
+                fontWeight: 700,
+                border: 'none',
+                cursor: 'pointer',
+                backgroundColor: user.role === 'SUPER_ADMIN' ? '#0a57e3' : 'transparent',
+                color: user.role === 'SUPER_ADMIN' ? '#ffffff' : '#475569',
+                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+            >
+              Super Admin Role
+            </button>
+            <button
+              onClick={() => switchRole('TENANT')}
+              style={{
+                padding: '4px 12px',
+                borderRadius: '9999px',
+                fontSize: '0.725rem',
+                fontWeight: 700,
+                border: 'none',
+                cursor: 'pointer',
+                backgroundColor: user.role === 'TENANT' ? '#0a57e3' : 'transparent',
+                color: user.role === 'TENANT' ? '#ffffff' : '#475569',
+                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+            >
+              Tenant Role
+            </button>
+            <button
+              onClick={() => switchRole('APPLICANT')}
+              style={{
+                padding: '4px 12px',
+                borderRadius: '9999px',
+                fontSize: '0.725rem',
+                fontWeight: 700,
+                border: 'none',
+                cursor: 'pointer',
+                backgroundColor: user.role === 'APPLICANT' ? '#0a57e3' : 'transparent',
+                color: user.role === 'APPLICANT' ? '#ffffff' : '#475569',
+                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+            >
+              Applicant Role
+            </button>
+          </div>
+          <style dangerouslySetInnerHTML={{__html: `
+            @keyframes fadeInUp {
+              from { opacity: 0; transform: translateY(10px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+          `}} />
+        </div>
+      )}
     </AuthContext.Provider>
   );
 };

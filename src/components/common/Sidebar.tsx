@@ -6,11 +6,26 @@ import { usePathname } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { ROLES_CONFIG } from '@/config/roles';
 
+// Import high-fidelity vector icons from React Icons Lucide library
+import { 
+  LuLayoutDashboard, 
+  LuCalendar, 
+  LuMessageSquare, 
+  LuCircleHelp, 
+  LuSettings, 
+  LuClipboardPen, 
+  LuRefreshCw,
+  LuLogOut,
+  LuPhoneCall,
+  LuPuzzle,
+  LuUsers,
+  LuPenLine
+} from 'react-icons/lu';
+
 interface MenuItem {
   label: string;
   href: string;
-  icon: string;
-  permission?: string;
+  icon: React.ReactNode;
 }
 
 export const Sidebar: React.FC = () => {
@@ -20,31 +35,29 @@ export const Sidebar: React.FC = () => {
   if (!user) return null;
 
   const roleInfo = ROLES_CONFIG[user.role];
-  const roleColor = roleInfo?.themeColor || '#7c3aed';
+  const roleColor = roleInfo?.themeColor || '#0a57e3';
 
-  // Dynamic menu items mapped by role
+  // Dynamic menu items mapped by role utilizing React Icons
   const menuItems: Record<string, MenuItem[]> = {
-    ADMIN: [
-      { label: 'Admin Terminal', href: '/admin/dashboard', icon: '⚡' },
-      { label: 'User Governance', href: '/admin/users', icon: '👥' },
-      { label: 'System Configuration', href: '/admin/config', icon: '⚙️' },
-      { label: 'Audit Logs', href: '/admin/audit', icon: '📝' },
+    SUPER_ADMIN: [
+      { label: 'Overview', href: '/admin/overview', icon: <LuLayoutDashboard /> },
+      { label: 'Integration', href: '/admin/integration', icon: <LuPuzzle /> },
+      { label: 'Roles & Permissions', href: '/admin/roles', icon: <LuUsers /> },
+      { label: 'Task Management', href: '/admin/tasks', icon: <LuClipboardPen /> },
+      { label: 'Text Editor', href: '/admin/editor', icon: <LuPenLine /> },
     ],
-    MANAGER: [
-      { label: 'Operations hub', href: '/manager/dashboard', icon: '📊' },
-      { label: 'Analytics Reports', href: '/manager/reports', icon: '📈' },
-      { label: 'Resource Management', href: '/manager/team', icon: '💼' },
+    TENANT: [
+      { label: 'My Dashboard', href: '/tenant/dashboard', icon: <LuLayoutDashboard /> },
+      { label: 'My Check-Ins', href: '/tenant/check-ins', icon: <LuCalendar /> },
+      { label: 'Messages', href: '/tenant/messages', icon: <LuMessageSquare /> },
+      { label: 'Help & Support', href: '/tenant/support', icon: <LuCircleHelp /> },
+      { label: 'Settings', href: '/tenant/settings', icon: <LuSettings /> },
     ],
-    USER: [
-      { label: 'My Dashboard', href: '/user/dashboard', icon: '⊞' },
-      { label: 'My Check-Ins', href: '/user/check-ins', icon: '📅' },
-      { label: 'Messages', href: '/user/messages', icon: '✉️' },
-      { label: 'Help & Support', href: '/user/support', icon: '❔' },
-      { label: 'Settings', href: '/user/settings', icon: '⚙️' },
-    ],
-    SUPPORT: [
-      { label: 'Support Queue', href: '/support/tickets', icon: '📥' },
-      { label: 'System Lookups', href: '/support/lookups', icon: '🔍' },
+    APPLICANT: [
+      { label: 'My Participation', href: '/applicant/participation', icon: <LuClipboardPen /> },
+      { label: 'My Progress', href: '/applicant/progress', icon: <LuRefreshCw /> },
+      { label: 'Messages', href: '/applicant/messages', icon: <LuMessageSquare /> },
+      { label: 'Help & Support', href: '/applicant/support', icon: <LuCircleHelp /> },
     ],
   };
 
@@ -53,40 +66,15 @@ export const Sidebar: React.FC = () => {
   return (
     <aside className="sidebar" style={{ '--role-color': roleColor } as React.CSSProperties}>
       {/* Brand logo section */}
-      {user.role === 'USER' ? (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '32px', paddingLeft: '8px' }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" fill="#0a57e3" stroke="#0a57e3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M9 11L11 13L15 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.025em', display: 'flex', alignItems: 'center' }}>
-            Tenant <span style={{ color: '#0a57e3', fontWeight: 800, marginLeft: '4px' }}>Integrity™</span>
-          </span>
-        </div>
-      ) : (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '32px' }}>
-          <div 
-            style={{ 
-              width: '36px', 
-              height: '36px', 
-              borderRadius: '8px', 
-              backgroundColor: roleColor,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#fff',
-              fontWeight: 'bold',
-              fontSize: '1.2rem',
-              boxShadow: `0 4px 10px ${roleColor}40`
-            }}
-          >
-            D
-          </div>
-          <span style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.025em' }}>
-            Daber<span style={{ color: roleColor }}>Portal</span>
-          </span>
-        </div>
-      )}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '32px', paddingLeft: '8px' }}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" fill="#0a57e3" stroke="#0a57e3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M9 11L11 13L15 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.025em', display: 'flex', alignItems: 'center' }}>
+          Tenant <span style={{ color: '#0a57e3', fontWeight: 800, marginLeft: '4px' }}>Integrity™</span>
+        </span>
+      </div>
 
       {/* User Info card */}
       <div 
@@ -116,11 +104,11 @@ export const Sidebar: React.FC = () => {
             border: `2px solid ${roleColor}` 
           }}
         >
-          {user.role === 'USER' ? 'AJ' : user.name.substring(0, 2)}
+          AJ
         </div>
         <div style={{ overflow: 'hidden' }}>
           <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-            {user.role === 'USER' ? 'Alex Johnson' : user.name}
+            Alex Johnson
           </h4>
           <span 
             className="role-badge" 
@@ -132,7 +120,7 @@ export const Sidebar: React.FC = () => {
               marginTop: '4px'
             } as React.CSSProperties}
           >
-            {user.role === 'USER' ? 'Applicant' : user.role}
+            {user.role === 'SUPER_ADMIN' ? 'Super Admin' : user.role === 'TENANT' ? 'Tenant' : 'Applicant'}
           </span>
         </div>
       </div>
@@ -140,7 +128,7 @@ export const Sidebar: React.FC = () => {
       {/* Navigation Items */}
       <nav style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
         {currentMenu.map((item) => {
-          const isActive = pathname === item.href;
+          const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
           return (
             <Link
               key={item.href}
@@ -171,7 +159,16 @@ export const Sidebar: React.FC = () => {
                 }
               }}
             >
-              <span style={{ fontSize: '1.15rem', color: isActive ? roleColor : 'var(--text-muted)' }}>{item.icon}</span>
+              <span 
+                style={{ 
+                  fontSize: '1.25rem', 
+                  color: isActive ? roleColor : 'var(--text-muted)',
+                  display: 'flex',
+                  alignItems: 'center'
+                }}
+              >
+                {item.icon}
+              </span>
               <span style={{ fontWeight: isActive ? 600 : 500 }}>{item.label}</span>
             </Link>
           );
@@ -179,50 +176,50 @@ export const Sidebar: React.FC = () => {
       </nav>
 
       {/* Bottom Custom Info Card for User (Need Help widget) */}
-      {user.role === 'USER' && (
-        <div 
-          style={{ 
-            padding: '16px', 
-            borderRadius: '12px', 
-            backgroundColor: '#f3f8ff', 
-            border: '1px solid #dbebff',
-            marginBottom: '16px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '10px'
-          }}
-        >
-          <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-            <span style={{ fontSize: '1.25rem', color: '#0a57e3' }}>💬</span>
-            <div>
-              <h5 style={{ fontSize: '0.8rem', fontWeight: 700, color: '#1e3a8a' }}>Need help?</h5>
-              <p style={{ fontSize: '0.725rem', color: '#4b5563', marginTop: '2px', lineHeight: '1.3' }}>
-                Our support team is here for you.
-              </p>
-            </div>
+      <div 
+        style={{ 
+          padding: '16px', 
+          borderRadius: '12px', 
+          backgroundColor: '#f3f8ff', 
+          border: '1px solid #dbebff',
+          marginBottom: '16px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px'
+        }}
+      >
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+          <span style={{ fontSize: '1.25rem', color: '#0a57e3', display: 'flex', marginTop: '2px' }}>
+            <LuPhoneCall />
+          </span>
+          <div>
+            <h5 style={{ fontSize: '0.8rem', fontWeight: 700, color: '#1e3a8a' }}>Need help?</h5>
+            <p style={{ fontSize: '0.725rem', color: '#4b5563', marginTop: '2px', lineHeight: '1.3' }}>
+              Our support team is here for you.
+            </p>
           </div>
-          <Link
-            href="/user/support"
-            style={{ 
-              backgroundColor: '#ffffff', 
-              border: '1px solid #0a57e3', 
-              color: '#0a57e3',
-              fontSize: '0.75rem',
-              fontWeight: 700,
-              padding: '8px 12px',
-              borderRadius: '8px',
-              textDecoration: 'none',
-              textAlign: 'center',
-              display: 'block',
-              transition: 'all 0.2s'
-            }}
-            onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>)=>e.currentTarget.style.backgroundColor='#f0f6ff'}
-            onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>)=>e.currentTarget.style.backgroundColor='#ffffff'}
-          >
-            Message Support
-          </Link>
         </div>
-      )}
+        <Link
+          href={user.role === 'TENANT' ? '/tenant/support' : '/applicant/support'}
+          style={{ 
+            backgroundColor: '#ffffff', 
+            border: '1px solid #0a57e3', 
+            color: '#0a57e3',
+            fontSize: '0.75rem',
+            fontWeight: 700,
+            padding: '8px 12px',
+            borderRadius: '8px',
+            textDecoration: 'none',
+            textAlign: 'center',
+            display: 'block',
+            transition: 'all 0.2s'
+          }}
+          onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>)=>e.currentTarget.style.backgroundColor='#f0f6ff'}
+          onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>)=>e.currentTarget.style.backgroundColor='#ffffff'}
+        >
+          {user.role === 'TENANT' ? 'Message Support' : 'Contact Support'}
+        </Link>
+      </div>
 
       {/* Bottom Actions */}
       <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '16px' }}>
@@ -251,7 +248,9 @@ export const Sidebar: React.FC = () => {
             e.currentTarget.style.backgroundColor = 'transparent';
           }}
         >
-          <span style={{ fontSize: '1.1rem' }}>🚪</span>
+          <span style={{ fontSize: '1.1rem', display: 'flex', alignItems: 'center' }}>
+            <LuLogOut />
+          </span>
           <span className="sidebar-label">Sign Out</span>
         </button>
       </div>

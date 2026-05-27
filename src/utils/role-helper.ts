@@ -36,14 +36,13 @@ export function canAccessRoute(role: Role | undefined, path: string): boolean {
 
 /**
  * Returns whether user's role is at least equal to or higher than another role in hierarchy
- * ADMIN > MANAGER > SUPPORT > USER > GUEST
+ * USER > GUEST
  */
 export function compareRoles(roleA: Role, roleB: Role): number {
   const hierarchy: Record<Role, number> = {
-    ADMIN: 4,
-    MANAGER: 3,
-    SUPPORT: 2,
-    USER: 1,
+    SUPER_ADMIN: 3,
+    TENANT: 2,
+    APPLICANT: 1,
     GUEST: 0,
   };
 
