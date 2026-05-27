@@ -14,6 +14,7 @@ import {
   LuCircleHelp, 
   LuSearch
 } from 'react-icons/lu';
+import { SiStripe, SiTwilio } from 'react-icons/si';
 
 export default function AdminIntegrationPage() {
   
@@ -81,8 +82,8 @@ export default function AdminIntegrationPage() {
       {/* Grid: 4 metric stats blocks */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', marginBottom: '32px' }}>
         {[
-          { title: 'STRIPE STATUS', value: '99.99%', sub: 'Uptime (Last 30d)', status: 'HEALTHY', color: '#10b981', icon: <LuServer /> },
-          { title: 'TWILIO STATUS', value: 'Operational', sub: 'All regions active', status: 'HEALTHY', color: '#10b981', icon: <LuActivity /> },
+          { title: 'STRIPE STATUS', value: '99.99%', sub: 'Uptime (Last 30d)', status: 'HEALTHY', color: '#635bff', icon: <SiStripe /> },
+          { title: 'TWILIO STATUS', value: 'Operational', sub: 'All regions active', status: 'HEALTHY', color: '#f22f46', icon: <SiTwilio /> },
           { title: 'FAILED EVENTS', value: '42', sub: '-12% vs yesterday', status: 'ATTENTION', color: '#ef4444', icon: <LuTriangleAlert /> },
           { title: 'AVG LATENCY', value: '142ms', sub: '-5ms optimization', status: 'OPTIMAL', color: '#0a57e3', icon: <LuClock /> }
         ].map((m, i) => (
@@ -126,8 +127,8 @@ export default function AdminIntegrationPage() {
         <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '28px 32px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div style={{ width: '40px', height: '40px', borderRadius: '8px', backgroundColor: '#eef2ff', color: '#4f46e5', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', fontWeight: 800 }}>
-                S
+              <div style={{ width: '40px', height: '40px', borderRadius: '8px', backgroundColor: '#635bff15', color: '#635bff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>
+                <SiStripe />
               </div>
               <div>
                 <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-primary)' }}>Stripe</h3>
@@ -170,8 +171,8 @@ export default function AdminIntegrationPage() {
         <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '28px 32px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div style={{ width: '40px', height: '40px', borderRadius: '8px', backgroundColor: '#fef2f2', color: '#ef4444', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', fontWeight: 800 }}>
-                T
+              <div style={{ width: '40px', height: '40px', borderRadius: '8px', backgroundColor: '#f22f4615', color: '#f22f46', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.3rem' }}>
+                <SiTwilio />
               </div>
               <div>
                 <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-primary)' }}>Twilio</h3>
