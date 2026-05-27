@@ -25,8 +25,8 @@ export const ROLES_CONFIG: Record<Role, RoleConfig> = {
     ],
   },
   USER: {
-    displayName: 'Regular User',
-    themeColor: '#10b981', // Emerald/Green
+    displayName: 'Applicant / Tenant',
+    themeColor: '#0a57e3', // Tenant Integrity Corporate Blue
     allowedRoutes: ['/user'],
     permissions: [
       'profile:read', 'profile:update',

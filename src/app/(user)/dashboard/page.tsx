@@ -1,237 +1,333 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useAuth } from '@/hooks/useAuth';
-import { ROLES_CONFIG } from '@/config/roles';
+import React from 'react';
 
-interface SupportTicket {
-  id: string;
-  subject: string;
-  status: 'OPEN' | 'IN_PROGRESS' | 'RESOLVED';
-  priority: 'URGENT' | 'HIGH' | 'NORMAL';
-  dateCreated: string;
-}
-
-export default function UserDashboard() {
-  const { user } = useAuth();
-  
-  // Custom mock user tickets
-  const [tickets, setTickets] = useState<SupportTicket[]>([
-    { id: 'tkt_802', subject: 'Axios Client HTTP Refresh 401 Interception Loop', status: 'IN_PROGRESS', priority: 'HIGH', dateCreated: '2026-05-26' },
-    { id: 'tkt_801', subject: 'Configuring custom sub-domains for Operations managers', status: 'RESOLVED', priority: 'NORMAL', dateCreated: '2026-05-20' },
-  ]);
-
-  const [subject, setSubject] = useState('');
-  const [priority, setPriority] = useState<'URGENT' | 'HIGH' | 'NORMAL'>('NORMAL');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleCreateTicket = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!subject) return;
-
-    setIsSubmitting(true);
-    setTimeout(() => {
-      const newTicket: SupportTicket = {
-        id: `tkt_${Math.floor(800 + Math.random() * 200)}`,
-        subject: subject,
-        status: 'OPEN',
-        priority: priority,
-        dateCreated: new Date().toISOString().split('T')[0],
-      };
-
-      setTickets(prev => [newTicket, ...prev]);
-      setSubject('');
-      setIsSubmitting(false);
-    }, 600);
-  };
-
-  const activeThemeColor = user ? ROLES_CONFIG[user.role]?.themeColor : '#10b981';
+export default function TenantDashboard() {
+  const recentActivities = [
+    { text: 'Daily check-in submitted', date: 'May 3, 2024 at 7:42 PM' },
+    { text: 'Daily check-in submitted', date: 'May 2, 2024 at 7:31 PM' },
+    { text: 'Daily check-in submitted', date: 'May 1, 2024 at 7:28 PM' },
+  ];
 
   return (
-    <div style={{ padding: '8px' }}>
-      {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+    <div style={{ padding: '0px' }} className="animate-fade-in">
+      {/* Top Header Bar */}
+      <div 
+        style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'center', 
+          marginBottom: '32px'
+        }}
+      >
         <div>
-          <span style={{ fontSize: '0.75rem', fontWeight: 600, color: activeThemeColor, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-            Client Portal
-          </span>
-          <h1 style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.03em', marginTop: '4px' }}>
-            Customer Services Terminal
+          <h1 style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.03em' }}>
+            Welcome back, Alex!
           </h1>
+          <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', marginTop: '4px' }}>
+            Here's your participation overview for this month.
+          </p>
         </div>
-        <span 
-          className="role-badge"
+
+        {/* Current Cycle Ticker */}
+        <div 
           style={{ 
-            '--badge-bg': `${activeThemeColor}15`, 
-            '--badge-color': activeThemeColor,
-            fontSize: '0.85rem',
-            padding: '6px 16px',
-            borderRadius: '12px'
-          } as React.CSSProperties}
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '12px',
+            backgroundColor: '#ffffff',
+            border: '1px solid var(--border-color)',
+            borderRadius: '12px',
+            padding: '12px 18px',
+            boxShadow: 'var(--shadow-sm)'
+          }}
         >
-          Premium Plan Active
-        </span>
-      </div>
-
-      {/* Metrics Row */}
-      <div className="stats-grid">
-        <div className="glass-card" style={{ '--role-color': activeThemeColor } as React.CSSProperties}>
-          <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase' }}>Secure Storage API</span>
-          <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>1.2 / 10 GB</h2>
-          <div style={{ width: '100%', height: '6px', borderRadius: '3px', backgroundColor: 'var(--border-color)', marginTop: '16px', overflow: 'hidden' }}>
-            <div style={{ width: '12%', height: '100%', backgroundColor: activeThemeColor }} />
-          </div>
-        </div>
-
-        <div className="glass-card" style={{ '--role-color': '#7c3aed' } as React.CSSProperties}>
-          <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase' }}>Active Webhooks</span>
-          <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>3 Active</h2>
-          <div style={{ width: '100%', height: '6px', borderRadius: '3px', backgroundColor: 'var(--border-color)', marginTop: '16px', overflow: 'hidden' }}>
-            <div style={{ width: '60%', height: '100%', backgroundColor: '#7c3aed' }} />
-          </div>
-        </div>
-
-        <div className="glass-card" style={{ '--role-color': '#0ea5e9' } as React.CSSProperties}>
-          <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase' }}>API Keys</span>
-          <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>2 Configured</h2>
-          <div style={{ width: '100%', height: '6px', borderRadius: '3px', backgroundColor: 'var(--border-color)', marginTop: '16px', overflow: 'hidden' }}>
-            <div style={{ width: '40%', height: '100%', backgroundColor: '#0ea5e9' }} />
-          </div>
-        </div>
-
-        <div className="glass-card" style={{ '--role-color': '#f59e0b' } as React.CSSProperties}>
-          <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase' }}>Integrations</span>
-          <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginTop: '8px', color: 'var(--text-primary)' }}>8 Connected</h2>
-          <div style={{ width: '100%', height: '6px', borderRadius: '3px', backgroundColor: 'var(--border-color)', marginTop: '16px', overflow: 'hidden' }}>
-            <div style={{ width: '80%', height: '100%', backgroundColor: '#f59e0b' }} />
+          <span style={{ fontSize: '1.25rem', color: '#0a57e3' }}>📅</span>
+          <div style={{ textAlign: 'left' }}>
+            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', letterSpacing: '0.05em' }}>
+              Current Cycle
+            </span>
+            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+              May 1 – May 31, 2024
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Main Content Layout */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '32px' }}>
+      {/* Grid: Participation Timeline + This Month summary */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '24px', marginBottom: '24px' }}>
         
-        {/* Support Ticket List */}
-        <div className="glass-card" style={{ '--role-color': '#f59e0b' } as React.CSSProperties}>
-          <h3 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '4px' }}>My Support Inquiries</h3>
-          <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '24px' }}>
-            Review pending operations queries and replies from our support desk.
-          </p>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {tickets.map((t) => {
-              const statusColor = t.status === 'RESOLVED' ? '#10b981' : t.status === 'IN_PROGRESS' ? '#0ea5e9' : '#f59e0b';
-              const pColor = t.priority === 'URGENT' ? '#ef4444' : t.priority === 'HIGH' ? '#f59e0b' : '#6b7280';
-              return (
-                <div 
-                  key={t.id} 
-                  style={{ 
-                    padding: '16px', 
-                    borderRadius: '10px', 
-                    border: '1px solid var(--border-color)', 
-                    backgroundColor: 'var(--bg-primary)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between'
-                  }}
-                >
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxWidth: '70%' }}>
-                    <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)' }}>{t.id} • Created {t.dateCreated}</span>
-                    <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: '1.4' }}>{t.subject}</h4>
-                  </div>
-                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                    <span 
-                      className="role-badge" 
-                      style={{ 
-                        '--badge-bg': `${pColor}10`, 
-                        '--badge-color': pColor, 
-                        fontSize: '0.6rem',
-                        padding: '2px 8px' 
-                      } as React.CSSProperties}
-                    >
-                      {t.priority}
-                    </span>
-                    <span 
-                      className="role-badge" 
-                      style={{ 
-                        '--badge-bg': `${statusColor}10`, 
-                        '--badge-color': statusColor, 
-                        fontSize: '0.6rem',
-                        padding: '2px 8px' 
-                      } as React.CSSProperties}
-                    >
-                      {t.status}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Ticket Submission Form */}
-        <div className="glass-card" style={{ '--role-color': activeThemeColor } as React.CSSProperties}>
-          <h3 style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '4px' }}>Submit Tech Ticket</h3>
-          <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>
-            Encountering issue? Describe it below to launch an operations ticket.
-          </p>
-
-          <form onSubmit={handleCreateTicket} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div>
-              <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)', marginBottom: '6px' }}>
-                Issue Description
-              </label>
-              <textarea 
-                className="premium-input" 
-                placeholder="Describe your error or integration request..." 
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-                rows={3}
-                style={{ resize: 'none', fontFamily: 'inherit', '--focus-color': activeThemeColor } as React.CSSProperties}
-                required
-              />
+        {/* Monthly Participation Tracker */}
+        <div className="glass-card" style={{ '--role-color': '#0a57e3', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '260px' } as React.CSSProperties}>
+          <div>
+            <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '24px' }}>
+              <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifySelf: 'center', justifyContent: 'center', color: '#0a57e3', fontSize: '1.1rem' }}>
+                👥
+              </div>
+              <div>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)' }}>Monthly Participation</h3>
+                <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
+                  Complete your daily check-in to stay on track.
+                </p>
+              </div>
             </div>
 
+            {/* Circular Timeline Row */}
+            <div style={{ display: 'flex', alignItems: 'center', justifySelf: 'center', justifyContent: 'space-between', width: '100%', padding: '0 16px', margin: '32px 0 24px' }}>
+              
+              {/* Day 1: Completed */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#10b981', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
+                  ✓
+                </div>
+                <span style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', marginTop: '8px', fontWeight: 600 }}>May 1</span>
+                {/* Connector line */}
+                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundColor: '#10b981', zIndex: 1 }} />
+              </div>
+
+              {/* Day 2: Completed */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#10b981', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
+                  ✓
+                </div>
+                <span style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', marginTop: '8px', fontWeight: 600 }}>May 2</span>
+                {/* Connector line */}
+                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundColor: '#10b981', zIndex: 1 }} />
+              </div>
+
+              {/* Day 3: Completed */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#10b981', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
+                  ✓
+                </div>
+                <span style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', marginTop: '8px', fontWeight: 600 }}>May 3</span>
+                {/* Connector line */}
+                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundColor: '#0a57e3', zIndex: 1 }} />
+              </div>
+
+              {/* Day 4: Available */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#ffffff', border: '2px solid #0a57e3', color: '#0a57e3', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2, boxShadow: '0 0 0 4px rgba(10, 87, 227, 0.1)' }}>
+                  4
+                </div>
+                <span style={{ fontSize: '0.725rem', color: '#0a57e3', marginTop: '8px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.025em', display: 'block', textAlign: 'center', whiteSpace: 'nowrap' }}>
+                  May 4 <br/><span style={{ fontSize: '0.6rem', fontWeight: 700 }}>Available Today</span>
+                </span>
+                {/* Connector line */}
+                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundColor: 'var(--border-color)', zIndex: 1 }} />
+              </div>
+
+              {/* Day 5: Upcoming */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#ffffff', border: '2px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 500, fontSize: '0.9rem', zIndex: 2 }}>
+                  5
+                </div>
+                <span style={{ fontSize: '0.725rem', color: 'var(--text-muted)', marginTop: '8px', fontWeight: 500 }}>May 5</span>
+                {/* Connector line */}
+                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundColor: 'var(--border-color)', zIndex: 1 }} />
+              </div>
+
+              {/* Day 6: Upcoming */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#ffffff', border: '2px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 500, fontSize: '0.9rem', zIndex: 2 }}>
+                  6
+                </div>
+                <span style={{ fontSize: '0.725rem', color: 'var(--text-muted)', marginTop: '8px', fontWeight: 500 }}>May 6</span>
+                {/* Connector line */}
+                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundColor: 'var(--border-color)', zIndex: 1 }} />
+              </div>
+
+              {/* Day 7: Upcoming */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 0.5 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#ffffff', border: '2px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 500, fontSize: '0.9rem', zIndex: 2 }}>
+                  7
+                </div>
+                <span style={{ fontSize: '0.725rem', color: 'var(--text-muted)', marginTop: '8px', fontWeight: 500 }}>May 7</span>
+              </div>
+
+            </div>
+          </div>
+
+          <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+              3 of 7 days completed
+            </span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+              Participation Window: May 1 – May 7
+            </span>
+          </div>
+        </div>
+
+        {/* This Month Grid Info */}
+        <div className="glass-card" style={{ '--role-color': '#0a57e3', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '260px' } as React.CSSProperties}>
+          <div>
+            <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '24px' }}>
+              <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0a57e3', fontSize: '1.1rem' }}>
+                📆
+              </div>
+              <div>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)' }}>This Month</h3>
+              </div>
+            </div>
+
+            {/* List entries */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              
+              <div style={{ display: 'flex', alignItems: 'center', justifySelf: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: '#e6fbf3', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981', fontSize: '0.75rem', fontWeight: 800 }}>✓</div>
+                  <span style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--text-secondary)' }}>Submitted</span>
+                </div>
+                <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)' }}>3</span>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', justifySelf: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0a57e3', fontSize: '0.75rem', fontWeight: 800 }}>🕒</div>
+                  <span style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--text-secondary)' }}>Available</span>
+                </div>
+                <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)' }}>1</span>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', justifySelf: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: 'var(--bg-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', fontSize: '0.75rem', fontWeight: 800 }}>🔒</div>
+                  <span style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--text-secondary)' }}>Upcoming</span>
+                </div>
+                <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)' }}>3</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Grid: Recent Activity + Helpful Reminders */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '24px', marginBottom: '24px' }}>
+        
+        {/* Recent Activity List */}
+        <div className="glass-card" style={{ '--role-color': '#0a57e3' } as React.CSSProperties}>
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '24px' }}>
+            <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0a57e3', fontSize: '1.1rem' }}>
+              📄
+            </div>
             <div>
-              <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)', marginBottom: '6px' }}>
-                Priority Clearance
-              </label>
-              <select
-                value={priority}
-                onChange={(e) => setPriority(e.target.value as any)}
-                style={{
-                  width: '100%',
-                  padding: '12px 16px',
-                  borderRadius: 'var(--radius-sm)',
-                  backgroundColor: 'var(--bg-secondary)',
-                  border: '1px solid var(--border-color)',
-                  color: 'var(--text-primary)',
-                  fontSize: '0.9rem',
-                  outline: 'none',
+              <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)' }}>Recent Activity</h3>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {recentActivities.map((act, index) => (
+              <div 
+                key={index} 
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'space-between',
+                  padding: '16px 0',
+                  borderBottom: index < recentActivities.length - 1 ? '1px solid var(--border-color)' : 'none',
                   cursor: 'pointer'
                 }}
+                onMouseEnter={(e)=>e.currentTarget.style.opacity = '0.8'}
+                onMouseLeave={(e)=>e.currentTarget.style.opacity = '1'}
               >
-                <option value="NORMAL">Normal Operation</option>
-                <option value="HIGH">High Priority Block</option>
-                <option value="URGENT">Urgent Outage</option>
-              </select>
-            </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: '#e6fbf3', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981', fontSize: '0.75rem' }}>✓</div>
+                  <div>
+                    <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)' }}>{act.text}</h4>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>{act.date}</span>
+                  <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>➔</span>
+                </div>
+              </div>
+            ))}
+          </div>
 
-            <button 
-              type="submit" 
-              className="premium-btn premium-btn-primary" 
-              disabled={isSubmitting}
-              style={{ 
-                '--btn-color': activeThemeColor, 
-                '--focus-ring': `${activeThemeColor}40`,
-                marginTop: '8px'
-              } as React.CSSProperties}
-            >
-              {isSubmitting ? 'Filing Inquiry...' : 'Submit Support Ticket'}
-            </button>
-          </form>
+          <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '16px', marginTop: '16px' }}>
+            <a href="/user/check-ins" style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0a57e3', textDecoration: 'none' }}>
+              View all activity ➔
+            </a>
+          </div>
         </div>
 
+        {/* Helpful Reminders Ticker */}
+        <div className="glass-card" style={{ '--role-color': '#0a57e3' } as React.CSSProperties}>
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '24px' }}>
+            <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0a57e3', fontSize: '1.1rem' }}>
+              🔔
+            </div>
+            <div>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)' }}>Helpful Reminders</h3>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <span style={{ fontSize: '1.25rem', color: '#0a57e3', display: 'block', marginTop: '2px' }}>🕒</span>
+              <div>
+                <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)' }}>Check-in daily</h4>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '2px', lineHeight: '1.3' }}>
+                  Complete your daily check-in before midnight.
+                </p>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <span style={{ fontSize: '1.25rem', color: '#0a57e3', display: 'block', marginTop: '2px' }}>✉️</span>
+              <div>
+                <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)' }}>Didn't get a text?</h4>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '2px', lineHeight: '1.3' }}>
+                  Check your email, including spam or promotions folders.
+                </p>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <span style={{ fontSize: '1.25rem', color: '#0a57e3', display: 'block', marginTop: '2px' }}>🎧</span>
+              <div>
+                <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)' }}>Need help?</h4>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '2px', lineHeight: '1.3' }}>
+                  Our support team is here for you.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '16px', marginTop: '20px' }}>
+            <a href="/user/support" style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0a57e3', textDecoration: 'none' }}>
+              Visit Help Center ➔
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Private info card */}
+      <div 
+        style={{ 
+          padding: '18px 24px', 
+          backgroundColor: '#f8fafc',
+          border: '1px solid var(--border-color)',
+          borderRadius: '12px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px'
+        }}
+      >
+        <span style={{ fontSize: '1.35rem', color: 'var(--text-muted)' }}>🔒</span>
+        <div style={{ textAlign: 'left' }}>
+          <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+            Your information is private and secure.
+          </h4>
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
+            We respect your privacy and never share your information.
+          </p>
+        </div>
       </div>
     </div>
   );

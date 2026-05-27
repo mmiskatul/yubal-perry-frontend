@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { Role } from '@/types/auth';
 import Sidebar from './Sidebar';
+import { ROLES_CONFIG } from '@/config/roles';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -69,10 +70,140 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
     return null;
   }
 
+  const roleColor = user ? ROLES_CONFIG[user.role]?.themeColor : '#7c3aed';
+
   return (
     <div className="app-container">
       <Sidebar />
-      <main className="main-content animate-fade-in">
+      
+      <main 
+        className="main-content animate-fade-in" 
+        style={{ 
+          position: 'relative', 
+          paddingTop: '110px', 
+          paddingLeft: '40px',
+          paddingRight: '40px',
+          paddingBottom: '40px',
+          minHeight: '100vh' 
+        }}
+      >
+        {/* Global Top Navigation Header from Screenshots */}
+        <header 
+          style={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            right: 0, 
+            height: '80px', 
+            backgroundColor: 'var(--bg-secondary)', 
+            borderBottom: '1px solid var(--border-color)', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'space-between', 
+            padding: '0 40px',
+            zIndex: 90
+          }}
+        >
+          {/* Search bar */}
+          <div style={{ display: 'flex', alignItems: 'center', width: '380px', position: 'relative' }}>
+            <span style={{ position: 'absolute', left: '14px', color: 'var(--text-muted)', fontSize: '0.95rem', top: '10px' }}>🔍</span>
+            <input 
+              type="text" 
+              placeholder="Search documents, messages, or help..." 
+              style={{ 
+                width: '100%', 
+                padding: '10px 16px 10px 40px', 
+                borderRadius: '10px', 
+                backgroundColor: 'var(--bg-primary)', 
+                border: '1px solid var(--border-color)', 
+                fontSize: '0.85rem',
+                outline: 'none',
+                color: 'var(--text-primary)',
+                transition: 'all 0.2s'
+              }}
+              onFocus={(e)=>e.currentTarget.style.borderColor = '#0a57e3'}
+              onBlur={(e)=>e.currentTarget.style.borderColor = 'var(--border-color)'}
+            />
+          </div>
+
+          {/* Right controls */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+            <a 
+              href="/user/support" 
+              style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '6px', 
+                fontSize: '0.85rem', 
+                color: 'var(--text-secondary)', 
+                textDecoration: 'none',
+                fontWeight: 600
+              }}
+              onMouseEnter={(e)=>e.currentTarget.style.color='#0a57e3'}
+              onMouseLeave={(e)=>e.currentTarget.style.color='var(--text-secondary)'}
+            >
+              <span>❓</span> Help
+            </a>
+
+            <div 
+              style={{ position: 'relative', cursor: 'pointer', display: 'flex', alignItems: 'center' }} 
+              onClick={() => router.push('/user/messages')}
+            >
+              <span style={{ fontSize: '1.25rem' }}>🔔</span>
+              <div 
+                style={{ 
+                  position: 'absolute', 
+                  top: '-1px', 
+                  right: '-1px', 
+                  width: '6px', 
+                  height: '6px', 
+                  borderRadius: '50%', 
+                  backgroundColor: '#ef4444' 
+                }} 
+              />
+            </div>
+
+            <div 
+              style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '12px',
+                borderLeft: '1px solid var(--border-color)',
+                paddingLeft: '20px',
+                cursor: 'pointer'
+              }}
+              onClick={() => router.push('/user/settings')}
+            >
+              <div 
+                style={{ 
+                  width: '36px', 
+                  height: '36px', 
+                  borderRadius: '50%', 
+                  backgroundColor: `${roleColor}15`, 
+                  color: roleColor, 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center', 
+                  fontWeight: 700, 
+                  fontSize: '0.85rem',
+                  border: `2px solid ${roleColor}` 
+                }}
+              >
+                {user?.role === 'USER' ? 'AJ' : user?.name?.substring(0, 2) || 'U'}
+              </div>
+              <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column' }}>
+                <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)', lineHeight: '1.2' }}>
+                  {user?.role === 'USER' ? 'Alex Johnson' : user?.name || 'User'}
+                </span>
+                <span style={{ fontSize: '0.725rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+                  {user?.role === 'USER' ? 'Applicant' : user?.role || ''}
+                </span>
+              </div>
+              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginLeft: '4px' }}>▼</span>
+            </div>
+          </div>
+        </header>
+
         {children}
       </main>
     </div>
