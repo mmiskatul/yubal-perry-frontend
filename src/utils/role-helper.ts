@@ -40,7 +40,8 @@ export function canAccessRoute(role: Role | undefined, path: string): boolean {
  */
 export function compareRoles(roleA: Role, roleB: Role): number {
   const hierarchy: Record<Role, number> = {
-    SUPER_ADMIN: 3,
+    SUPER_ADMIN: 4,
+    LANDLORD: 3,
     TENANT: 2,
     APPLICANT: 1,
     GUEST: 0,

@@ -17,6 +17,16 @@ export const ROLES_CONFIG: Record<Role, RoleConfig> = {
       'tickets:create', 'tickets:read'
     ],
   },
+  LANDLORD: {
+    displayName: 'Landlord',
+    themeColor: '#0a57e3', // Tenant Integrity Corporate Blue
+    allowedRoutes: ['/landlord'],
+    permissions: [
+      'profile:read', 'profile:update',
+      'properties:manage',
+      'tenants:observe', 'tenants:read'
+    ],
+  },
   APPLICANT: {
     displayName: 'Applicant',
     themeColor: '#0a57e3', // Tenant Integrity Corporate Blue
@@ -39,5 +49,6 @@ export const DEFAULT_ROLE_REDIRECTS: Record<Role, string> = {
   SUPER_ADMIN: '/admin/overview',
   TENANT: '/tenant/dashboard',
   APPLICANT: '/applicant/progress',
+  LANDLORD: '/landlord/overview',
   GUEST: '/login',
 };

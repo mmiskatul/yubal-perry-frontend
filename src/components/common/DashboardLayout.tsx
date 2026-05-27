@@ -28,7 +28,15 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         router.push('/login');
       } else if (user && !allowedRoles.includes(user.role)) {
         // Safe redirection if accessing unauthorized paths
-        router.push(user.role === 'TENANT' ? '/tenant/dashboard' : '/applicant/progress');
+        if (user.role === 'SUPER_ADMIN') {
+          router.push('/admin/overview');
+        } else if (user.role === 'LANDLORD') {
+          router.push('/landlord/overview');
+        } else if (user.role === 'TENANT') {
+          router.push('/tenant/dashboard');
+        } else {
+          router.push('/applicant/progress');
+        }
       }
     }
   }, [isLoading, isAuthenticated, user, allowedRoles, router]);
@@ -132,7 +140,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           {/* Right controls */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
             <a 
-              href={user?.role === 'TENANT' ? '/tenant/support' : '/applicant/support'} 
+              href={user?.role === 'TENANT' ? '/tenant/support' : user?.role === 'APPLICANT' ? '/applicant/support' : user?.role === 'LANDLORD' ? '/landlord/help' : '#'} 
               style={{ 
                 display: 'flex', 
                 alignItems: 'center', 
@@ -150,7 +158,11 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
             <div 
               style={{ position: 'relative', cursor: 'pointer', display: 'flex', alignItems: 'center' }} 
-              onClick={() => router.push(user?.role === 'TENANT' ? '/tenant/messages' : '/applicant/messages')}
+              onClick={() => router.push(
+                user?.role === 'TENANT' ? '/tenant/messages' 
+                : user?.role === 'APPLICANT' ? '/applicant/messages'
+                : '#'
+              )}
             >
               <span style={{ fontSize: '1.25rem', display: 'flex', alignItems: 'center' }}><LuBell /></span>
               <div 
@@ -199,7 +211,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                   Alex Johnson
                 </span>
                 <span style={{ fontSize: '0.725rem', color: 'var(--text-muted)', fontWeight: 600 }}>
-                  {user?.role === 'TENANT' ? 'Tenant' : 'Applicant'}
+                  {user ? ROLES_CONFIG[user.role]?.displayName : ''}
                 </span>
               </div>
               <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginLeft: '4px', display: 'flex', alignItems: 'center' }}>

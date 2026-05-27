@@ -12,7 +12,7 @@ interface AuthContextType {
   isLoading: boolean;
   login: (email: string, role: Role) => Promise<User>;
   logout: () => void;
-  switchRole: (role: 'SUPER_ADMIN' | 'TENANT' | 'APPLICANT') => void;
+  switchRole: (role: 'SUPER_ADMIN' | 'TENANT' | 'APPLICANT' | 'LANDLORD') => void;
   checkPermission: (permission: string) => boolean;
   hasRole: (roles: Role | Role[]) => boolean;
 }
@@ -50,6 +50,17 @@ const staticSuperAdmin: User = {
   lastLogin: new Date().toISOString(),
 };
 
+const staticLandlord: User = {
+  id: 'usr_landlord_alex',
+  name: 'Alex Johnson',
+  email: 'alex.johnson@email.com',
+  role: 'LANDLORD',
+  avatarUrl: `https://api.dicebear.com/7.x/adventurer/svg?seed=landlord`,
+  phoneNumber: '(512) 555-0198',
+  createdAt: new Date().toISOString(),
+  lastLogin: new Date().toISOString(),
+};
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -67,6 +78,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setUser(staticApplicant);
       } else if (storedRole === 'SUPER_ADMIN') {
         setUser(staticSuperAdmin);
+      } else if (storedRole === 'LANDLORD') {
+        setUser(staticLandlord);
       } else {
         setUser(staticTenant);
       }
@@ -74,11 +87,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const switchRole = (newRole: 'SUPER_ADMIN' | 'TENANT' | 'APPLICANT') => {
+  const switchRole = (newRole: 'SUPER_ADMIN' | 'TENANT' | 'APPLICANT' | 'LANDLORD') => {
     setIsLoading(true);
     let targetUser = staticTenant;
     if (newRole === 'APPLICANT') targetUser = staticApplicant;
     else if (newRole === 'SUPER_ADMIN') targetUser = staticSuperAdmin;
+    else if (newRole === 'LANDLORD') targetUser = staticLandlord;
     
     if (typeof window !== 'undefined') {
       localStorage.setItem('sandbox_active_role', newRole);
@@ -168,6 +182,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
               }}
             >
               Super Admin Role
+            </button>
+            <button
+              onClick={() => switchRole('LANDLORD')}
+              style={{
+                padding: '4px 12px',
+                borderRadius: '9999px',
+                fontSize: '0.725rem',
+                fontWeight: 700,
+                border: 'none',
+                cursor: 'pointer',
+                backgroundColor: user.role === 'LANDLORD' ? '#0a57e3' : 'transparent',
+                color: user.role === 'LANDLORD' ? '#ffffff' : '#475569',
+                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+            >
+              Landlord Role
             </button>
             <button
               onClick={() => switchRole('TENANT')}

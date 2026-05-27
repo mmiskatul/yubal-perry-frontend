@@ -19,7 +19,12 @@ import {
   LuPhoneCall,
   LuPuzzle,
   LuUsers,
-  LuPenLine
+  LuPenLine,
+  LuActivity,
+  LuShieldAlert,
+  LuFileText,
+  LuCreditCard,
+  LuClock
 } from 'react-icons/lu';
 
 interface MenuItem {
@@ -45,6 +50,18 @@ export const Sidebar: React.FC = () => {
       { label: 'Roles & Permissions', href: '/admin/roles', icon: <LuUsers /> },
       { label: 'Task Management', href: '/admin/tasks', icon: <LuClipboardPen /> },
       { label: 'Text Editor', href: '/admin/editor', icon: <LuPenLine /> },
+    ],
+    LANDLORD: [
+      { label: 'Overview', href: '/landlord/overview', icon: <LuLayoutDashboard /> },
+      { label: 'Pre-Tenancy', href: '/landlord/pre-tenancy', icon: <LuClock /> },
+      { label: 'Monitoring', href: '/landlord/monitoring', icon: <LuActivity /> },
+      { label: 'Behavioral Risk', href: '/landlord/risk', icon: <LuShieldAlert /> },
+      { label: 'Early Warnings', href: '/landlord/warnings', icon: <LuClipboardPen /> },
+      { label: 'Properties', href: '/landlord/properties', icon: <LuLayoutDashboard /> },
+      { label: 'Reports', href: '/landlord/reports', icon: <LuFileText /> },
+      { label: 'Subscriptions', href: '/landlord/subscriptions', icon: <LuCreditCard /> },
+      { label: 'Settings', href: '/landlord/settings', icon: <LuSettings /> },
+      { label: 'Help', href: '/landlord/help', icon: <LuCircleHelp /> },
     ],
     TENANT: [
       { label: 'My Dashboard', href: '/tenant/dashboard', icon: <LuLayoutDashboard /> },
@@ -120,7 +137,7 @@ export const Sidebar: React.FC = () => {
               marginTop: '4px'
             } as React.CSSProperties}
           >
-            {user.role === 'SUPER_ADMIN' ? 'Super Admin' : user.role === 'TENANT' ? 'Tenant' : 'Applicant'}
+            {user.role === 'SUPER_ADMIN' ? 'Super Admin' : user.role === 'TENANT' ? 'Tenant' : user.role === 'LANDLORD' ? 'Landlord' : 'Applicant'}
           </span>
         </div>
       </div>
