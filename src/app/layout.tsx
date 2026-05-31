@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Daber Multi-Role Management Portal",
-  description: "Enterprise-grade secure sandbox role and Axios integration boilerplate",
+  description: "Enterprise-grade secure multi-role management and Axios integration boilerplate",
 };
 
 export default function RootLayout({

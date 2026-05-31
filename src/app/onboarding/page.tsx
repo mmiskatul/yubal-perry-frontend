@@ -197,7 +197,7 @@ export default function OnboardingPage() {
               Step 1: Complete Account Profile
             </h3>
             <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0, lineHeight: '1.4' }}>
-              Let's customize your profile. These details are used to set up your primary contact clearance in the sandbox engine.
+              Let's customize your profile. These details are used to set up your primary contact clearance in the platform database.
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginTop: '8px' }}>
@@ -501,7 +501,7 @@ export default function OnboardingPage() {
             {user.role === 'APPLICANT' && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>
-                  Activate your behavioral screening checklist by consenting to the sandbox safety guidelines.
+                  Activate your behavioral screening checklist by consenting to the platform safety guidelines.
                 </p>
 
                 <div>

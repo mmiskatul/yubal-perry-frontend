@@ -20,16 +20,16 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !password) {
-      setError('Please enter both your email address and password.');
-      return;
-    }
+    
+    // Demo Bypass: Default to Tenant if fields are empty
+    const activeEmail = email.trim() || 'tenant@tenantintegrity.com';
+    const activePassword = password || 'password';
     
     setError(null);
     setIsSubmitting(true);
 
     try {
-      await login(email, password);
+      await login(activeEmail, activePassword);
     } catch (err: any) {
       setError(err.message || 'Login failed. Please check your credentials.');
       setIsSubmitting(false);

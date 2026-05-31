@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { User, Role } from '@/types/auth';
 import { DEFAULT_ROLE_REDIRECTS } from '@/config/roles';
 
@@ -10,7 +10,7 @@ interface AuthContextType {
   token: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (email: string, password?: string, role?: Role) => Promise<User>;
+  login: (email: string, password?: string) => Promise<User>;
   signup: (name: string, email: string, password?: string) => Promise<User>;
   updateRole: (role: Role) => Promise<User>;
   logout: () => void;
@@ -19,7 +19,7 @@ interface AuthContextType {
   hasRole: (roles: Role | Role[]) => boolean;
 }
 
-// 5 pre-configured high-fidelity demo users
+// 5 preconfigured base user structures
 const DEFAULT_DEMO_USERS: User[] = [
   {
     id: 'usr_admin_alex',
@@ -75,9 +75,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
-  const pathname = usePathname();
 
-  // Load session from storage or default to GUEST (unauthenticated)
+  // Load session from storage or default to unauthenticated
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // 1. Initialize registered users database in localStorage if not exists
@@ -96,7 +95,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           setUser(loadedUser);
           setToken(storedToken);
         } catch (e) {
-          console.error('Failed to parse active sandbox user', e);
+          console.error('Failed to parse active user session', e);
         }
       }
       setIsLoading(false);
@@ -106,14 +105,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const switchRole = (newRole: 'SUPER_ADMIN' | 'TENANT' | 'APPLICANT' | 'LANDLORD' | 'AFFILIATE') => {
     setIsLoading(true);
     
-    // Find the pre-configured user from the database or create one on the fly
     if (typeof window !== 'undefined') {
       const usersStr = localStorage.getItem('sandbox_registered_users');
       const registeredUsers = usersStr ? (JSON.parse(usersStr) as User[]) : DEFAULT_DEMO_USERS;
       let targetUser = registeredUsers.find(u => u.role === newRole);
       
       if (!targetUser) {
-        // Fallback fallback if not found in db
         targetUser = DEFAULT_DEMO_USERS.find(u => u.role === newRole) || {
           id: `usr_${newRole.toLowerCase()}_mock`,
           name: `Demo ${newRole}`,
@@ -137,20 +134,59 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     router.push(redirectPath);
   };
 
-  const login = async (email: string, password?: string, role?: Role): Promise<User> => {
+  const login = async (email: string, password?: string): Promise<User> => {
     setIsLoading(true);
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (typeof window !== 'undefined') {
-          const usersStr = localStorage.getItem('sandbox_registered_users') || JSON.stringify(DEFAULT_DEMO_USERS);
-          const registeredUsers = JSON.parse(usersStr) as User[];
-          
-          // Search user by email (case-insensitive)
-          let matchedUser = registeredUsers.find(u => u.email.toLowerCase() === email.toLowerCase());
+          const emailLower = email.toLowerCase().trim();
+          const pass = password || '';
 
-          // If a specific role is passed (for quick demo login)
-          if (!matchedUser && role) {
-            matchedUser = registeredUsers.find(u => u.role === role);
+          // 1. Read role base credentials from environment variables (with standard defaults)
+          const envAdminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@tenantintegrity.com';
+          const envAdminPass = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'AdminSecurePass2026!';
+
+          const envLandlordEmail = process.env.NEXT_PUBLIC_LANDLORD_EMAIL || 'landlord@tenantintegrity.com';
+          const envLandlordPass = process.env.NEXT_PUBLIC_LANDLORD_PASSWORD || 'LandlordSecurePass2026!';
+
+          const envTenantEmail = process.env.NEXT_PUBLIC_TENANT_EMAIL || 'tenant@tenantintegrity.com';
+          const envTenantPass = process.env.NEXT_PUBLIC_TENANT_PASSWORD || 'TenantSecurePass2026!';
+
+          const envApplicantEmail = process.env.NEXT_PUBLIC_APPLICANT_EMAIL || 'applicant@tenantintegrity.com';
+          const envApplicantPass = process.env.NEXT_PUBLIC_APPLICANT_PASSWORD || 'ApplicantSecurePass2026!';
+
+          const envAffiliateEmail = process.env.NEXT_PUBLIC_AFFILIATE_EMAIL || 'affiliate@tenantintegrity.com';
+          const envAffiliatePass = process.env.NEXT_PUBLIC_AFFILIATE_PASSWORD || 'AffiliateSecurePass2026!';
+
+          let matchedUser: User | null = null;
+
+          // Perform exact credential checking
+          if (emailLower === envAdminEmail.toLowerCase() && pass === envAdminPass) {
+            matchedUser = DEFAULT_DEMO_USERS.find(u => u.role === 'SUPER_ADMIN') || null;
+          } else if (emailLower === envLandlordEmail.toLowerCase() && pass === envLandlordPass) {
+            matchedUser = DEFAULT_DEMO_USERS.find(u => u.role === 'LANDLORD') || null;
+          } else if (emailLower === envTenantEmail.toLowerCase() && pass === envTenantPass) {
+            matchedUser = DEFAULT_DEMO_USERS.find(u => u.role === 'TENANT') || null;
+          } else if (emailLower === envApplicantEmail.toLowerCase() && pass === envApplicantPass) {
+            matchedUser = DEFAULT_DEMO_USERS.find(u => u.role === 'APPLICANT') || null;
+          } else if (emailLower === envAffiliateEmail.toLowerCase() && pass === envAffiliatePass) {
+            matchedUser = DEFAULT_DEMO_USERS.find(u => u.role === 'AFFILIATE') || null;
+          }
+
+          // 2. Fallback to checking the registered users database in localStorage
+          if (!matchedUser) {
+            const usersStr = localStorage.getItem('sandbox_registered_users');
+            if (usersStr) {
+              const registeredUsers = JSON.parse(usersStr) as (User & { password?: string })[];
+              const found = registeredUsers.find(
+                u => u.email.toLowerCase() === emailLower && (u.password === pass || !u.password)
+              );
+              if (found) {
+                // strip password key from state user object for security
+                const { password: _, ...userWithoutPass } = found;
+                matchedUser = userWithoutPass;
+              }
+            }
           }
 
           if (matchedUser) {
@@ -172,13 +208,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             resolve(matchedUser);
           } else {
             setIsLoading(false);
-            reject(new Error('User credentials not found. Please register an account.'));
+            reject(new Error('Invalid email or password. Please verify your credentials.'));
           }
         } else {
           setIsLoading(false);
           reject(new Error('Window context not available.'));
         }
-      }, 600); // realistic network delay simulation
+      }, 800);
     });
   };
 
@@ -199,11 +235,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           }
 
           // Create new user object. By default, newly registered users are GUEST
-          const newUser: User = {
+          const newUser = {
             id: `usr_guest_${Math.random().toString(36).substr(2, 9)}`,
             name,
             email,
-            role: 'GUEST',
+            role: 'GUEST' as Role,
+            password, // persist password for credential matching
             avatarUrl: `https://api.dicebear.com/7.x/adventurer/svg?seed=${name}`,
             createdAt: new Date().toISOString(),
           };
@@ -307,121 +344,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }}
     >
       {children}
-
-      {/* Floating Clearance Sandbox Pill for Dynamic Testing */}
-      {!isLoading && user && user.role !== 'GUEST' && (
-        <div
-          style={{
-            position: 'fixed',
-            bottom: '24px',
-            right: '24px',
-            backgroundColor: 'var(--glass-bg)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            border: '1.5px solid var(--border-color)',
-            borderRadius: '9999px',
-            padding: '8px 14px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            boxShadow: 'var(--shadow-lg)',
-            zIndex: 9999,
-            animation: 'fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
-          }}
-        >
-          <span style={{ fontSize: '0.725rem', fontWeight: 800, color: 'var(--brand-color)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            clearance sandbox:
-          </span>
-          <div style={{ display: 'flex', gap: '6px' }}>
-            <button
-              onClick={() => switchRole('SUPER_ADMIN')}
-              style={{
-                padding: '4px 12px',
-                borderRadius: '9999px',
-                fontSize: '0.725rem',
-                fontWeight: 700,
-                border: 'none',
-                cursor: 'pointer',
-                backgroundColor: user.role === 'SUPER_ADMIN' ? 'var(--brand-color)' : 'transparent',
-                color: user.role === 'SUPER_ADMIN' ? '#ffffff' : 'var(--text-secondary)',
-                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
-              }}
-            >
-              Super Admin Role
-            </button>
-            <button
-              onClick={() => switchRole('LANDLORD')}
-              style={{
-                padding: '4px 12px',
-                borderRadius: '9999px',
-                fontSize: '0.725rem',
-                fontWeight: 700,
-                border: 'none',
-                cursor: 'pointer',
-                backgroundColor: user.role === 'LANDLORD' ? 'var(--brand-color)' : 'transparent',
-                color: user.role === 'LANDLORD' ? '#ffffff' : 'var(--text-secondary)',
-                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
-              }}
-            >
-              Landlord Role
-            </button>
-            <button
-              onClick={() => switchRole('TENANT')}
-              style={{
-                padding: '4px 12px',
-                borderRadius: '9999px',
-                fontSize: '0.725rem',
-                fontWeight: 700,
-                border: 'none',
-                cursor: 'pointer',
-                backgroundColor: user.role === 'TENANT' ? 'var(--brand-color)' : 'transparent',
-                color: user.role === 'TENANT' ? '#ffffff' : 'var(--text-secondary)',
-                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
-              }}
-            >
-              Tenant Role
-            </button>
-            <button
-              onClick={() => switchRole('APPLICANT')}
-              style={{
-                padding: '4px 12px',
-                borderRadius: '9999px',
-                fontSize: '0.725rem',
-                fontWeight: 700,
-                border: 'none',
-                cursor: 'pointer',
-                backgroundColor: user.role === 'APPLICANT' ? 'var(--brand-color)' : 'transparent',
-                color: user.role === 'APPLICANT' ? '#ffffff' : 'var(--text-secondary)',
-                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
-              }}
-            >
-              Applicant Role
-            </button>
-            <button
-              onClick={() => switchRole('AFFILIATE')}
-              style={{
-                padding: '4px 12px',
-                borderRadius: '9999px',
-                fontSize: '0.725rem',
-                fontWeight: 700,
-                border: 'none',
-                cursor: 'pointer',
-                backgroundColor: user.role === 'AFFILIATE' ? 'var(--brand-color)' : 'transparent',
-                color: user.role === 'AFFILIATE' ? '#ffffff' : 'var(--text-secondary)',
-                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
-              }}
-            >
-              Affiliate Role
-            </button>
-          </div>
-          <style dangerouslySetInnerHTML={{__html: `
-            @keyframes fadeInUp {
-              from { opacity: 0; transform: translateY(10px); }
-              to { opacity: 1; transform: translateY(0); }
-            }
-          `}} />
-        </div>
-      )}
     </AuthContext.Provider>
   );
 };

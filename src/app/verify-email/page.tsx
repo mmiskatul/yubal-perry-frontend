@@ -86,7 +86,7 @@ export default function VerifyEmailPage() {
         setIsVerifying(false);
         router.push('/select-role');
       } else {
-        setError('Verification failed. Sandbox clearance code is 123456.');
+        setError('Verification failed. The verification code is 123456.');
         setIsVerifying(false);
         // Shake animation reset trigger
         setCode(new Array(6).fill(''));
@@ -102,7 +102,7 @@ export default function VerifyEmailPage() {
     
     setTimeout(() => {
       setIsResending(false);
-      setResendMessage('Verification code resent successfully! (Sandbox code remains: 123456)');
+      setResendMessage('Verification code resent successfully! (The verification code remains: 123456)');
       // Auto fade message
       setTimeout(() => setResendMessage(null), 5000);
     }, 1200);
@@ -171,7 +171,7 @@ export default function VerifyEmailPage() {
           </p>
         </div>
 
-        {/* Sandbox Instruction Tip */}
+        {/* Verification Instruction Tip */}
         <div style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -186,7 +186,7 @@ export default function VerifyEmailPage() {
           marginBottom: '28px',
         }}>
           <LuSparkles />
-          <span>Clearance Bypass Code: <strong style={{ textDecoration: 'underline' }}>123456</strong></span>
+          <span>Verification Code: <strong style={{ textDecoration: 'underline' }}>123456</strong></span>
         </div>
 
         {/* Error notification */}
