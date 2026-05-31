@@ -102,7 +102,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
               <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>{applicant.name}</h3>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{applicant.unit || '123 Main St Cleveland, OH'}</p>
             </div>
-            
+
             {/* Stability Index Box */}
             {!isUnlocked ? (
               <div style={{ backgroundColor: 'var(--color-admin-light)', border: '1px solid var(--color-admin-border)', borderRadius: '12px', padding: '12px 18px', display: 'flex', alignItems: 'center', gap: '12px', width: '310px', boxSizing: 'border-box' }}>
@@ -134,7 +134,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
               </div>
             )}
           </div>
-          
+
           {/* Metadata pills */}
           <div style={{ display: 'flex', gap: '16px', marginTop: '14px', borderTop: '1px solid var(--border-color)', paddingTop: '10px', flexWrap: 'wrap' }}>
             {!isUnlocked ? (
@@ -382,7 +382,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
               {/* Cover locked block or Unlocked details */}
               {!isUnlocked ? (
                 <div style={{ position: 'relative', border: '1px solid var(--border-color)', borderRadius: '16px', overflow: 'hidden' }}>
-                  
+
                   {/* Blurred mock content in background */}
                   <div style={{ padding: '24px', opacity: 0.15, filter: 'blur(5px)', pointerEvents: 'none', userSelect: 'none' }}>
                     <h4 style={{ fontWeight: 800, fontSize: '1rem', marginBottom: '10px' }}>Behavioral Integrity</h4>
@@ -400,7 +400,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                     </div>
                     <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '6px' }}>See the full 7-day behavioral pattern</h3>
                     <p style={{ fontSize: '0.825rem', color: 'var(--text-secondary)', marginBottom: '20px', maxWidth: '380px' }}>Understand how the applicant behaves over time</p>
-                    
+
                     <button
                       onClick={() => setIsUnlocked(true)}
                       style={{ backgroundColor: 'var(--brand-color)', color: '#ffffff', border: 'none', padding: '12px 24px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, cursor: 'pointer', transition: 'all 0.15s', marginBottom: '18px', width: '220px' }}
@@ -497,7 +497,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
             <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '24px' }} className="animate-fade-in">
               {/* Left Column */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                
+
                 {/* Yellow Status Banner */}
                 <div style={{ padding: '16px 20px', backgroundColor: 'var(--color-support-light)', border: '1px solid var(--color-support-border)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -509,7 +509,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                     <span style={{ fontSize: '0.7rem', fontWeight: 800, padding: '2px 8px', borderRadius: '12px', backgroundColor: 'var(--color-support-light)', color: 'var(--color-support)', border: '1px solid #ffedd5' }}>71%</span>
                   </div>
                 </div>
-                
+
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', paddingLeft: '4px' }}>
                   Contribution to Decision: <strong style={{ color: 'var(--color-support)' }}>Medium Impact</strong>
                 </div>
@@ -547,7 +547,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
 
                 {/* Collapsible View Example Behavior Accordion */}
                 <div style={{ border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden' }}>
-                  <div 
+                  <div
                     onClick={() => setExampleExpanded(!exampleExpanded)}
                     style={{ padding: '14px 18px', backgroundColor: 'var(--color-support-light)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', borderBottom: exampleExpanded ? '1px solid var(--border-color)' : 'none' }}
                   >
@@ -558,7 +558,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                       {exampleExpanded ? <LuChevronDown /> : <LuChevronDown style={{ transform: 'rotate(180deg)' }} />}
                     </span>
                   </div>
-                  
+
                   {exampleExpanded && (
                     <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor: 'var(--bg-secondary)' }} className="animate-fade-in">
                       <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', gap: '6px', alignItems: 'flex-start' }}>
@@ -596,7 +596,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                     </div>
                   ))}
                 </div>
-                
+
                 <div style={{ marginTop: '16px', padding: '14px', borderRadius: '10px', backgroundColor: 'var(--color-admin-light)', border: '1px solid var(--color-admin-border)', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                   <span style={{ fontSize: '1rem', color: '#7c3aed', display: 'flex', marginTop: '1px' }}>🔷</span>
                   <span style={{ fontSize: '0.775rem', color: '#7c3aed', lineHeight: '1.45', fontWeight: 500 }}>
@@ -612,7 +612,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
             <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '24px' }} className="animate-fade-in">
               {/* Left Column */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                
+
                 {/* Green Status Banner */}
                 <div style={{ padding: '16px 20px', backgroundColor: 'var(--color-user-light)', border: '1px solid var(--color-user-border)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -686,7 +686,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                     </div>
                   ))}
                 </div>
-                
+
                 <div style={{ marginTop: '16px', padding: '14px', borderRadius: '10px', backgroundColor: 'var(--color-admin-light)', border: '1px solid var(--color-admin-border)', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                   <span style={{ fontSize: '1rem', color: '#7c3aed', display: 'flex', marginTop: '1px' }}>🔷</span>
                   <span style={{ fontSize: '0.775rem', color: '#7c3aed', lineHeight: '1.45', fontWeight: 500 }}>
@@ -702,7 +702,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
             <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '24px' }} className="animate-fade-in">
               {/* Left Column */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                
+
                 {/* Yellow Banner Status */}
                 <div style={{ padding: '16px 20px', backgroundColor: 'var(--color-support-light)', border: '1px solid var(--color-support-border)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -726,11 +726,11 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 {/* Behavioral Pattern Over Time (Connecting dots timeline) */}
                 <div style={{ border: '1px solid var(--border-color)', borderRadius: '12px', padding: '20px 24px' }}>
                   <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '24px' }}>Behavioral Pattern Over Time</h4>
-                  
+
                   <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 10px' }}>
                     {/* Horizontal connector line */}
                     <div style={{ position: 'absolute', left: '16px', right: '16px', top: '16px', height: '2px', backgroundColor: 'var(--border-color)', zIndex: 1 }} />
-                    
+
                     {[
                       { day: 'Day 1', status: 'ok' },
                       { day: 'Day 2', status: 'ok' },
@@ -804,7 +804,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                     </div>
                   ))}
                 </div>
-                
+
                 <div style={{ marginTop: '16px', padding: '14px', borderRadius: '10px', backgroundColor: 'var(--color-admin-light)', border: '1px solid var(--color-admin-border)', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                   <span style={{ fontSize: '1rem', color: '#7c3aed', display: 'flex', marginTop: '1px' }}>🔷</span>
                   <span style={{ fontSize: '0.775rem', color: '#7c3aed', lineHeight: '1.45', fontWeight: 500 }}>
