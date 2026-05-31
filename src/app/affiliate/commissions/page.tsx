@@ -14,9 +14,9 @@ import {
 export default function AffiliateCommissionsPage() {
 
   const commissionBreakdown = [
-    { id: '#A1024', plan: 'Enterprise Annual', revenue: '$1,249.00', commission: '$249.80', progress: 'Converted', progColor: '#10b981', progBg: '#e6fbf3', status: 'Approved', statusColor: '#10b981' },
-    { id: '#A1025', plan: 'Pro Monthly', revenue: '$49.00', commission: '$9.80', progress: 'Assessment Started', progColor: '#0a57e3', progBg: '#eff6ff', status: 'Pending', statusColor: '#f59e0b' },
-    { id: '#A1028', plan: 'Pro Annual', revenue: '$499.00', commission: '$99.80', progress: 'Dropped - Day 3', progColor: '#475569', progBg: '#f1f5f9', status: 'Pending', statusColor: '#f59e0b' }
+    { id: '#A1024', plan: 'Enterprise Annual', revenue: '$1,249.00', commission: '$249.80', progress: 'Converted', progcolor: 'var(--color-user)', progBg: '#e6fbf3', status: 'Approved', statuscolor: 'var(--color-user)' },
+    { id: '#A1025', plan: 'Pro Monthly', revenue: '$49.00', commission: '$9.80', progress: 'Assessment Started', progcolor: 'var(--brand-color)', progBg: '#eff6ff', status: 'Pending', statuscolor: 'var(--color-support)' },
+    { id: '#A1028', plan: 'Pro Annual', revenue: '$499.00', commission: '$99.80', progress: 'Dropped - Day 3', progcolor: 'var(--text-secondary)', progBg: '#f1f5f9', status: 'Pending', statuscolor: 'var(--color-support)' }
   ];
 
   return (
@@ -39,7 +39,7 @@ export default function AffiliateCommissionsPage() {
               padding: '10px 16px', 
               borderRadius: '10px', 
               border: '1px solid var(--border-color)', 
-              backgroundColor: '#ffffff',
+              backgroundColor: 'var(--bg-secondary)',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
@@ -57,7 +57,7 @@ export default function AffiliateCommissionsPage() {
               padding: '10px 18px', 
               borderRadius: '10px', 
               border: 'none', 
-              backgroundColor: '#0a57e3',
+              backgroundColor: 'var(--brand-color)',
               color: '#ffffff',
               cursor: 'pointer',
               display: 'flex',
@@ -120,15 +120,15 @@ export default function AffiliateCommissionsPage() {
       {/* Metrics Detail Cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', marginBottom: '28px' }}>
         {[
-          { title: 'Total Earned Revenue', value: '$62,410.00', sub: '📈 12% from last month', subColor: '#10b981' },
+          { title: 'Total Earned Revenue', value: '$62,410.00', sub: '📈 12% from last month', subcolor: 'var(--color-user)' },
           { title: 'Commission Rate', value: '20%', sub: 'Fixed base rate', subColor: 'var(--text-muted)' },
           { title: 'Total Commission', value: '$12,482.00', sub: 'Processed to date', subColor: 'var(--text-muted)' },
-          { title: 'Pending Payout', value: '$842.50', sub: '🕐 Next payout in 12 days', subColor: '#f59e0b' }
+          { title: 'Pending Payout', value: '$842.50', sub: '🕐 Next payout in 12 days', subcolor: 'var(--color-support)' }
         ].map((c, i) => (
           <div 
             key={i}
             style={{
-              backgroundColor: '#ffffff',
+              backgroundColor: 'var(--bg-secondary)',
               border: '1px solid var(--border-color)',
               borderRadius: '16px',
               padding: '20px 24px',
@@ -153,10 +153,10 @@ export default function AffiliateCommissionsPage() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '24px', marginBottom: '28px', flexWrap: 'wrap' }}>
         
         {/* Left Pane: Payout Info */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '16px', padding: '24px', boxShadow: 'var(--shadow-sm)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '16px', padding: '24px', boxShadow: 'var(--shadow-sm)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: 'left' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
-              <span style={{ color: '#0a57e3', display: 'flex', fontSize: '1.1rem' }}><LuInfo /></span>
+              <span style={{ color: 'var(--brand-color)', display: 'flex', fontSize: '1.1rem' }}><LuInfo /></span>
               <strong style={{ fontSize: '0.95rem', color: 'var(--text-primary)' }}>Payout Information</strong>
             </div>
 
@@ -171,7 +171,7 @@ export default function AffiliateCommissionsPage() {
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '10px' }}>
                 <span style={{ color: 'var(--text-secondary)' }}>Current Status</span>
-                <span style={{ fontSize: '0.675rem', fontWeight: 800, padding: '3px 8px', borderRadius: '6px', backgroundColor: '#eff6ff', color: '#0a57e3' }}>
+                <span style={{ fontSize: '0.675rem', fontWeight: 800, padding: '3px 8px', borderRadius: '6px', backgroundColor: 'var(--brand-light)', color: 'var(--brand-color)' }}>
                   SCHEDULED
                 </span>
               </div>
@@ -184,7 +184,7 @@ export default function AffiliateCommissionsPage() {
         </div>
 
         {/* Right Pane: Growth SVG Bar Chart */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '16px', padding: '24px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '16px', padding: '24px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
             <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
               Earnings Growth (Last 30 Days)
@@ -196,7 +196,7 @@ export default function AffiliateCommissionsPage() {
                 border: '1px solid var(--border-color)',
                 fontSize: '0.75rem',
                 color: 'var(--text-secondary)',
-                backgroundColor: '#ffffff',
+                backgroundColor: 'var(--bg-secondary)',
                 outline: 'none',
                 cursor: 'pointer'
               }}
@@ -212,9 +212,9 @@ export default function AffiliateCommissionsPage() {
             {/* Inline SVG Chart */}
             <svg width="100%" height="100%" viewBox="0 0 500 150" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
               {/* Grid Lines */}
-              <line x1="0" y1="120" x2="500" y2="120" stroke="#f1f5f9" strokeWidth="1" />
-              <line x1="0" y1="80" x2="500" y2="80" stroke="#f1f5f9" strokeWidth="1" />
-              <line x1="0" y1="40" x2="500" y2="40" stroke="#f1f5f9" strokeWidth="1" />
+              <line x1="0" y1="120" x2="500" y2="120" stroke="var(--border-color)" strokeWidth="1" />
+              <line x1="0" y1="80" x2="500" y2="80" stroke="var(--border-color)" strokeWidth="1" />
+              <line x1="0" y1="40" x2="500" y2="40" stroke="var(--border-color)" strokeWidth="1" />
 
               {/* Weekly Groups of Bars (Weekly earnings blocks) */}
               {/* Week 1 */}
@@ -262,7 +262,7 @@ export default function AffiliateCommissionsPage() {
       {/* Commission Breakdown Table */}
       <div 
         style={{ 
-          backgroundColor: '#ffffff', 
+          backgroundColor: 'var(--bg-secondary)', 
           border: '1px solid var(--border-color)', 
           borderRadius: '16px', 
           padding: '24px 0', 
@@ -280,7 +280,7 @@ export default function AffiliateCommissionsPage() {
         </div>
 
         {/* Table Head */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.5fr 1fr 1.5fr 1.5fr 1fr', padding: '12px 32px', backgroundColor: '#f8fafc', borderBottom: '1px solid var(--border-color)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.5fr 1fr 1.5fr 1.5fr 1fr', padding: '12px 32px', backgroundColor: 'var(--bg-primary)', borderBottom: '1px solid var(--border-color)' }}>
           {['REFERRAL ID', 'PLAN', 'REVENUE', 'YOUR COMMISSION (20%)', 'PROGRESS STAGE', 'STATUS'].map((head, idx) => (
             <div 
               key={idx} 
@@ -311,13 +311,13 @@ export default function AffiliateCommissionsPage() {
                 fontSize: '0.85rem',
                 transition: 'background-color 0.15s ease'
               }}
-              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#fafbfc'}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--bg-primary)'}
               onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
             >
               <div style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{row.id}</div>
               <div style={{ color: 'var(--text-secondary)' }}>{row.plan}</div>
               <div style={{ color: 'var(--text-secondary)', fontWeight: 500 }}>{row.revenue}</div>
-              <div style={{ color: '#0a57e3', fontWeight: 800 }}>{row.commission}</div>
+              <div style={{ color: 'var(--brand-color)', fontWeight: 800 }}>{row.commission}</div>
               <div>
                 <span 
                   style={{ 
@@ -353,7 +353,7 @@ export default function AffiliateCommissionsPage() {
                 height: '28px', 
                 borderRadius: '6px', 
                 border: '1px solid var(--border-color)', 
-                backgroundColor: '#ffffff', 
+                backgroundColor: 'var(--bg-secondary)', 
                 color: 'var(--text-muted)', 
                 cursor: 'not-allowed', 
                 display: 'flex', 
@@ -370,7 +370,7 @@ export default function AffiliateCommissionsPage() {
                 height: '28px', 
                 borderRadius: '6px', 
                 border: '1px solid var(--border-color)', 
-                backgroundColor: '#ffffff', 
+                backgroundColor: 'var(--bg-secondary)', 
                 color: 'var(--text-secondary)', 
                 cursor: 'pointer', 
                 display: 'flex', 

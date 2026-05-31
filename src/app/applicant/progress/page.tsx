@@ -52,14 +52,14 @@ export default function ProgressPage() {
             display: 'flex', 
             alignItems: 'center', 
             gap: '12px',
-            backgroundColor: '#ffffff',
+            backgroundColor: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',
             borderRadius: '12px',
             padding: '12px 18px',
             boxShadow: 'var(--shadow-sm)'
           }}
         >
-          <span style={{ fontSize: '1.25rem', color: '#0a57e3', display: 'flex' }}>
+          <span style={{ fontSize: '1.25rem', color: 'var(--brand-color)', display: 'flex' }}>
             <LuCalendar />
           </span>
           <div style={{ textAlign: 'left' }}>
@@ -77,19 +77,19 @@ export default function ProgressPage() {
       <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '24px', marginBottom: '24px' }}>
         
         {/* Overall Progress */}
-        <div className="glass-card" style={{ '--role-color': '#0a57e3', display: 'flex', flexDirection: 'column', justifySelf: 'center', justifyContent: 'space-between', minHeight: '200px' } as React.CSSProperties}>
+        <div className="glass-card" style={{ '--role-color': 'var(--brand-color)', display: 'flex', flexDirection: 'column', justifySelf: 'center', justifyContent: 'space-between', minHeight: '200px' } as React.CSSProperties}>
           <div>
             <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Overall Progress
             </span>
             <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: '12px', marginBottom: '16px' }}>
-              Day <span style={{ color: '#0a57e3' }}>3</span> of 7
+              Day <span style={{ color: 'var(--brand-color)' }}>3</span> of 7
             </h2>
             
             {/* Progress bar details */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
               <div style={{ flex: 1, height: '8px', borderRadius: '4px', backgroundColor: 'var(--border-color)', overflow: 'hidden' }}>
-                <div style={{ width: '43%', height: '100%', backgroundColor: '#0a57e3', transition: 'width 0.3s' }} />
+                <div style={{ width: '43%', height: '100%', backgroundColor: 'var(--brand-color)', transition: 'width 0.3s' }} />
               </div>
               <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--text-primary)' }}>
                 43% Complete
@@ -102,10 +102,10 @@ export default function ProgressPage() {
         </div>
 
         {/* Next Check-in */}
-        <div className="glass-card" style={{ '--role-color': '#0a57e3', display: 'flex', flexDirection: 'column', justifySelf: 'center', justifyContent: 'space-between', minHeight: '200px' } as React.CSSProperties}>
+        <div className="glass-card" style={{ '--role-color': 'var(--brand-color)', display: 'flex', flexDirection: 'column', justifySelf: 'center', justifyContent: 'space-between', minHeight: '200px' } as React.CSSProperties}>
           <div>
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '12px' }}>
-              <span style={{ fontSize: '1.2rem', color: '#0a57e3', display: 'flex' }}><LuCalendar /></span>
+              <span style={{ fontSize: '1.2rem', color: 'var(--brand-color)', display: 'flex' }}><LuCalendar /></span>
               <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 Next Check-In
               </span>
@@ -117,7 +117,7 @@ export default function ProgressPage() {
               Check back in within 24 hours to complete Day 4.
             </p>
           </div>
-          <div style={{ fontSize: '0.725rem', color: '#0a57e3', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <div style={{ fontSize: '0.725rem', color: 'var(--brand-color)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             ⏳ Open June 1st
           </div>
         </div>
@@ -125,7 +125,7 @@ export default function ProgressPage() {
       </div>
 
       {/* Daily Progress List */}
-      <div className="glass-card" style={{ '--role-color': '#0a57e3', padding: '0', overflow: 'hidden', marginBottom: '24px' } as React.CSSProperties}>
+      <div className="glass-card" style={{ '--role-color': 'var(--brand-color)', padding: '0', overflow: 'hidden', marginBottom: '24px' } as React.CSSProperties}>
         <div style={{ padding: '24px 32px', borderBottom: '1px solid var(--border-color)' }}>
           <h3 style={{ fontSize: '1.05rem', fontWeight: 800 }}>Daily Check-In Progress</h3>
         </div>
@@ -160,15 +160,15 @@ export default function ProgressPage() {
                 {/* Day Details */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: 1 }}>
                   {isCompleted ? (
-                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#10b981', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem' }}>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem' }}>
                       ✓
                     </div>
                   ) : isUpcoming ? (
-                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#ffffff', border: '2px solid #0a57e3', color: '#0a57e3', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 700 }}>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', border: '2px solid #0a57e3', color: 'var(--brand-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 700 }}>
                       {log.day}
                     </div>
                   ) : (
-                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#ffffff', border: '1.5px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 500 }}>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', border: '1.5px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 500 }}>
                       {log.day}
                     </div>
                   )}
@@ -182,7 +182,7 @@ export default function ProgressPage() {
                 {/* Status Indicator */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', justifyContent: 'flex-end', flex: 1 }}>
                   {isCompleted ? (
-                    <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#10b981' }}>Completed</span>
+                    <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-user)' }}>Completed</span>
                   ) : isUpcoming ? (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <span 
@@ -199,7 +199,7 @@ export default function ProgressPage() {
                       >
                         <LuClock /> Available Tomorrow
                       </span>
-                      <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0a57e3' }}>Upcoming</span>
+                      <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--brand-color)' }}>Upcoming</span>
                     </div>
                   ) : (
                     <span style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-muted)' }}>Pending</span>
@@ -221,7 +221,7 @@ export default function ProgressPage() {
       <div 
         style={{ 
           padding: '18px 24px', 
-          backgroundColor: '#ffffff',
+          backgroundColor: 'var(--bg-secondary)',
           border: '1px solid var(--border-color)',
           borderRadius: '12px',
           display: 'flex',
@@ -230,7 +230,7 @@ export default function ProgressPage() {
           boxShadow: 'var(--shadow-sm)'
         }}
       >
-        <span style={{ fontSize: '1.25rem', color: '#0a57e3', display: 'flex' }}><LuLock /></span>
+        <span style={{ fontSize: '1.25rem', color: 'var(--brand-color)', display: 'flex' }}><LuLock /></span>
         <div style={{ textAlign: 'left' }}>
           <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)' }}>
             Your information is private and secure.

@@ -56,14 +56,14 @@ export default function CheckInsPage() {
             display: 'flex', 
             alignItems: 'center', 
             gap: '12px',
-            backgroundColor: '#ffffff',
+            backgroundColor: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',
             borderRadius: '12px',
             padding: '12px 18px',
             boxShadow: 'var(--shadow-sm)'
           }}
         >
-          <span style={{ fontSize: '1.25rem', color: '#0a57e3' }}>📅</span>
+          <span style={{ fontSize: '1.25rem', color: 'var(--brand-color)' }}>📅</span>
           <div style={{ textAlign: 'left' }}>
             <span style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', letterSpacing: '0.05em' }}>
               Current Cycle
@@ -82,8 +82,8 @@ export default function CheckInsPage() {
           style={{
             background: 'none',
             border: 'none',
-            borderBottom: activeTab === 'ALL' ? '2.5px solid #0a57e3' : 'none',
-            color: activeTab === 'ALL' ? '#0a57e3' : 'var(--text-secondary)',
+            borderBottom: activeTab === 'ALL' ? '2.5px solid var(--brand-color)' : 'none',
+            color: activeTab === 'ALL' ? 'var(--brand-color)' : 'var(--text-secondary)',
             fontWeight: activeTab === 'ALL' ? 700 : 500,
             fontSize: '0.95rem',
             padding: '8px 4px 12px',
@@ -98,8 +98,8 @@ export default function CheckInsPage() {
           style={{
             background: 'none',
             border: 'none',
-            borderBottom: activeTab === 'UPCOMING' ? '2.5px solid #0a57e3' : 'none',
-            color: activeTab === 'UPCOMING' ? '#0a57e3' : 'var(--text-secondary)',
+            borderBottom: activeTab === 'UPCOMING' ? '2.5px solid var(--brand-color)' : 'none',
+            color: activeTab === 'UPCOMING' ? 'var(--brand-color)' : 'var(--text-secondary)',
             fontWeight: activeTab === 'UPCOMING' ? 700 : 500,
             fontSize: '0.95rem',
             padding: '8px 4px 12px',
@@ -118,9 +118,9 @@ export default function CheckInsPage() {
             style={{ 
               padding: '16px 20px', 
               borderRadius: '10px', 
-              backgroundColor: '#f3f8ff', 
-              border: '1px solid #dbebff', 
-              color: '#1e3a8a', 
+              backgroundColor: 'var(--brand-alert-bg)', 
+              border: '1px solid var(--brand-alert-border)', 
+              color: 'var(--brand-alert-text)', 
               fontSize: '0.875rem',
               display: 'flex',
               alignItems: 'center',
@@ -128,16 +128,16 @@ export default function CheckInsPage() {
               marginBottom: '24px'
             }}
           >
-            <span style={{ fontSize: '1.2rem', color: '#0a57e3' }}>ℹ️</span>
+            <span style={{ fontSize: '1.2rem', color: 'var(--brand-color)' }}>ℹ️</span>
             <span>Check in daily during your 7-day participation window each month.</span>
           </div>
 
           {/* Table Cycles List */}
-          <div className="glass-card" style={{ '--role-color': '#0a57e3', padding: '0', overflow: 'hidden' } as React.CSSProperties}>
+          <div className="glass-card" style={{ '--role-color': 'var(--brand-color)', padding: '0', overflow: 'hidden' } as React.CSSProperties}>
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.875rem' }}>
                 <thead>
-                  <tr style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid var(--border-color)' }}>
+                  <tr style={{ backgroundColor: 'var(--bg-primary)', borderBottom: '1px solid var(--border-color)' }}>
                     <th style={{ padding: '16px 24px', fontWeight: 600, color: 'var(--text-secondary)' }}>Cycle</th>
                     <th style={{ padding: '16px 24px', fontWeight: 600, color: 'var(--text-secondary)' }}>Check-In Window</th>
                     <th style={{ padding: '16px 24px', fontWeight: 600, color: 'var(--text-secondary)' }}>Days Completed</th>
@@ -152,16 +152,16 @@ export default function CheckInsPage() {
                       <tr 
                         key={c.id} 
                         style={{ borderBottom: '1px solid var(--border-color)', transition: 'background-color 0.2s' }} 
-                        onMouseEnter={(e)=>e.currentTarget.style.backgroundColor='#f8fafc'} 
+                        onMouseEnter={(e)=>e.currentTarget.style.backgroundColor = 'var(--bg-primary)'} 
                         onMouseLeave={(e)=>e.currentTarget.style.backgroundColor='transparent'}
                       >
                         {/* Cycle Name */}
                         <td style={{ padding: '20px 24px' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                            <span style={{ fontSize: '1.25rem', color: isInProgress ? '#0a57e3' : '#64748b' }}>📅</span>
+                            <span style={{ fontSize: '1.25rem', color: isInProgress ? 'var(--brand-color)' : 'var(--text-muted)' }}>📅</span>
                             <div style={{ display: 'flex', flexDirection: 'column' }}>
                               <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{c.name}</span>
-                              {isInProgress && <span style={{ fontSize: '0.725rem', color: '#0a57e3', fontWeight: 600, marginTop: '2px' }}>Current Cycle</span>}
+                              {isInProgress && <span style={{ fontSize: '0.725rem', color: 'var(--brand-color)', fontWeight: 600, marginTop: '2px' }}>Current Cycle</span>}
                             </div>
                           </div>
                         </td>
@@ -187,14 +187,14 @@ export default function CheckInsPage() {
                                       width: '24px', 
                                       height: '24px', 
                                       borderRadius: '50%', 
-                                      backgroundColor: '#10b981', 
+                                      backgroundColor: 'var(--color-user)', 
                                       color: '#fff', 
                                       display: 'flex', 
                                       alignItems: 'center', 
                                       justifyContent: 'center', 
                                       fontWeight: 800, 
                                       fontSize: '0.65rem',
-                                      border: '1.5px solid #10b981'
+                                      border: '1.5px solid var(--color-user-border)'
                                     }}
                                   >
                                     ✓
@@ -210,15 +210,15 @@ export default function CheckInsPage() {
                                       width: '24px', 
                                       height: '24px', 
                                       borderRadius: '50%', 
-                                      backgroundColor: '#ffffff', 
-                                      border: '2px solid #0a57e3', 
-                                      color: '#0a57e3', 
+                                      backgroundColor: 'var(--bg-secondary)', 
+                                      border: '2px solid var(--brand-color)', 
+                                      color: 'var(--brand-color)', 
                                       display: 'flex', 
                                       alignItems: 'center', 
                                       justifyContent: 'center', 
                                       fontWeight: 700, 
                                       fontSize: '0.75rem',
-                                      boxShadow: '0 0 0 3px rgba(10, 87, 227, 0.1)'
+                                      boxShadow: '0 0 0 3px var(--focus-ring)'
                                     }}
                                   >
                                     {dayNum}
@@ -233,7 +233,7 @@ export default function CheckInsPage() {
                                     width: '24px', 
                                     height: '24px', 
                                     borderRadius: '50%', 
-                                    backgroundColor: '#ffffff', 
+                                    backgroundColor: 'var(--bg-secondary)', 
                                     border: '1.5px solid var(--border-color)', 
                                     color: 'var(--text-muted)', 
                                     display: 'flex', 
@@ -258,8 +258,8 @@ export default function CheckInsPage() {
                           <span 
                             className="role-badge"
                             style={{ 
-                              '--badge-bg': isInProgress ? '#eff6ff' : '#e6fbf3', 
-                              '--badge-color': isInProgress ? '#0a57e3' : '#10b981',
+                              '--badge-bg': isInProgress ? 'var(--brand-light)' : 'var(--color-user-light)', 
+                              '--badge-color': isInProgress ? 'var(--brand-color)' : 'var(--color-user)',
                               fontSize: '0.7rem',
                               padding: '4px 10px',
                               borderRadius: '9999px',
@@ -280,7 +280,7 @@ export default function CheckInsPage() {
                               onClick={() => handleContinueCheckIn(c.id)}
                               className="premium-btn premium-btn-primary"
                               style={{ 
-                                '--btn-color': '#0a57e3', 
+                                '--btn-color': 'var(--brand-color)', 
                                 '--focus-ring': 'rgba(10, 87, 227, 0.15)',
                                 padding: '8px 16px',
                                 fontSize: '0.8rem',
@@ -297,7 +297,7 @@ export default function CheckInsPage() {
                                 fontSize: '0.8rem',
                                 borderRadius: '8px',
                                 border: '1px solid var(--border-color)',
-                                backgroundColor: '#ffffff',
+                                backgroundColor: 'var(--bg-secondary)',
                                 color: 'var(--text-secondary)'
                               }}
                               onClick={() => alert(`Showing participation summary for ${c.name}`)}
@@ -316,7 +316,7 @@ export default function CheckInsPage() {
           </div>
         </>
       ) : (
-        <div style={{ textAlign: 'center', padding: '64px 32px', backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
+        <div style={{ textAlign: 'center', padding: '64px 32px', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px' }}>
           <span style={{ fontSize: '2.5rem', display: 'block', marginBottom: '16px' }}>🔒</span>
           <h3 style={{ fontSize: '1.15rem', fontWeight: 700 }}>Upcoming Participation Windows</h3>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '8px', maxWidth: '380px', margin: '8px auto 0' }}>

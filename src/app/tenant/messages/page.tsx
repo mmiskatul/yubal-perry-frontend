@@ -149,7 +149,7 @@ export default function MessagesPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '0', 
             display: 'flex', 
             flexDirection: 'column', 
@@ -159,7 +159,7 @@ export default function MessagesPage() {
         >
           {/* Tabs Menu */}
           <div style={{ display: 'flex', borderBottom: '1px solid var(--border-color)', padding: '0 16px' }}>
-            <button style={{ background: 'none', border: 'none', borderBottom: '2px solid #0a57e3', color: '#0a57e3', fontWeight: 700, padding: '16px 12px', fontSize: '0.875rem', cursor: 'pointer' }}>
+            <button style={{ background: 'none', border: 'none', borderBottom: '2px solid var(--brand-color)', color: 'var(--brand-color)', fontWeight: 700, padding: '16px 12px', fontSize: '0.875rem', cursor: 'pointer' }}>
               Inbox
             </button>
             <button style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', fontWeight: 500, padding: '16px 12px', fontSize: '0.875rem', cursor: 'pointer' }}>
@@ -201,8 +201,8 @@ export default function MessagesPage() {
                     padding: '16px 20px',
                     borderBottom: '1px solid var(--border-color)',
                     cursor: 'pointer',
-                    backgroundColor: isActive ? '#f0f6ff' : 'transparent',
-                    borderLeft: isActive ? '3.5px solid #0a57e3' : '3.5px solid transparent',
+                    backgroundColor: isActive ? 'var(--brand-light)' : 'transparent',
+                    borderLeft: isActive ? '3.5px solid var(--brand-color)' : '3.5px solid transparent',
                     transition: 'all 0.2s'
                   }}
                 >
@@ -217,7 +217,7 @@ export default function MessagesPage() {
                       {msg.snippet}
                     </p>
                     {msg.unread && (
-                      <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#0a57e3' }} />
+                      <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--brand-color)' }} />
                     )}
                   </div>
                 </div>
@@ -227,7 +227,7 @@ export default function MessagesPage() {
 
           {/* View All Messages Footer */}
           <div style={{ padding: '16px', borderTop: '1px solid var(--border-color)', textAlign: 'center' }}>
-            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0a57e3', cursor: 'pointer' }}>View All Messages ➔</span>
+            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--brand-color)', cursor: 'pointer' }}>View All Messages ➔</span>
           </div>
         </div>
 
@@ -235,7 +235,7 @@ export default function MessagesPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '24px 32px',
             display: 'flex', 
             flexDirection: 'column', 
@@ -265,7 +265,7 @@ export default function MessagesPage() {
           <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px', paddingRight: '4px', marginBottom: '16px' }}>
             
             {/* Original Inbound email */}
-            <div style={{ backgroundColor: '#f8fafc', padding: '20px', borderRadius: '12px', border: '1px solid var(--border-color)', fontSize: '0.875rem', lineHeight: '1.6', color: 'var(--text-primary)' }}>
+            <div style={{ backgroundColor: 'var(--bg-primary)', padding: '20px', borderRadius: '12px', border: '1px solid var(--border-color)', fontSize: '0.875rem', lineHeight: '1.6', color: 'var(--text-primary)' }}>
               {activeMessage.fullBody.map((line, i) => (
                 <p key={i} style={{ marginBottom: line ? '12px' : '20px' }}>
                   {line}
@@ -280,7 +280,7 @@ export default function MessagesPage() {
                 className="animate-fade-in"
                 style={{ 
                   alignSelf: 'flex-end', 
-                  backgroundColor: '#0a57e3', 
+                  backgroundColor: 'var(--brand-color)', 
                   color: '#ffffff',
                   padding: '16px 20px', 
                   borderRadius: '12px 12px 0 12px', 
@@ -320,7 +320,7 @@ export default function MessagesPage() {
               type="submit" 
               className="premium-btn premium-btn-primary" 
               style={{ 
-                '--btn-color': '#0a57e3', 
+                '--btn-color': 'var(--brand-color)', 
                 '--focus-ring': 'rgba(10, 87, 227, 0.15)',
                 padding: '12px 24px',
                 borderRadius: '8px',

@@ -62,7 +62,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
             height: '48px', 
             borderRadius: '50%', 
             border: '3px solid var(--border-color)',
-            borderTopColor: '#0a57e3',
+            borderTopcolor: 'var(--brand-color)',
             animation: 'spin 1s linear infinite',
             marginBottom: '16px'
           }}
@@ -134,7 +134,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                 color: 'var(--text-primary)',
                 transition: 'all 0.2s'
               }}
-              onFocus={(e)=>e.currentTarget.style.borderColor = '#0a57e3'}
+              onFocus={(e)=>e.currentTarget.style.borderColor = 'var(--brand-color)'}
               onBlur={(e)=>e.currentTarget.style.borderColor = 'var(--border-color)'}
             />
           </div>
@@ -152,7 +152,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                 textDecoration: 'none',
                 fontWeight: 600
               }}
-              onMouseEnter={(e)=>e.currentTarget.style.color='#0a57e3'}
+              onMouseEnter={(e)=>e.currentTarget.style.color='var(--brand-color)'}
               onMouseLeave={(e)=>e.currentTarget.style.color='var(--text-secondary)'}
             >
               <span style={{ display: 'flex', alignItems: 'center' }}><LuCircleHelp /></span> Help

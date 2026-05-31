@@ -18,8 +18,8 @@ const plans = [
     desc: 'Perfect for landlords with 1–3 properties',
     features: ['Up to 3 properties', '7-day pre-tenancy process', 'Behavioral monitoring', 'Early warnings', 'Email reports'],
     current: false,
-    color: '#6b7280',
-    bg: '#f9fafb',
+    color: 'var(--color-guest)',
+    bg: 'var(--color-guest-light)',
     btnText: 'Downgrade'
   },
   {
@@ -29,8 +29,8 @@ const plans = [
     desc: 'Most popular for growing landlords',
     features: ['Up to 15 properties', 'Advanced risk scoring', 'All monitoring tools', 'Priority early warnings', 'CSV + PDF reports', 'Dedicated support'],
     current: true,
-    color: '#7c3aed',
-    bg: '#f5f3ff',
+    color: 'var(--color-admin)',
+    bg: 'var(--color-admin-light)',
     btnText: 'Current Plan'
   },
   {
@@ -40,8 +40,8 @@ const plans = [
     desc: 'For large portfolios and property managers',
     features: ['Unlimited properties', 'White-label branding', 'API access', 'Custom integrations', 'Account manager', 'SLA guarantee'],
     current: false,
-    color: '#0a57e3',
-    bg: '#eff6ff',
+    color: 'var(--brand-color)',
+    bg: 'var(--brand-light)',
     btnText: 'Contact Sales'
   }
 ];
@@ -83,7 +83,7 @@ export default function LandlordSubscriptionsPage() {
             <button className="premium-btn" style={{ backgroundColor: 'rgba(255,255,255,0.15)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.3)', padding: '10px 20px', borderRadius: '8px', fontSize: '0.825rem', fontWeight: 700, cursor: 'pointer' }} onClick={() => alert('Sandbox: Manage payment method')}>
               <LuCreditCard style={{ display: 'inline', marginRight: '6px' }} />Payment Method
             </button>
-            <button className="premium-btn" style={{ backgroundColor: '#ffffff', color: '#7c3aed', border: 'none', padding: '10px 20px', borderRadius: '8px', fontSize: '0.825rem', fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '6px' }} onClick={() => alert('Sandbox: Upgrade to Enterprise plan')}>
+            <button className="premium-btn" style={{ backgroundColor: 'var(--bg-secondary)', color: '#7c3aed', border: 'none', padding: '10px 20px', borderRadius: '8px', fontSize: '0.825rem', fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '6px' }} onClick={() => alert('Sandbox: Upgrade to Enterprise plan')}>
               Upgrade <LuChevronRight />
             </button>
           </div>
@@ -92,10 +92,10 @@ export default function LandlordSubscriptionsPage() {
         {/* Billing Cycle Toggle */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
           <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>Billing Cycle:</span>
-          <div style={{ display: 'flex', gap: '4px', backgroundColor: '#f1f5f9', padding: '3px', borderRadius: '8px' }}>
+          <div style={{ display: 'flex', gap: '4px', backgroundColor: 'var(--bg-primary)', padding: '3px', borderRadius: '8px' }}>
             {(['monthly', 'annual'] as const).map((c) => (
-              <button key={c} onClick={() => setBillingCycle(c)} style={{ padding: '5px 16px', borderRadius: '6px', border: 'none', backgroundColor: billingCycle === c ? '#ffffff' : 'transparent', color: billingCycle === c ? 'var(--text-primary)' : 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer', textTransform: 'capitalize', boxShadow: billingCycle === c ? '0 1px 4px rgba(0,0,0,0.08)' : 'none' }}>
-                {c} {c === 'annual' && <span style={{ color: '#10b981', fontSize: '0.65rem', fontWeight: 800 }}>SAVE 20%</span>}
+              <button key={c} onClick={() => setBillingCycle(c)} style={{ padding: '5px 16px', borderRadius: '6px', border: 'none', backgroundColor: billingCycle === c ? 'var(--bg-secondary)' : 'transparent', color: billingCycle === c ? 'var(--text-primary)' : 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer', textTransform: 'capitalize', boxShadow: billingCycle === c ? '0 1px 4px rgba(0,0,0,0.08)' : 'none' }}>
+                {c} {c === 'annual' && <span style={{ color: 'var(--color-user)', fontSize: '0.65rem', fontWeight: 800 }}>SAVE 20%</span>}
               </button>
             ))}
           </div>
@@ -106,7 +106,7 @@ export default function LandlordSubscriptionsPage() {
           {plans.map((plan, i) => (
             <div
               key={i}
-              style={{ backgroundColor: '#ffffff', border: `1.5px solid ${plan.current ? plan.color : 'var(--border-color)'}`, borderRadius: '14px', padding: '24px', boxShadow: plan.current ? '0 4px 20px rgba(124, 58, 237, 0.15)' : 'var(--shadow-sm)', textAlign: 'left', position: 'relative' }}
+              style={{ backgroundColor: 'var(--bg-secondary)', border: `1.5px solid ${plan.current ? plan.color : 'var(--border-color)'}`, borderRadius: '14px', padding: '24px', boxShadow: plan.current ? '0 4px 20px rgba(124, 58, 237, 0.15)' : 'var(--shadow-sm)', textAlign: 'left', position: 'relative' }}
             >
               {plan.current && (
                 <span style={{ position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#7c3aed', color: '#ffffff', fontSize: '0.65rem', fontWeight: 800, padding: '4px 14px', borderRadius: '9999px', whiteSpace: 'nowrap', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
@@ -152,7 +152,7 @@ export default function LandlordSubscriptionsPage() {
         </div>
 
         {/* Invoice History */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
           <div style={{ padding: '20px 24px', borderBottom: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)' }}>Invoice History</h3>
             <button className="premium-btn premium-btn-secondary" style={{ padding: '6px 14px', borderRadius: '6px', fontSize: '0.775rem' }} onClick={() => alert('Sandbox: Download all invoices')}>
@@ -167,7 +167,7 @@ export default function LandlordSubscriptionsPage() {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                 <span style={{ fontSize: '0.925rem', fontWeight: 800, color: 'var(--text-primary)' }}>{inv.amount}</span>
-                <span style={{ fontSize: '0.675rem', padding: '3px 10px', borderRadius: '6px', backgroundColor: '#e6fbf3', color: '#10b981', fontWeight: 700 }}>
+                <span style={{ fontSize: '0.675rem', padding: '3px 10px', borderRadius: '6px', backgroundColor: 'var(--color-user-light)', color: 'var(--color-user)', fontWeight: 700 }}>
                   <LuCircleCheck style={{ display: 'inline', marginRight: '4px' }} />Paid
                 </span>
                 <button className="premium-btn premium-btn-secondary" style={{ padding: '5px 10px', borderRadius: '6px', fontSize: '0.7rem' }} onClick={() => alert(`Sandbox: Download invoice for ${inv.date}`)}>

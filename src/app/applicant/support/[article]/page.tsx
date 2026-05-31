@@ -98,7 +98,7 @@ const articleDataMap: Record<string, ArticleDetails> = {
     introText: (
       <span>
         Each daily check-in is quick and easy.<br/>
-        It usually takes about <span style={{ color: '#0a57e3', fontWeight: 700 }}>2–3 minutes</span> to complete.<br/>
+        It usually takes about <span style={{ color: 'var(--brand-color)', fontWeight: 700 }}>2–3 minutes</span> to complete.<br/>
         You\'ll answer a few short questions about how you\'re doing.<br/>
         Your time matters, and we\'ve designed the check-in to be fast and convenient.
       </span>
@@ -141,7 +141,7 @@ const articleDataMap: Record<string, ArticleDetails> = {
       <span>
         We never share your information with anyone else.<br/>
         If you have any questions about your privacy,{' '}
-        <Link href="/applicant/messages" style={{ color: '#0a57e3', fontWeight: 700, textDecoration: 'none' }} onMouseEnter={(e)=>e.currentTarget.style.textDecoration='underline'} onMouseLeave={(e)=>e.currentTarget.style.textDecoration='none'}>
+        <Link href="/applicant/messages" style={{ color: 'var(--brand-color)', fontWeight: 700, textDecoration: 'none' }} onMouseEnter={(e)=>e.currentTarget.style.textDecoration='underline'} onMouseLeave={(e)=>e.currentTarget.style.textDecoration='none'}>
           please contact our support team
         </Link>.
       </span>
@@ -209,7 +209,7 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ articl
             gap: '6px', 
             fontSize: '0.9rem', 
             fontWeight: 700, 
-            color: '#0a57e3', 
+            color: 'var(--brand-color)', 
             textDecoration: 'none' 
           }}
         >
@@ -250,8 +250,8 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ articl
                       width: '48px', 
                       height: '48px', 
                       borderRadius: '50%', 
-                      backgroundColor: '#eff6ff', 
-                      color: '#0a57e3', 
+                      backgroundColor: 'var(--brand-light)', 
+                      color: 'var(--brand-color)', 
                       display: 'flex', 
                       alignItems: 'center', 
                       justifyContent: 'center', 
@@ -279,8 +279,8 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ articl
             <div 
               style={{ 
                 padding: '24px 32px', 
-                backgroundColor: '#eff6ff', 
-                border: '1px solid #dbebff', 
+                backgroundColor: 'var(--brand-light)', 
+                border: '1px solid var(--brand-alert-border)', 
                 borderRadius: '12px', 
                 display: 'flex', 
                 gap: '20px', 
@@ -292,8 +292,8 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ articl
                   width: '40px', 
                   height: '40px', 
                   borderRadius: '50%', 
-                  backgroundColor: '#ffffff', 
-                  color: '#0a57e3', 
+                  backgroundColor: 'var(--bg-secondary)', 
+                  color: 'var(--brand-color)', 
                   display: 'flex', 
                   alignItems: 'center', 
                   justifyContent: 'center', 
@@ -305,13 +305,13 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ articl
                 {renderIcon(data.blueBox.icon)}
               </div>
               <div>
-                <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#1e3a8a', marginBottom: '12px' }}>
+                <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--brand-alert-text)', marginBottom: '12px' }}>
                   {data.blueBox.title}
                 </h4>
                 {data.blueBox.bullets && (
                   <ul style={{ paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {data.blueBox.bullets.map((bullet, idx) => (
-                      <li key={idx} style={{ fontSize: '0.825rem', color: '#1e3a8a', fontWeight: 500, lineHeight: '1.5' }}>
+                      <li key={idx} style={{ fontSize: '0.825rem', color: 'var(--brand-alert-text)', fontWeight: 500, lineHeight: '1.5' }}>
                         {bullet}
                       </li>
                     ))}
@@ -331,8 +331,8 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ articl
                       width: '46px', 
                       height: '46px', 
                       borderRadius: '50%', 
-                      backgroundColor: '#eff6ff', 
-                      color: '#0a57e3', 
+                      backgroundColor: 'var(--brand-light)', 
+                      color: 'var(--brand-color)', 
                       display: 'flex', 
                       alignItems: 'center', 
                       justifyContent: 'center', 
@@ -363,8 +363,8 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ articl
                   key={i}
                   style={{ 
                     padding: '24px 32px', 
-                    backgroundColor: '#eff6ff', 
-                    border: '1px solid #dbebff', 
+                    backgroundColor: 'var(--brand-light)', 
+                    border: '1px solid var(--brand-alert-border)', 
                     borderRadius: '12px', 
                     display: 'flex', 
                     gap: '20px', 
@@ -376,8 +376,8 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ articl
                       width: '40px', 
                       height: '40px', 
                       borderRadius: '50%', 
-                      backgroundColor: '#ffffff', 
-                      color: '#0a57e3', 
+                      backgroundColor: 'var(--bg-secondary)', 
+                      color: 'var(--brand-color)', 
                       display: 'flex', 
                       alignItems: 'center', 
                       justifyContent: 'center', 
@@ -389,18 +389,18 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ articl
                     {renderIcon(box.icon)}
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#1e3a8a', marginBottom: box.bullets ? '12px' : '6px' }}>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--brand-alert-text)', marginBottom: box.bullets ? '12px' : '6px' }}>
                       {box.title}
                     </h4>
                     {box.text && (
-                      <p style={{ fontSize: '0.825rem', color: '#1e3a8a', fontWeight: 500, lineHeight: '1.6' }}>
+                      <p style={{ fontSize: '0.825rem', color: 'var(--brand-alert-text)', fontWeight: 500, lineHeight: '1.6' }}>
                         {box.text}
                       </p>
                     )}
                     {box.bullets && (
                       <ul style={{ paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         {box.bullets.map((bullet, idx) => (
-                          <li key={idx} style={{ fontSize: '0.825rem', color: '#1e3a8a', fontWeight: 500, lineHeight: '1.5' }}>
+                          <li key={idx} style={{ fontSize: '0.825rem', color: 'var(--brand-alert-text)', fontWeight: 500, lineHeight: '1.5' }}>
                             {bullet}
                           </li>
                         ))}
@@ -424,7 +424,7 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ articl
         {/* Right Side: Security Privacy locked box (Consistent across all FAQ detail pages) */}
         <div 
           style={{ 
-            backgroundColor: '#ffffff', 
+            backgroundColor: 'var(--bg-secondary)', 
             border: '1.5px solid var(--border-color)', 
             borderRadius: '16px', 
             padding: '32px 24px',
@@ -441,8 +441,8 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ articl
                 width: '42px', 
                 height: '42px', 
                 borderRadius: '50%', 
-                backgroundColor: '#eff6ff', 
-                color: '#0a57e3', 
+                backgroundColor: 'var(--brand-light)', 
+                color: 'var(--brand-color)', 
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center', 
@@ -464,7 +464,7 @@ export default function ArticleDetailPage({ params }: { params: Promise<{ articl
               We respect your privacy and never share your information.
             </h5>
             <p style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
-              Only our <span style={{ color: '#0a57e3', fontWeight: 600 }}>support team</span> and the <span style={{ color: '#0a57e3', fontWeight: 600 }}>property manager / landlord</span> can see your information.
+              Only our <span style={{ color: 'var(--brand-color)', fontWeight: 600 }}>support team</span> and the <span style={{ color: 'var(--brand-color)', fontWeight: 600 }}>property manager / landlord</span> can see your information.
             </p>
           </div>
         </div>

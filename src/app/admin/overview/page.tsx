@@ -17,12 +17,12 @@ import {
 export default function AdminOverviewPage() {
   
   const stats = [
-    { title: 'SYSTEM STATUS', value: 'Operational', color: '#10b981', details: 'All services active' },
-    { title: 'API ERROR RATE', value: '0.12%', color: '#10b981', details: 'Normal range' },
+    { title: 'SYSTEM STATUS', value: 'Operational', color: 'var(--color-user)', details: 'All services active' },
+    { title: 'API ERROR RATE', value: '0.12%', color: 'var(--color-user)', details: 'Normal range' },
     { title: 'P95 LATENCY', value: '187ms', color: '#6b7280', details: '-12ms from avg' },
     { title: 'QUEUE FAILURES', value: '4', color: '#ef4444', details: '+2 from previous hour' },
-    { title: 'EMAIL/SMS HEALTH', value: 'Email: Green / SMS: Amber', color: '#f59e0b', details: 'Twilio SMS queue spike' },
-    { title: 'PAYMENT PROVIDER', value: 'Stripe', color: '#10b981', details: 'Healthy connection' }
+    { title: 'EMAIL/SMS HEALTH', value: 'Email: Green / SMS: Amber', color: 'var(--color-support)', details: 'Twilio SMS queue spike' },
+    { title: 'PAYMENT PROVIDER', value: 'Stripe', color: 'var(--color-user)', details: 'Healthy connection' }
   ];
 
   return (
@@ -44,7 +44,7 @@ export default function AdminOverviewPage() {
           <div 
             key={idx}
             style={{
-              backgroundColor: '#ffffff',
+              backgroundColor: 'var(--bg-secondary)',
               border: '1px solid var(--border-color)',
               borderRadius: '12px',
               padding: '20px 24px',
@@ -77,7 +77,7 @@ export default function AdminOverviewPage() {
         {/* Error Trend wave */}
         <div 
           style={{
-            backgroundColor: '#ffffff',
+            backgroundColor: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',
             borderRadius: '12px',
             padding: '24px 32px',
@@ -103,9 +103,9 @@ export default function AdminOverviewPage() {
                 </linearGradient>
               </defs>
               {/* Grid Lines */}
-              <line x1="0" y1="30" x2="400" y2="30" stroke="#f1f5f9" strokeWidth="1" strokeDasharray="4 4" />
-              <line x1="0" y1="75" x2="400" y2="75" stroke="#f1f5f9" strokeWidth="1" strokeDasharray="4 4" />
-              <line x1="0" y1="120" x2="400" y2="120" stroke="#f1f5f9" strokeWidth="1" strokeDasharray="4 4" />
+              <line x1="0" y1="30" x2="400" y2="30" stroke="var(--border-color)" strokeWidth="1" strokeDasharray="4 4" />
+              <line x1="0" y1="75" x2="400" y2="75" stroke="var(--border-color)" strokeWidth="1" strokeDasharray="4 4" />
+              <line x1="0" y1="120" x2="400" y2="120" stroke="var(--border-color)" strokeWidth="1" strokeDasharray="4 4" />
               
               {/* Fill Gradient path */}
               <path d="M 0 110 Q 50 115 100 125 T 200 65 T 300 110 T 400 100 L 400 150 L 0 150 Z" fill="url(#errorGrad)" />
@@ -128,7 +128,7 @@ export default function AdminOverviewPage() {
         {/* Latency Trend wave */}
         <div 
           style={{
-            backgroundColor: '#ffffff',
+            backgroundColor: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',
             borderRadius: '12px',
             padding: '24px 32px',
@@ -138,7 +138,7 @@ export default function AdminOverviewPage() {
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span style={{ fontSize: '1.2rem', color: '#0a57e3', display: 'flex' }}><LuClock /></span>
+              <span style={{ fontSize: '1.2rem', color: 'var(--brand-color)', display: 'flex' }}><LuClock /></span>
               <h3 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)' }}>Latency Trend (24h)</h3>
             </div>
             <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Avg: 187ms</span>
@@ -154,9 +154,9 @@ export default function AdminOverviewPage() {
                 </linearGradient>
               </defs>
               {/* Grid Lines */}
-              <line x1="0" y1="30" x2="400" y2="30" stroke="#f1f5f9" strokeWidth="1" strokeDasharray="4 4" />
-              <line x1="0" y1="75" x2="400" y2="75" stroke="#f1f5f9" strokeWidth="1" strokeDasharray="4 4" />
-              <line x1="0" y1="120" x2="400" y2="120" stroke="#f1f5f9" strokeWidth="1" strokeDasharray="4 4" />
+              <line x1="0" y1="30" x2="400" y2="30" stroke="var(--border-color)" strokeWidth="1" strokeDasharray="4 4" />
+              <line x1="0" y1="75" x2="400" y2="75" stroke="var(--border-color)" strokeWidth="1" strokeDasharray="4 4" />
+              <line x1="0" y1="120" x2="400" y2="120" stroke="var(--border-color)" strokeWidth="1" strokeDasharray="4 4" />
               
               {/* Fill Gradient path */}
               <path d="M 0 90 Q 60 95 100 100 T 200 45 T 300 110 T 400 35 L 400 150 L 0 150 Z" fill="url(#latencyGrad)" />
@@ -181,7 +181,7 @@ export default function AdminOverviewPage() {
       {/* Bottom Panel: Security Snapshot table card */}
       <div 
         style={{
-          backgroundColor: '#ffffff',
+          backgroundColor: 'var(--bg-secondary)',
           border: '1px solid var(--border-color)',
           borderRadius: '12px',
           padding: '24px 32px',
@@ -190,7 +190,7 @@ export default function AdminOverviewPage() {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', borderBottom: '1px solid var(--border-color)', paddingBottom: '16px' }}>
-          <span style={{ fontSize: '1.25rem', color: '#0a57e3', display: 'flex' }}><LuShieldAlert /></span>
+          <span style={{ fontSize: '1.25rem', color: 'var(--brand-color)', display: 'flex' }}><LuShieldAlert /></span>
           <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-primary)' }}>Security Snapshot</h3>
         </div>
 

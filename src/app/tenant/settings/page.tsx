@@ -32,7 +32,7 @@ export default function SettingsPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '32px',
             display: 'grid',
             gridTemplateColumns: '1fr 2fr',
@@ -41,7 +41,7 @@ export default function SettingsPage() {
         >
           {/* Left section descriptor */}
           <div style={{ display: 'flex', gap: '16px' }}>
-            <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', color: '#0a57e3' }}>
+            <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--brand-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', color: 'var(--brand-color)' }}>
               👤
             </div>
             <div>
@@ -75,7 +75,7 @@ export default function SettingsPage() {
               </div>
               <button 
                 onClick={()=>setIsEditingName(!isEditingName)}
-                style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: '#ffffff', fontSize: '0.75rem', fontWeight: 700, color: '#0a57e3', cursor: 'pointer' }}
+                style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', fontSize: '0.75rem', fontWeight: 700, color: 'var(--brand-color)', cursor: 'pointer' }}
               >
                 {isEditingName ? 'Save' : 'Edit'}
               </button>
@@ -101,7 +101,7 @@ export default function SettingsPage() {
               </div>
               <button 
                 onClick={()=>setIsEditingEmail(!isEditingEmail)}
-                style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: '#ffffff', fontSize: '0.75rem', fontWeight: 700, color: '#0a57e3', cursor: 'pointer' }}
+                style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', fontSize: '0.75rem', fontWeight: 700, color: 'var(--brand-color)', cursor: 'pointer' }}
               >
                 {isEditingEmail ? 'Save' : 'Edit'}
               </button>
@@ -127,7 +127,7 @@ export default function SettingsPage() {
               </div>
               <button 
                 onClick={()=>setIsEditingPhone(!isEditingPhone)}
-                style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: '#ffffff', fontSize: '0.75rem', fontWeight: 700, color: '#0a57e3', cursor: 'pointer' }}
+                style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', fontSize: '0.75rem', fontWeight: 700, color: 'var(--brand-color)', cursor: 'pointer' }}
               >
                 {isEditingPhone ? 'Save' : 'Edit'}
               </button>
@@ -140,7 +140,7 @@ export default function SettingsPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '32px',
             display: 'grid',
             gridTemplateColumns: '1fr 2fr',
@@ -149,7 +149,7 @@ export default function SettingsPage() {
         >
           {/* Left section descriptor */}
           <div style={{ display: 'flex', gap: '16px' }}>
-            <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', color: '#0a57e3' }}>
+            <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--brand-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', color: 'var(--brand-color)' }}>
               🔔
             </div>
             <div>
@@ -188,7 +188,7 @@ export default function SettingsPage() {
                     width: '18px',
                     height: '18px',
                     borderRadius: '50%',
-                    backgroundColor: '#ffffff',
+                    backgroundColor: 'var(--bg-secondary)',
                     position: 'absolute',
                     top: '3px',
                     left: smsNotifications ? '25px' : '3px',
@@ -224,7 +224,7 @@ export default function SettingsPage() {
                     width: '18px',
                     height: '18px',
                     borderRadius: '50%',
-                    backgroundColor: '#ffffff',
+                    backgroundColor: 'var(--bg-secondary)',
                     position: 'absolute',
                     top: '3px',
                     left: emailNotifications ? '25px' : '3px',
@@ -242,7 +242,7 @@ export default function SettingsPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '32px',
             display: 'grid',
             gridTemplateColumns: '1fr 2fr',
@@ -251,7 +251,7 @@ export default function SettingsPage() {
         >
           {/* Left section descriptor */}
           <div style={{ display: 'flex', gap: '16px' }}>
-            <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', color: '#0a57e3' }}>
+            <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--brand-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', color: 'var(--brand-color)' }}>
               🛡️
             </div>
             <div>
@@ -273,7 +273,7 @@ export default function SettingsPage() {
               </div>
               <button 
                 onClick={()=>alert('Change password modal triggered')}
-                style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: '#ffffff', fontSize: '0.75rem', fontWeight: 700, color: '#0a57e3', cursor: 'pointer' }}
+                style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', fontSize: '0.75rem', fontWeight: 700, color: 'var(--brand-color)', cursor: 'pointer' }}
               >
                 Edit
               </button>
@@ -287,7 +287,7 @@ export default function SettingsPage() {
               </div>
               <button 
                 onClick={()=>alert('Displaying data privacy standards')}
-                style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: '#ffffff', fontSize: '0.75rem', fontWeight: 700, color: '#0a57e3', cursor: 'pointer' }}
+                style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', fontSize: '0.75rem', fontWeight: 700, color: 'var(--brand-color)', cursor: 'pointer' }}
               >
                 View
               </button>
@@ -300,7 +300,7 @@ export default function SettingsPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '32px',
             display: 'grid',
             gridTemplateColumns: '1fr 2fr',
@@ -309,7 +309,7 @@ export default function SettingsPage() {
         >
           {/* Left section descriptor */}
           <div style={{ display: 'flex', gap: '16px' }}>
-            <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', color: '#0a57e3' }}>
+            <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--brand-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', color: 'var(--brand-color)' }}>
               🏢
             </div>
             <div>
@@ -328,7 +328,7 @@ export default function SettingsPage() {
             </div>
             <button 
               onClick={()=>alert('Sunset Apartments tenant directory opened')}
-              style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: '#ffffff', fontSize: '0.75rem', fontWeight: 700, color: '#0a57e3', cursor: 'pointer' }}
+              style={{ padding: '6px 14px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', fontSize: '0.75rem', fontWeight: 700, color: 'var(--brand-color)', cursor: 'pointer' }}
             >
               View
             </button>

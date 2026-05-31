@@ -94,7 +94,7 @@ export const Sidebar: React.FC = () => {
           <path d="M9 11L11 13L15 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
         <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.025em', display: 'flex', alignItems: 'center' }}>
-          Tenant <span style={{ color: '#0a57e3', fontWeight: 800, marginLeft: '4px' }}>Integrity™</span>
+          Tenant <span style={{ color: 'var(--brand-color)', fontWeight: 800, marginLeft: '4px' }}>Integrity™</span>
         </span>
       </div>
 
@@ -202,8 +202,8 @@ export const Sidebar: React.FC = () => {
         style={{ 
           padding: '16px', 
           borderRadius: '12px', 
-          backgroundColor: '#f3f8ff', 
-          border: '1px solid #dbebff',
+          backgroundColor: 'var(--brand-alert-bg)', 
+          border: '1px solid var(--brand-alert-border)',
           marginBottom: '16px',
           display: 'flex',
           flexDirection: 'column',
@@ -211,12 +211,12 @@ export const Sidebar: React.FC = () => {
         }}
       >
         <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-          <span style={{ fontSize: '1.25rem', color: '#0a57e3', display: 'flex', marginTop: '2px' }}>
+          <span style={{ fontSize: '1.25rem', color: 'var(--brand-color)', display: 'flex', marginTop: '2px' }}>
             <LuPhoneCall />
           </span>
           <div>
-            <h5 style={{ fontSize: '0.8rem', fontWeight: 700, color: '#1e3a8a' }}>Need help?</h5>
-            <p style={{ fontSize: '0.725rem', color: '#4b5563', marginTop: '2px', lineHeight: '1.3' }}>
+            <h5 style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--brand-alert-text)' }}>Need help?</h5>
+            <p style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', marginTop: '2px', lineHeight: '1.3' }}>
               Our support team is here for you.
             </p>
           </div>
@@ -224,9 +224,9 @@ export const Sidebar: React.FC = () => {
         <Link
           href={user.role === 'TENANT' ? '/tenant/support' : '/applicant/support'}
           style={{ 
-            backgroundColor: '#ffffff', 
-            border: '1px solid #0a57e3', 
-            color: '#0a57e3',
+            backgroundColor: 'var(--bg-secondary)', 
+            border: '1px solid var(--brand-color)', 
+            color: 'var(--brand-color)',
             fontSize: '0.75rem',
             fontWeight: 700,
             padding: '8px 12px',
@@ -236,8 +236,8 @@ export const Sidebar: React.FC = () => {
             display: 'block',
             transition: 'all 0.2s'
           }}
-          onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>)=>e.currentTarget.style.backgroundColor='#f0f6ff'}
-          onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>)=>e.currentTarget.style.backgroundColor='#ffffff'}
+          onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>)=>e.currentTarget.style.backgroundColor = 'var(--brand-light)'}
+          onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>)=>e.currentTarget.style.backgroundColor = 'var(--bg-secondary)'}
         >
           {user.role === 'TENANT' ? 'Message Support' : 'Contact Support'}
         </Link>
@@ -264,7 +264,7 @@ export const Sidebar: React.FC = () => {
             transition: 'all 0.2s ease',
           }}
           onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
-            e.currentTarget.style.backgroundColor = '#fef2f2';
+            e.currentTarget.style.backgroundColor = 'var(--color-alert-light)';
           }}
           onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
             e.currentTarget.style.backgroundColor = 'transparent';

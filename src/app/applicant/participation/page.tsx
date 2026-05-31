@@ -46,10 +46,10 @@ export default function ParticipationDashboardPage() {
       <div 
         style={{ 
           padding: '14px 20px', 
-          backgroundColor: '#eff6ff', 
+          backgroundColor: 'var(--brand-light)', 
           border: '1px solid #bfdbfe', 
           borderRadius: '10px', 
-          color: '#1e3a8a', 
+          color: 'var(--brand-alert-text)', 
           fontSize: '0.85rem',
           fontWeight: 600,
           display: 'flex',
@@ -58,7 +58,7 @@ export default function ParticipationDashboardPage() {
           marginBottom: '32px'
         }}
       >
-        <span style={{ fontSize: '1.2rem', color: '#0a57e3', display: 'flex' }}>
+        <span style={{ fontSize: '1.2rem', color: 'var(--brand-color)', display: 'flex' }}>
           <LuInfo />
         </span>
         <span>This is a short 7-day process. Just complete your daily check-ins.</span>
@@ -71,13 +71,13 @@ export default function ParticipationDashboardPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '28px 32px',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             minHeight: '190px',
-            backgroundColor: '#ffffff'
+            backgroundColor: 'var(--bg-secondary)'
           } as React.CSSProperties}
         >
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -85,13 +85,13 @@ export default function ParticipationDashboardPage() {
               Your Progress
             </span>
             <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', margin: '4px 0' }}>
-              Day <span style={{ color: '#0a57e3' }}>3</span> of 7
+              Day <span style={{ color: 'var(--brand-color)' }}>3</span> of 7
             </h2>
             
             {/* Progress bar */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', width: '100%', marginTop: '6px' }}>
               <div style={{ flex: 1, height: '8px', borderRadius: '4px', backgroundColor: 'var(--border-color)', overflow: 'hidden' }}>
-                <div style={{ width: '43%', height: '100%', backgroundColor: '#0a57e3', borderRadius: '4px' }} />
+                <div style={{ width: '43%', height: '100%', backgroundColor: 'var(--brand-color)', borderRadius: '4px' }} />
               </div>
             </div>
             <span style={{ fontSize: '0.725rem', fontWeight: 700, color: 'var(--text-secondary)', marginTop: '2px' }}>
@@ -107,7 +107,7 @@ export default function ParticipationDashboardPage() {
           <div style={{ marginLeft: '24px', flexShrink: 0, position: 'relative' }}>
             <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* Calendar Background */}
-              <rect x="15" y="20" width="70" height="65" rx="10" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="2"/>
+              <rect x="15" y="20" width="70" height="65" rx="10" fill="#f8fafc" stroke="var(--border-color)" strokeWidth="2"/>
               {/* Calendar Header */}
               <path d="M15 30C15 24.4772 19.4772 20 25 20H75C80.5228 20 85 24.4772 85 30V35H15V30Z" fill="#3b82f6"/>
               {/* Calendar Rings */}
@@ -135,13 +135,13 @@ export default function ParticipationDashboardPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '28px 32px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
             minHeight: '190px',
-            backgroundColor: '#ffffff'
+            backgroundColor: 'var(--bg-secondary)'
           } as React.CSSProperties}
         >
           <div>
@@ -158,11 +158,11 @@ export default function ParticipationDashboardPage() {
             
             {/* Horizontal timeline connector lines */}
             <div style={{ position: 'absolute', top: '15px', left: '16px', right: '16px', height: '2px', backgroundColor: 'var(--border-color)', zIndex: 1 }} />
-            <div style={{ position: 'absolute', top: '15px', left: '16px', width: '33%', height: '2px', backgroundColor: '#10b981', zIndex: 1 }} />
+            <div style={{ position: 'absolute', top: '15px', left: '16px', width: '33%', height: '2px', backgroundcolor: 'var(--color-user)', zIndex: 1 }} />
 
             {/* Day 1: Checked */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, zIndex: 2 }}>
-              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#10b981', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800 }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800 }}>
                 ✓
               </div>
               <span style={{ fontSize: '0.675rem', fontWeight: 600, color: 'var(--text-secondary)', marginTop: '8px' }}>Day 1</span>
@@ -170,7 +170,7 @@ export default function ParticipationDashboardPage() {
 
             {/* Day 2: Checked */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, zIndex: 2 }}>
-              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#10b981', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800 }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800 }}>
                 ✓
               </div>
               <span style={{ fontSize: '0.675rem', fontWeight: 600, color: 'var(--text-secondary)', marginTop: '8px' }}>Day 2</span>
@@ -178,15 +178,15 @@ export default function ParticipationDashboardPage() {
 
             {/* Day 3: Active */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, zIndex: 2 }}>
-              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#0a57e3', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 800, boxShadow: '0 0 0 3px rgba(10, 87, 227, 0.2)' }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--brand-color)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 800, boxShadow: '0 0 0 3px rgba(10, 87, 227, 0.2)' }}>
                 3
               </div>
-              <span style={{ fontSize: '0.675rem', fontWeight: 800, color: '#0a57e3', marginTop: '8px' }}>Day 3</span>
+              <span style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--brand-color)', marginTop: '8px' }}>Day 3</span>
             </div>
 
             {/* Day 4: Gray */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, zIndex: 2 }}>
-              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#ffffff', border: '1.5px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', border: '1.5px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>
                 4
               </div>
               <span style={{ fontSize: '0.675rem', fontWeight: 500, color: 'var(--text-muted)', marginTop: '8px' }}>Day 4</span>
@@ -194,7 +194,7 @@ export default function ParticipationDashboardPage() {
 
             {/* Day 5: Gray */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, zIndex: 2 }}>
-              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#ffffff', border: '1.5px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', border: '1.5px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>
                 5
               </div>
               <span style={{ fontSize: '0.675rem', fontWeight: 500, color: 'var(--text-muted)', marginTop: '8px' }}>Day 5</span>
@@ -202,7 +202,7 @@ export default function ParticipationDashboardPage() {
 
             {/* Day 6: Gray */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, zIndex: 2 }}>
-              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#ffffff', border: '1.5px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', border: '1.5px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>
                 6
               </div>
               <span style={{ fontSize: '0.675rem', fontWeight: 500, color: 'var(--text-muted)', marginTop: '8px' }}>Day 6</span>
@@ -210,7 +210,7 @@ export default function ParticipationDashboardPage() {
 
             {/* Day 7: Gray */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, zIndex: 2 }}>
-              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#ffffff', border: '1.5px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', border: '1.5px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>
                 7
               </div>
               <span style={{ fontSize: '0.675rem', fontWeight: 500, color: 'var(--text-muted)', marginTop: '8px' }}>Day 7</span>
@@ -228,12 +228,12 @@ export default function ParticipationDashboardPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '28px 32px',
             display: 'flex',
             alignItems: 'center',
             gap: '24px',
-            backgroundColor: '#ffffff'
+            backgroundColor: 'var(--bg-secondary)'
           } as React.CSSProperties}
         >
           {/* Calendar circle icon */}
@@ -242,8 +242,8 @@ export default function ParticipationDashboardPage() {
               width: '48px', 
               height: '48px', 
               borderRadius: '50%', 
-              backgroundColor: '#eff6ff', 
-              color: '#0a57e3', 
+              backgroundColor: 'var(--brand-light)', 
+              color: 'var(--brand-color)', 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center', 
@@ -270,7 +270,7 @@ export default function ParticipationDashboardPage() {
               onClick={handleStartCheckIn}
               className="premium-btn premium-btn-primary"
               style={{
-                '--btn-color': '#0a57e3',
+                '--btn-color': 'var(--brand-color)',
                 '--focus-ring': 'rgba(10, 87, 227, 0.15)',
                 padding: '10px 20px',
                 borderRadius: '8px',
@@ -290,12 +290,12 @@ export default function ParticipationDashboardPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '28px 32px',
             display: 'flex',
             alignItems: 'center',
             gap: '20px',
-            backgroundColor: '#ffffff'
+            backgroundColor: 'var(--bg-secondary)'
           } as React.CSSProperties}
         >
           {/* Shield circle icon */}
@@ -304,8 +304,8 @@ export default function ParticipationDashboardPage() {
               width: '48px', 
               height: '48px', 
               borderRadius: '50%', 
-              backgroundColor: '#eff6ff', 
-              color: '#0a57e3', 
+              backgroundColor: 'var(--brand-light)', 
+              color: 'var(--brand-color)', 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center', 
@@ -331,7 +331,7 @@ export default function ParticipationDashboardPage() {
                 alignItems: 'center', 
                 gap: '2px', 
                 fontSize: '0.775rem', 
-                color: '#0a57e3', 
+                color: 'var(--brand-color)', 
                 fontWeight: 700, 
                 marginTop: '6px',
                 textDecoration: 'none'
@@ -350,7 +350,7 @@ export default function ParticipationDashboardPage() {
       <div 
         style={{ 
           padding: '20px 32px', 
-          backgroundColor: '#ffffff',
+          backgroundColor: 'var(--bg-secondary)',
           border: '1.5px solid var(--border-color)',
           borderRadius: '16px',
           display: 'flex',
@@ -364,8 +364,8 @@ export default function ParticipationDashboardPage() {
             width: '42px', 
             height: '42px', 
             borderRadius: '50%', 
-            backgroundColor: '#eff6ff', 
-            color: '#0a57e3', 
+            backgroundColor: 'var(--brand-light)', 
+            color: 'var(--brand-color)', 
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center', 

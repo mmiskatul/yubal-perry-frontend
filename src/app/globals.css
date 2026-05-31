@@ -34,6 +34,21 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
+
+  /* Primary brand adaptation colors */
+  --brand-color: #0a57e3;
+  --brand-light: #eff6ff;
+  --brand-light-hover: #e0ecff;
+  --brand-alert-bg: #f3f8ff;
+  --brand-alert-border: #dbebff;
+  --brand-alert-text: #1e3a8a;
+
+  /* Landlord adaptation colors */
+  --color-admin-border: #ddd6fe;
+  --color-user-border: #a7f3d0;
+  --color-support-border: #fde68a;
+  --color-alert-light: #fff5f5;
+  --color-alert-border: #fca5a5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -55,6 +70,21 @@
     
     --glass-bg: rgba(19, 26, 38, 0.8);
     --glass-border: rgba(255, 255, 255, 0.05);
+
+    /* Primary brand adaptation colors */
+    --brand-color: #3b82f6;
+    --brand-light: rgba(59, 130, 246, 0.15);
+    --brand-light-hover: rgba(59, 130, 246, 0.25);
+    --brand-alert-bg: rgba(59, 130, 246, 0.1);
+    --brand-alert-border: rgba(59, 130, 246, 0.2);
+    --brand-alert-text: #93c5fd;
+
+    /* Landlord adaptation colors */
+    --color-admin-border: rgba(124, 58, 237, 0.2);
+    --color-user-border: rgba(16, 185, 129, 0.2);
+    --color-support-border: rgba(245, 158, 11, 0.2);
+    --color-alert-light: rgba(239, 68, 68, 0.1);
+    --color-alert-border: rgba(239, 68, 68, 0.2);
   }
 }
 

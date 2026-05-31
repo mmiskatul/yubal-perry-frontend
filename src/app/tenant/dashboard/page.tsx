@@ -35,14 +35,14 @@ export default function TenantDashboard() {
             display: 'flex', 
             alignItems: 'center', 
             gap: '12px',
-            backgroundColor: '#ffffff',
+            backgroundColor: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',
             borderRadius: '12px',
             padding: '12px 18px',
             boxShadow: 'var(--shadow-sm)'
           }}
         >
-          <span style={{ fontSize: '1.25rem', color: '#0a57e3' }}>📅</span>
+          <span style={{ fontSize: '1.25rem', color: 'var(--brand-color)' }}>📅</span>
           <div style={{ textAlign: 'left' }}>
             <span style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', letterSpacing: '0.05em' }}>
               Current Cycle
@@ -58,10 +58,10 @@ export default function TenantDashboard() {
       <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '24px', marginBottom: '24px' }}>
         
         {/* Monthly Participation Tracker */}
-        <div className="glass-card" style={{ '--role-color': '#0a57e3', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '260px' } as React.CSSProperties}>
+        <div className="glass-card" style={{ '--role-color': 'var(--brand-color)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '260px' } as React.CSSProperties}>
           <div>
             <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '24px' }}>
-              <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifySelf: 'center', justifyContent: 'center', color: '#0a57e3', fontSize: '1.1rem' }}>
+              <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'var(--brand-light)', display: 'flex', alignItems: 'center', justifySelf: 'center', justifyContent: 'center', color: 'var(--brand-color)', fontSize: '1.1rem' }}>
                 👥
               </div>
               <div>
@@ -77,40 +77,40 @@ export default function TenantDashboard() {
               
               {/* Day 1: Completed */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
-                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#10b981', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
                   ✓
                 </div>
                 <span style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', marginTop: '8px', fontWeight: 600 }}>May 1</span>
                 {/* Connector line */}
-                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundColor: '#10b981', zIndex: 1 }} />
+                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundcolor: 'var(--color-user)', zIndex: 1 }} />
               </div>
 
               {/* Day 2: Completed */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
-                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#10b981', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
                   ✓
                 </div>
                 <span style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', marginTop: '8px', fontWeight: 600 }}>May 2</span>
                 {/* Connector line */}
-                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundColor: '#10b981', zIndex: 1 }} />
+                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundcolor: 'var(--color-user)', zIndex: 1 }} />
               </div>
 
               {/* Day 3: Completed */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
-                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#10b981', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
                   ✓
                 </div>
                 <span style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', marginTop: '8px', fontWeight: 600 }}>May 3</span>
                 {/* Connector line */}
-                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundColor: '#0a57e3', zIndex: 1 }} />
+                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundColor: 'var(--brand-color)', zIndex: 1 }} />
               </div>
 
               {/* Day 4: Available */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
-                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#ffffff', border: '2px solid #0a57e3', color: '#0a57e3', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2, boxShadow: '0 0 0 4px rgba(10, 87, 227, 0.1)' }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', border: '2px solid var(--brand-color)', color: 'var(--brand-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2, boxShadow: '0 0 0 4px var(--focus-ring)' }}>
                   4
                 </div>
-                <span style={{ fontSize: '0.725rem', color: '#0a57e3', marginTop: '8px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.025em', display: 'block', textAlign: 'center', whiteSpace: 'nowrap' }}>
+                <span style={{ fontSize: '0.725rem', color: 'var(--brand-color)', marginTop: '8px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.025em', display: 'block', textAlign: 'center', whiteSpace: 'nowrap' }}>
                   May 4 <br/><span style={{ fontSize: '0.6rem', fontWeight: 700 }}>Available Today</span>
                 </span>
                 {/* Connector line */}
@@ -119,7 +119,7 @@ export default function TenantDashboard() {
 
               {/* Day 5: Upcoming */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
-                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#ffffff', border: '2px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 500, fontSize: '0.9rem', zIndex: 2 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', border: '2px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 500, fontSize: '0.9rem', zIndex: 2 }}>
                   5
                 </div>
                 <span style={{ fontSize: '0.725rem', color: 'var(--text-muted)', marginTop: '8px', fontWeight: 500 }}>May 5</span>
@@ -129,7 +129,7 @@ export default function TenantDashboard() {
 
               {/* Day 6: Upcoming */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
-                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#ffffff', border: '2px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 500, fontSize: '0.9rem', zIndex: 2 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', border: '2px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 500, fontSize: '0.9rem', zIndex: 2 }}>
                   6
                 </div>
                 <span style={{ fontSize: '0.725rem', color: 'var(--text-muted)', marginTop: '8px', fontWeight: 500 }}>May 6</span>
@@ -139,7 +139,7 @@ export default function TenantDashboard() {
 
               {/* Day 7: Upcoming */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 0.5 }}>
-                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: '#ffffff', border: '2px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 500, fontSize: '0.9rem', zIndex: 2 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', border: '2px solid var(--border-color)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 500, fontSize: '0.9rem', zIndex: 2 }}>
                   7
                 </div>
                 <span style={{ fontSize: '0.725rem', color: 'var(--text-muted)', marginTop: '8px', fontWeight: 500 }}>May 7</span>
@@ -159,10 +159,10 @@ export default function TenantDashboard() {
         </div>
 
         {/* This Month Grid Info */}
-        <div className="glass-card" style={{ '--role-color': '#0a57e3', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '260px' } as React.CSSProperties}>
+        <div className="glass-card" style={{ '--role-color': 'var(--brand-color)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '260px' } as React.CSSProperties}>
           <div>
             <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '24px' }}>
-              <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0a57e3', fontSize: '1.1rem' }}>
+              <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'var(--brand-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--brand-color)', fontSize: '1.1rem' }}>
                 📆
               </div>
               <div>
@@ -175,7 +175,7 @@ export default function TenantDashboard() {
               
               <div style={{ display: 'flex', alignItems: 'center', justifySelf: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: '#e6fbf3', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981', fontSize: '0.75rem', fontWeight: 800 }}>✓</div>
+                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: 'var(--color-user-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-user)', fontSize: '0.75rem', fontWeight: 800 }}>✓</div>
                   <span style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--text-secondary)' }}>Submitted</span>
                 </div>
                 <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)' }}>3</span>
@@ -183,7 +183,7 @@ export default function TenantDashboard() {
 
               <div style={{ display: 'flex', alignItems: 'center', justifySelf: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0a57e3', fontSize: '0.75rem', fontWeight: 800 }}>🕒</div>
+                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: 'var(--brand-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--brand-color)', fontSize: '0.75rem', fontWeight: 800 }}>🕒</div>
                   <span style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--text-secondary)' }}>Available</span>
                 </div>
                 <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)' }}>1</span>
@@ -207,9 +207,9 @@ export default function TenantDashboard() {
       <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '24px', marginBottom: '24px' }}>
         
         {/* Recent Activity List */}
-        <div className="glass-card" style={{ '--role-color': '#0a57e3' } as React.CSSProperties}>
+        <div className="glass-card" style={{ '--role-color': 'var(--brand-color)' } as React.CSSProperties}>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '24px' }}>
-            <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0a57e3', fontSize: '1.1rem' }}>
+            <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'var(--brand-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--brand-color)', fontSize: '1.1rem' }}>
               📄
             </div>
             <div>
@@ -233,7 +233,7 @@ export default function TenantDashboard() {
                 onMouseLeave={(e)=>e.currentTarget.style.opacity = '1'}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: '#e6fbf3', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981', fontSize: '0.75rem' }}>✓</div>
+                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: 'var(--color-user-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-user)', fontSize: '0.75rem' }}>✓</div>
                   <div>
                     <h4 style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)' }}>{act.text}</h4>
                   </div>
@@ -247,16 +247,16 @@ export default function TenantDashboard() {
           </div>
 
           <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '16px', marginTop: '16px' }}>
-            <a href="/tenant/check-ins" style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0a57e3', textDecoration: 'none' }}>
+            <a href="/tenant/check-ins" style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--brand-color)', textDecoration: 'none' }}>
               View all activity ➔
             </a>
           </div>
         </div>
 
         {/* Helpful Reminders Ticker */}
-        <div className="glass-card" style={{ '--role-color': '#0a57e3' } as React.CSSProperties}>
+        <div className="glass-card" style={{ '--role-color': 'var(--brand-color)' } as React.CSSProperties}>
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '24px' }}>
-            <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0a57e3', fontSize: '1.1rem' }}>
+            <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'var(--brand-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--brand-color)', fontSize: '1.1rem' }}>
               🔔
             </div>
             <div>
@@ -267,7 +267,7 @@ export default function TenantDashboard() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             
             <div style={{ display: 'flex', gap: '12px' }}>
-              <span style={{ fontSize: '1.25rem', color: '#0a57e3', display: 'block', marginTop: '2px' }}>🕒</span>
+              <span style={{ fontSize: '1.25rem', color: 'var(--brand-color)', display: 'block', marginTop: '2px' }}>🕒</span>
               <div>
                 <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)' }}>Check-in daily</h4>
                 <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '2px', lineHeight: '1.3' }}>
@@ -277,7 +277,7 @@ export default function TenantDashboard() {
             </div>
 
             <div style={{ display: 'flex', gap: '12px' }}>
-              <span style={{ fontSize: '1.25rem', color: '#0a57e3', display: 'block', marginTop: '2px' }}>✉️</span>
+              <span style={{ fontSize: '1.25rem', color: 'var(--brand-color)', display: 'block', marginTop: '2px' }}>✉️</span>
               <div>
                 <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)' }}>Didn't get a text?</h4>
                 <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '2px', lineHeight: '1.3' }}>
@@ -287,7 +287,7 @@ export default function TenantDashboard() {
             </div>
 
             <div style={{ display: 'flex', gap: '12px' }}>
-              <span style={{ fontSize: '1.25rem', color: '#0a57e3', display: 'block', marginTop: '2px' }}>🎧</span>
+              <span style={{ fontSize: '1.25rem', color: 'var(--brand-color)', display: 'block', marginTop: '2px' }}>🎧</span>
               <div>
                 <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)' }}>Need help?</h4>
                 <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '2px', lineHeight: '1.3' }}>
@@ -299,7 +299,7 @@ export default function TenantDashboard() {
           </div>
 
           <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '16px', marginTop: '20px' }}>
-            <a href="/tenant/support" style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0a57e3', textDecoration: 'none' }}>
+            <a href="/tenant/support" style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--brand-color)', textDecoration: 'none' }}>
               Visit Help Center ➔
             </a>
           </div>
@@ -311,7 +311,7 @@ export default function TenantDashboard() {
       <div 
         style={{ 
           padding: '18px 24px', 
-          backgroundColor: '#f8fafc',
+          backgroundColor: 'var(--bg-primary)',
           border: '1px solid var(--border-color)',
           borderRadius: '12px',
           display: 'flex',

@@ -20,8 +20,8 @@ const reports = [
     generated: 'Jun 1, 2026',
     status: 'Ready',
     size: '2.4 MB',
-    color: '#0a57e3',
-    bg: '#eff6ff'
+    color: 'var(--brand-color)',
+    bg: 'var(--brand-light)'
   },
   {
     title: 'Pre-Tenancy Completion Report – Q2 2026',
@@ -30,8 +30,8 @@ const reports = [
     generated: 'Jun 3, 2026',
     status: 'Ready',
     size: '1.1 MB',
-    color: '#7c3aed',
-    bg: '#f5f3ff'
+    color: 'var(--color-admin)',
+    bg: 'var(--color-admin-light)'
   },
   {
     title: 'Integrity Score Trends – April 2026',
@@ -40,8 +40,8 @@ const reports = [
     generated: 'May 2, 2026',
     status: 'Ready',
     size: '0.8 MB',
-    color: '#10b981',
-    bg: '#e6fbf3'
+    color: 'var(--color-user)',
+    bg: 'var(--color-user-light)'
   },
   {
     title: 'Early Warning Incidents – March 2026',
@@ -51,7 +51,7 @@ const reports = [
     status: 'Ready',
     size: '0.5 MB',
     color: '#ef4444',
-    bg: '#fff5f5'
+    bg: 'var(--color-alert-light)'
   },
   {
     title: 'Full Portfolio Report – Q1 2026',
@@ -61,7 +61,7 @@ const reports = [
     status: 'Archived',
     size: '4.2 MB',
     color: 'var(--text-muted)',
-    bg: '#f1f5f9'
+    bg: 'var(--bg-primary)'
   }
 ];
 
@@ -92,7 +92,7 @@ export default function LandlordReportsPage() {
           </div>
           <button
             className="premium-btn premium-btn-primary"
-            style={{ '--btn-color': '#7c3aed', padding: '10px 20px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '6px' } as React.CSSProperties}
+            style={{ '--btn-color': 'var(--color-admin)', padding: '10px 20px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '6px' } as React.CSSProperties}
             onClick={() => alert('Sandbox: Generate new custom report')}
           >
             <LuFileText /> Generate Report
@@ -100,21 +100,21 @@ export default function LandlordReportsPage() {
         </div>
 
         {/* Score Trend Chart Card */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 32px', boxShadow: 'var(--shadow-sm)', marginBottom: '32px', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 32px', boxShadow: 'var(--shadow-sm)', marginBottom: '32px', textAlign: 'left' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
             <div>
               <h3 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)' }}>Portfolio Integrity Score Trend</h3>
               <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '2px' }}>Average monthly score across all monitored tenants</p>
             </div>
-            <span style={{ fontSize: '0.675rem', padding: '4px 10px', borderRadius: '6px', backgroundColor: '#e6fbf3', color: '#10b981', fontWeight: 700 }}>↑ +9 pts this month</span>
+            <span style={{ fontSize: '0.675rem', padding: '4px 10px', borderRadius: '6px', backgroundColor: 'var(--color-user-light)', color: 'var(--color-user)', fontWeight: 700 }}>↑ +9 pts this month</span>
           </div>
 
           {/* Chart */}
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: '16px', height: '120px' }}>
             {chartData.map((d, i) => (
               <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, gap: '6px' }}>
-                <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#0a57e3' }}>{d.score}</span>
-                <div style={{ width: '100%', borderRadius: '4px 4px 0 0', backgroundColor: i === chartData.length - 1 ? '#0a57e3' : '#e2e8f0', height: `${(d.score / 100) * 80}px`, transition: 'height 0.4s ease' }} />
+                <span style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--brand-color)' }}>{d.score}</span>
+                <div style={{ width: '100%', borderRadius: '4px 4px 0 0', backgroundColor: i === chartData.length - 1 ? 'var(--brand-color)' : 'var(--border-color)', height: `${(d.score / 100) * 80}px`, transition: 'height 0.4s ease' }} />
                 <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', fontWeight: 600 }}>{d.month}</span>
               </div>
             ))}
@@ -131,8 +131,8 @@ export default function LandlordReportsPage() {
                 padding: '6px 14px',
                 borderRadius: '7px',
                 border: '1px solid',
-                borderColor: selectedType === f ? '#7c3aed' : 'var(--border-color)',
-                backgroundColor: selectedType === f ? '#7c3aed' : '#ffffff',
+                borderColor: selectedType === f ? 'var(--color-admin)' : 'var(--border-color)',
+                backgroundColor: selectedType === f ? 'var(--color-admin)' : 'var(--bg-secondary)',
                 color: selectedType === f ? '#ffffff' : 'var(--text-secondary)',
                 fontSize: '0.775rem',
                 fontWeight: 700,
@@ -150,7 +150,7 @@ export default function LandlordReportsPage() {
           {filtered.map((r, i) => (
             <div
               key={i}
-              style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '18px 24px', boxShadow: 'var(--shadow-sm)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', textAlign: 'left' }}
+              style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '18px 24px', boxShadow: 'var(--shadow-sm)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', textAlign: 'left' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                 <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: r.bg, color: r.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>

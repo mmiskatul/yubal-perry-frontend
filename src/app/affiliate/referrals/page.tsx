@@ -26,10 +26,10 @@ export default function AffiliateReferralsPage() {
   };
 
   const recentConversions = [
-    { initials: 'JS', name: 'James Smith', plan: 'Pro Annual Plan', earned: '+$49.00', time: '2H AGO', color: '#eff6ff', textColor: '#0a57e3' },
-    { initials: 'ML', name: 'Maria Lopez', plan: 'Basic Monthly', earned: '+$12.50', time: '5H AGO', color: '#eff6ff', textColor: '#0a57e3' },
-    { initials: 'KT', name: 'Kevin Taylor', plan: 'Enterprise', earned: '+$199.00', time: '1D AGO', color: '#eff6ff', textColor: '#0a57e3' },
-    { initials: 'DR', name: 'Daniel Reed', plan: 'Pro Monthly', earned: '+$24.00', time: '2D AGO', color: '#eff6ff', textColor: '#0a57e3' },
+    { initials: 'JS', name: 'James Smith', plan: 'Pro Annual Plan', earned: '+$49.00', time: '2H AGO', color: '#eff6ff', textcolor: 'var(--brand-color)' },
+    { initials: 'ML', name: 'Maria Lopez', plan: 'Basic Monthly', earned: '+$12.50', time: '5H AGO', color: '#eff6ff', textcolor: 'var(--brand-color)' },
+    { initials: 'KT', name: 'Kevin Taylor', plan: 'Enterprise', earned: '+$199.00', time: '1D AGO', color: '#eff6ff', textcolor: 'var(--brand-color)' },
+    { initials: 'DR', name: 'Daniel Reed', plan: 'Pro Monthly', earned: '+$24.00', time: '2D AGO', color: '#eff6ff', textcolor: 'var(--brand-color)' },
   ];
 
   return (
@@ -41,7 +41,7 @@ export default function AffiliateReferralsPage() {
           position: 'fixed',
           top: '20px',
           right: '20px',
-          backgroundColor: '#10b981',
+          backgroundcolor: 'var(--color-user)',
           color: '#ffffff',
           padding: '12px 24px',
           borderRadius: '8px',
@@ -75,7 +75,7 @@ export default function AffiliateReferralsPage() {
             padding: '10px 18px', 
             borderRadius: '10px', 
             border: 'none', 
-            backgroundColor: '#0a57e3',
+            backgroundColor: 'var(--brand-color)',
             color: '#ffffff',
             cursor: 'pointer',
             display: 'flex',
@@ -96,7 +96,7 @@ export default function AffiliateReferralsPage() {
       {/* Unique Partner Link Banner Card */}
       <div 
         style={{ 
-          backgroundColor: '#ffffff', 
+          backgroundColor: 'var(--bg-secondary)', 
           border: '1px solid var(--border-color)', 
           borderRadius: '16px', 
           padding: '32px', 
@@ -111,14 +111,14 @@ export default function AffiliateReferralsPage() {
               Your Unique Partner Link
             </h3>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-              Share this link to earn <strong style={{ color: '#0a57e3' }}>20% commission</strong> on every conversion.
+              Share this link to earn <strong style={{ color: 'var(--brand-color)' }}>20% commission</strong> on every conversion.
             </p>
 
             <div style={{ display: 'flex', gap: '10px', marginTop: '20px', position: 'relative', alignItems: 'center' }}>
               <div 
                 style={{ 
                   flex: 1, 
-                  backgroundColor: '#f8fafc', 
+                  backgroundColor: 'var(--bg-primary)', 
                   border: '1px solid var(--border-color)', 
                   borderRadius: '10px', 
                   padding: '12px 16px', 
@@ -135,7 +135,7 @@ export default function AffiliateReferralsPage() {
               <button
                 onClick={handleCopy}
                 style={{
-                  backgroundColor: '#0a57e3',
+                  backgroundColor: 'var(--brand-color)',
                   color: '#ffffff',
                   border: 'none',
                   padding: '12px 24px',
@@ -176,7 +176,7 @@ export default function AffiliateReferralsPage() {
                     height: '42px',
                     borderRadius: '50%',
                     border: '1px solid var(--border-color)',
-                    backgroundColor: '#ffffff',
+                    backgroundColor: 'var(--bg-secondary)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -187,12 +187,12 @@ export default function AffiliateReferralsPage() {
                   onMouseEnter={e => {
                     e.currentTarget.style.borderColor = '#0a57e3';
                     e.currentTarget.style.color = '#0a57e3';
-                    e.currentTarget.style.backgroundColor = '#f0f6ff';
+                    e.currentTarget.style.backgroundColor = 'var(--brand-light)';
                   }}
                   onMouseLeave={e => {
                     e.currentTarget.style.borderColor = 'var(--border-color)';
                     e.currentTarget.style.color = 'var(--text-secondary)';
-                    e.currentTarget.style.backgroundColor = '#ffffff';
+                    e.currentTarget.style.backgroundColor = 'var(--bg-secondary)';
                   }}
                 >
                   {share.icon}
@@ -208,12 +208,12 @@ export default function AffiliateReferralsPage() {
         {[
           { title: 'Total Referrals', value: '1,284', change: '+12%', icon: <LuUsers /> },
           { title: 'Active Conversions', value: '342', change: '+4.2%', icon: <LuAward /> },
-          { title: 'Earned Revenue', value: '$4,821.50', change: 'Last 30 Days', icon: <LuTrendingUp />, color: '#10b981' }
+          { title: 'Earned Revenue', value: '$4,821.50', change: 'Last 30 Days', icon: <LuTrendingUp />, color: 'var(--color-user)' }
         ].map((m, i) => (
           <div 
             key={i}
             style={{
-              backgroundColor: '#ffffff',
+              backgroundColor: 'var(--bg-secondary)',
               border: '1px solid var(--border-color)',
               borderRadius: '16px',
               padding: '24px 28px',
@@ -229,7 +229,7 @@ export default function AffiliateReferralsPage() {
                 <span style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   {m.title}
                 </span>
-                <span style={{ fontSize: '0.65rem', padding: '1px 6px', borderRadius: '4px', backgroundColor: '#e6fbf3', color: '#10b981', fontWeight: 700 }}>
+                <span style={{ fontSize: '0.65rem', padding: '1px 6px', borderRadius: '4px', backgroundColor: 'var(--color-user-light)', color: 'var(--color-user)', fontWeight: 700 }}>
                   {m.change}
                 </span>
               </div>
@@ -243,7 +243,7 @@ export default function AffiliateReferralsPage() {
               </h2>
             </div>
             
-            <div style={{ width: '42px', height: '42px', borderRadius: '10px', backgroundColor: '#f0f6ff', color: '#0a57e3', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>
+            <div style={{ width: '42px', height: '42px', borderRadius: '10px', backgroundColor: 'var(--brand-light)', color: 'var(--brand-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>
               {m.icon}
             </div>
           </div>
@@ -253,7 +253,7 @@ export default function AffiliateReferralsPage() {
       {/* Recent Conversions Table */}
       <div 
         style={{ 
-          backgroundColor: '#ffffff', 
+          backgroundColor: 'var(--bg-secondary)', 
           border: '1px solid var(--border-color)', 
           borderRadius: '16px', 
           padding: '24px 0', 
@@ -282,7 +282,7 @@ export default function AffiliateReferralsPage() {
                 fontSize: '0.875rem',
                 transition: 'background-color 0.15s ease'
               }}
-              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#fafbfc'}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--bg-primary)'}
               onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
             >
               {/* Initials Avatar */}
@@ -313,7 +313,7 @@ export default function AffiliateReferralsPage() {
 
               {/* Earnings & Time */}
               <div style={{ textAlign: 'right' }}>
-                <div style={{ fontWeight: 800, color: '#10b981', fontSize: '0.95rem' }}>{row.earned}</div>
+                <div style={{ fontWeight: 800, color: 'var(--color-user)', fontSize: '0.95rem' }}>{row.earned}</div>
                 <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '2px', fontWeight: 600 }}>{row.time}</div>
               </div>
             </div>
@@ -327,7 +327,7 @@ export default function AffiliateReferralsPage() {
             style={{
               background: 'none',
               border: 'none',
-              color: '#0a57e3',
+              color: 'var(--brand-color)',
               fontSize: '0.8rem',
               fontWeight: 700,
               cursor: 'pointer',

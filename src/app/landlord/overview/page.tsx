@@ -23,15 +23,15 @@ export default function LandlordOverviewPage() {
   const [activePropertyFilter, setActivePropertyFilter] = useState<'all' | 'vacant' | 'occupied' | 'action'>('all');
 
   const preTenancyList = [
-    { name: 'Maple Heights A-12', address: '123 Maple Street', cycle: 'Day 3 of 7', status: 'Active', color: '#0a57e3', bg: '#eff6ff', avatar: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=80&q=80' },
-    { name: 'Riverside Apt 402', address: '45 Temecula Drive', cycle: 'Day 5 of 7', status: 'Active', color: '#0a57e3', bg: '#eff6ff', avatar: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=80&q=80' },
-    { name: 'Grand Plaza 6A', address: '8 Grand Plaza', cycle: 'Day 7 of 7', status: 'Completed', color: '#10b981', bg: '#e6fbf3', avatar: 'https://images.unsplash.com/photo-1592595896551-12b371d546d5?auto=format&fit=crop&w=80&q=80' },
-    { name: 'Oak Ridge Tower', address: 'Grand Plaza 6A', cycle: 'Day 7 of 7', status: 'Completed', color: '#10b981', bg: '#e6fbf3', avatar: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=80&q=80' }
+    { name: 'Maple Heights A-12', address: '123 Maple Street', cycle: 'Day 3 of 7', status: 'Active', color: 'var(--brand-color)', bg: '#eff6ff', avatar: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=80&q=80' },
+    { name: 'Riverside Apt 402', address: '45 Temecula Drive', cycle: 'Day 5 of 7', status: 'Active', color: 'var(--brand-color)', bg: '#eff6ff', avatar: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=80&q=80' },
+    { name: 'Grand Plaza 6A', address: '8 Grand Plaza', cycle: 'Day 7 of 7', status: 'Completed', color: 'var(--color-user)', bg: '#e6fbf3', avatar: 'https://images.unsplash.com/photo-1592595896551-12b371d546d5?auto=format&fit=crop&w=80&q=80' },
+    { name: 'Oak Ridge Tower', address: 'Grand Plaza 6A', cycle: 'Day 7 of 7', status: 'Completed', color: 'var(--color-user)', bg: '#e6fbf3', avatar: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=80&q=80' }
   ];
 
   const warnings = [
     { name: 'Marcus Villanueva', change: 'Participation dropped from 82% to 68%', desc: 'Immediate Attention Required', color: '#ef4444', bg: '#fff5f5', border: '#fee2e2', initials: 'MV' },
-    { name: 'Elena Rossi', change: 'Integrity Score dropped from 98 to 74', desc: 'Monitor Closely', color: '#f59e0b', bg: '#fffbeb', border: '#fef3c7', initials: 'ER' }
+    { name: 'Elena Rossi', change: 'Integrity Score dropped from 98 to 74', desc: 'Monitor Closely', color: 'var(--color-support)', bg: '#fffbeb', border: '#fef3c7', initials: 'ER' }
   ];
 
   const recentActivities = [
@@ -56,7 +56,7 @@ export default function LandlordOverviewPage() {
           display: 'flex', 
           alignItems: 'center', 
           justifyContent: 'space-between',
-          backgroundColor: '#f8fafc',
+          backgroundColor: 'var(--bg-primary)',
           border: '1.5px dashed #cbd5e1',
           borderRadius: '12px',
           padding: '12px 20px',
@@ -121,7 +121,7 @@ export default function LandlordOverviewPage() {
             </div>
             <button 
               className="premium-btn" 
-              style={{ backgroundColor: '#ffffff', color: '#7c3aed', padding: '10px 20px', borderRadius: '8px', fontWeight: 700, fontSize: '0.825rem', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
+              style={{ backgroundColor: 'var(--bg-secondary)', color: '#7c3aed', padding: '10px 20px', borderRadius: '8px', fontWeight: 700, fontSize: '0.825rem', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
               onClick={() => alert('sandbox action: Add a vacant/occupied property')}
             >
               Add Property <LuChevronRight />
@@ -154,7 +154,7 @@ export default function LandlordOverviewPage() {
               </div>
               <button 
                 className="premium-btn" 
-                style={{ backgroundColor: '#ffffff', color: '#7c3aed', padding: '10px 20px', borderRadius: '8px', fontWeight: 700, fontSize: '0.825rem', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
+                style={{ backgroundColor: 'var(--bg-secondary)', color: '#7c3aed', padding: '10px 20px', borderRadius: '8px', fontWeight: 700, fontSize: '0.825rem', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
                 onClick={() => alert('sandbox action: Add tenant credentials')}
               >
                 Add Tenant Details <LuChevronRight />
@@ -162,7 +162,7 @@ export default function LandlordOverviewPage() {
             </div>
 
             {/* Stepper Progress bar matching Screenshot 2 */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '18px 24px', boxShadow: 'var(--shadow-sm)' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '18px 24px', boxShadow: 'var(--shadow-sm)' }}>
               {[
                 { step: '1', title: 'Add Tenant Details', desc: 'Add tenant names, contact details, and occupancy logs.', status: 'Not Started', active: true },
                 { step: '2', title: 'Activate Monitoring', desc: 'Trigger initial check-in scheduling cycles.', status: 'Not Started', active: false },
@@ -216,7 +216,7 @@ export default function LandlordOverviewPage() {
                   <span style={{ fontSize: '0.725rem', opacity: 0.8 }}>Vacant Properties</span>
                 </div>
                 <button 
-                  style={{ backgroundColor: '#ffffff', color: '#7c3aed', border: 'none', padding: '6px 12px', borderRadius: '6px', fontSize: '0.725rem', fontWeight: 700, cursor: 'pointer' }}
+                  style={{ backgroundColor: 'var(--bg-secondary)', color: '#7c3aed', border: 'none', padding: '6px 12px', borderRadius: '6px', fontSize: '0.725rem', fontWeight: 700, cursor: 'pointer' }}
                   onClick={() => alert('Start pre-tenancy onboarding')}
                 >
                   Start Pre-Tenancy &rarr;
@@ -230,7 +230,7 @@ export default function LandlordOverviewPage() {
                   <span style={{ fontSize: '0.725rem', opacity: 0.8 }}>Occupied Properties</span>
                 </div>
                 <button 
-                  style={{ backgroundColor: '#ffffff', color: '#7c3aed', border: 'none', padding: '6px 12px', borderRadius: '6px', fontSize: '0.725rem', fontWeight: 700, cursor: 'pointer' }}
+                  style={{ backgroundColor: 'var(--bg-secondary)', color: '#7c3aed', border: 'none', padding: '6px 12px', borderRadius: '6px', fontSize: '0.725rem', fontWeight: 700, cursor: 'pointer' }}
                   onClick={() => alert('Start tenant details settings')}
                 >
                   Set Up Monitoring &rarr;
@@ -239,12 +239,12 @@ export default function LandlordOverviewPage() {
             </div>
 
             {/* Properties Grid Table matching Screenshot 3 */}
-            <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '20px 0', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+            <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '20px 0', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
               <div style={{ padding: '0 24px 16px 24px', borderBottom: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)' }}>Your Properties (3)</h3>
                 
                 {/* Filter tabs */}
-                <div style={{ display: 'flex', gap: '4px', backgroundColor: '#f1f5f9', padding: '3px', borderRadius: '8px' }}>
+                <div style={{ display: 'flex', gap: '4px', backgroundColor: 'var(--bg-primary)', padding: '3px', borderRadius: '8px' }}>
                   {['all', 'vacant', 'occupied', 'action'].map((filter) => (
                     <button
                       key={filter}
@@ -269,7 +269,7 @@ export default function LandlordOverviewPage() {
 
               {/* Table Body */}
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div style={{ display: 'flex', padding: '12px 24px', backgroundColor: '#f8fafc', borderBottom: '1px solid var(--border-color)', fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <div style={{ display: 'flex', padding: '12px 24px', backgroundColor: 'var(--bg-primary)', borderBottom: '1px solid var(--border-color)', fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   <div style={{ flex: 1.5 }}>Property</div>
                   <div style={{ flex: 0.8 }}>Type</div>
                   <div style={{ flex: 1 }}>Status</div>
@@ -290,7 +290,7 @@ export default function LandlordOverviewPage() {
                   >
                     {/* Name */}
                     <div style={{ flex: 1.5, display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <div style={{ width: '32px', height: '32px', borderRadius: '6px', backgroundColor: '#eff6ff', color: '#0a57e3', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem' }}><LuHouse /></div>
+                      <div style={{ width: '32px', height: '32px', borderRadius: '6px', backgroundColor: 'var(--brand-light)', color: 'var(--brand-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem' }}><LuHouse /></div>
                       <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <strong style={{ color: 'var(--text-primary)' }}>{prop.name}</strong>
                         <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '2px' }}>123 Mock Lane</span>
@@ -341,7 +341,7 @@ export default function LandlordOverviewPage() {
                     <div style={{ flex: 1, textAlign: 'right' }}>
                       <button 
                         className={`premium-btn ${prop.btnText === 'Start Pre-Tenancy' ? 'premium-btn-primary' : 'premium-btn-secondary'}`}
-                        style={{ '--btn-color': '#0a57e3', padding: '6px 12px', borderRadius: '6px', fontSize: '0.725rem', fontWeight: 700 } as React.CSSProperties}
+                        style={{ '--btn-color': 'var(--brand-color)', padding: '6px 12px', borderRadius: '6px', fontSize: '0.725rem', fontWeight: 700 } as React.CSSProperties}
                         onClick={() => alert(`sandbox action: ${prop.btnText}`)}
                       >
                         {prop.btnText}
@@ -380,7 +380,7 @@ export default function LandlordOverviewPage() {
               </div>
               <button 
                 className="premium-btn" 
-                style={{ backgroundColor: '#ffffff', color: '#7c3aed', padding: '10px 20px', borderRadius: '8px', fontWeight: 700, fontSize: '0.825rem', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
+                style={{ backgroundColor: 'var(--bg-secondary)', color: '#7c3aed', padding: '10px 20px', borderRadius: '8px', fontWeight: 700, fontSize: '0.825rem', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
                 onClick={() => alert('sandbox action: Add a pre-tenancy applicant')}
               >
                 Add an Applicant <LuChevronRight />
@@ -388,7 +388,7 @@ export default function LandlordOverviewPage() {
             </div>
 
             {/* Stepper Progress bar matching Screenshot 4 */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '18px 24px', boxShadow: 'var(--shadow-sm)' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '18px 24px', boxShadow: 'var(--shadow-sm)' }}>
               {[
                 { step: '1', title: 'Start Pre-Tenancy Process', desc: 'Configure pre-tenancy parameters and check-in times.', status: 'Not Started', active: true },
                 { step: '2', title: 'Pre-Tenancy Active', desc: 'Collect daily check-ins for the 7-day streak cycle.', status: 'Not Started', active: false },
@@ -413,7 +413,7 @@ export default function LandlordOverviewPage() {
       {/* Core section: Behavioral Overview */}
       <div 
         style={{
-          backgroundColor: '#ffffff',
+          backgroundColor: 'var(--bg-secondary)',
           border: '1px solid var(--border-color)',
           borderRadius: '12px',
           padding: '24px 32px',
@@ -431,7 +431,7 @@ export default function LandlordOverviewPage() {
         {/* 3 Overview cards matching screenshots */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px' }}>
           {/* Card 1: Requires Attention */}
-          <div style={{ border: '1px solid #fee2e2', borderRadius: '10px', padding: '20px', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '140px' }}>
+          <div style={{ border: '1px solid var(--color-alert-border)', borderRadius: '10px', padding: '20px', backgroundColor: 'var(--bg-secondary)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '140px' }}>
             <div style={{ textAlign: 'left' }}>
               <h4 style={{ fontSize: '0.85rem', fontWeight: 800, color: '#ef4444', display: 'flex', alignItems: 'center', gap: '6px' }}>
                 ⚠ Requires Attention
@@ -450,13 +450,13 @@ export default function LandlordOverviewPage() {
           </div>
 
           {/* Card 2: Monitor */}
-          <div style={{ border: '1px solid #fef3c7', borderRadius: '10px', padding: '20px', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '140px' }}>
+          <div style={{ border: '1px solid var(--color-support-border)', borderRadius: '10px', padding: '20px', backgroundColor: 'var(--bg-secondary)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '140px' }}>
             <div style={{ textAlign: 'left' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h4 style={{ fontSize: '0.85rem', fontWeight: 800, color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <h4 style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--color-support)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                   ● Monitor
                 </h4>
-                <span style={{ fontSize: '0.625rem', fontWeight: 700, backgroundColor: '#fef3c7', color: '#b45309', padding: '2px 8px', borderRadius: '4px' }}>26 Tenants</span>
+                <span style={{ fontSize: '0.625rem', fontWeight: 700, backgroundColor: 'var(--color-support-light)', color: '#b45309', padding: '2px 8px', borderRadius: '4px' }}>26 Tenants</span>
               </div>
               <p style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', marginTop: '8px', lineHeight: '1.4' }}>
                 Some changes in behavior observed, continuous monitoring.
@@ -464,7 +464,7 @@ export default function LandlordOverviewPage() {
             </div>
             <button 
               className="premium-btn" 
-              style={{ backgroundColor: '#fffbeb', color: '#b45309', border: '1px solid #fde68a', borderRadius: '6px', padding: '6px 12px', fontSize: '0.725rem', fontWeight: 700, width: '100%', cursor: 'pointer' }}
+              style={{ backgroundColor: 'var(--color-support-light)', color: '#b45309', border: '1px solid var(--color-support-border)', borderRadius: '6px', padding: '6px 12px', fontSize: '0.725rem', fontWeight: 700, width: '100%', cursor: 'pointer' }}
               onClick={() => alert('View monitored tenant list')}
             >
               Monitor &gt;
@@ -472,13 +472,13 @@ export default function LandlordOverviewPage() {
           </div>
 
           {/* Card 3: Stable */}
-          <div style={{ border: '1px solid #c6f6e5', borderRadius: '10px', padding: '20px', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '140px' }}>
+          <div style={{ border: '1px solid #c6f6e5', borderRadius: '10px', padding: '20px', backgroundColor: 'var(--bg-secondary)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '140px' }}>
             <div style={{ textAlign: 'left' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h4 style={{ fontSize: '0.85rem', fontWeight: 800, color: '#10b981', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <h4 style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--color-user)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                   ✓ Stable
                 </h4>
-                <span style={{ fontSize: '0.625rem', fontWeight: 700, backgroundColor: '#e6fbf3', color: '#047857', padding: '2px 8px', borderRadius: '4px' }}>154 Tenants</span>
+                <span style={{ fontSize: '0.625rem', fontWeight: 700, backgroundColor: 'var(--color-user-light)', color: '#047857', padding: '2px 8px', borderRadius: '4px' }}>154 Tenants</span>
               </div>
               <p style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', marginTop: '8px', lineHeight: '1.4' }}>
                 Consistent behavior and engagement over time.
@@ -486,7 +486,7 @@ export default function LandlordOverviewPage() {
             </div>
             <button 
               className="premium-btn" 
-              style={{ backgroundColor: '#e6fbf3', color: '#047857', border: '1px solid #a7f3d0', borderRadius: '6px', padding: '6px 12px', fontSize: '0.725rem', fontWeight: 700, width: '100%', cursor: 'pointer' }}
+              style={{ backgroundColor: 'var(--color-user-light)', color: '#047857', border: '1px solid var(--color-user-border)', borderRadius: '6px', padding: '6px 12px', fontSize: '0.725rem', fontWeight: 700, width: '100%', cursor: 'pointer' }}
               onClick={() => alert('View stable tenant list')}
             >
               View All &gt;
@@ -499,7 +499,7 @@ export default function LandlordOverviewPage() {
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '24px', marginBottom: '32px' }}>
         
         {/* Pre-Tenancy Process listing */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 32px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 32px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>Pre-Tenancy Process</h3>
           <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>Applicants in the 7-day behavior process before tenant selection</p>
           
@@ -514,7 +514,7 @@ export default function LandlordOverviewPage() {
                   padding: '12px 16px',
                   border: '1.5px solid var(--border-color)',
                   borderRadius: '10px',
-                  backgroundColor: '#ffffff'
+                  backgroundColor: 'var(--bg-secondary)'
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -537,10 +537,10 @@ export default function LandlordOverviewPage() {
         </div>
 
         {/* Early Warning Center Card */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 32px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 32px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
             <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)' }}>Early Warning Center</h3>
-            <a href="#" style={{ fontSize: '0.75rem', color: '#0a57e3', fontWeight: 700, textDecoration: 'none' }} onClick={()=>alert('View all warnings logs')}>View All</a>
+            <a href="#" style={{ fontSize: '0.75rem', color: 'var(--brand-color)', fontWeight: 700, textDecoration: 'none' }} onClick={()=>alert('View all warnings logs')}>View All</a>
           </div>
 
           {/* Featured Warning block */}
@@ -549,7 +549,7 @@ export default function LandlordOverviewPage() {
             <div style={{ flex: 1 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h4 style={{ fontSize: '0.825rem', fontWeight: 800, color: 'var(--text-primary)' }}>Lakeview A-02</h4>
-                <span style={{ fontSize: '0.625rem', padding: '2px 8px', borderRadius: '4px', backgroundColor: '#e6fbf3', color: '#10b981', fontWeight: 700 }}>Occupied/Healthy</span>
+                <span style={{ fontSize: '0.625rem', padding: '2px 8px', borderRadius: '4px', backgroundColor: 'var(--color-user-light)', color: 'var(--color-user)', fontWeight: 700 }}>Occupied/Healthy</span>
               </div>
               <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '2px', display: 'block' }}>458 Oak Avenue</span>
             </div>
@@ -558,9 +558,9 @@ export default function LandlordOverviewPage() {
           {/* Metric rows checklist matching early warnings */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {[
-              { label: 'PARTICIPATION', val: '88% Stable', color: '#10b981', bg: '#e6fbf3' },
-              { label: 'RESPONSE TIMING', val: 'On Time', color: '#0a57e3', bg: '#eff6ff' },
-              { label: 'COMMUNICATION', val: 'Good', color: '#0a57e3', bg: '#eff6ff' }
+              { label: 'PARTICIPATION', val: '88% Stable', color: 'var(--color-user)', bg: '#e6fbf3' },
+              { label: 'RESPONSE TIMING', val: 'On Time', color: 'var(--brand-color)', bg: '#eff6ff' },
+              { label: 'COMMUNICATION', val: 'Good', color: 'var(--brand-color)', bg: '#eff6ff' }
             ].map((row, idx) => (
               <div 
                 key={idx} 
@@ -594,7 +594,7 @@ export default function LandlordOverviewPage() {
       {/* Second warnings alert row */}
       <div 
         style={{
-          backgroundColor: '#ffffff',
+          backgroundColor: 'var(--bg-secondary)',
           border: '1px solid var(--border-color)',
           borderRadius: '12px',
           padding: '24px 32px',
@@ -608,7 +608,7 @@ export default function LandlordOverviewPage() {
             <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)' }}>Early Warning Center</h3>
             <p style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', marginTop: '2px' }}>Behavioral changes observed that may require your attention</p>
           </div>
-          <a href="#" style={{ fontSize: '0.75rem', color: '#0a57e3', fontWeight: 700, textDecoration: 'none' }} onClick={()=>alert('View all warnings logs')}>View All</a>
+          <a href="#" style={{ fontSize: '0.75rem', color: 'var(--brand-color)', fontWeight: 700, textDecoration: 'none' }} onClick={()=>alert('View all warnings logs')}>View All</a>
         </div>
 
         {/* 2 Warning cards matching Screenshot 1 */}
@@ -620,7 +620,7 @@ export default function LandlordOverviewPage() {
                 border: `1.5px solid ${w.border}`,
                 borderRadius: '12px',
                 padding: '16px 20px',
-                backgroundColor: '#ffffff',
+                backgroundColor: 'var(--bg-secondary)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '14px'
@@ -653,7 +653,7 @@ export default function LandlordOverviewPage() {
       {/* Main Portfolio Grid System matching Screenshot 1 */}
       <div 
         style={{
-          backgroundColor: '#ffffff',
+          backgroundColor: 'var(--bg-secondary)',
           border: '1px solid var(--border-color)',
           borderRadius: '12px',
           padding: '24px 0',
@@ -675,8 +675,8 @@ export default function LandlordOverviewPage() {
         {/* Horizontal colored metrics row */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', padding: '24px 32px' }}>
           {[
-            { title: 'Total Properties', count: '3', desc: 'All properties you manage', color: '#10b981', bg: '#e6fbf3', border: '#a7f3d0', icon: <LuHouse /> },
-            { title: 'Pre-Tenancy', count: '1', desc: 'Properties preparing for new tenants', color: '#0a57e3', bg: '#eff6ff', border: '#bfdbfe', icon: <LuClock /> },
+            { title: 'Total Properties', count: '3', desc: 'All properties you manage', color: 'var(--color-user)', bg: '#e6fbf3', border: '#a7f3d0', icon: <LuHouse /> },
+            { title: 'Pre-Tenancy', count: '1', desc: 'Properties preparing for new tenants', color: 'var(--brand-color)', bg: '#eff6ff', border: '#bfdbfe', icon: <LuClock /> },
             { title: 'Active Monitoring', count: '2', desc: 'Properties with active tenants includes 1 requiring attention', color: '#7c3aed', bg: '#f5f3ff', border: '#ddd6fe', icon: <LuActivity /> },
             { title: 'Requires Attention', count: '1', desc: 'Of the 2 active properties (early warning)', color: '#ef4444', bg: '#fff5f5', border: '#fca5a5', icon: <LuShieldAlert /> }
           ].map((card, idx) => (
@@ -703,13 +703,13 @@ export default function LandlordOverviewPage() {
         {/* Properties Requiring Action grid panel */}
         <div style={{ padding: '0 32px 24px 32px' }}>
           <h4 style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>
-            Properties Requiring Action <span style={{ color: '#0a57e3', fontSize: '0.75rem', fontWeight: 500, cursor: 'pointer' }} onClick={()=>alert('Trigger checklist details')}>(Next Steps)</span>
+            Properties Requiring Action <span style={{ color: 'var(--brand-color)', fontSize: '0.75rem', fontWeight: 500, cursor: 'pointer' }} onClick={()=>alert('Trigger checklist details')}>(Next Steps)</span>
           </h4>
           <p style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', marginBottom: '16px' }}>Overview of your properties and the recommended steps.</p>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {[
-              { label: '1 Property in Pre-Tenancy', sub: 'Preparing for new tenants', status: 'Pre-Tenancy', btn: 'Continue Setup', color: '#0a57e3', disabled: false },
+              { label: '1 Property in Pre-Tenancy', sub: 'Preparing for new tenants', status: 'Pre-Tenancy', btn: 'Continue Setup', color: 'var(--brand-color)', disabled: false },
               { label: '2 Properties with Active Tenants', sub: 'We are monitoring tenant behavior', status: 'Active Monitoring (includes 1 requiring attention)', btn: 'View Properties', color: '#7c3aed', disabled: false },
               { label: '1 Property Requiring Attention', sub: 'Has an early warning that needs review', status: 'Requires Attention (included in Active Monitoring)', btn: 'View Alert', color: '#ef4444', disabled: false },
               { label: '0 Vacant Properties', sub: 'No active tenants', status: 'Vacant', btn: 'No Action Needed', color: 'var(--text-muted)', disabled: true }
@@ -723,7 +723,7 @@ export default function LandlordOverviewPage() {
                   padding: '16px 20px',
                   border: '1.5px solid var(--border-color)',
                   borderRadius: '10px',
-                  backgroundColor: '#ffffff'
+                  backgroundColor: 'var(--bg-secondary)'
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -768,7 +768,7 @@ export default function LandlordOverviewPage() {
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '24px' }}>
         
         {/* Recent Activity */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 32px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 32px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>Recent Activity</h3>
           <p style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>Latest updates across your portfolio.</p>
           
@@ -783,7 +783,7 @@ export default function LandlordOverviewPage() {
                   padding: '12px 16px',
                   border: '1px solid var(--border-color)',
                   borderRadius: '8px',
-                  backgroundColor: '#ffffff'
+                  backgroundColor: 'var(--bg-secondary)'
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -799,7 +799,7 @@ export default function LandlordOverviewPage() {
           </div>
           
           <button 
-            style={{ background: 'none', border: 'none', color: '#0a57e3', fontSize: '0.775rem', fontWeight: 700, marginTop: '20px', cursor: 'pointer', textDecoration: 'none' }}
+            style={{ background: 'none', border: 'none', color: 'var(--brand-color)', fontSize: '0.775rem', fontWeight: 700, marginTop: '20px', cursor: 'pointer', textDecoration: 'none' }}
             onClick={()=>alert('Displaying complete activity listings')}
           >
             View All Properties
@@ -807,15 +807,15 @@ export default function LandlordOverviewPage() {
         </div>
 
         {/* Definitions block: What does this mean? */}
-        <div style={{ backgroundColor: '#fffbeb', border: '1px solid #fef3c7', borderRadius: '12px', padding: '28px 32px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--color-support-light)', border: '1px solid var(--color-support-border)', borderRadius: '12px', padding: '28px 32px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <h3 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#b45309', marginBottom: '16px' }}>What does this mean?</h3>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {[
-              { title: 'Pre-Tenancy (1)', text: 'Properties preparing for new tenants.', color: '#0a57e3', bg: '#eff6ff' },
+              { title: 'Pre-Tenancy (1)', text: 'Properties preparing for new tenants.', color: 'var(--brand-color)', bg: '#eff6ff' },
               { title: 'Active Monitoring (2)', text: 'Properties with active tenants and are currently being monitored.', highlight: 'Includes 1 requiring attention', color: '#7c3aed', bg: '#f5f3ff' },
               { title: 'Requires Attention (1)', text: 'These properties have an early warning and need your review. Included in Active Monitoring.', color: '#ef4444', bg: '#fff5f5' },
-              { title: 'Total Properties (3)', text: 'The total includes all properties in every status (occupied & vacant).', color: '#10b981', bg: '#e6fbf3' }
+              { title: 'Total Properties (3)', text: 'The total includes all properties in every status (occupied & vacant).', color: 'var(--color-user)', bg: '#e6fbf3' }
             ].map((def, idx) => (
               <div key={idx} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
                 <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '18px', height: '18px', borderRadius: '50%', backgroundColor: def.bg, color: def.color, fontSize: '0.675rem' }}><LuInfo /></span>
@@ -823,7 +823,7 @@ export default function LandlordOverviewPage() {
                   <h4 style={{ fontSize: '0.8rem', fontWeight: 800, color: def.color }}>{def.title}</h4>
                   <p style={{ fontSize: '0.75rem', color: '#78350f', marginTop: '2px', lineHeight: '1.4' }}>{def.text}</p>
                   {def.highlight && (
-                    <span style={{ fontSize: '0.65rem', fontWeight: 700, backgroundColor: '#fef3c7', color: '#b45309', padding: '2px 8px', borderRadius: '4px', display: 'inline-block', marginTop: '4px' }}>
+                    <span style={{ fontSize: '0.65rem', fontWeight: 700, backgroundColor: 'var(--color-support-light)', color: '#b45309', padding: '2px 8px', borderRadius: '4px', display: 'inline-block', marginTop: '4px' }}>
                       {def.highlight}
                     </span>
                   )}

@@ -8,14 +8,14 @@ const properties = [
     id: 1,
     name: 'Maple Heights A-12',
     address: '123 Maple Street',
-    status: 'VACANT', statusColor: '#64748b', statusBg: '#f1f5f9',
+    status: 'VACANT', statuscolor: 'var(--text-secondary)', statusBg: '#f1f5f9',
     image: '🏡',
     section: 'Pre-Tenancy',
     sectionDetail: 'Not started',
     sectionIcon: <LuClock />,
-    sectionColor: '#94a3b8',
+    sectioncolor: 'var(--text-muted)',
     actionLabel: 'Start Pre-Tenancy Process',
-    actionColor: '#0a57e3',
+    actioncolor: 'var(--brand-color)',
     actionIcon: '▷',
     actionStyle: 'outline'
   },
@@ -23,16 +23,16 @@ const properties = [
     id: 2,
     name: 'Riverside Apt 402',
     address: '45 Riverwalk Drive',
-    status: 'VACANT', statusColor: '#64748b', statusBg: '#f1f5f9',
+    status: 'VACANT', statuscolor: 'var(--text-secondary)', statusBg: '#f1f5f9',
     image: '🏊',
     section: 'Pre-Tenancy',
     sectionDetail: 'Day 3 of 7 · Active',
     sectionProgress: 43,
-    sectionProgressColor: '#0a57e3',
+    sectionProgresscolor: 'var(--brand-color)',
     sectionIcon: null,
-    sectionColor: '#0a57e3',
+    sectioncolor: 'var(--brand-color)',
     actionLabel: 'View Progress',
-    actionColor: '#0a57e3',
+    actioncolor: 'var(--brand-color)',
     actionIcon: '📄',
     actionStyle: 'outline'
   },
@@ -40,14 +40,14 @@ const properties = [
     id: 3,
     name: 'Grand Plaza 6A',
     address: '789 Grand Plaza',
-    status: 'OCCUPIED', statusColor: '#10b981', statusBg: '#e6fbf3',
+    status: 'OCCUPIED', statuscolor: 'var(--color-user)', statusBg: '#e6fbf3',
     image: '🏙️',
     section: 'Monitoring',
     sectionDetail: 'Participation: 68%\nTrend: Slight Decline',
     sectionIcon: <LuActivity />,
-    sectionColor: '#f59e0b',
+    sectioncolor: 'var(--color-support)',
     actionLabel: 'View Monitoring',
-    actionColor: '#0a57e3',
+    actioncolor: 'var(--brand-color)',
     actionIcon: '📈',
     actionStyle: 'outline'
   },
@@ -55,15 +55,15 @@ const properties = [
     id: 4,
     name: 'Grand Plaza 6A',
     address: '789 Grand Plaza',
-    status: 'VACANT', statusColor: '#64748b', statusBg: '#f1f5f9',
+    status: 'VACANT', statuscolor: 'var(--text-secondary)', statusBg: '#f1f5f9',
     image: '🏙️',
     section: 'Pre-Tenancy',
     sectionDetail: 'Completed',
     sectionIcon: null,
-    sectionColor: '#10b981',
+    sectioncolor: 'var(--color-user)',
     sectionCompleted: true,
     actionLabel: 'View Report',
-    actionColor: '#0a57e3',
+    actioncolor: 'var(--brand-color)',
     actionIcon: '📄',
     actionStyle: 'outline'
   },
@@ -71,14 +71,14 @@ const properties = [
     id: 5,
     name: 'Maple Heights A-12',
     address: '123 Maple Street',
-    status: 'OCCUPIED', statusColor: '#10b981', statusBg: '#e6fbf3',
+    status: 'OCCUPIED', statuscolor: 'var(--color-user)', statusBg: '#e6fbf3',
     image: '🏡',
     section: 'Monitoring',
     sectionDetail: 'Participation: 82%\nTrend: Stable ···',
     sectionIcon: <LuActivity />,
-    sectionColor: '#10b981',
+    sectioncolor: 'var(--color-user)',
     actionLabel: 'View Monitoring',
-    actionColor: '#0a57e3',
+    actioncolor: 'var(--brand-color)',
     actionIcon: '📈',
     actionStyle: 'outline'
   }
@@ -103,9 +103,9 @@ export default function LandlordPropertiesPage() {
       section: 'Pre-Tenancy',
       sectionDetail: 'Not started',
       sectionIcon: <LuClock />,
-      sectionColor: '#94a3b8',
+      sectioncolor: 'var(--text-muted)',
       actionLabel: 'Start Pre-Tenancy Process',
-      actionColor: '#0a57e3',
+      actioncolor: 'var(--brand-color)',
       actionIcon: '▷',
       actionStyle: 'outline'
     }]);
@@ -124,7 +124,7 @@ export default function LandlordPropertiesPage() {
           </p>
         </div>
         <button
-          style={{ padding: '10px 20px', borderRadius: '8px', border: 'none', backgroundColor: '#0a57e3', color: '#ffffff', fontSize: '0.875rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
+          style={{ padding: '10px 20px', borderRadius: '8px', border: 'none', backgroundColor: 'var(--brand-color)', color: '#ffffff', fontSize: '0.875rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
           onClick={() => setIsAddOpen(true)}
         >
           <LuPlus /> + Add Property
@@ -139,7 +139,7 @@ export default function LandlordPropertiesPage() {
           { icon: '👥', label: 'Occupied', value: propList.filter(p => p.status === 'OCCUPIED').length, iconBg: '#e6fbf3' },
           { icon: '📋', label: 'Under Review', value: 1, iconBg: '#fffbeb' }
         ].map((c, i) => (
-          <div key={i} style={{ padding: '20px 24px', borderRight: i < 3 ? '1px solid var(--border-color)' : 'none', backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', gap: '14px', textAlign: 'left' }}>
+          <div key={i} style={{ padding: '20px 24px', borderRight: i < 3 ? '1px solid var(--border-color)' : 'none', backgroundColor: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', gap: '14px', textAlign: 'left' }}>
             <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: c.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.3rem', flexShrink: 0 }}>{c.icon}</div>
             <div>
               <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)', fontWeight: 600, marginBottom: '2px' }}>{c.label}</div>
@@ -152,7 +152,7 @@ export default function LandlordPropertiesPage() {
       {/* Property Cards Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
         {propList.map((prop, i) => (
-          <div key={prop.id * 100 + i} style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+          <div key={prop.id * 100 + i} style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
             {/* Property Image */}
             <div style={{ height: '130px', backgroundColor: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', position: 'relative' }}>
               {prop.image}
@@ -183,8 +183,8 @@ export default function LandlordPropertiesPage() {
                 {/* Section detail */}
                 {prop.sectionCompleted ? (
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span style={{ fontSize: '0.85rem', color: '#10b981' }}>●</span>
-                    <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#10b981' }}>Completed</span>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--color-user)' }}>●</span>
+                    <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-user)' }}>Completed</span>
                   </div>
                 ) : prop.sectionProgress !== undefined ? (
                   <div>
@@ -209,9 +209,9 @@ export default function LandlordPropertiesPage() {
 
               {/* Action Button */}
               <button
-                style={{ width: '100%', padding: '9px 16px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: '#ffffff', color: '#0a57e3', fontSize: '0.825rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'all 0.2s' }}
+                style={{ width: '100%', padding: '9px 16px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', color: 'var(--brand-color)', fontSize: '0.825rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'all 0.2s' }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a57e3'; e.currentTarget.style.backgroundColor = '#eff6ff'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.backgroundColor = '#ffffff'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.backgroundColor = 'var(--bg-secondary)'; }}
                 onClick={() => alert(`Sandbox: ${prop.actionLabel} — ${prop.name}`)}
               >
                 {prop.actionIcon} {prop.actionLabel}
@@ -224,7 +224,7 @@ export default function LandlordPropertiesPage() {
       {/* Add Property Modal */}
       {isAddOpen && (
         <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(15, 23, 42, 0.45)', backdropFilter: 'blur(4px)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => setIsAddOpen(false)}>
-          <div style={{ backgroundColor: '#ffffff', borderRadius: '16px', padding: '32px', width: '480px', boxShadow: '0 20px 40px rgba(0,0,0,0.12)', position: 'relative', textAlign: 'left' }} onClick={e => e.stopPropagation()}>
+          <div style={{ backgroundColor: 'var(--bg-secondary)', borderRadius: '16px', padding: '32px', width: '480px', boxShadow: '0 20px 40px rgba(0,0,0,0.12)', position: 'relative', textAlign: 'left' }} onClick={e => e.stopPropagation()}>
             <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>Add New Property</h3>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '24px' }}>Enter property details to add it to your portfolio.</p>
             <button style={{ position: 'absolute', right: '24px', top: '24px', background: 'none', border: 'none', fontSize: '1.4rem', cursor: 'pointer', color: 'var(--text-muted)' }} onClick={() => setIsAddOpen(false)}>×</button>
@@ -246,8 +246,8 @@ export default function LandlordPropertiesPage() {
             </div>
 
             <div style={{ display: 'flex', gap: '10px' }}>
-              <button style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: '#ffffff', fontSize: '0.85rem', cursor: 'pointer', fontWeight: 600 }} onClick={() => setIsAddOpen(false)}>Cancel</button>
-              <button style={{ flex: 1, padding: '10px', borderRadius: '8px', border: 'none', backgroundColor: '#0a57e3', color: '#ffffff', fontSize: '0.85rem', cursor: 'pointer', fontWeight: 700 }} onClick={handleAdd}>Add Property</button>
+              <button style={{ flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', fontSize: '0.85rem', cursor: 'pointer', fontWeight: 600 }} onClick={() => setIsAddOpen(false)}>Cancel</button>
+              <button style={{ flex: 1, padding: '10px', borderRadius: '8px', border: 'none', backgroundColor: 'var(--brand-color)', color: '#ffffff', fontSize: '0.85rem', cursor: 'pointer', fontWeight: 700 }} onClick={handleAdd}>Add Property</button>
             </div>
           </div>
         </div>

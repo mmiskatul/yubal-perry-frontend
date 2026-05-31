@@ -28,9 +28,9 @@ export default function AffiliatePayoutsPage() {
 
   const payoutHistory = [
     { date: 'Mar 15, 2024', amount: '$1,250.00', method: 'Stripe Connect', status: 'Processing', color: '#b45309', bg: '#fef3c7' },
-    { date: 'Feb 15, 2024', amount: '$1,120.00', method: 'Stripe Connect', status: 'Paid', color: '#10b981', bg: '#e6fbf3' },
-    { date: 'Jan 15, 2024', amount: '$980.50', method: 'Stripe Connect', status: 'Paid', color: '#10b981', bg: '#e6fbf3' },
-    { date: 'Dec 15, 2023', amount: '$1,450.00', method: 'Stripe Connect', status: 'Paid', color: '#10b981', bg: '#e6fbf3' }
+    { date: 'Feb 15, 2024', amount: '$1,120.00', method: 'Stripe Connect', status: 'Paid', color: 'var(--color-user)', bg: '#e6fbf3' },
+    { date: 'Jan 15, 2024', amount: '$980.50', method: 'Stripe Connect', status: 'Paid', color: 'var(--color-user)', bg: '#e6fbf3' },
+    { date: 'Dec 15, 2023', amount: '$1,450.00', method: 'Stripe Connect', status: 'Paid', color: 'var(--color-user)', bg: '#e6fbf3' }
   ];
 
   return (
@@ -42,7 +42,7 @@ export default function AffiliatePayoutsPage() {
           position: 'fixed',
           top: '20px',
           right: '20px',
-          backgroundColor: '#10b981',
+          backgroundcolor: 'var(--color-user)',
           color: '#ffffff',
           padding: '12px 24px',
           borderRadius: '8px',
@@ -74,7 +74,7 @@ export default function AffiliatePayoutsPage() {
       {/* Main Payout Setup and Early Payout Action Card */}
       <div 
         style={{ 
-          backgroundColor: '#ffffff', 
+          backgroundColor: 'var(--bg-secondary)', 
           border: '1px solid var(--border-color)', 
           borderRadius: '16px', 
           padding: '28px 32px', 
@@ -114,13 +114,13 @@ export default function AffiliatePayoutsPage() {
             </div>
 
             {/* Warning verification banner */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: '#fffbeb', border: '1px solid #fde68a', borderRadius: '8px', padding: '10px 14px', marginTop: '24px', fontSize: '0.775rem', color: '#b45309', fontWeight: 600 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: 'var(--color-support-light)', border: '1px solid var(--color-support-border)', borderRadius: '8px', padding: '10px 14px', marginTop: '24px', fontSize: '0.775rem', color: '#b45309', fontWeight: 600 }}>
               <span style={{ display: 'flex', fontSize: '0.9rem' }}><LuTriangleAlert /></span>
               <span>Processing | System is verifying transfer details</span>
               <a 
                 href="#manage"
                 onClick={(e) => { e.preventDefault(); alert('Redirecting to Stripe dashboard...'); }}
-                style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '4px', color: '#0a57e3', textDecoration: 'none', fontWeight: 700 }}
+                style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--brand-color)', textDecoration: 'none', fontWeight: 700 }}
               >
                 Manage Account <LuExternalLink style={{ fontSize: '0.8rem' }} />
               </a>
@@ -150,7 +150,7 @@ export default function AffiliatePayoutsPage() {
               onClick={handleRequestPayout}
               disabled={requesting}
               style={{
-                backgroundColor: '#0a57e3',
+                backgroundColor: 'var(--brand-color)',
                 color: '#ffffff',
                 border: 'none',
                 padding: '12px 24px',
@@ -177,14 +177,14 @@ export default function AffiliatePayoutsPage() {
       {/* Dynamic Paid Stats Row */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', marginBottom: '28px' }}>
         {[
-          { title: 'Total Paid to Date', value: '$14,582.00', sub: '📈 +12.5%', subColor: '#10b981', icon: <LuCheck /> },
+          { title: 'Total Paid to Date', value: '$14,582.00', sub: '📈 +12.5%', subcolor: 'var(--color-user)', icon: <LuCheck /> },
           { title: 'Pending Commissions', value: '$340.50', sub: 'Review phase active', subColor: 'var(--text-muted)', icon: <LuClock /> },
           { title: 'Last Payout', value: '$1,120.00', sub: 'Completed Feb 15, 2024', subColor: 'var(--text-muted)', icon: <LuFileText /> }
         ].map((c, i) => (
           <div 
             key={i}
             style={{
-              backgroundColor: '#ffffff',
+              backgroundColor: 'var(--bg-secondary)',
               border: '1px solid var(--border-color)',
               borderRadius: '16px',
               padding: '20px 24px',
@@ -201,7 +201,7 @@ export default function AffiliatePayoutsPage() {
                   {c.title}
                 </span>
                 {c.title === 'Total Paid to Date' && (
-                  <span style={{ fontSize: '0.65rem', padding: '1px 6px', borderRadius: '4px', backgroundColor: '#e6fbf3', color: '#10b981', fontWeight: 700 }}>
+                  <span style={{ fontSize: '0.65rem', padding: '1px 6px', borderRadius: '4px', backgroundColor: 'var(--color-user-light)', color: 'var(--color-user)', fontWeight: 700 }}>
                     {c.sub}
                   </span>
                 )}
@@ -216,7 +216,7 @@ export default function AffiliatePayoutsPage() {
               )}
             </div>
 
-            <div style={{ width: '38px', height: '38px', borderRadius: '8px', backgroundColor: '#f0f6ff', color: '#0a57e3', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem' }}>
+            <div style={{ width: '38px', height: '38px', borderRadius: '8px', backgroundColor: 'var(--brand-light)', color: 'var(--brand-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem' }}>
               {c.icon}
             </div>
           </div>
@@ -229,7 +229,7 @@ export default function AffiliatePayoutsPage() {
         {/* Left Pane: Payout History Table */}
         <div 
           style={{ 
-            backgroundColor: '#ffffff', 
+            backgroundColor: 'var(--bg-secondary)', 
             border: '1px solid var(--border-color)', 
             borderRadius: '16px', 
             padding: '24px 0', 
@@ -246,7 +246,7 @@ export default function AffiliatePayoutsPage() {
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#0a57e3',
+                color: 'var(--brand-color)',
                 fontSize: '0.8rem',
                 fontWeight: 700,
                 cursor: 'pointer',
@@ -260,7 +260,7 @@ export default function AffiliatePayoutsPage() {
           </div>
 
           {/* Table Headers */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.2fr 1.5fr 1fr', padding: '12px 28px', backgroundColor: '#f8fafc', borderBottom: '1px solid var(--border-color)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.2fr 1.5fr 1fr', padding: '12px 28px', backgroundColor: 'var(--bg-primary)', borderBottom: '1px solid var(--border-color)' }}>
             {['DATE', 'AMOUNT', 'METHOD', 'STATUS'].map((head, idx) => (
               <div 
                 key={idx} 
@@ -291,7 +291,7 @@ export default function AffiliatePayoutsPage() {
                   fontSize: '0.85rem',
                   transition: 'background-color 0.15s ease'
                 }}
-                onMouseEnter={e => e.currentTarget.style.backgroundColor = '#fafbfc'}
+                onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--bg-primary)'}
                 onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
               >
                 <div style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{row.date}</div>
@@ -319,7 +319,7 @@ export default function AffiliatePayoutsPage() {
         {/* Right Pane: How Payouts Work accordion list */}
         <div 
           style={{ 
-            backgroundColor: '#ffffff', 
+            backgroundColor: 'var(--bg-secondary)', 
             border: '1px solid var(--border-color)', 
             borderRadius: '16px', 
             padding: '24px', 
@@ -332,7 +332,7 @@ export default function AffiliatePayoutsPage() {
         >
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
-              <span style={{ color: '#0a57e3', display: 'flex', fontSize: '1.1rem' }}><LuBookOpen /></span>
+              <span style={{ color: 'var(--brand-color)', display: 'flex', fontSize: '1.1rem' }}><LuBookOpen /></span>
               <strong style={{ fontSize: '0.95rem', color: 'var(--text-primary)' }}>How Payouts Work</strong>
             </div>
 
@@ -343,7 +343,7 @@ export default function AffiliatePayoutsPage() {
                 { step: '3', title: 'Thresholds', desc: 'Minimum payout threshold is $50.00. Balances below this amount roll over to the next month\'s cycle.' }
               ].map((guide, idx) => (
                 <div key={idx} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: '#eff6ff', color: '#0a57e3', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800, flexShrink: 0 }}>
+                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: 'var(--brand-light)', color: 'var(--brand-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800, flexShrink: 0 }}>
                     {guide.step}
                   </div>
                   <div>
@@ -364,7 +364,7 @@ export default function AffiliatePayoutsPage() {
               justifyContent: 'space-between', 
               fontSize: '0.8rem', 
               fontWeight: 700, 
-              color: '#0a57e3', 
+              color: 'var(--brand-color)', 
               textDecoration: 'none', 
               borderTop: '1px solid var(--border-color)', 
               paddingTop: '14px',

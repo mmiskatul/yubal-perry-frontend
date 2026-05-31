@@ -25,7 +25,7 @@ function SparkLine({ data, color }: { data: number[], color: string }) {
       </svg>
       <div style={{ display: 'flex', justifyContent: 'space-between', width: w, marginTop: '2px' }}>
         {days.map((d, i) => (
-          <span key={i} style={{ fontSize: '9px', color: '#94a3b8', textAlign: 'center', width: `${100 / days.length}%` }}>{d}</span>
+          <span key={i} style={{ fontSize: '9px', color: 'var(--text-muted)', textAlign: 'center', width: `${100 / days.length}%` }}>{d}</span>
         ))}
       </div>
     </div>
@@ -34,48 +34,48 @@ function SparkLine({ data, color }: { data: number[], color: string }) {
 
 const tenantCards = [
   {
-    initials: 'MV', color: '#f59e0b', bg: '#fffbeb',
+    initials: 'MV', color: 'var(--color-support)', bg: 'var(--color-support-light)',
     name: 'Marcus Villanueva', unit: 'Unit 201',
-    status: 'Slight Decline', statusColor: '#f59e0b', statusBg: '#fffbeb',
+    status: 'Slight Decline', statuscolor: 'var(--color-support)', statusBg: 'var(--color-support-light)',
     participation: 62, prevParticipation: 82, change: -14, changeUp: false,
-    timing: 'Slower', timingColor: '#f59e0b',
-    followThrough: 'Partial', followColor: '#f59e0b',
+    timing: 'Slower', timingcolor: 'var(--color-support)',
+    followThrough: 'Partial', followcolor: 'var(--color-support)',
     communication: 'Reduced', commColor: '#ef4444',
     sparkData: [82, 78, 74, 70, 66, 63, 62],
     sparkColor: '#f97316',
     insight: 'Engagement has been improving over the week.'
   },
   {
-    initials: 'LW', color: '#10b981', bg: '#e6fbf3',
+    initials: 'LW', color: 'var(--color-user)', bg: 'var(--color-user-light)',
     name: 'Linda Wu', unit: 'Unit 202',
-    status: 'Improving', statusColor: '#10b981', statusBg: '#e6fbf3',
+    status: 'Improving', statuscolor: 'var(--color-user)', statusBg: 'var(--color-user-light)',
     participation: 85, prevParticipation: 75, change: +10, changeUp: true,
-    timing: 'On Time', timingColor: '#10b981',
-    followThrough: 'Reliable', followColor: '#10b981',
-    communication: 'Clear', commColor: '#10b981',
+    timing: 'On Time', timingcolor: 'var(--color-user)',
+    followThrough: 'Reliable', followcolor: 'var(--color-user)',
+    communication: 'Clear', commcolor: 'var(--color-user)',
     sparkData: [75, 77, 79, 81, 83, 84, 85],
-    sparkColor: '#10b981',
+    sparkcolor: 'var(--color-user)',
     insight: 'Engagement has been improving over the week.'
   },
   {
-    initials: 'JR', color: '#0a57e3', bg: '#eff6ff',
+    initials: 'JR', color: 'var(--brand-color)', bg: 'var(--brand-light)',
     name: 'James Rodriguez', unit: 'Unit 203',
-    status: 'Stable', statusColor: '#64748b', statusBg: '#f1f5f9',
+    status: 'Stable', statuscolor: 'var(--text-secondary)', statusBg: 'var(--bg-primary)',
     participation: 76, prevParticipation: 76, change: 0, changeUp: true,
-    timing: 'On Time', timingColor: '#10b981',
-    followThrough: 'Consistent', followColor: '#10b981',
-    communication: 'Good', commColor: '#10b981',
+    timing: 'On Time', timingcolor: 'var(--color-user)',
+    followThrough: 'Consistent', followcolor: 'var(--color-user)',
+    communication: 'Good', commcolor: 'var(--color-user)',
     sparkData: [76, 75, 77, 76, 77, 76, 76],
-    sparkColor: '#94a3b8',
+    sparkcolor: 'var(--text-muted)',
     insight: 'Engagement has been improving over the week.'
   },
   {
-    initials: 'SP', color: '#f59e0b', bg: '#fffbeb',
+    initials: 'SP', color: 'var(--color-support)', bg: 'var(--color-support-light)',
     name: 'Sarah Patel', unit: 'Unit 204',
-    status: 'Slight Decline', statusColor: '#f59e0b', statusBg: '#fffbeb',
+    status: 'Slight Decline', statuscolor: 'var(--color-support)', statusBg: 'var(--color-support-light)',
     participation: 62, prevParticipation: 67, change: -5, changeUp: false,
-    timing: 'Slightly Slow', timingColor: '#f59e0b',
-    followThrough: 'Partial', followColor: '#f59e0b',
+    timing: 'Slightly Slow', timingcolor: 'var(--color-support)',
+    followThrough: 'Partial', followcolor: 'var(--color-support)',
     communication: 'Less Active', commColor: '#ef4444',
     sparkData: [67, 66, 65, 64, 63, 62, 62],
     sparkColor: '#f97316',
@@ -98,7 +98,7 @@ export default function LandlordMonitoringPage() {
           </p>
         </div>
         <button
-          style={{ padding: '10px 20px', borderRadius: '8px', border: 'none', backgroundColor: '#0a57e3', color: '#ffffff', fontSize: '0.875rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
+          style={{ padding: '10px 20px', borderRadius: '8px', border: 'none', backgroundColor: 'var(--brand-color)', color: '#ffffff', fontSize: '0.875rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
           onClick={() => alert('Sandbox: Export Report')}
         >
           <LuDownload /> Export Report
@@ -106,17 +106,17 @@ export default function LandlordMonitoringPage() {
       </div>
 
       {/* Filter Bar */}
-      <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '14px 20px', marginBottom: '20px', display: 'flex', gap: '12px', alignItems: 'center', boxShadow: 'var(--shadow-sm)' }}>
+      <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '14px 20px', marginBottom: '20px', display: 'flex', gap: '12px', alignItems: 'center', boxShadow: 'var(--shadow-sm)' }}>
         {[
           { icon: <LuHouse style={{ fontSize: '0.85rem' }} />, value: property, onChange: setProperty },
           { icon: <LuUsers style={{ fontSize: '0.85rem' }} />, value: 'All Active Tenants', onChange: () => {} },
           { icon: null, value: period, onChange: setPeriod }
         ].map((f, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '7px', padding: '8px 14px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.825rem', color: 'var(--text-secondary)', cursor: 'pointer', fontWeight: 600, backgroundColor: '#f8fafc' }}>
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '7px', padding: '8px 14px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.825rem', color: 'var(--text-secondary)', cursor: 'pointer', fontWeight: 600, backgroundColor: 'var(--bg-primary)' }}>
             {f.icon} {f.value} <LuChevronDown style={{ fontSize: '0.8rem', marginLeft: '4px' }} />
           </div>
         ))}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '7px', padding: '8px 14px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.825rem', color: 'var(--text-secondary)', cursor: 'pointer', fontWeight: 600, backgroundColor: '#f8fafc', marginLeft: 'auto' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '7px', padding: '8px 14px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.825rem', color: 'var(--text-secondary)', cursor: 'pointer', fontWeight: 600, backgroundColor: 'var(--bg-primary)', marginLeft: 'auto' }}>
           <LuFilter style={{ fontSize: '0.85rem' }} /> Filter
         </div>
       </div>
@@ -124,7 +124,7 @@ export default function LandlordMonitoringPage() {
       {/* 2-Column Tenant Card Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
         {tenantCards.map((t, i) => (
-          <div key={i} style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '20px 22px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+          <div key={i} style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '20px 22px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
             {/* Tenant Header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -154,7 +154,7 @@ export default function LandlordMonitoringPage() {
                 </div>
                 <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '6px' }}>from {t.prevParticipation}%</div>
                 {/* Bar */}
-                <div style={{ height: '5px', borderRadius: '3px', backgroundColor: '#e2e8f0', overflow: 'hidden' }}>
+                <div style={{ height: '5px', borderRadius: '3px', backgroundColor: 'var(--border-color)', overflow: 'hidden' }}>
                   <div style={{ height: '100%', width: `${t.participation}%`, borderRadius: '3px', backgroundColor: t.changeUp ? '#10b981' : '#f97316' }} />
                 </div>
               </div>
@@ -203,8 +203,8 @@ export default function LandlordMonitoringPage() {
       </div>
 
       {/* Portfolio Insight Footer */}
-      <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '16px 24px', boxShadow: 'var(--shadow-sm)', display: 'flex', alignItems: 'center', gap: '16px', textAlign: 'left' }}>
-        <div style={{ width: '42px', height: '42px', borderRadius: '50%', backgroundColor: '#eff6ff', color: '#0a57e3', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem', flexShrink: 0 }}>
+      <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '16px 24px', boxShadow: 'var(--shadow-sm)', display: 'flex', alignItems: 'center', gap: '16px', textAlign: 'left' }}>
+        <div style={{ width: '42px', height: '42px', borderRadius: '50%', backgroundColor: 'var(--brand-light)', color: 'var(--brand-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem', flexShrink: 0 }}>
           <LuActivity />
         </div>
         <div style={{ flex: 1 }}>
@@ -215,8 +215,8 @@ export default function LandlordMonitoringPage() {
         </div>
         <div style={{ display: 'flex', gap: '24px' }}>
           {[
-            { label: 'Improving', value: '1 Tenant', icon: '↗', color: '#10b981' },
-            { label: 'Stable', value: '1 Tenant', icon: '—', color: '#64748b' },
+            { label: 'Improving', value: '1 Tenant', icon: '↗', color: 'var(--color-user)' },
+            { label: 'Stable', value: '1 Tenant', icon: '—', color: 'var(--text-secondary)' },
             { label: 'Declining', value: '2 Tenants', icon: '↘', color: '#ef4444' }
           ].map((s, i) => (
             <div key={i} style={{ textAlign: 'center' }}>

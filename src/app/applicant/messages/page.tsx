@@ -117,9 +117,9 @@ export default function MessagesPage() {
         style={{ 
           padding: '12px 18px', 
           borderRadius: '10px', 
-          backgroundColor: '#f3f8ff', 
-          border: '1px solid #dbebff', 
-          color: '#1e3a8a', 
+          backgroundColor: 'var(--brand-alert-bg)', 
+          border: '1px solid var(--brand-alert-border)', 
+          color: 'var(--brand-alert-text)', 
           fontSize: '0.825rem',
           display: 'flex',
           alignItems: 'center',
@@ -127,8 +127,8 @@ export default function MessagesPage() {
           marginBottom: '20px'
         }}
       >
-        <span style={{ fontSize: '1rem', color: '#0a57e3', display: 'flex' }}><LuInfo /></span>
-        <span>All conversations are with the <strong style={{ color: '#0a57e3' }}>Tenant Integrity Support Team</strong>. We typically respond within 24 hours.</span>
+        <span style={{ fontSize: '1rem', color: 'var(--brand-color)', display: 'flex' }}><LuInfo /></span>
+        <span>All conversations are with the <strong style={{ color: 'var(--brand-color)' }}>Tenant Integrity Support Team</strong>. We typically respond within 24 hours.</span>
       </div>
 
       {/* Double Pane */}
@@ -138,7 +138,7 @@ export default function MessagesPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '0', 
             display: 'flex', 
             flexDirection: 'column', 
@@ -185,8 +185,8 @@ export default function MessagesPage() {
                     padding: '16px 20px',
                     borderBottom: '1px solid var(--border-color)',
                     cursor: 'pointer',
-                    backgroundColor: isActive ? '#f0f6ff' : 'transparent',
-                    borderLeft: isActive ? '3.5px solid #0a57e3' : '3.5px solid transparent',
+                    backgroundColor: isActive ? 'var(--brand-light)' : 'transparent',
+                    borderLeft: isActive ? '3.5px solid var(--brand-color)' : '3.5px solid transparent',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '12px',
@@ -224,7 +224,7 @@ export default function MessagesPage() {
                         {t.lastSnippet}
                       </p>
                       {t.unread && (
-                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#0a57e3', flexShrink: 0 }} />
+                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--brand-color)', flexShrink: 0 }} />
                       )}
                     </div>
                   </div>
@@ -243,7 +243,7 @@ export default function MessagesPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '0',
             display: 'flex', 
             flexDirection: 'column', 
@@ -272,7 +272,7 @@ export default function MessagesPage() {
                 padding: '6px 12px',
                 borderRadius: '6px',
                 border: '1px solid var(--border-color)',
-                backgroundColor: '#ffffff',
+                backgroundColor: 'var(--bg-secondary)',
                 fontSize: '0.75rem',
                 fontWeight: 700,
                 color: 'var(--text-secondary)',
@@ -315,7 +315,7 @@ export default function MessagesPage() {
                       style={{ 
                         padding: '12px 16px', 
                         borderRadius: isSupport ? '0 12px 12px 12px' : '12px 12px 0 12px',
-                        backgroundColor: isSupport ? '#f1f5f9' : '#0a57e3',
+                        backgroundColor: isSupport ? 'var(--bg-primary)' : 'var(--brand-color)',
                         color: isSupport ? 'var(--text-primary)' : '#ffffff',
                         fontSize: '0.85rem',
                         lineHeight: '1.5',
@@ -327,7 +327,7 @@ export default function MessagesPage() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.7rem', color: 'var(--text-secondary)' }}>
                       <span>{m.time}</span>
                       {!isSupport && (
-                        <span style={{ color: '#0a57e3', display: 'flex', alignItems: 'center' }}><LuCheckCheck /></span>
+                        <span style={{ color: 'var(--brand-color)', display: 'flex', alignItems: 'center' }}><LuCheckCheck /></span>
                       )}
                     </div>
                   </div>
@@ -360,8 +360,8 @@ export default function MessagesPage() {
               type="submit" 
               className="premium-btn premium-btn-primary" 
               style={{ 
-                '--btn-color': '#0a57e3', 
-                '--focus-ring': 'rgba(10, 87, 227, 0.15)',
+                '--btn-color': 'var(--brand-color)', 
+                '--focus-ring': 'var(--focus-ring)',
                 padding: '12px 24px',
                 borderRadius: '8px',
                 display: 'flex',

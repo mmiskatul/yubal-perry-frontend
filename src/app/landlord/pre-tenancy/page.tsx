@@ -5,52 +5,52 @@ import { LuSearch, LuCalendar, LuRefreshCw, LuEllipsisVertical, LuX, LuDownload,
 
 const applicants = [
   {
-    initials: 'AT', color: '#0a57e3', bg: '#eff6ff',
+    initials: 'AT', color: 'var(--brand-color)', bg: 'var(--brand-light)',
     name: 'Alex Thompson', unit: 'Maple Heights A-12',
     property: 'Maple Heights', propUnit: 'A-12',
     day: 3, totalDays: 7, progress: 43,
     participation: 82, trend: 'Increasing', trendUp: true,
-    signal: 'CONSISTENT ENGAGEMENT', signalColor: '#10b981', signalBg: '#e6fbf3'
+    signal: 'CONSISTENT ENGAGEMENT', signalColor: 'var(--color-user)', signalBg: 'var(--color-user-light)'
   },
   {
-    initials: 'SJ', color: '#10b981', bg: '#e6fbf3',
+    initials: 'SJ', color: 'var(--color-user)', bg: 'var(--color-user-light)',
     name: 'Sarah Jenkins', unit: 'Oakwood Villas B-203',
     property: 'Oakwood Villas', propUnit: 'B-203',
     day: 7, totalDays: 7, progress: 100,
     participation: 92, trend: 'Strong', trendUp: true,
-    signal: 'CONSISTENT ENGAGEMENT', signalColor: '#10b981', signalBg: '#e6fbf3'
+    signal: 'CONSISTENT ENGAGEMENT', signalColor: 'var(--color-user)', signalBg: 'var(--color-user-light)'
   },
   {
-    initials: 'WC', color: '#f59e0b', bg: '#fffbeb',
+    initials: 'WC', color: 'var(--color-support)', bg: 'var(--color-support-light)',
     name: 'William Carter', unit: 'Pinecrest Place C-301',
     property: 'Pinecrest Place', propUnit: 'C-301',
     day: 5, totalDays: 7, progress: 71,
     participation: 52, trend: 'Decreasing', trendUp: false,
-    signal: 'SLOWER RESPONSE PATTERN', signalColor: '#f59e0b', signalBg: '#fffbeb'
+    signal: 'SLOWER RESPONSE PATTERN', signalColor: 'var(--color-support)', signalBg: 'var(--color-support-light)'
   },
   {
-    initials: 'LP', color: '#f59e0b', bg: '#fffbeb',
+    initials: 'LP', color: 'var(--color-support)', bg: 'var(--color-support-light)',
     name: 'Linda Patel', unit: 'Maple Heights A-201',
     property: 'Maple Heights', propUnit: 'A-201',
     day: 4, totalDays: 7, progress: 57,
     participation: 45, trend: 'Decreasing', trendUp: false,
-    signal: 'SLOWER RESPONSE PATTERN', signalColor: '#f59e0b', signalBg: '#fffbeb'
+    signal: 'SLOWER RESPONSE PATTERN', signalColor: 'var(--color-support)', signalBg: 'var(--color-support-light)'
   },
   {
-    initials: 'MJ', color: '#10b981', bg: '#e6fbf3',
+    initials: 'MJ', color: 'var(--color-user)', bg: 'var(--color-user-light)',
     name: 'Michael Jhonson', unit: 'Oakwood Villas B-101',
     property: 'Oakwood Villas', propUnit: 'B-101',
     day: 7, totalDays: 7, progress: 100,
     participation: 88, trend: 'Strong', trendUp: true,
-    signal: 'CONSISTENT ENGAGEMENT', signalColor: '#10b981', signalBg: '#e6fbf3'
+    signal: 'CONSISTENT ENGAGEMENT', signalColor: 'var(--color-user)', signalBg: 'var(--color-user-light)'
   },
   {
-    initials: 'EM', color: '#10b981', bg: '#e6fbf3',
+    initials: 'EM', color: 'var(--color-user)', bg: 'var(--color-user-light)',
     name: 'Emily Martinez', unit: 'Maple Heights A-15',
     property: 'Maple Heights', propUnit: 'A-15',
     day: 7, totalDays: 7, progress: 100,
     participation: 85, trend: 'Increasing', trendUp: true,
-    signal: 'CONSISTENT ENGAGEMENT', signalColor: '#10b981', signalBg: '#e6fbf3'
+    signal: 'CONSISTENT ENGAGEMENT', signalColor: 'var(--color-user)', signalBg: 'var(--color-user-light)'
   }
 ];
 
@@ -78,7 +78,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
       onClick={onClose}
     >
       <div
-        style={{ backgroundColor: '#ffffff', borderRadius: '20px', width: '100%', maxWidth: '820px', maxHeight: '92vh', overflowY: 'auto', boxShadow: '0 24px 50px rgba(15,23,42,0.22)', position: 'relative' }}
+        style={{ backgroundColor: 'var(--bg-secondary)', borderRadius: '20px', width: '100%', maxWidth: '820px', maxHeight: '92vh', overflowY: 'auto', boxShadow: '0 24px 50px rgba(15,23,42,0.22)', position: 'relative' }}
         onClick={e => e.stopPropagation()}
       >
         {/* Modal Header */}
@@ -93,7 +93,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
         </div>
 
         {/* Applicant Profile Card */}
-        <div style={{ margin: '20px 28px', padding: '20px 24px', backgroundColor: '#f8fafc', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'left' }}>
+        <div style={{ margin: '20px 28px', padding: '20px 24px', backgroundColor: 'var(--bg-primary)', borderRadius: '12px', border: '1px solid var(--border-color)', textAlign: 'left' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
             <div>
               <div style={{ fontSize: '0.725rem', fontWeight: 800, color: '#7c3aed', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '5px' }}>
@@ -105,7 +105,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
             
             {/* Stability Index Box */}
             {!isUnlocked ? (
-              <div style={{ backgroundColor: '#f5f3ff', border: '1px solid #ddd6fe', borderRadius: '12px', padding: '12px 18px', display: 'flex', alignItems: 'center', gap: '12px', width: '310px', boxSizing: 'border-box' }}>
+              <div style={{ backgroundColor: 'var(--color-admin-light)', border: '1px solid var(--color-admin-border)', borderRadius: '12px', padding: '12px 18px', display: 'flex', alignItems: 'center', gap: '12px', width: '310px', boxSizing: 'border-box' }}>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: '0.725rem', color: '#7c3aed', fontWeight: 800 }}>Behavioral Stability Index</div>
                   <div style={{ fontSize: '0.75rem', color: '#7c3aed', fontWeight: 700, marginTop: '2px' }}>Pattern Forming</div>
@@ -117,7 +117,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 </div>
               </div>
             ) : (
-              <div style={{ backgroundColor: '#f5f3ff', border: '1px solid #ddd6fe', borderRadius: '12px', padding: '12px 18px', display: 'flex', alignItems: 'center', gap: '14px', minWidth: '220px' }}>
+              <div style={{ backgroundColor: 'var(--color-admin-light)', border: '1px solid var(--color-admin-border)', borderRadius: '12px', padding: '12px 18px', display: 'flex', alignItems: 'center', gap: '14px', minWidth: '220px' }}>
                 <div>
                   <div style={{ fontSize: '0.725rem', color: '#7c3aed', fontWeight: 800, marginBottom: '2px' }}>Behavioral</div>
                   <div style={{ fontSize: '0.725rem', color: '#7c3aed', fontWeight: 800 }}>Stability Index</div>
@@ -191,16 +191,16 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 {/* Decision Summary */}
                 <div style={{ border: '1px solid var(--border-color)', borderRadius: '12px', padding: '18px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-                    <LuTriangleAlert style={{ color: '#f59e0b', fontSize: '1.1rem' }} />
+                    <LuTriangleAlert style={{ color: 'var(--color-support)', fontSize: '1.1rem' }} />
                     <strong style={{ fontSize: '0.925rem', color: 'var(--text-primary)' }}>Decision Summary</strong>
                   </div>
                   <div style={{ fontSize: '0.825rem', marginBottom: '10px', color: 'var(--text-secondary)' }}>
-                    Decision: <span style={{ color: '#7c3aed', fontWeight: 800, padding: '2px 8px', borderRadius: '4px', backgroundColor: '#f5f3ff' }}>Requires Attention</span>
+                    Decision: <span style={{ color: '#7c3aed', fontWeight: 800, padding: '2px 8px', borderRadius: '4px', backgroundColor: 'var(--color-admin-light)' }}>Requires Attention</span>
                   </div>
                   {[
-                    { icon: '●', color: '#10b981', text: 'Consistent: participation in tasks and activities.' },
-                    { icon: '⚠', color: '#f59e0b', text: 'Frequent short, unserious responses.' },
-                    { icon: '●', color: '#f59e0b', text: 'Self-oriented behavior detected in selected responses.' }
+                    { icon: '●', color: 'var(--color-user)', text: 'Consistent: participation in tasks and activities.' },
+                    { icon: '⚠', color: 'var(--color-support)', text: 'Frequent short, unserious responses.' },
+                    { icon: '●', color: 'var(--color-support)', text: 'Self-oriented behavior detected in selected responses.' }
                   ].map((item, i) => (
                     <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '6px' }}>
                       <span style={{ color: item.color, flexShrink: 0, fontWeight: 'bold' }}>{item.icon}</span> {item.text}
@@ -209,15 +209,15 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 </div>
 
                 {/* Final Recommendation */}
-                <div style={{ border: '1px solid #fde68a', borderRadius: '12px', padding: '18px', backgroundColor: '#fffbeb' }}>
+                <div style={{ border: '1px solid var(--color-support-border)', borderRadius: '12px', padding: '18px', backgroundColor: 'var(--color-support-light)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-                    <LuTriangleAlert style={{ color: '#f59e0b', fontSize: '1.1rem' }} />
+                    <LuTriangleAlert style={{ color: 'var(--color-support)', fontSize: '1.1rem' }} />
                     <strong style={{ fontSize: '0.925rem', color: '#92400e' }}>Final Recommendation</strong>
                   </div>
                   <div style={{ marginBottom: '10px' }}>
                     <span style={{ fontSize: '0.725rem', fontWeight: 800, padding: '3px 10px', borderRadius: '20px', backgroundColor: '#7c3aed', color: '#ffffff' }}>Decision: Requires Attention</span>
                   </div>
-                  <div style={{ fontSize: '0.8rem', color: '#92400e', marginBottom: '6px', fontWeight: 500 }}>Pattern Type: <span style={{ fontWeight: 700 }}>Inconsistent</span></div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '6px', fontWeight: 500 }}>Pattern Type: <span style={{ fontWeight: 700 }}>Inconsistent</span></div>
                   <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: '1.5', marginBottom: '10px' }}>
                     Behavior is <strong>Inconsistent</strong> — showing <strong>both cooperative</strong> and low-effort responses.
                   </div>
@@ -227,20 +227,20 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 </div>
 
                 {/* What's Stable */}
-                <div style={{ border: '1px solid #d1fae5', borderRadius: '12px', padding: '16px 18px', backgroundColor: '#f0fdf4' }}>
-                  <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#065f46', marginBottom: '10px' }}>✓ What&apos;s Stable</div>
+                <div style={{ border: '1px solid var(--color-user-border)', borderRadius: '12px', padding: '16px 18px', backgroundColor: 'var(--color-user-light)' }}>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--color-user)', marginBottom: '10px' }}>✓ What&apos;s Stable</div>
                   {['Good participation across most days', 'Responded on time in early stages'].map((t, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#065f46', marginBottom: '6px' }}>
-                      <span style={{ color: '#10b981', fontWeight: 900 }}>✓</span> {t}
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '6px' }}>
+                      <span style={{ color: 'var(--color-user)', fontWeight: 900 }}>✓</span> {t}
                     </div>
                   ))}
                 </div>
 
                 {/* What Needs Attention */}
-                <div style={{ border: '1px solid #fde68a', borderRadius: '12px', padding: '16px 18px', backgroundColor: '#fffbeb' }}>
-                  <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#92400e', marginBottom: '10px' }}>⚠ What Needs Attention</div>
+                <div style={{ border: '1px solid var(--color-support-border)', borderRadius: '12px', padding: '16px 18px', backgroundColor: 'var(--color-support-light)' }}>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--color-support)', marginBottom: '10px' }}>⚠ What Needs Attention</div>
                   {['Multiple low-effort responses.', 'Inconsistent engagement toward later days.'].map((t, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#92400e', marginBottom: '6px' }}>
+                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '6px' }}>
                       <span style={{ fontWeight: 'bold' }}>⚠</span> {t}
                     </div>
                   ))}
@@ -256,7 +256,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                         <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '6px' }}>Day {d.day}</div>
                         <div style={{
                           width: '32px', height: '32px', borderRadius: '50%', margin: '0 auto',
-                          backgroundColor: d.status === 'ok' ? '#10b981' : d.status === 'warn' ? '#f59e0b' : '#ef4444',
+                          backgroundColor: d.status === 'ok' ? 'var(--color-user)' : d.status === 'warn' ? 'var(--color-support)' : '#ef4444',
                           display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem', color: '#ffffff', fontWeight: 800
                         }}>
                           {d.status === 'ok' ? '✓' : d.status === 'warn' ? '!' : '✗'}
@@ -267,22 +267,22 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 </div>
 
                 {/* Key Risk Insight */}
-                <div style={{ border: '1px solid #fed7aa', borderRadius: '12px', padding: '16px', backgroundColor: '#fff7ed' }}>
+                <div style={{ border: '1px solid var(--color-support-border)', borderRadius: '12px', padding: '16px', backgroundColor: 'var(--color-support-light)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                    <span style={{ color: '#ea580c', fontSize: '1.2rem', display: 'flex' }}><LuTriangleAlert /></span>
-                    <strong style={{ fontSize: '0.875rem', color: '#c2410c' }}>Key Risk Insight</strong>
+                    <span style={{ color: 'var(--color-support)', fontSize: '1.2rem', display: 'flex' }}><LuTriangleAlert /></span>
+                    <strong style={{ fontSize: '0.875rem', color: 'var(--color-support)' }}>Key Risk Insight</strong>
                   </div>
-                  <p style={{ fontSize: '0.8rem', color: '#c2410c', lineHeight: '1.5', margin: 0 }}>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: '1.5', margin: 0 }}>
                     This applicant shows moderate <strong>inconsistency</strong> with signs of selective cooperation.
                   </p>
                 </div>
 
                 {/* Download */}
                 <button
-                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', width: '100%', padding: '12px', borderRadius: '10px', border: '1.5px solid var(--border-color)', backgroundColor: '#ffffff', color: 'var(--text-secondary)', fontSize: '0.85rem', fontWeight: 700, cursor: 'pointer', transition: 'all 0.15s' }}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', width: '100%', padding: '12px', borderRadius: '10px', border: '1.5px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-secondary)', fontSize: '0.85rem', fontWeight: 700, cursor: 'pointer', transition: 'all 0.15s' }}
                   onClick={() => alert(`Sandbox: Download PDF Report for ${applicant.name}`)}
-                  onMouseEnter={e => e.currentTarget.style.backgroundColor = '#f8fafc'}
-                  onMouseLeave={e => e.currentTarget.style.backgroundColor = '#ffffff'}
+                  onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--bg-primary)'}
+                  onMouseLeave={e => e.currentTarget.style.backgroundColor = 'var(--bg-secondary)'}
                 >
                   <LuDownload /> Download PDF Report
                 </button>
@@ -293,9 +293,9 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '14px' }}>Summary Scale</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {[
-                    { icon: <LuCircleCheck />, color: '#10b981', bg: '#e6fbf3', border: '#a7f3d0', label: 'Manageable', desc: 'Consistent and cooperative behavior' },
-                    { icon: <LuTriangleAlert />, color: '#f59e0b', bg: '#fffbeb', border: '#fde68a', label: 'Requires Attention', desc: 'Mixed or inconsistent behavior' },
-                    { icon: <LuCircleAlert />, color: '#ef4444', bg: '#fff5f5', border: '#fca5a5', label: 'Elevated Risk', desc: 'Concerning behavioral patterns' }
+                    { icon: <LuCircleCheck />, color: 'var(--color-user)', bg: 'var(--color-user-light)', border: 'var(--color-user-border)', label: 'Manageable', desc: 'Consistent and cooperative behavior' },
+                    { icon: <LuTriangleAlert />, color: 'var(--color-support)', bg: 'var(--color-support-light)', border: 'var(--color-support-border)', label: 'Requires Attention', desc: 'Mixed or inconsistent behavior' },
+                    { icon: <LuCircleAlert />, color: '#ef4444', bg: 'var(--color-alert-light)', border: 'var(--color-alert-border)', label: 'Elevated Risk', desc: 'Concerning behavioral patterns' }
                   ].map((s, i) => (
                     <div key={i} style={{ padding: '14px 16px', borderRadius: '10px', backgroundColor: s.bg, border: `1px solid ${s.border}`, display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <span style={{ color: s.color, fontSize: '1.2rem', display: 'flex' }}>{s.icon}</span>
@@ -306,7 +306,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                     </div>
                   ))}
                 </div>
-                <div style={{ marginTop: '16px', padding: '14px', borderRadius: '10px', backgroundColor: '#f5f3ff', border: '1px solid #ddd6fe', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                <div style={{ marginTop: '16px', padding: '14px', borderRadius: '10px', backgroundColor: 'var(--color-admin-light)', border: '1px solid var(--color-admin-border)', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                   <span style={{ fontSize: '1rem', color: '#7c3aed', display: 'flex', marginTop: '1px' }}>🔷</span>
                   <span style={{ fontSize: '0.775rem', color: '#7c3aed', lineHeight: '1.45', fontWeight: 500 }}>
                     This category is factored into the <strong>final summary decision</strong>
@@ -320,20 +320,20 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
           {activeTab === 'Responsiveness' && (
             <div>
               {/* Header Status Bar */}
-              <div style={{ padding: '16px 20px', backgroundColor: '#fffbeb', border: '1px solid #fde68a', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <div style={{ padding: '16px 20px', backgroundColor: 'var(--color-support-light)', border: '1px solid var(--color-support-border)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#f59e0b' }} />
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundcolor: 'var(--color-support)' }} />
                   <span style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)' }}>Responsiveness:</span>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 800, padding: '2px 8px', borderRadius: '12px', backgroundColor: '#fff7ed', color: '#ea580c', border: '1px solid #ffedd5' }}>Moderate</span>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 800, padding: '2px 8px', borderRadius: '12px', backgroundColor: 'var(--color-support-light)', color: 'var(--color-support)', border: '1px solid #ffedd5' }}>Moderate</span>
                 </div>
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
-                  Contribution to Decision: <strong style={{ color: '#ea580c' }}>Medium Impact</strong>
+                  Contribution to Decision: <strong style={{ color: 'var(--color-support)' }}>Medium Impact</strong>
                 </div>
               </div>
 
               {/* Progress and Metrics Cards */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginBottom: '20px' }}>
-                <div style={{ backgroundColor: '#f5f3ff', padding: '16px 20px', borderRadius: '12px', border: '1px solid #ddd6fe' }}>
+                <div style={{ backgroundColor: 'var(--color-admin-light)', padding: '16px 20px', borderRadius: '12px', border: '1px solid var(--color-admin-border)' }}>
                   <div style={{ fontSize: '0.725rem', color: '#7c3aed', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Average response</div>
                   <div style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-primary)', margin: '6px 0 4px' }}>1h 37m</div>
                   <div style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', display: 'flex', gap: '6px' }}>
@@ -341,7 +341,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                   </div>
                 </div>
 
-                <div style={{ backgroundColor: '#f5f3ff', padding: '16px 20px', borderRadius: '12px', border: '1px solid #ddd6fe' }}>
+                <div style={{ backgroundColor: 'var(--color-admin-light)', padding: '16px 20px', borderRadius: '12px', border: '1px solid var(--color-admin-border)' }}>
                   <div style={{ fontSize: '0.725rem', color: '#7c3aed', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>On-time %</div>
                   <div style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-primary)', margin: '6px 0 4px' }}>77%</div>
                   <div style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', display: 'flex', gap: '6px', alignItems: 'center' }}>
@@ -349,7 +349,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                   </div>
                 </div>
 
-                <div style={{ backgroundColor: '#f5f3ff', padding: '16px 20px', borderRadius: '12px', border: '1px solid #ddd6fe' }}>
+                <div style={{ backgroundColor: 'var(--color-admin-light)', padding: '16px 20px', borderRadius: '12px', border: '1px solid var(--color-admin-border)' }}>
                   <div style={{ fontSize: '0.725rem', color: '#7c3aed', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Response Quality</div>
                   <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#7c3aed', margin: '6px 0 4px' }}>Mixed</div>
                   <div style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', display: 'flex', gap: '6px' }}>
@@ -370,7 +370,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
               </div>
 
               {/* Yellow Alert banner */}
-              <div style={{ padding: '14px 18px', backgroundColor: '#fffbeb', border: '1px solid #fde68a', borderRadius: '10px', display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '0.775rem', color: '#b45309', marginBottom: '24px' }}>
+              <div style={{ padding: '14px 18px', backgroundColor: 'var(--color-support-light)', border: '1px solid var(--color-support-border)', borderRadius: '10px', display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '0.775rem', color: 'var(--text-secondary)', marginBottom: '24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <span>⚠️</span> Delayed responses on multiple days
                 </div>
@@ -394,8 +394,8 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                   </div>
 
                   {/* Absolute Centered Lock Block */}
-                  <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(255,255,255,0.85)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '30px 24px', textAlign: 'center', zIndex: 10 }}>
-                    <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: '#0f172a', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.3rem', marginBottom: '14px' }}>
+                  <div style={{ position: 'absolute', inset: 0, backgroundColor: 'var(--glass-bg)', backdropFilter: 'blur(10px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '30px 24px', textAlign: 'center', zIndex: 10 }}>
+                    <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--text-primary)', color: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.3rem', marginBottom: '14px' }}>
                       <LuLock />
                     </div>
                     <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '6px' }}>See the full 7-day behavioral pattern</h3>
@@ -403,22 +403,22 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                     
                     <button
                       onClick={() => setIsUnlocked(true)}
-                      style={{ backgroundColor: '#0a57e3', color: '#ffffff', border: 'none', padding: '12px 24px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, cursor: 'pointer', boxShadow: '0 4px 6px -1px rgba(10,87,227,0.2)', transition: 'background-color 0.15s', marginBottom: '18px', width: '220px' }}
-                      onMouseEnter={e => e.currentTarget.style.backgroundColor = '#024ec4'}
-                      onMouseLeave={e => e.currentTarget.style.backgroundColor = '#0a57e3'}
+                      style={{ backgroundColor: 'var(--brand-color)', color: '#ffffff', border: 'none', padding: '12px 24px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 700, cursor: 'pointer', transition: 'all 0.15s', marginBottom: '18px', width: '220px' }}
+                      onMouseEnter={e => e.currentTarget.style.opacity = '0.9'}
+                      onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                     >
                       Unlock Full Report
                     </button>
 
                     <div style={{ textAlign: 'left', width: '100%', maxWidth: '240px', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#10b981', fontWeight: 'bold' }}>✓</span> Full consistency pattern</div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#10b981', fontWeight: 'bold' }}>✓</span> Behavioral risk signals</div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: '#10b981', fontWeight: 'bold' }}>✓</span> Final recommendation</div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: 'var(--color-user)', fontWeight: 'bold' }}>✓</span> Full consistency pattern</div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: 'var(--color-user)', fontWeight: 'bold' }}>✓</span> Behavioral risk signals</div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><span style={{ color: 'var(--color-user)', fontWeight: 'bold' }}>✓</span> Final recommendation</div>
                     </div>
 
                     <button
                       disabled
-                      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', width: '220px', padding: '10px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: '#f1f5f9', color: '#94a3b8', fontSize: '0.8rem', fontWeight: 700, cursor: 'not-allowed' }}
+                      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', width: '220px', padding: '10px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: 'var(--bg-primary)', color: 'var(--text-muted)', fontSize: '0.8rem', fontWeight: 700, cursor: 'not-allowed' }}
                     >
                       <LuDownload /> Download Full Report (PDF)
                     </button>
@@ -438,7 +438,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                           { title: 'Participation Decline', desc: 'Engagement rates drop rapidly after initial Day 2 cooperative phase.' }
                         ].map((sig, i) => (
                           <div key={i} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', fontSize: '0.8rem' }}>
-                            <span style={{ color: '#ea580c', fontWeight: 'bold', fontSize: '1rem', marginTop: '-2px' }}>●</span>
+                            <span style={{ color: 'var(--color-support)', fontWeight: 'bold', fontSize: '1rem', marginTop: '-2px' }}>●</span>
                             <div>
                               <strong style={{ color: 'var(--text-primary)', display: 'block' }}>{sig.title}</strong>
                               <span style={{ color: 'var(--text-secondary)', marginTop: '2px', display: 'block', lineHeight: '1.4' }}>{sig.desc}</span>
@@ -459,7 +459,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                           { day: 'Day 7', text: 'Required reminder to complete task' }
                         ].map((ex, i) => (
                           <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
-                            <span style={{ fontSize: '0.675rem', fontWeight: 800, padding: '3px 8px', borderRadius: '4px', backgroundColor: '#f5f3ff', color: '#7c3aed', minWidth: '45px', textAlign: 'center' }}>{ex.day}</span>
+                            <span style={{ fontSize: '0.675rem', fontWeight: 800, padding: '3px 8px', borderRadius: '4px', backgroundColor: 'var(--color-admin-light)', color: 'var(--color-admin)', minWidth: '45px', textAlign: 'center' }}>{ex.day}</span>
                             <span>{ex.text}</span>
                           </div>
                         ))}
@@ -472,9 +472,9 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                     <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '12px' }}>Responsiveness Scale</div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                       {[
-                        { icon: <LuCircleCheck />, color: '#10b981', bg: '#e6fbf3', border: '#a7f3d0', label: 'Manageable', desc: 'Consistent behavior across all days', sub: '→ Predictable and stable engagement' },
-                        { icon: <LuTriangleAlert />, color: '#f59e0b', bg: '#fffbeb', border: '#fde68a', label: 'Requires Attention', desc: 'Fluctuating participation or effort', sub: '→ indicates inconsistency over time.' },
-                        { icon: <LuCircleAlert />, color: '#ef4444', bg: '#fff5f5', border: '#fca5a5', label: 'Elevated Risk', desc: 'Erratic or declining engagement', sub: '→ Signals unreliable behavioral pattern' }
+                        { icon: <LuCircleCheck />, color: 'var(--color-user)', bg: 'var(--color-user-light)', border: 'var(--color-user-border)', label: 'Manageable', desc: 'Consistent behavior across all days', sub: '→ Predictable and stable engagement' },
+                        { icon: <LuTriangleAlert />, color: 'var(--color-support)', bg: 'var(--color-support-light)', border: 'var(--color-support-border)', label: 'Requires Attention', desc: 'Fluctuating participation or effort', sub: '→ indicates inconsistency over time.' },
+                        { icon: <LuCircleAlert />, color: '#ef4444', bg: 'var(--color-alert-light)', border: 'var(--color-alert-border)', label: 'Elevated Risk', desc: 'Erratic or declining engagement', sub: '→ Signals unreliable behavioral pattern' }
                       ].map((s, i) => (
                         <div key={i} style={{ padding: '12px 14px', borderRadius: '8px', backgroundColor: s.bg, border: `1px solid ${s.border}` }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
@@ -499,19 +499,19 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 
                 {/* Yellow Status Banner */}
-                <div style={{ padding: '16px 20px', backgroundColor: '#fffbeb', border: '1px solid #fde68a', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ padding: '16px 20px', backgroundColor: 'var(--color-support-light)', border: '1px solid var(--color-support-border)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <span style={{ fontSize: '1.1rem', color: '#f59e0b', display: 'flex' }}><LuTriangleAlert /></span>
+                    <span style={{ fontSize: '1.1rem', color: 'var(--color-support)', display: 'flex' }}><LuTriangleAlert /></span>
                     <strong style={{ fontSize: '0.875rem', color: 'var(--text-primary)' }}>Response Quality: Requires Attention</strong>
                   </div>
                   <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
                     <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)' }}>Pattern: Inconsistent</span>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 800, padding: '2px 8px', borderRadius: '12px', backgroundColor: '#fff7ed', color: '#ea580c', border: '1px solid #ffedd5' }}>71%</span>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 800, padding: '2px 8px', borderRadius: '12px', backgroundColor: 'var(--color-support-light)', color: 'var(--color-support)', border: '1px solid #ffedd5' }}>71%</span>
                   </div>
                 </div>
                 
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', paddingLeft: '4px' }}>
-                  Contribution to Decision: <strong style={{ color: '#ea580c' }}>Medium Impact</strong>
+                  Contribution to Decision: <strong style={{ color: 'var(--color-support)' }}>Medium Impact</strong>
                 </div>
 
                 {/* Observed Signals */}
@@ -522,10 +522,10 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                     { label: 'Irrelevant responses detected', metric: '(3)', desc: 'The applicant gave answers that did not directly address the question.' },
                     { label: 'Very short responses', metric: '(11)', desc: 'Answers were minimal (1-2 words) showing low effort or limited engagement.' }
                   ].map((sig, i) => (
-                    <div key={i} style={{ padding: '14px 16px', borderRadius: '10px', backgroundColor: '#fff5f5', border: '1px solid #fca5a5', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <div key={i} style={{ padding: '14px 16px', borderRadius: '10px', backgroundColor: 'var(--color-alert-light)', border: '1px solid var(--color-alert-border)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <span style={{ fontSize: '0.825rem', fontWeight: 800, color: '#ef4444' }}>• {sig.label}</span>
-                        <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#ef4444', backgroundColor: '#ffe4e6', padding: '1px 8px', borderRadius: '4px' }}>{sig.metric}</span>
+                        <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#ef4444', backgroundColor: 'var(--color-alert-light)', padding: '1px 8px', borderRadius: '4px' }}>{sig.metric}</span>
                       </div>
                       <span style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', lineHeight: '1.45' }}>{sig.desc}</span>
                     </div>
@@ -533,9 +533,9 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 </div>
 
                 {/* Response Quality Insight */}
-                <div style={{ border: '1px solid #fde68a', borderRadius: '12px', padding: '16px', backgroundColor: '#fffbeb' }}>
+                <div style={{ border: '1px solid var(--color-support-border)', borderRadius: '12px', padding: '16px', backgroundColor: 'var(--color-support-light)' }}>
                   <div style={{ display: 'flex', gap: '8px' }}>
-                    <span style={{ color: '#ea580c', fontSize: '1rem', flexShrink: 0, marginTop: '2px' }}>⚠️</span>
+                    <span style={{ color: 'var(--color-support)', fontSize: '1rem', flexShrink: 0, marginTop: '2px' }}>⚠️</span>
                     <div>
                       <strong style={{ fontSize: '0.85rem', color: '#92400e', display: 'block', marginBottom: '2px' }}>Response Quality Insight</strong>
                       <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: '1.45', margin: 0 }}>
@@ -549,7 +549,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 <div style={{ border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden' }}>
                   <div 
                     onClick={() => setExampleExpanded(!exampleExpanded)}
-                    style={{ padding: '14px 18px', backgroundColor: '#fffbeb', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', borderBottom: exampleExpanded ? '1px solid var(--border-color)' : 'none' }}
+                    style={{ padding: '14px 18px', backgroundColor: 'var(--color-support-light)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', borderBottom: exampleExpanded ? '1px solid var(--border-color)' : 'none' }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontWeight: 700, color: '#92400e' }}>
                       <span style={{ display: 'flex' }}><LuEye /></span> View Example Behavior
@@ -560,17 +560,17 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                   </div>
                   
                   {exampleExpanded && (
-                    <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor: '#ffffff' }} className="animate-fade-in">
+                    <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor: 'var(--bg-secondary)' }} className="animate-fade-in">
                       <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', gap: '6px', alignItems: 'flex-start' }}>
-                        <span style={{ color: '#f59e0b', fontWeight: 'bold' }}>●</span>
+                        <span style={{ color: 'var(--color-support)', fontWeight: 'bold' }}>●</span>
                         <span>&quot;OK&quot; (Day 3)</span>
                       </div>
                       <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', gap: '6px', alignItems: 'flex-start' }}>
-                        <span style={{ color: '#f59e0b', fontWeight: 'bold' }}>●</span>
+                        <span style={{ color: 'var(--color-support)', fontWeight: 'bold' }}>●</span>
                         <span>&quot;Yes&quot; — without explanation when details were requested</span>
                       </div>
                       <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', gap: '6px', alignItems: 'flex-start' }}>
-                        <span style={{ color: '#10b981', fontWeight: 'bold' }}>●</span>
+                        <span style={{ color: 'var(--color-user)', fontWeight: 'bold' }}>●</span>
                         <span>Detailed answer on Day 1 showing cooperation and clarity</span>
                       </div>
                     </div>
@@ -583,8 +583,8 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '14px' }}>Response Quality Scale</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {[
-                    { icon: <LuCircleCheck />, color: '#10b981', bg: '#e6fbf3', border: '#a7f3d0', label: 'Reliable', desc: 'Mostly thoughtful, relevant replies' },
-                    { icon: <LuTriangleAlert />, color: '#f59e0b', bg: '#fffbeb', border: '#fde68a', label: 'Mixed', desc: 'Inconsistent response quality' },
+                    { icon: <LuCircleCheck />, color: 'var(--color-user)', bg: '#e6fbf3', border: '#a7f3d0', label: 'Reliable', desc: 'Mostly thoughtful, relevant replies' },
+                    { icon: <LuTriangleAlert />, color: 'var(--color-support)', bg: '#fffbeb', border: '#fde68a', label: 'Mixed', desc: 'Inconsistent response quality' },
                     { icon: <LuCircleAlert />, color: '#ef4444', bg: '#fff5f5', border: '#fca5a5', label: 'Low Quality', desc: 'Frequent low-effort or irrelevant replies' }
                   ].map((s, i) => (
                     <div key={i} style={{ padding: '14px 16px', borderRadius: '10px', backgroundColor: s.bg, border: `1px solid ${s.border}`, display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -597,7 +597,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                   ))}
                 </div>
                 
-                <div style={{ marginTop: '16px', padding: '14px', borderRadius: '10px', backgroundColor: '#f5f3ff', border: '1px solid #ddd6fe', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                <div style={{ marginTop: '16px', padding: '14px', borderRadius: '10px', backgroundColor: 'var(--color-admin-light)', border: '1px solid var(--color-admin-border)', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                   <span style={{ fontSize: '1rem', color: '#7c3aed', display: 'flex', marginTop: '1px' }}>🔷</span>
                   <span style={{ fontSize: '0.775rem', color: '#7c3aed', lineHeight: '1.45', fontWeight: 500 }}>
                     This category is factored into the <strong>final summary decision</strong>
@@ -614,14 +614,14 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 
                 {/* Green Status Banner */}
-                <div style={{ padding: '16px 20px', backgroundColor: '#e6fbf3', border: '1px solid #a7f3d0', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ padding: '16px 20px', backgroundColor: 'var(--color-user-light)', border: '1px solid var(--color-user-border)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <span style={{ fontSize: '1.1rem', color: '#10b981', display: 'flex' }}><LuCircleCheck /></span>
-                    <strong style={{ fontSize: '0.875rem', color: '#065f46' }}>Behavioral Integrity: Manageable</strong>
+                    <span style={{ fontSize: '1.1rem', color: 'var(--color-user)', display: 'flex' }}><LuCircleCheck /></span>
+                    <strong style={{ fontSize: '0.875rem', color: 'var(--color-user)' }}>Behavioral Integrity: Manageable</strong>
                   </div>
                   <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                    <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#065f46' }}>Pattern: Consistent - 101%</span>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 800, padding: '2px 8px', borderRadius: '12px', backgroundColor: '#d1fae5', color: '#047857', border: '1px solid #a7f3d0' }}>100%</span>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-secondary)' }}>Pattern: Consistent - 101%</span>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 800, padding: '2px 8px', borderRadius: '12px', backgroundColor: 'var(--color-user-light)', color: 'var(--color-user)', border: '1px solid var(--color-user-border)' }}>100%</span>
                   </div>
                 </div>
 
@@ -630,7 +630,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 </div>
 
                 <div style={{ display: 'flex', gap: '4px', fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                  <span>&gt;</span> This category is factored into the <span style={{ color: '#7c3aed', fontWeight: 600 }}>final summary decision</span>
+                  <span>&gt;</span> This category is factored into the <span style={{ color: 'var(--color-admin)', fontWeight: 600 }}>final summary decision</span>
                 </div>
 
                 {/* Observed Signals */}
@@ -641,8 +641,8 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                     { title: 'Stable Statements', desc: 'Consistent information even when probed or rephrased.' },
                     { title: 'Aligned Behavior', desc: 'Responses matched the situation, showing reasonable alignment.' }
                   ].map((sig, i) => (
-                    <div key={i} style={{ padding: '14px 16px', borderRadius: '10px', backgroundColor: '#f5f3ff', border: '1px solid #ddd6fe', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                      <span style={{ fontSize: '0.825rem', fontWeight: 800, color: '#7c3aed', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div key={i} style={{ padding: '14px 16px', borderRadius: '10px', backgroundColor: 'var(--color-admin-light)', border: '1px solid var(--color-admin-border)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                      <span style={{ fontSize: '0.825rem', fontWeight: 800, color: 'var(--color-admin)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <span style={{ fontSize: '0.9rem' }}><LuCircleCheck /></span> {sig.title}
                       </span>
                       <span style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', lineHeight: '1.45', paddingLeft: '20px' }}>{sig.desc}</span>
@@ -660,7 +660,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                       { day: 'Day 6', text: 'Response aligned with earlier statements, showing no contradictions.' }
                     ].map((ex, i) => (
                       <div key={i} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
-                        <span style={{ fontSize: '0.675rem', fontWeight: 800, padding: '3px 8px', borderRadius: '4px', backgroundColor: '#f5f3ff', color: '#7c3aed', flexShrink: 0 }}>{ex.day}</span>
+                        <span style={{ fontSize: '0.675rem', fontWeight: 800, padding: '3px 8px', borderRadius: '4px', backgroundColor: 'var(--color-admin-light)', color: 'var(--color-admin)', flexShrink: 0 }}>{ex.day}</span>
                         <span style={{ lineHeight: '1.4' }}>{ex.text}</span>
                       </div>
                     ))}
@@ -673,9 +673,9 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '14px' }}>Behavioral Integrity Scale</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {[
-                    { icon: <LuCircleCheck />, color: '#10b981', bg: '#e6fbf3', border: '#a7f3d0', label: 'Manageable', desc: 'Honest, consistent, aligned responses' },
-                    { icon: <LuTriangleAlert />, color: '#f59e0b', bg: '#fffbeb', border: '#fde68a', label: 'Requires Attention', desc: 'May indicate misunderstanding or unclear interpretation' },
-                    { icon: <LuCircleAlert />, color: '#ef4444', bg: '#fff5f5', border: '#fca5a5', label: 'Elevated Risk', desc: 'Contradictory or manipulative patterns' }
+                    { icon: <LuCircleCheck />, color: 'var(--color-user)', bg: 'var(--color-user-light)', border: 'var(--color-user-border)', label: 'Manageable', desc: 'Honest, consistent, aligned responses' },
+                    { icon: <LuTriangleAlert />, color: 'var(--color-support)', bg: 'var(--color-support-light)', border: 'var(--color-support-border)', label: 'Requires Attention', desc: 'May indicate misunderstanding or unclear interpretation' },
+                    { icon: <LuCircleAlert />, color: '#ef4444', bg: 'var(--color-alert-light)', border: 'var(--color-alert-border)', label: 'Elevated Risk', desc: 'Contradictory or manipulative patterns' }
                   ].map((s, i) => (
                     <div key={i} style={{ padding: '14px 16px', borderRadius: '10px', backgroundColor: s.bg, border: `1px solid ${s.border}`, display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <span style={{ color: s.color, fontSize: '1.2rem', display: 'flex' }}>{s.icon}</span>
@@ -687,7 +687,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                   ))}
                 </div>
                 
-                <div style={{ marginTop: '16px', padding: '14px', borderRadius: '10px', backgroundColor: '#f5f3ff', border: '1px solid #ddd6fe', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                <div style={{ marginTop: '16px', padding: '14px', borderRadius: '10px', backgroundColor: 'var(--color-admin-light)', border: '1px solid var(--color-admin-border)', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                   <span style={{ fontSize: '1rem', color: '#7c3aed', display: 'flex', marginTop: '1px' }}>🔷</span>
                   <span style={{ fontSize: '0.775rem', color: '#7c3aed', lineHeight: '1.45', fontWeight: 500 }}>
                     This category is factored into the <strong>final summary decision</strong>
@@ -704,23 +704,23 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 
                 {/* Yellow Banner Status */}
-                <div style={{ padding: '16px 20px', backgroundColor: '#fffbeb', border: '1px solid #fde68a', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ padding: '16px 20px', backgroundColor: 'var(--color-support-light)', border: '1px solid var(--color-support-border)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <span style={{ fontSize: '1.1rem', color: '#f59e0b', display: 'flex' }}><LuTriangleAlert /></span>
+                    <span style={{ fontSize: '1.1rem', color: 'var(--color-support)', display: 'flex' }}><LuTriangleAlert /></span>
                     <strong style={{ fontSize: '0.875rem', color: 'var(--text-primary)' }}>Consistency: Requires Attention</strong>
                   </div>
                   <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
                     <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)' }}>Pattern: Variable</span>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 800, padding: '2px 8px', borderRadius: '12px', backgroundColor: '#d1fae5', color: '#047857', border: '1px solid #a7f3d0' }}>100%</span>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 800, padding: '2px 8px', borderRadius: '12px', backgroundColor: 'var(--color-user-light)', color: 'var(--color-user)', border: '1px solid var(--color-user-border)' }}>100%</span>
                   </div>
                 </div>
 
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', paddingLeft: '4px' }}>
-                  Contribution to Decision: <strong style={{ color: '#ea580c' }}>Medium Impact</strong>
+                  Contribution to Decision: <strong style={{ color: 'var(--color-support)' }}>Medium Impact</strong>
                 </div>
 
                 <div style={{ display: 'flex', gap: '4px', fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                  <span>&gt;</span> This category is factored into the <span style={{ color: '#7c3aed', fontWeight: 600 }}>final summary decision</span>
+                  <span>&gt;</span> This category is factored into the <span style={{ color: 'var(--color-admin)', fontWeight: 600 }}>final summary decision</span>
                 </div>
 
                 {/* Behavioral Pattern Over Time (Connecting dots timeline) */}
@@ -729,7 +729,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                   
                   <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 10px' }}>
                     {/* Horizontal connector line */}
-                    <div style={{ position: 'absolute', left: '16px', right: '16px', top: '16px', height: '2px', backgroundColor: '#e2e8f0', zIndex: 1 }} />
+                    <div style={{ position: 'absolute', left: '16px', right: '16px', top: '16px', height: '2px', backgroundColor: 'var(--border-color)', zIndex: 1 }} />
                     
                     {[
                       { day: 'Day 1', status: 'ok' },
@@ -743,7 +743,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                       <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 5, position: 'relative' }}>
                         <div style={{
                           width: '32px', height: '32px', borderRadius: '50%',
-                          backgroundColor: d.status === 'ok' ? '#10b981' : d.status === 'warn' ? '#f59e0b' : '#ef4444',
+                          backgroundColor: d.status === 'ok' ? 'var(--color-user)' : d.status === 'warn' ? 'var(--color-support)' : '#ef4444',
                           color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', fontWeight: 800,
                           boxShadow: '0 4px 6px rgba(0,0,0,0.08)'
                         }}>
@@ -756,10 +756,10 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 </div>
 
                 {/* Consistency Insight */}
-                <div style={{ border: '1px solid #fca5a5', borderRadius: '12px', padding: '16px', backgroundColor: '#fff5f5', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                <div style={{ border: '1px solid var(--color-alert-border)', borderRadius: '12px', padding: '16px', backgroundColor: 'var(--color-alert-light)', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
                   <span style={{ color: '#ef4444', fontSize: '1.1rem', display: 'flex' }}><LuTriangleAlert /></span>
                   <div>
-                    <strong style={{ fontSize: '0.85rem', color: '#b91c1c', display: 'block', marginBottom: '2px' }}>Consistency Insight</strong>
+                    <strong style={{ fontSize: '0.85rem', color: 'var(--text-primary)', display: 'block', marginBottom: '2px' }}>Consistency Insight</strong>
                     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: '1.45', margin: 0 }}>
                       The applicant showed <strong>strong engagement early</strong>, followed by <strong>decreasing consistency</strong> and effort over time.
                     </p>
@@ -771,13 +771,13 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                   <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '14px' }}>View Example Behavior</h4>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     {[
-                      { text: 'Immediate and complete response', color: '#10b981', bg: '#e6fbf3', label: 'Day 1' },
-                      { text: 'Response delayed with reduced detail', color: '#10b981', bg: '#e6fbf3', label: 'Day 3' },
-                      { text: 'Minimal answer compared to earlier responses', color: '#ef4444', bg: '#fff5f5', label: 'Day 5' },
-                      { text: 'Required reminder to complete task', color: '#ef4444', bg: '#fff5f5', label: 'Day 7' }
+                      { text: 'Immediate and complete response', color: 'var(--color-user)', bg: 'var(--color-user-light)', label: 'Day 1' },
+                      { text: 'Response delayed with reduced detail', color: 'var(--color-user)', bg: 'var(--color-user-light)', label: 'Day 3' },
+                      { text: 'Minimal answer compared to earlier responses', color: '#ef4444', bg: 'var(--color-alert-light)', label: 'Day 5' },
+                      { text: 'Required reminder to complete task', color: '#ef4444', bg: 'var(--color-alert-light)', label: 'Day 7' }
                     ].map((ex, i) => (
                       <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px 14px', borderRadius: '8px', backgroundColor: ex.bg }}>
-                        <span style={{ fontSize: '0.725rem', fontWeight: 800, color: ex.color, padding: '2px 8px', borderRadius: '4px', backgroundColor: '#ffffff', minWidth: '42px', textAlign: 'center', display: 'inline-block' }}>{ex.label}</span>
+                        <span style={{ fontSize: '0.725rem', fontWeight: 800, color: ex.color, padding: '2px 8px', borderRadius: '4px', backgroundColor: 'var(--bg-secondary)', minWidth: '42px', textAlign: 'center', display: 'inline-block' }}>{ex.label}</span>
                         <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 500 }}>{ex.text}</span>
                       </div>
                     ))}
@@ -790,9 +790,9 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                 <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '14px' }}>Consistency Scale</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {[
-                    { icon: <LuCircleCheck />, color: '#10b981', bg: '#e6fbf3', border: '#a7f3d0', label: 'Manageable', desc: 'Consistent behavior across all days', sub: '→ Predictable and stable engagement' },
-                    { icon: <LuTriangleAlert />, color: '#f59e0b', bg: '#fffbeb', border: '#fde68a', label: 'Requires Attention', desc: 'Fluctuating participation or effort', sub: '→ indicates inconsistency over time.' },
-                    { icon: <LuCircleAlert />, color: '#ef4444', bg: '#fff5f5', border: '#fca5a5', label: 'Elevated Risk', desc: 'Erratic or declining engagement', sub: '→ Signals unreliable behavioral pattern' }
+                    { icon: <LuCircleCheck />, color: 'var(--color-user)', bg: 'var(--color-user-light)', border: 'var(--color-user-border)', label: 'Manageable', desc: 'Consistent behavior across all days', sub: '→ Predictable and stable engagement' },
+                    { icon: <LuTriangleAlert />, color: 'var(--color-support)', bg: 'var(--color-support-light)', border: 'var(--color-support-border)', label: 'Requires Attention', desc: 'Fluctuating participation or effort', sub: '→ indicates inconsistency over time.' },
+                    { icon: <LuCircleAlert />, color: '#ef4444', bg: 'var(--color-alert-light)', border: 'var(--color-alert-border)', label: 'Elevated Risk', desc: 'Erratic or declining engagement', sub: '→ Signals unreliable behavioral pattern' }
                   ].map((s, i) => (
                     <div key={i} style={{ padding: '12px 14px', borderRadius: '8px', backgroundColor: s.bg, border: `1px solid ${s.border}` }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
@@ -805,7 +805,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
                   ))}
                 </div>
                 
-                <div style={{ marginTop: '16px', padding: '14px', borderRadius: '10px', backgroundColor: '#f5f3ff', border: '1px solid #ddd6fe', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                <div style={{ marginTop: '16px', padding: '14px', borderRadius: '10px', backgroundColor: 'var(--color-admin-light)', border: '1px solid var(--color-admin-border)', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                   <span style={{ fontSize: '1rem', color: '#7c3aed', display: 'flex', marginTop: '1px' }}>🔷</span>
                   <span style={{ fontSize: '0.775rem', color: '#7c3aed', lineHeight: '1.45', fontWeight: 500 }}>
                     This category is factored into the <strong>final summary decision</strong>
@@ -849,7 +849,7 @@ export default function LandlordPreTenancyPage() {
         </div>
 
         {/* Search + Filter Bar */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '16px 20px', marginBottom: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: 'var(--shadow-sm)' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '16px 20px', marginBottom: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: 'var(--shadow-sm)' }}>
           <div style={{ position: 'relative', flex: 1, maxWidth: '520px' }}>
             <LuSearch style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', fontSize: '0.95rem' }} />
             <input
@@ -857,19 +857,19 @@ export default function LandlordPreTenancyPage() {
               placeholder="Search applicants, properties..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              style={{ width: '100%', padding: '9px 14px 9px 40px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.85rem', outline: 'none', color: 'var(--text-primary)', backgroundColor: '#ffffff', boxSizing: 'border-box' }}
+              style={{ width: '100%', padding: '9px 14px 9px 40px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.85rem', outline: 'none', color: 'var(--text-primary)', backgroundColor: 'var(--bg-secondary)', boxSizing: 'border-box' }}
               onFocus={e => e.currentTarget.style.borderColor = '#0a57e3'}
               onBlur={e => e.currentTarget.style.borderColor = 'var(--border-color)'}
             />
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '9px 16px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.85rem', color: 'var(--text-secondary)', cursor: 'pointer', backgroundColor: '#ffffff', fontWeight: 600 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '9px 16px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.85rem', color: 'var(--text-secondary)', cursor: 'pointer', backgroundColor: 'var(--bg-secondary)', fontWeight: 600 }}>
             <LuCalendar style={{ fontSize: '0.95rem' }} /> Last 30 Days <span style={{ marginLeft: '4px', fontSize: '0.75rem' }}>▾</span>
           </div>
         </div>
 
         {/* Table */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1.5fr 1.8fr 1.5fr 1.8fr 1.2fr 40px', padding: '12px 24px', backgroundColor: '#f8fafc', borderBottom: '1px solid var(--border-color)' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1.5fr 1.8fr 1.5fr 1.8fr 1.2fr 40px', padding: '12px 24px', backgroundColor: 'var(--bg-primary)', borderBottom: '1px solid var(--border-color)' }}>
             {['APPLICANT', 'PROPERTY', 'PROGRESS', 'PARTICIPATION LEVEL', 'BEHAVIOURAL SIGNAL', 'HISTORY', ''].map((h, i) => (
               <div key={i} style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', textAlign: i === 5 ? 'center' : 'left' }}>{h}</div>
             ))}
@@ -879,7 +879,7 @@ export default function LandlordPreTenancyPage() {
             <div
               key={i}
               style={{ display: 'grid', gridTemplateColumns: '2fr 1.5fr 1.8fr 1.5fr 1.8fr 1.2fr 40px', alignItems: 'center', padding: '16px 24px', borderBottom: i < filtered.length - 1 ? '1px solid var(--border-color)' : 'none', transition: 'background 0.15s' }}
-              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#fafbfc'}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--bg-primary)'}
               onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', textAlign: 'left' }}>
@@ -908,7 +908,7 @@ export default function LandlordPreTenancyPage() {
               </div>
               <div style={{ textAlign: 'center' }}>
                 <button
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#0a57e3', fontSize: '0.8rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '4px' }}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--brand-color)', fontSize: '0.8rem', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '4px' }}
                   onClick={() => setReportFor(a)}
                 >
                   <LuRefreshCw style={{ fontSize: '0.8rem' }} /> View Progress
@@ -929,7 +929,7 @@ export default function LandlordPreTenancyPage() {
           {[1, 2].map(p => (
             <button key={p} onClick={() => setPage(p)} style={{ width: '32px', height: '32px', borderRadius: '6px', border: '1px solid', borderColor: page === p ? '#0a57e3' : 'var(--border-color)', backgroundColor: page === p ? '#0a57e3' : '#ffffff', color: page === p ? '#ffffff' : 'var(--text-secondary)', fontSize: '0.825rem', fontWeight: 700, cursor: 'pointer' }}>{p}</button>
           ))}
-          <button style={{ width: '32px', height: '32px', borderRadius: '6px', border: '1px solid var(--border-color)', backgroundColor: '#ffffff', color: 'var(--text-secondary)', fontSize: '0.9rem', cursor: 'pointer' }} onClick={() => setPage(Math.min(2, page + 1))}>›</button>
+          <button style={{ width: '32px', height: '32px', borderRadius: '6px', border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-secondary)', fontSize: '0.9rem', cursor: 'pointer' }} onClick={() => setPage(Math.min(2, page + 1))}>›</button>
         </div>
       </div>
     </>

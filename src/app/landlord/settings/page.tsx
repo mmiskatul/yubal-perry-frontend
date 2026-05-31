@@ -27,14 +27,14 @@ export default function LandlordSettingsPage() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
 
         {/* ── 1. Account Information ── */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '6px' }}>
             <div>
               <h2 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)' }}>Account Information</h2>
               <p style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', marginTop: '2px' }}>View and update your account details.</p>
             </div>
             <button
-              style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: '#ffffff', color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer' }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer' }}
               onClick={() => alert('Sandbox: Edit Profile')}
             >
               <LuPencil style={{ fontSize: '0.85rem' }} /> Edit Profile
@@ -43,7 +43,7 @@ export default function LandlordSettingsPage() {
 
           {/* Profile Row */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', padding: '20px 0', borderBottom: '1px solid var(--border-color)', marginTop: '16px' }}>
-            <div style={{ width: '52px', height: '52px', borderRadius: '50%', backgroundColor: '#0a57e3', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '1.1rem', flexShrink: 0 }}>
+            <div style={{ width: '52px', height: '52px', borderRadius: '50%', backgroundColor: 'var(--brand-color)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '1.1rem', flexShrink: 0 }}>
               AJ
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr 1fr', gap: '32px', flex: 1 }}>
@@ -69,7 +69,7 @@ export default function LandlordSettingsPage() {
               <div style={{ fontSize: '1rem', color: 'var(--text-muted)', letterSpacing: '2px' }}>••••••••••</div>
             </div>
             <button
-              style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: '#ffffff', color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer' }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer' }}
               onClick={() => alert('Sandbox: Change Password')}
             >
               <LuShield style={{ fontSize: '0.85rem' }} /> Change Password
@@ -78,14 +78,14 @@ export default function LandlordSettingsPage() {
         </div>
 
         {/* ── 2. Properties & Team ── */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
             <div>
               <h2 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)' }}>Properties &amp; Team</h2>
               <p style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', marginTop: '2px' }}>Manage your properties and team members.</p>
             </div>
             <button
-              style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: '#ffffff', color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer' }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer' }}
               onClick={() => alert('Sandbox: Invite Property Manager')}
             >
               <LuUserPlus style={{ fontSize: '0.85rem' }} /> Invite Property Manager
@@ -94,8 +94,8 @@ export default function LandlordSettingsPage() {
 
           <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
             {/* Managed Properties count */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '16px 20px', backgroundColor: '#f8fafc', borderRadius: '10px', border: '1px solid var(--border-color)', minWidth: '160px' }}>
-              <div style={{ width: '40px', height: '40px', borderRadius: '10px', backgroundColor: '#e6fbf3', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '16px 20px', backgroundColor: 'var(--bg-primary)', borderRadius: '10px', border: '1px solid var(--border-color)', minWidth: '160px' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '10px', backgroundColor: 'var(--color-user-light)', color: 'var(--color-user)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem' }}>
                 🏢
               </div>
               <div>
@@ -108,8 +108,8 @@ export default function LandlordSettingsPage() {
             {/* Team Members */}
             <div style={{ flex: 1 }}>
               {[
-                { initials: 'JS', color: '#10b981', bg: '#e6fbf3', name: 'John Smith', detail: 'Assigned to 2 properties' },
-                { initials: 'SL', color: '#0a57e3', bg: '#eff6ff', name: 'Sarah Lee', detail: 'Assigned to 1 properties' }
+                { initials: 'JS', color: 'var(--color-user)', bg: '#e6fbf3', name: 'John Smith', detail: 'Assigned to 2 properties' },
+                { initials: 'SL', color: 'var(--brand-color)', bg: '#eff6ff', name: 'Sarah Lee', detail: 'Assigned to 1 properties' }
               ].map((member, i, arr) => (
                 <div
                   key={i}
@@ -133,14 +133,14 @@ export default function LandlordSettingsPage() {
         </div>
 
         {/* ── 3. Billing ── */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
             <div>
               <h2 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)' }}>Billing</h2>
               <p style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', marginTop: '2px' }}>View your subscription and payment details.</p>
             </div>
             <button
-              style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: '#ffffff', color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer' }}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '8px 16px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer' }}
               onClick={() => alert('Sandbox: Edit Billing Profile')}
             >
               <LuPencil style={{ fontSize: '0.85rem' }} /> Edit Profile
@@ -151,7 +151,7 @@ export default function LandlordSettingsPage() {
             {/* Active Subscription */}
             <div>
               <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: '#eff6ff', color: '#0a57e3', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem' }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '8px', backgroundColor: 'var(--brand-light)', color: 'var(--brand-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem' }}>
                   <LuCreditCard />
                 </div>
                 Active Subscription
@@ -163,7 +163,7 @@ export default function LandlordSettingsPage() {
                 ].map((s, si) => (
                   <div key={si} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
                     <span style={{ fontSize: '0.8rem', color: 'var(--text-primary)', fontWeight: 600 }}>{s.label}</span>
-                    <span style={{ fontSize: '0.625rem', fontWeight: 800, padding: '2px 8px', borderRadius: '4px', backgroundColor: '#e6fbf3', color: '#10b981' }}>ACTIVE</span>
+                    <span style={{ fontSize: '0.625rem', fontWeight: 800, padding: '2px 8px', borderRadius: '4px', backgroundColor: 'var(--color-user-light)', color: 'var(--color-user)' }}>ACTIVE</span>
                   </div>
                 ))}
               </div>
@@ -188,13 +188,13 @@ export default function LandlordSettingsPage() {
             {/* Actions */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <button
-                style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '7px 14px', borderRadius: '7px', border: '1.5px solid var(--border-color)', backgroundColor: '#ffffff', color: 'var(--text-secondary)', fontSize: '0.775rem', fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '7px 14px', borderRadius: '7px', border: '1.5px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-secondary)', fontSize: '0.775rem', fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}
                 onClick={() => alert('Sandbox: Update Payment Method')}
               >
                 <LuPencil style={{ fontSize: '0.75rem' }} /> Update Payment Method
               </button>
               <button
-                style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '7px 14px', borderRadius: '7px', border: '1.5px solid #fca5a5', backgroundColor: '#fff5f5', color: '#ef4444', fontSize: '0.775rem', fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '7px 14px', borderRadius: '7px', border: '1.5px solid var(--color-alert-border)', backgroundColor: 'var(--color-alert-light)', color: '#ef4444', fontSize: '0.775rem', fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}
                 onClick={() => alert('Sandbox: Cancel Subscription')}
               >
                 🗑 Cancel Subscription
@@ -204,14 +204,14 @@ export default function LandlordSettingsPage() {
         </div>
 
         {/* ── 4. Notification ── */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <h2 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '2px' }}>Notification</h2>
           <p style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>Choose what updates you want to receive.</p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '24px', alignItems: 'start' }}>
             {/* Left: Email icon */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div style={{ width: '42px', height: '42px', borderRadius: '50%', backgroundColor: '#f5f3ff', color: '#7c3aed', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem' }}>
+              <div style={{ width: '42px', height: '42px', borderRadius: '50%', backgroundColor: 'var(--color-admin-light)', color: '#7c3aed', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem' }}>
                 <LuBell />
               </div>
               <span style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--text-primary)' }}>Email Notifications</span>
@@ -229,7 +229,7 @@ export default function LandlordSettingsPage() {
                     type="checkbox"
                     checked={notifs[item.key as keyof typeof notifs]}
                     onChange={() => setNotifs(prev => ({ ...prev, [item.key]: !prev[item.key as keyof typeof prev] }))}
-                    style={{ marginTop: '2px', accentColor: '#0a57e3', width: '14px', height: '14px', flexShrink: 0 }}
+                    style={{ marginTop: '2px', accentcolor: 'var(--brand-color)', width: '14px', height: '14px', flexShrink: 0 }}
                   />
                   <div>
                     <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-primary)' }}>{item.label}</div>
@@ -250,7 +250,7 @@ export default function LandlordSettingsPage() {
                     type="checkbox"
                     checked={notifs[item.key as keyof typeof notifs]}
                     onChange={() => setNotifs(prev => ({ ...prev, [item.key]: !prev[item.key as keyof typeof prev] }))}
-                    style={{ marginTop: '2px', accentColor: '#0a57e3', width: '14px', height: '14px', flexShrink: 0 }}
+                    style={{ marginTop: '2px', accentcolor: 'var(--brand-color)', width: '14px', height: '14px', flexShrink: 0 }}
                   />
                   <div>
                     <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-primary)' }}>{item.label}</div>
@@ -263,7 +263,7 @@ export default function LandlordSettingsPage() {
         </div>
 
         {/* ── 5. Privacy & Compliance ── */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <h2 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '2px' }}>Privacy &amp; Complience</h2>
           <p style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>Review our data practices and legal information.</p>
 
@@ -274,7 +274,7 @@ export default function LandlordSettingsPage() {
               { title: 'Final decisions are yours', desc: 'Final rental decisions remain with the landlord.' }
             ].map((item, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <LuCircleCheck style={{ color: '#10b981', fontSize: '1.1rem', marginTop: '2px', flexShrink: 0 }} />
+                <LuCircleCheck style={{ color: 'var(--color-user)', fontSize: '1.1rem', marginTop: '2px', flexShrink: 0 }} />
                 <div>
                   <div style={{ fontSize: '0.825rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>{item.title}</div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', lineHeight: '1.4' }}>{item.desc}</div>

@@ -94,7 +94,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
             gap: '6px', 
             fontSize: '0.9rem', 
             fontWeight: 700, 
-            color: '#0a57e3', 
+            color: 'var(--brand-color)', 
             textDecoration: 'none' 
           }}
         >
@@ -120,7 +120,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
-              color: '#10b981',
+              color: 'var(--color-user)',
               fontWeight: 700,
               fontSize: '0.9rem'
             }}
@@ -139,7 +139,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
       {/* Day Timeline Row Card (No connector lines, clean white card) */}
       <div 
         style={{ 
-          backgroundColor: '#ffffff',
+          backgroundColor: 'var(--bg-secondary)',
           border: '1px solid var(--border-color)',
           borderRadius: '12px',
           padding: '24px 32px',
@@ -171,7 +171,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
                       width: '28px', 
                       height: '28px', 
                       borderRadius: '50%', 
-                      backgroundColor: '#0a57e3', 
+                      backgroundColor: 'var(--brand-color)', 
                       color: '#fff', 
                       display: 'flex', 
                       alignItems: 'center', 
@@ -190,7 +190,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
                       width: '28px', 
                       height: '28px', 
                       borderRadius: '50%', 
-                      backgroundColor: '#10b981', 
+                      backgroundcolor: 'var(--color-user)', 
                       color: '#fff', 
                       display: 'flex', 
                       alignItems: 'center', 
@@ -208,7 +208,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
                       width: '28px', 
                       height: '28px', 
                       borderRadius: '50%', 
-                      backgroundColor: '#ffffff', 
+                      backgroundColor: 'var(--bg-secondary)', 
                       border: '1.5px solid var(--border-color)', 
                       color: 'var(--text-muted)', 
                       display: 'flex', 
@@ -244,7 +244,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
         {/* Card 1: Daily Check-In (Simple white card, no top color strip) */}
         <div 
           style={{ 
-            backgroundColor: '#ffffff',
+            backgroundColor: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',
             borderRadius: '12px',
             padding: '24px 32px',
@@ -259,7 +259,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
                 height: '42px', 
                 borderRadius: '8px', 
                 backgroundColor: '#f0f7ff', 
-                color: '#0a57e3', 
+                color: 'var(--brand-color)', 
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center', 
@@ -281,7 +281,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
           <div 
             style={{ 
               padding: '18px 24px', 
-              backgroundColor: '#f8fafc', 
+              backgroundColor: 'var(--bg-primary)', 
               border: '1px solid var(--border-color)',
               borderRadius: '10px',
               textAlign: 'left'
@@ -299,7 +299,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
         {/* Card 2: Your Response */}
         <div 
           style={{ 
-            backgroundColor: '#ffffff',
+            backgroundColor: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',
             borderRadius: '12px',
             padding: '24px 32px',
@@ -314,7 +314,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
                 height: '42px', 
                 borderRadius: '8px', 
                 backgroundColor: '#f0f7ff', 
-                color: '#0a57e3', 
+                color: 'var(--brand-color)', 
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center', 
@@ -337,7 +337,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
             style={{ 
               padding: '20px 24px', 
               backgroundColor: '#f0f7ff', 
-              border: '1px solid #dbebff',
+              border: '1px solid var(--brand-alert-border)',
               borderRadius: '10px',
               display: 'flex',
               gap: '12px',
@@ -350,7 +350,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
               style={{ 
                 display: 'flex', 
                 gap: '2px', 
-                color: '#10b981', 
+                color: 'var(--color-user)', 
                 fontSize: '1.1rem', 
                 fontWeight: 900, 
                 lineHeight: '1.3', 
@@ -370,7 +370,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
         {/* Card 3: Submission Details */}
         <div 
           style={{ 
-            backgroundColor: '#ffffff',
+            backgroundColor: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',
             borderRadius: '12px',
             padding: '24px 32px',
@@ -385,7 +385,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
                 height: '42px', 
                 borderRadius: '8px', 
                 backgroundColor: '#f0f7ff', 
-                color: '#0a57e3', 
+                color: 'var(--brand-color)', 
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center', 
@@ -439,7 +439,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
         {/* Card 4: Secure Lock Banner */}
         <div 
           style={{ 
-            backgroundColor: '#ffffff',
+            backgroundColor: 'var(--bg-secondary)',
             border: '1.5px solid var(--border-color)',
             borderRadius: '16px',
             padding: '24px 32px',
@@ -454,8 +454,8 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
               width: '42px', 
               height: '42px', 
               borderRadius: '50%', 
-              backgroundColor: '#eff6ff', 
-              color: '#0a57e3', 
+              backgroundColor: 'var(--brand-light)', 
+              color: 'var(--brand-color)', 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center', 

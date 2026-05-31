@@ -81,7 +81,7 @@ export default function ApplicantSupportPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '32px', 
             display: 'flex', 
             flexDirection: 'column', 
@@ -89,7 +89,7 @@ export default function ApplicantSupportPage() {
           } as React.CSSProperties}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', borderBottom: '1px solid var(--border-color)', paddingBottom: '16px' }}>
-            <span style={{ fontSize: '1.35rem', color: '#0a57e3', display: 'flex' }}><LuCircleHelp /></span>
+            <span style={{ fontSize: '1.35rem', color: 'var(--brand-color)', display: 'flex' }}><LuCircleHelp /></span>
             <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)' }}>
               Frequently Asked Questions
             </h2>
@@ -106,7 +106,7 @@ export default function ApplicantSupportPage() {
                     border: '1px solid var(--border-color)',
                     borderRadius: '10px',
                     overflow: 'hidden',
-                    backgroundColor: isExpanded ? '#f8fafc' : '#ffffff',
+                    backgroundColor: isExpanded ? 'var(--bg-primary)' : 'var(--bg-secondary)',
                     transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)'
                   }}
                 >
@@ -130,7 +130,7 @@ export default function ApplicantSupportPage() {
                       style={{ 
                         fontSize: '0.9rem', 
                         fontWeight: isExpanded ? 700 : 600, 
-                        color: isExpanded ? '#0a57e3' : 'var(--text-primary)',
+                        color: isExpanded ? 'var(--brand-color)' : 'var(--text-primary)',
                         transition: 'color 0.2s ease'
                       }}
                     >
@@ -139,7 +139,7 @@ export default function ApplicantSupportPage() {
                     <span 
                       style={{ 
                         fontSize: '1.1rem', 
-                        color: isExpanded ? '#0a57e3' : 'var(--text-muted)',
+                        color: isExpanded ? 'var(--brand-color)' : 'var(--text-muted)',
                         display: 'flex',
                         alignItems: 'center',
                         transition: 'all 0.2s ease'
@@ -169,7 +169,7 @@ export default function ApplicantSupportPage() {
                           style={{ 
                             fontSize: '0.8rem', 
                             fontWeight: 700, 
-                            color: '#0a57e3', 
+                            color: 'var(--brand-color)', 
                             textDecoration: 'none',
                             display: 'inline-flex',
                             alignItems: 'center',
@@ -204,7 +204,7 @@ export default function ApplicantSupportPage() {
             <Link 
               href="/applicant/messages" 
               style={{ 
-                color: '#0a57e3', 
+                color: 'var(--brand-color)', 
                 fontWeight: 700, 
                 textDecoration: 'none' 
               }}
@@ -220,12 +220,12 @@ export default function ApplicantSupportPage() {
         <div 
           className="glass-card" 
           style={{ 
-            '--role-color': '#0a57e3', 
+            '--role-color': 'var(--brand-color)', 
             padding: '32px 24px', 
             display: 'flex', 
             flexDirection: 'column', 
             gap: '24px',
-            backgroundColor: '#ffffff'
+            backgroundColor: 'var(--bg-secondary)'
           } as React.CSSProperties}
         >
           {/* Card Header Title and bubble icon */}
@@ -235,8 +235,8 @@ export default function ApplicantSupportPage() {
                 width: '48px', 
                 height: '48px', 
                 borderRadius: '50%', 
-                backgroundColor: '#eff6ff', 
-                color: '#0a57e3', 
+                backgroundColor: 'var(--brand-light)', 
+                color: 'var(--brand-color)', 
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center', 
@@ -260,8 +260,8 @@ export default function ApplicantSupportPage() {
             href="/applicant/messages"
             className="premium-btn premium-btn-primary"
             style={{ 
-              '--btn-color': '#0a57e3', 
-              '--focus-ring': 'rgba(10, 87, 227, 0.15)',
+              '--btn-color': 'var(--brand-color)', 
+              '--focus-ring': 'var(--focus-ring)',
               padding: '12px 20px', 
               borderRadius: '8px', 
               fontSize: '0.85rem',
@@ -283,13 +283,13 @@ export default function ApplicantSupportPage() {
           {/* Responsive Info Checkpoints */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-              <span style={{ fontSize: '1.1rem', color: '#0a57e3', display: 'flex' }}><LuClock /></span>
+              <span style={{ fontSize: '1.1rem', color: 'var(--brand-color)', display: 'flex' }}><LuClock /></span>
               <span style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
                 We typically respond within 24 hours.
               </span>
             </div>
             <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-              <span style={{ fontSize: '1.1rem', color: '#0a57e3', display: 'flex' }}><LuLock /></span>
+              <span style={{ fontSize: '1.1rem', color: 'var(--brand-color)', display: 'flex' }}><LuLock /></span>
               <span style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
                 Your conversations are private and secure.
               </span>
@@ -303,7 +303,7 @@ export default function ApplicantSupportPage() {
       <div 
         style={{ 
           padding: '24px 32px', 
-          backgroundColor: '#ffffff',
+          backgroundColor: 'var(--bg-secondary)',
           border: '1.5px solid var(--border-color)',
           borderRadius: '16px',
           display: 'flex',
@@ -317,8 +317,8 @@ export default function ApplicantSupportPage() {
             width: '42px', 
             height: '42px', 
             borderRadius: '50%', 
-            backgroundColor: '#eff6ff', 
-            color: '#0a57e3', 
+            backgroundColor: 'var(--brand-light)', 
+            color: 'var(--brand-color)', 
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center', 

@@ -24,12 +24,12 @@ export default function AdminRolesPage() {
       email: 's.jenkins@company.com', 
       role: 'Compliance Lead', 
       status: 'Active', 
-      statusColor: '#10b981', 
+      statuscolor: 'var(--color-user)', 
       statusBg: '#e6fbf3', 
       action: 'Oct 26, 14:22', 
       actionDesc: 'Policy Update', 
       mfa: 'Enabled', 
-      mfaColor: '#10b981', 
+      mfacolor: 'var(--color-user)', 
       risk: 'Normal', 
       riskColor: 'var(--text-secondary)',
       avatar: 'https://api.dicebear.com/7.x/adventurer/svg?seed=sarah'
@@ -39,7 +39,7 @@ export default function AdminRolesPage() {
       email: 'r.chen@company.com', 
       role: 'IT Auditor', 
       status: 'Locked', 
-      statusColor: '#f59e0b', 
+      statuscolor: 'var(--color-support)', 
       statusBg: '#fffbeb', 
       action: 'Oct 25, 09:10', 
       actionDesc: 'Failed Login', 
@@ -59,7 +59,7 @@ export default function AdminRolesPage() {
       action: 'Oct 20, 11:45', 
       actionDesc: 'Session End', 
       mfa: 'Enabled', 
-      mfaColor: '#10b981', 
+      mfacolor: 'var(--color-user)', 
       risk: 'Normal', 
       riskColor: 'var(--text-secondary)',
       avatar: 'https://api.dicebear.com/7.x/adventurer/svg?seed=elena'
@@ -83,7 +83,7 @@ export default function AdminRolesPage() {
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr', gap: '20px', marginBottom: '32px' }}>
         
         {/* Metric 1: MFA Health */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
             <span style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Security Health: MFA Adoption
@@ -94,17 +94,17 @@ export default function AdminRolesPage() {
             
             {/* MFA progress track */}
             <div style={{ height: '6px', borderRadius: '3px', backgroundColor: 'var(--border-color)', overflow: 'hidden', width: '100%', marginBottom: '16px' }}>
-              <div style={{ width: '94%', height: '100%', backgroundColor: '#0a57e3', borderRadius: '3px' }} />
+              <div style={{ width: '94%', height: '100%', backgroundColor: 'var(--brand-color)', borderRadius: '3px' }} />
             </div>
           </div>
           
-          <div style={{ display: 'flex', gap: '6px', alignItems: 'center', fontSize: '0.75rem', color: '#10b981', fontWeight: 600 }}>
+          <div style={{ display: 'flex', gap: '6px', alignItems: 'center', fontSize: '0.75rem', color: 'var(--color-user)', fontWeight: 600 }}>
             <LuCircleCheck /> <span>Target exceeded by 4% this month</span>
           </div>
         </div>
 
         {/* Metric 2: Active Flags */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
             <span style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Active Flags
@@ -123,7 +123,7 @@ export default function AdminRolesPage() {
         </div>
 
         {/* Metric 3: Governance Audit */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
             <span style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Recent Governance Audit
@@ -139,7 +139,7 @@ export default function AdminRolesPage() {
             </div>
           </div>
           
-          <Link href="#" style={{ fontSize: '0.75rem', color: '#0a57e3', fontWeight: 700, textDecoration: 'none' }} onMouseEnter={(e)=>e.currentTarget.style.textDecoration='underline'} onMouseLeave={(e)=>e.currentTarget.style.textDecoration='none'}>
+          <Link href="#" style={{ fontSize: '0.75rem', color: 'var(--brand-color)', fontWeight: 700, textDecoration: 'none' }} onMouseEnter={(e)=>e.currentTarget.style.textDecoration='underline'} onMouseLeave={(e)=>e.currentTarget.style.textDecoration='none'}>
             View full audit trail &rarr;
           </Link>
         </div>
@@ -149,7 +149,7 @@ export default function AdminRolesPage() {
       {/* Main Panel: Governance Controls list */}
       <div 
         style={{
-          backgroundColor: '#ffffff',
+          backgroundColor: 'var(--bg-secondary)',
           border: '1px solid var(--border-color)',
           borderRadius: '12px',
           padding: '24px 0',
@@ -170,7 +170,7 @@ export default function AdminRolesPage() {
                 padding: '4px 10px',
                 borderRadius: '6px',
                 border: '1px solid var(--border-color)',
-                backgroundColor: '#ffffff',
+                backgroundColor: 'var(--bg-secondary)',
                 fontSize: '0.75rem',
                 fontWeight: 700,
                 color: 'var(--text-secondary)',
@@ -185,7 +185,7 @@ export default function AdminRolesPage() {
           <button 
             className="premium-btn premium-btn-primary"
             style={{ 
-              '--btn-color': '#0a57e3', 
+              '--btn-color': 'var(--brand-color)', 
               '--focus-ring': 'rgba(10, 87, 227, 0.15)',
               padding: '8px 16px', 
               borderRadius: '8px', 
@@ -204,7 +204,7 @@ export default function AdminRolesPage() {
         {/* Manager lists Table grid */}
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {/* Column labels */}
-          <div style={{ display: 'flex', padding: '16px 32px', backgroundColor: '#f8fafc', borderBottom: '1px solid var(--border-color)', fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <div style={{ display: 'flex', padding: '16px 32px', backgroundColor: 'var(--bg-primary)', borderBottom: '1px solid var(--border-color)', fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             <div style={{ flex: 1.5 }}>User</div>
             <div style={{ flex: 1.2 }}>Role</div>
             <div style={{ flex: 1 }}>Status</div>
@@ -233,7 +233,7 @@ export default function AdminRolesPage() {
                     width: '32px', 
                     height: '32px', 
                     borderRadius: '50%', 
-                    backgroundColor: '#f1f5f9',
+                    backgroundColor: 'var(--bg-primary)',
                     backgroundImage: `url(${manager.avatar})`,
                     backgroundSize: 'cover',
                     border: '1.5px solid var(--border-color)'
@@ -285,8 +285,8 @@ export default function AdminRolesPage() {
       {/* Bottom Card: Danger Zone */}
       <div 
         style={{ 
-          backgroundColor: '#ffffff',
-          border: '1px solid #fee2e2',
+          backgroundColor: 'var(--bg-secondary)',
+          border: '1px solid var(--color-alert-border)',
           borderRadius: '12px',
           padding: '24px 32px',
           boxShadow: 'var(--shadow-sm)',
@@ -330,7 +330,7 @@ export default function AdminRolesPage() {
           </button>
           <button 
             className="premium-btn premium-btn-primary"
-            style={{ '--btn-color': '#0a57e3', padding: '10px 20px', borderRadius: '8px', fontSize: '0.8rem' } as React.CSSProperties}
+            style={{ '--btn-color': 'var(--brand-color)', padding: '10px 20px', borderRadius: '8px', fontSize: '0.8rem' } as React.CSSProperties}
             onClick={()=>alert('Governance update logs saved successfully.')}
           >
             Save Changes

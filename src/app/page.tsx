@@ -28,7 +28,7 @@ export default function RootIndexRouter() {
           height: '40px', 
           borderRadius: '50%', 
           border: '2px solid var(--border-color)',
-          borderTopColor: '#0a57e3',
+          borderTopcolor: 'var(--brand-color)',
           animation: 'spin 1s linear infinite',
           marginBottom: '16px'
         }}

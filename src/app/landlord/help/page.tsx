@@ -8,10 +8,10 @@ import {
 
 const topics = [
   { icon: <LuUser />, iconColor: '#6b7280', iconBg: '#f3f4f6', title: 'Getting Started', desc: 'Learn the basics and set up your account for success.' },
-  { icon: <LuHouse />, iconColor: '#10b981', iconBg: '#e6fbf3', title: 'Pre-Tenancy', desc: 'Set up new properties and start the pre-tenancy process.' },
-  { icon: <LuMonitor />, iconColor: '#0a57e3', iconBg: '#eff6ff', title: 'Monitoring', desc: 'Monitor tenant behavior and stay informed.' },
+  { icon: <LuHouse />, iconcolor: 'var(--color-user)', iconBg: '#e6fbf3', title: 'Pre-Tenancy', desc: 'Set up new properties and start the pre-tenancy process.' },
+  { icon: <LuMonitor />, iconcolor: 'var(--brand-color)', iconBg: '#eff6ff', title: 'Monitoring', desc: 'Monitor tenant behavior and stay informed.' },
   { icon: <LuTriangleAlert />, iconColor: '#ef4444', iconBg: '#fff5f5', title: 'Early Warnings', desc: 'Understand alerts and take action quickly.' },
-  { icon: <LuSettings />, iconColor: '#f59e0b', iconBg: '#fffbeb', title: 'Account & Settings', desc: 'Manage your account, team, and preferences.' }
+  { icon: <LuSettings />, iconcolor: 'var(--color-support)', iconBg: '#fffbeb', title: 'Account & Settings', desc: 'Manage your account, team, and preferences.' }
 ];
 
 const faqs = [
@@ -59,7 +59,7 @@ export default function LandlordHelpPage() {
           />
         </div>
         <button
-          style={{ padding: '14px 28px', backgroundColor: '#0a57e3', color: '#ffffff', border: 'none', borderRadius: '0 8px 8px 0', fontSize: '0.875rem', fontWeight: 700, cursor: 'pointer' }}
+          style={{ padding: '14px 28px', backgroundColor: 'var(--brand-color)', color: '#ffffff', border: 'none', borderRadius: '0 8px 8px 0', fontSize: '0.875rem', fontWeight: 700, cursor: 'pointer' }}
           onClick={() => alert(`Sandbox: Search for "${search}"`)}
         >
           Search
@@ -75,7 +75,7 @@ export default function LandlordHelpPage() {
           {topics.map((topic, i) => (
             <div
               key={i}
-              style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '10px', padding: '20px 18px', boxShadow: 'var(--shadow-sm)', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s' }}
+              style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '10px', padding: '20px 18px', boxShadow: 'var(--shadow-sm)', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s' }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a57e3'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(10,87,227,0.1)'; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.boxShadow = 'var(--shadow-sm)'; }}
               onClick={() => alert(`Sandbox: Browse ${topic.title} articles`)}
@@ -85,7 +85,7 @@ export default function LandlordHelpPage() {
               </div>
               <h3 style={{ fontSize: '0.875rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '6px' }}>{topic.title}</h3>
               <p style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', lineHeight: '1.4', marginBottom: '14px' }}>{topic.desc}</p>
-              <div style={{ fontSize: '0.775rem', color: '#0a57e3', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <div style={{ fontSize: '0.775rem', color: 'var(--brand-color)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
                 View Articles →
               </div>
             </div>
@@ -97,7 +97,7 @@ export default function LandlordHelpPage() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', alignItems: 'start' }}>
 
         {/* FAQ */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <h3 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>Frequently Asked Questions</h3>
           <p style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>Quick answers to common questions.</p>
 
@@ -121,7 +121,7 @@ export default function LandlordHelpPage() {
           </div>
 
           <button
-            style={{ marginTop: '20px', background: 'none', border: 'none', cursor: 'pointer', color: '#0a57e3', fontSize: '0.825rem', fontWeight: 700, padding: '0', display: 'flex', alignItems: 'center', gap: '4px' }}
+            style={{ marginTop: '20px', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--brand-color)', fontSize: '0.825rem', fontWeight: 700, padding: '0', display: 'flex', alignItems: 'center', gap: '4px' }}
             onClick={() => alert('Sandbox: View all FAQs')}
           >
             View All FAQs →
@@ -129,7 +129,7 @@ export default function LandlordHelpPage() {
         </div>
 
         {/* Still need help */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
+        <div style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '24px 28px', boxShadow: 'var(--shadow-sm)', textAlign: 'left' }}>
           <h3 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>Still need help?</h3>
           <p style={{ fontSize: '0.775rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>Our support team is here for you.</p>
 
@@ -141,14 +141,14 @@ export default function LandlordHelpPage() {
                 sub: 'Usually replies within 24 hours', subColor: '#7c3aed'
               },
               {
-                icon: <LuMail />, iconColor: '#0a57e3', iconBg: '#eff6ff',
+                icon: <LuMail />, iconcolor: 'var(--brand-color)', iconBg: '#eff6ff',
                 title: 'Email Us', detail: 'support@tenantintegrity.com',
-                sub: 'We typically respond within 24 hours', subColor: '#0a57e3'
+                sub: 'We typically respond within 24 hours', subcolor: 'var(--brand-color)'
               },
               {
-                icon: <LuPhone />, iconColor: '#f59e0b', iconBg: '#fffbeb',
+                icon: <LuPhone />, iconcolor: 'var(--color-support)', iconBg: '#fffbeb',
                 title: 'Call Us', detail: '(888) 123-4567',
-                sub: 'Mon - Fri, 9:00 AM - 6:00 PM EST', subColor: '#f59e0b'
+                sub: 'Mon - Fri, 9:00 AM - 6:00 PM EST', subcolor: 'var(--color-support)'
               }
             ].map((item, i, arr) => (
               <div

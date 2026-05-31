@@ -84,7 +84,7 @@ export default function AdminEditorPage() {
           <div 
             key={block.id}
             style={{
-              backgroundColor: '#ffffff',
+              backgroundColor: 'var(--bg-secondary)',
               border: '1px solid var(--border-color)',
               borderRadius: '12px',
               padding: '24px 32px',
@@ -104,7 +104,7 @@ export default function AdminEditorPage() {
                 borderBottom: 'none',
                 borderRadius: '8px 8px 0 0',
                 padding: '8px 16px',
-                backgroundColor: '#f8fafc',
+                backgroundColor: 'var(--bg-primary)',
                 display: 'flex',
                 gap: '16px',
                 alignItems: 'center'
@@ -218,7 +218,7 @@ export default function AdminEditorPage() {
                   border: 'none',
                   fontSize: '0.825rem',
                   fontWeight: 700,
-                  color: '#0a57e3',
+                  color: 'var(--brand-color)',
                   cursor: 'pointer',
                   transition: 'opacity 0.2s'
                 }}
