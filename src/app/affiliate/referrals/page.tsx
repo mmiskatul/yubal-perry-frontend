@@ -26,10 +26,10 @@ export default function AffiliateReferralsPage() {
   };
 
   const recentConversions = [
-    { initials: 'JS', name: 'James Smith', plan: 'Pro Annual Plan', earned: '+$49.00', time: '2H AGO', color: '#eff6ff', textcolor: 'var(--brand-color)' },
-    { initials: 'ML', name: 'Maria Lopez', plan: 'Basic Monthly', earned: '+$12.50', time: '5H AGO', color: '#eff6ff', textcolor: 'var(--brand-color)' },
-    { initials: 'KT', name: 'Kevin Taylor', plan: 'Enterprise', earned: '+$199.00', time: '1D AGO', color: '#eff6ff', textcolor: 'var(--brand-color)' },
-    { initials: 'DR', name: 'Daniel Reed', plan: 'Pro Monthly', earned: '+$24.00', time: '2D AGO', color: '#eff6ff', textcolor: 'var(--brand-color)' },
+    { initials: 'JS', name: 'James Smith', plan: 'Pro Annual Plan', earned: '+$49.00', time: '2H AGO', color: 'var(--brand-light)', textColor: 'var(--brand-color)' },
+    { initials: 'ML', name: 'Maria Lopez', plan: 'Basic Monthly', earned: '+$12.50', time: '5H AGO', color: 'var(--brand-light)', textColor: 'var(--brand-color)' },
+    { initials: 'KT', name: 'Kevin Taylor', plan: 'Enterprise', earned: '+$199.00', time: '1D AGO', color: 'var(--brand-light)', textColor: 'var(--brand-color)' },
+    { initials: 'DR', name: 'Daniel Reed', plan: 'Pro Monthly', earned: '+$24.00', time: '2D AGO', color: 'var(--brand-light)', textColor: 'var(--brand-color)' },
   ];
 
   return (
@@ -41,7 +41,7 @@ export default function AffiliateReferralsPage() {
           position: 'fixed',
           top: '20px',
           right: '20px',
-          backgroundcolor: 'var(--color-user)',
+          backgroundColor: 'var(--color-user)',
           color: '#ffffff',
           padding: '12px 24px',
           borderRadius: '8px',
@@ -84,10 +84,10 @@ export default function AffiliateReferralsPage() {
             fontSize: '0.85rem',
             fontWeight: 700,
             boxShadow: '0 4px 6px -1px rgba(10,87,227,0.15)',
-            transition: 'background-color 0.15s'
+            transition: 'all 0.2s'
           }}
-          onMouseEnter={e => e.currentTarget.style.backgroundColor = '#024ec4'}
-          onMouseLeave={e => e.currentTarget.style.backgroundColor = '#0a57e3'}
+          onMouseEnter={e => e.currentTarget.style.opacity = '0.9'}
+          onMouseLeave={e => e.currentTarget.style.opacity = '1'}
         >
           <LuDownload /> Export Report
         </button>
@@ -146,10 +146,10 @@ export default function AffiliateReferralsPage() {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '6px',
-                  transition: 'background-color 0.15s'
+                  transition: 'all 0.2s'
                 }}
-                onMouseEnter={e => e.currentTarget.style.backgroundColor = '#024ec4'}
-                onMouseLeave={e => e.currentTarget.style.backgroundColor = '#0a57e3'}
+                onMouseEnter={e => e.currentTarget.style.opacity = '0.9'}
+                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
                 {copied ? <LuCheck /> : <LuCopy />} {copied ? 'Copied' : 'Copy'}
               </button>
@@ -185,8 +185,8 @@ export default function AffiliateReferralsPage() {
                     transition: 'all 0.15s ease'
                   }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = '#0a57e3';
-                    e.currentTarget.style.color = '#0a57e3';
+                    e.currentTarget.style.borderColor = 'var(--brand-color)';
+                    e.currentTarget.style.color = 'var(--brand-color)';
                     e.currentTarget.style.backgroundColor = 'var(--brand-light)';
                   }}
                   onMouseLeave={e => {

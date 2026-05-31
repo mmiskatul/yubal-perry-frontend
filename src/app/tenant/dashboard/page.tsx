@@ -77,27 +77,27 @@ export default function TenantDashboard() {
               
               {/* Day 1: Completed */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
-                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: 'var(--color-user)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
                   ✓
                 </div>
                 <span style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', marginTop: '8px', fontWeight: 600 }}>May 1</span>
                 {/* Connector line */}
-                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundcolor: 'var(--color-user)', zIndex: 1 }} />
+                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundColor: 'var(--color-user)', zIndex: 1 }} />
               </div>
 
               {/* Day 2: Completed */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
-                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: 'var(--color-user)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
                   ✓
                 </div>
                 <span style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', marginTop: '8px', fontWeight: 600 }}>May 2</span>
                 {/* Connector line */}
-                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundcolor: 'var(--color-user)', zIndex: 1 }} />
+                <div style={{ position: 'absolute', top: '17px', left: '50%', right: '-50%', height: '3px', backgroundColor: 'var(--color-user)', zIndex: 1 }} />
               </div>
 
               {/* Day 3: Completed */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', flex: 1 }}>
-                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
+                <div style={{ width: '34px', height: '34px', borderRadius: '50%', backgroundColor: 'var(--color-user)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.9rem', zIndex: 2 }}>
                   ✓
                 </div>
                 <span style={{ fontSize: '0.725rem', color: 'var(--text-secondary)', marginTop: '8px', fontWeight: 600 }}>May 3</span>

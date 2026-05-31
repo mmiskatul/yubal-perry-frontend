@@ -190,7 +190,7 @@ export default function DynamicDayDetailsPage({ params }: { params: Promise<{ da
                       width: '28px', 
                       height: '28px', 
                       borderRadius: '50%', 
-                      backgroundcolor: 'var(--color-user)', 
+                      backgroundColor: 'var(--color-user)', 
                       color: '#fff', 
                       display: 'flex', 
                       alignItems: 'center', 

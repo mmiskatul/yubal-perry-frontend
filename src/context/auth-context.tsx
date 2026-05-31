@@ -163,21 +163,21 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             position: 'fixed',
             bottom: '24px',
             right: '24px',
-            backgroundColor: 'rgba(255, 255, 255, 0.85)',
+            backgroundColor: 'var(--glass-bg)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            border: '1.5px solid rgba(10, 87, 227, 0.25)',
+            border: '1.5px solid var(--border-color)',
             borderRadius: '9999px',
             padding: '8px 14px',
             display: 'flex',
             alignItems: 'center',
             gap: '12px',
-            boxShadow: '0 10px 30px rgba(10, 87, 227, 0.15)',
+            boxShadow: 'var(--shadow-lg)',
             zIndex: 9999,
             animation: 'fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
           }}
         >
-          <span style={{ fontSize: '0.725rem', fontWeight: 800, color: '#0a57e3', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <span style={{ fontSize: '0.725rem', fontWeight: 800, color: 'var(--brand-color)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             clearance sandbox:
           </span>
           <div style={{ display: 'flex', gap: '6px' }}>
@@ -190,8 +190,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 fontWeight: 700,
                 border: 'none',
                 cursor: 'pointer',
-                backgroundColor: user.role === 'SUPER_ADMIN' ? '#0a57e3' : 'transparent',
-                color: user.role === 'SUPER_ADMIN' ? '#ffffff' : '#475569',
+                backgroundColor: user.role === 'SUPER_ADMIN' ? 'var(--brand-color)' : 'transparent',
+                color: user.role === 'SUPER_ADMIN' ? '#ffffff' : 'var(--text-secondary)',
                 transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >
@@ -206,8 +206,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 fontWeight: 700,
                 border: 'none',
                 cursor: 'pointer',
-                backgroundColor: user.role === 'LANDLORD' ? '#0a57e3' : 'transparent',
-                color: user.role === 'LANDLORD' ? '#ffffff' : '#475569',
+                backgroundColor: user.role === 'LANDLORD' ? 'var(--brand-color)' : 'transparent',
+                color: user.role === 'LANDLORD' ? '#ffffff' : 'var(--text-secondary)',
                 transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >
@@ -222,8 +222,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 fontWeight: 700,
                 border: 'none',
                 cursor: 'pointer',
-                backgroundColor: user.role === 'TENANT' ? '#0a57e3' : 'transparent',
-                color: user.role === 'TENANT' ? '#ffffff' : '#475569',
+                backgroundColor: user.role === 'TENANT' ? 'var(--brand-color)' : 'transparent',
+                color: user.role === 'TENANT' ? '#ffffff' : 'var(--text-secondary)',
                 transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >
@@ -238,8 +238,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 fontWeight: 700,
                 border: 'none',
                 cursor: 'pointer',
-                backgroundColor: user.role === 'APPLICANT' ? '#0a57e3' : 'transparent',
-                color: user.role === 'APPLICANT' ? '#ffffff' : '#475569',
+                backgroundColor: user.role === 'APPLICANT' ? 'var(--brand-color)' : 'transparent',
+                color: user.role === 'APPLICANT' ? '#ffffff' : 'var(--text-secondary)',
                 transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >
@@ -254,8 +254,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 fontWeight: 700,
                 border: 'none',
                 cursor: 'pointer',
-                backgroundColor: user.role === 'AFFILIATE' ? '#0a57e3' : 'transparent',
-                color: user.role === 'AFFILIATE' ? '#ffffff' : '#475569',
+                backgroundColor: user.role === 'AFFILIATE' ? 'var(--brand-color)' : 'transparent',
+                color: user.role === 'AFFILIATE' ? '#ffffff' : 'var(--text-secondary)',
                 transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >

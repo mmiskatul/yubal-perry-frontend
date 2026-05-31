@@ -160,11 +160,11 @@ export default function ProgressPage() {
                 {/* Day Details */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: 1 }}>
                   {isCompleted ? (
-                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem' }}>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: 'var(--color-user)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem' }}>
                       ✓
                     </div>
                   ) : isUpcoming ? (
-                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', border: '2px solid #0a57e3', color: 'var(--brand-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 700 }}>
+                    <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', border: '2px solid var(--brand-color)', color: 'var(--brand-color)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 700 }}>
                       {log.day}
                     </div>
                   ) : (
@@ -188,8 +188,8 @@ export default function ProgressPage() {
                       <span 
                         className="role-badge"
                         style={{ 
-                          '--badge-bg': '#eff6ff', 
-                          '--badge-color': '#0a57e3',
+                          '--badge-bg': 'var(--brand-light)', 
+                          '--badge-color': 'var(--brand-color)',
                           fontSize: '0.65rem',
                           padding: '4px 10px',
                           display: 'inline-flex',

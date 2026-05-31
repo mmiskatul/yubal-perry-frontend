@@ -57,7 +57,7 @@ export default function LandlordOverviewPage() {
           alignItems: 'center', 
           justifyContent: 'space-between',
           backgroundColor: 'var(--bg-primary)',
-          border: '1.5px dashed #cbd5e1',
+          border: '1.5px dashed var(--border-color)',
           borderRadius: '12px',
           padding: '12px 20px',
           marginBottom: '24px'
@@ -83,8 +83,8 @@ export default function LandlordOverviewPage() {
                 fontWeight: 700,
                 cursor: 'pointer',
                 border: '1px solid',
-                borderColor: activeState === tab.id ? '#0a57e3' : '#e2e8f0',
-                backgroundColor: activeState === tab.id ? '#0a57e3' : '#ffffff',
+                borderColor: activeState === tab.id ? 'var(--brand-color)' : 'var(--border-color)',
+                backgroundColor: activeState === tab.id ? 'var(--brand-color)' : 'var(--bg-secondary)',
                 color: activeState === tab.id ? '#ffffff' : 'var(--text-secondary)',
                 transition: 'all 0.15s'
               }}
@@ -299,13 +299,13 @@ export default function LandlordOverviewPage() {
 
                     {/* Type badge */}
                     <div style={{ flex: 0.8 }}>
-                      <span style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: '4px', backgroundColor: prop.type === 'Vacant' ? '#f3f4f6' : '#e6fbf3', color: prop.type === 'Vacant' ? 'var(--text-secondary)' : '#10b981', fontWeight: 700 }}>
+                      <span style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: '4px', backgroundColor: prop.type === 'Vacant' ? 'var(--color-guest-light)' : 'var(--color-user-light)', color: prop.type === 'Vacant' ? 'var(--text-secondary)' : 'var(--color-user)', fontWeight: 700 }}>
                         {prop.type}
                       </span>
                     </div>
 
                     {/* Status badge */}
-                    <div style={{ flex: 1, fontWeight: 600, color: prop.status === 'Active' ? '#0a57e3' : 'var(--text-muted)' }}>
+                    <div style={{ flex: 1, fontWeight: 600, color: prop.status === 'Active' ? 'var(--brand-color)' : 'var(--text-muted)' }}>
                       ● {prop.status}
                     </div>
 
@@ -320,7 +320,7 @@ export default function LandlordOverviewPage() {
                                 width: '20px', 
                                 height: '20px', 
                                 borderRadius: '50%', 
-                                backgroundColor: done ? '#10b981' : '#e2e8f0', 
+                                backgroundColor: done ? 'var(--color-user)' : 'var(--border-color)', 
                                 color: done ? '#ffffff' : 'var(--text-muted)', 
                                 fontSize: '0.675rem', 
                                 fontWeight: 700,
@@ -331,7 +331,7 @@ export default function LandlordOverviewPage() {
                             >
                               {done ? '✓' : step}
                             </span>
-                            {step < 3 && <div style={{ width: '20px', height: '1.5px', backgroundColor: '#e2e8f0' }} />}
+                            {step < 3 && <div style={{ width: '20px', height: '1.5px', backgroundColor: 'var(--border-color)' }} />}
                           </div>
                         );
                       })}
@@ -787,7 +787,7 @@ export default function LandlordOverviewPage() {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: act.type === 'warning' ? '#ef4444' : act.type === 'info' ? '#0a57e3' : '#10b981' }} />
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: act.type === 'warning' ? '#ef4444' : act.type === 'info' ? 'var(--brand-color)' : 'var(--color-user)' }} />
                   <div>
                     <span style={{ fontSize: '0.8rem', color: 'var(--text-primary)', fontWeight: 600 }}>{act.text}</span>
                     <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', display: 'block', marginTop: '2px' }}>{act.time}</span>

@@ -47,7 +47,7 @@ export default function ParticipationDashboardPage() {
         style={{ 
           padding: '14px 20px', 
           backgroundColor: 'var(--brand-light)', 
-          border: '1px solid #bfdbfe', 
+          border: '1px solid var(--brand-alert-border)', 
           borderRadius: '10px', 
           color: 'var(--brand-alert-text)', 
           fontSize: '0.85rem',
@@ -107,25 +107,25 @@ export default function ParticipationDashboardPage() {
           <div style={{ marginLeft: '24px', flexShrink: 0, position: 'relative' }}>
             <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* Calendar Background */}
-              <rect x="15" y="20" width="70" height="65" rx="10" fill="#f8fafc" stroke="var(--border-color)" strokeWidth="2"/>
+              <rect x="15" y="20" width="70" height="65" rx="10" fill="var(--bg-secondary)" stroke="var(--border-color)" strokeWidth="2"/>
               {/* Calendar Header */}
-              <path d="M15 30C15 24.4772 19.4772 20 25 20H75C80.5228 20 85 24.4772 85 30V35H15V30Z" fill="#3b82f6"/>
+              <path d="M15 30C15 24.4772 19.4772 20 25 20H75C80.5228 20 85 24.4772 85 30V35H15V30Z" fill="var(--brand-color)"/>
               {/* Calendar Rings */}
-              <rect x="28" y="12" width="6" height="12" rx="3" fill="#94a3b8" />
-              <rect x="66" y="12" width="6" height="12" rx="3" fill="#94a3b8" />
+              <rect x="28" y="12" width="6" height="12" rx="3" fill="var(--text-muted)" />
+              <rect x="66" y="12" width="6" height="12" rx="3" fill="var(--text-muted)" />
               {/* Checklist Lines */}
-              <line x1="28" y1="48" x2="52" y2="48" stroke="#cbd5e1" strokeWidth="3" strokeLinecap="round"/>
-              <line x1="28" y1="60" x2="62" y2="60" stroke="#cbd5e1" strokeWidth="3" strokeLinecap="round"/>
-              <line x1="28" y1="72" x2="48" y2="72" stroke="#cbd5e1" strokeWidth="3" strokeLinecap="round"/>
+              <line x1="28" y1="48" x2="52" y2="48" stroke="var(--border-color)" strokeWidth="3" strokeLinecap="round"/>
+              <line x1="28" y1="60" x2="62" y2="60" stroke="var(--border-color)" strokeWidth="3" strokeLinecap="round"/>
+              <line x1="28" y1="72" x2="48" y2="72" stroke="var(--border-color)" strokeWidth="3" strokeLinecap="round"/>
               {/* Checked Indicator badges */}
-              <circle cx="68" cy="50" r="8" fill="#10b981"/>
+              <circle cx="68" cy="50" r="8" fill="var(--color-user)"/>
               <path d="M65 50L67 52L71 48" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               
-              <circle cx="62" cy="70" r="8" fill="#10b981"/>
+              <circle cx="62" cy="70" r="8" fill="var(--color-user)"/>
               <path d="M59 70L61 72L65 68" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               
               {/* Calendar Bottom Right Large Checked Badge */}
-              <circle cx="82" cy="80" r="14" fill="#3b82f6" stroke="#ffffff" strokeWidth="3"/>
+              <circle cx="82" cy="80" r="14" fill="var(--brand-color)" stroke="var(--bg-secondary)" strokeWidth="3"/>
               <path d="M77 80L80 83L87 76" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
@@ -158,11 +158,11 @@ export default function ParticipationDashboardPage() {
             
             {/* Horizontal timeline connector lines */}
             <div style={{ position: 'absolute', top: '15px', left: '16px', right: '16px', height: '2px', backgroundColor: 'var(--border-color)', zIndex: 1 }} />
-            <div style={{ position: 'absolute', top: '15px', left: '16px', width: '33%', height: '2px', backgroundcolor: 'var(--color-user)', zIndex: 1 }} />
+            <div style={{ position: 'absolute', top: '15px', left: '16px', width: '33%', height: '2px', backgroundColor: 'var(--color-user)', zIndex: 1 }} />
 
             {/* Day 1: Checked */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, zIndex: 2 }}>
-              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800 }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--color-user)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800 }}>
                 ✓
               </div>
               <span style={{ fontSize: '0.675rem', fontWeight: 600, color: 'var(--text-secondary)', marginTop: '8px' }}>Day 1</span>
@@ -170,7 +170,7 @@ export default function ParticipationDashboardPage() {
 
             {/* Day 2: Checked */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, zIndex: 2 }}>
-              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800 }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--color-user)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800 }}>
                 ✓
               </div>
               <span style={{ fontSize: '0.675rem', fontWeight: 600, color: 'var(--text-secondary)', marginTop: '8px' }}>Day 2</span>
@@ -178,7 +178,7 @@ export default function ParticipationDashboardPage() {
 
             {/* Day 3: Active */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, zIndex: 2 }}>
-              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--brand-color)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 800, boxShadow: '0 0 0 3px rgba(10, 87, 227, 0.2)' }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: 'var(--brand-color)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 800, boxShadow: '0 0 0 3px var(--focus-ring)' }}>
                 3
               </div>
               <span style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--brand-color)', marginTop: '8px' }}>Day 3</span>

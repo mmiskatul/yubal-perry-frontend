@@ -8,7 +8,7 @@ const properties = [
     id: 1,
     name: 'Maple Heights A-12',
     address: '123 Maple Street',
-    status: 'VACANT', statuscolor: 'var(--text-secondary)', statusBg: '#f1f5f9',
+    status: 'VACANT', statuscolor: 'var(--text-secondary)', statusBg: 'var(--color-guest-light)',
     image: '🏡',
     section: 'Pre-Tenancy',
     sectionDetail: 'Not started',
@@ -23,7 +23,7 @@ const properties = [
     id: 2,
     name: 'Riverside Apt 402',
     address: '45 Riverwalk Drive',
-    status: 'VACANT', statuscolor: 'var(--text-secondary)', statusBg: '#f1f5f9',
+    status: 'VACANT', statuscolor: 'var(--text-secondary)', statusBg: 'var(--color-guest-light)',
     image: '🏊',
     section: 'Pre-Tenancy',
     sectionDetail: 'Day 3 of 7 · Active',
@@ -40,7 +40,7 @@ const properties = [
     id: 3,
     name: 'Grand Plaza 6A',
     address: '789 Grand Plaza',
-    status: 'OCCUPIED', statuscolor: 'var(--color-user)', statusBg: '#e6fbf3',
+    status: 'OCCUPIED', statuscolor: 'var(--color-user)', statusBg: 'var(--color-user-light)',
     image: '🏙️',
     section: 'Monitoring',
     sectionDetail: 'Participation: 68%\nTrend: Slight Decline',
@@ -55,7 +55,7 @@ const properties = [
     id: 4,
     name: 'Grand Plaza 6A',
     address: '789 Grand Plaza',
-    status: 'VACANT', statuscolor: 'var(--text-secondary)', statusBg: '#f1f5f9',
+    status: 'VACANT', statuscolor: 'var(--text-secondary)', statusBg: 'var(--color-guest-light)',
     image: '🏙️',
     section: 'Pre-Tenancy',
     sectionDetail: 'Completed',
@@ -71,7 +71,7 @@ const properties = [
     id: 5,
     name: 'Maple Heights A-12',
     address: '123 Maple Street',
-    status: 'OCCUPIED', statuscolor: 'var(--color-user)', statusBg: '#e6fbf3',
+    status: 'OCCUPIED', statuscolor: 'var(--color-user)', statusBg: 'var(--color-user-light)',
     image: '🏡',
     section: 'Monitoring',
     sectionDetail: 'Participation: 82%\nTrend: Stable ···',
@@ -97,8 +97,8 @@ export default function LandlordPropertiesPage() {
       name: newName.trim(),
       address: 'Address to be confirmed',
       status: newType === 'Occupied' ? 'OCCUPIED' : 'VACANT',
-      statusColor: newType === 'Occupied' ? '#10b981' : '#64748b',
-      statusBg: newType === 'Occupied' ? '#e6fbf3' : '#f1f5f9',
+      statusColor: newType === 'Occupied' ? 'var(--color-user)' : 'var(--text-secondary)',
+      statusBg: newType === 'Occupied' ? 'var(--color-user-light)' : 'var(--color-guest-light)',
       image: '🏠',
       section: 'Pre-Tenancy',
       sectionDetail: 'Not started',
@@ -134,10 +134,10 @@ export default function LandlordPropertiesPage() {
       {/* Summary Cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0', marginBottom: '28px', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
         {[
-          { icon: '🏢', label: 'Total Properties', value: propList.length, iconBg: '#eff6ff' },
-          { icon: '🔴', label: 'Vacant', value: propList.filter(p => p.status === 'VACANT').length, iconBg: '#fff5f5' },
-          { icon: '👥', label: 'Occupied', value: propList.filter(p => p.status === 'OCCUPIED').length, iconBg: '#e6fbf3' },
-          { icon: '📋', label: 'Under Review', value: 1, iconBg: '#fffbeb' }
+          { icon: '🏢', label: 'Total Properties', value: propList.length, iconBg: 'var(--brand-light)' },
+          { icon: '🔴', label: 'Vacant', value: propList.filter(p => p.status === 'VACANT').length, iconBg: 'var(--color-alert-light)' },
+          { icon: '👥', label: 'Occupied', value: propList.filter(p => p.status === 'OCCUPIED').length, iconBg: 'var(--color-user-light)' },
+          { icon: '📋', label: 'Under Review', value: 1, iconBg: 'var(--color-support-light)' }
         ].map((c, i) => (
           <div key={i} style={{ padding: '20px 24px', borderRight: i < 3 ? '1px solid var(--border-color)' : 'none', backgroundColor: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', gap: '14px', textAlign: 'left' }}>
             <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: c.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.3rem', flexShrink: 0 }}>{c.icon}</div>
@@ -191,8 +191,8 @@ export default function LandlordPropertiesPage() {
                     <div style={{ fontSize: '0.775rem', color: prop.sectionColor, fontWeight: 600, marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                       <LuClock style={{ fontSize: '0.8rem' }} /> {prop.sectionDetail}
                     </div>
-                    <div style={{ height: '5px', borderRadius: '3px', backgroundColor: '#e2e8f0', overflow: 'hidden' }}>
-                      <div style={{ height: '100%', width: `${prop.sectionProgress}%`, borderRadius: '3px', backgroundColor: prop.sectionProgressColor || '#0a57e3' }} />
+                    <div style={{ height: '5px', borderRadius: '3px', backgroundColor: 'var(--border-color)', overflow: 'hidden' }}>
+                      <div style={{ height: '100%', width: `${prop.sectionProgress}%`, borderRadius: '3px', backgroundColor: prop.sectionProgressColor || 'var(--brand-color)' }} />
                     </div>
                   </div>
                 ) : (
@@ -210,7 +210,7 @@ export default function LandlordPropertiesPage() {
               {/* Action Button */}
               <button
                 style={{ width: '100%', padding: '9px 16px', borderRadius: '8px', border: '1.5px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', color: 'var(--brand-color)', fontSize: '0.825rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'all 0.2s' }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a57e3'; e.currentTarget.style.backgroundColor = '#eff6ff'; }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--brand-color)'; e.currentTarget.style.backgroundColor = 'var(--brand-light)'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.backgroundColor = 'var(--bg-secondary)'; }}
                 onClick={() => alert(`Sandbox: ${prop.actionLabel} — ${prop.name}`)}
               >
@@ -231,15 +231,15 @@ export default function LandlordPropertiesPage() {
 
             <label style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '6px' }}>PROPERTY NAME *</label>
             <input type="text" placeholder="e.g. Maple Heights A-12" value={newName} onChange={e => setNewName(e.target.value)}
-              style={{ width: '100%', padding: '10px 14px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.825rem', marginBottom: '20px', outline: 'none', boxSizing: 'border-box' }}
-              onFocus={e => e.currentTarget.style.borderColor = '#0a57e3'}
+              style={{ width: '100%', padding: '10px 14px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.825rem', marginBottom: '20px', outline: 'none', boxSizing: 'border-box', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-primary)' }}
+              onFocus={e => e.currentTarget.style.borderColor = 'var(--brand-color)'}
               onBlur={e => e.currentTarget.style.borderColor = 'var(--border-color)'}
             />
 
             <label style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '10px' }}>OCCUPANCY *</label>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '24px' }}>
               {(['Occupied', 'Vacant'] as const).map((type) => (
-                <button key={type} onClick={() => setNewType(type)} style={{ padding: '14px', borderRadius: '10px', border: `1.5px solid ${newType === type ? '#0a57e3' : 'var(--border-color)'}`, backgroundColor: newType === type ? '#eff6ff' : '#ffffff', color: newType === type ? '#0a57e3' : 'var(--text-secondary)', fontWeight: 700, cursor: 'pointer', fontSize: '0.875rem' }}>
+                <button key={type} onClick={() => setNewType(type)} style={{ padding: '14px', borderRadius: '10px', border: `1.5px solid ${newType === type ? 'var(--brand-color)' : 'var(--border-color)'}`, backgroundColor: newType === type ? 'var(--brand-light)' : 'var(--bg-secondary)', color: newType === type ? 'var(--brand-color)' : 'var(--text-secondary)', fontWeight: 700, cursor: 'pointer', fontSize: '0.875rem' }}>
                   {type === 'Occupied' ? '👥 ' : '🏠 '}{type}
                 </button>
               ))}

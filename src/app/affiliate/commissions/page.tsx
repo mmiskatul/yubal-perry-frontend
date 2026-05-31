@@ -66,10 +66,10 @@ export default function AffiliateCommissionsPage() {
               fontSize: '0.85rem',
               fontWeight: 700,
               boxShadow: '0 4px 6px -1px rgba(10,87,227,0.15)',
-              transition: 'background-color 0.15s'
+              transition: 'all 0.15s'
             }}
-            onMouseEnter={e => e.currentTarget.style.backgroundColor = '#024ec4'}
-            onMouseLeave={e => e.currentTarget.style.backgroundColor = '#0a57e3'}
+            onMouseEnter={e => e.currentTarget.style.opacity = '0.9'}
+            onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
             <LuDownload /> Export CSV
           </button>
@@ -378,7 +378,7 @@ export default function AffiliateCommissionsPage() {
                 justifyContent: 'center',
                 transition: 'all 0.15s'
               }}
-              onMouseEnter={e => e.currentTarget.style.borderColor = '#0a57e3'}
+              onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--brand-color)'}
               onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border-color)'}
             >
               <LuChevronRight />

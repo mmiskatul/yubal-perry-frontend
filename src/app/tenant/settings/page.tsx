@@ -177,7 +177,7 @@ export default function SettingsPage() {
                   width: '46px',
                   height: '24px',
                   borderRadius: '12px',
-                  backgroundColor: smsNotifications ? '#0a57e3' : '#cbd5e1',
+                  backgroundColor: smsNotifications ? 'var(--brand-color)' : 'var(--border-color)',
                   cursor: 'pointer',
                   position: 'relative',
                   transition: 'background-color 0.2s'
@@ -213,7 +213,7 @@ export default function SettingsPage() {
                   width: '46px',
                   height: '24px',
                   borderRadius: '12px',
-                  backgroundColor: emailNotifications ? '#0a57e3' : '#cbd5e1',
+                  backgroundColor: emailNotifications ? 'var(--brand-color)' : 'var(--border-color)',
                   cursor: 'pointer',
                   position: 'relative',
                   transition: 'background-color 0.2s'

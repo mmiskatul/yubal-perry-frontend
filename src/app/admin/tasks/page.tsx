@@ -81,13 +81,13 @@ export default function AdminTasksPage() {
           alignItems: 'center', 
           gap: '8px', 
           paddingBottom: '12px', 
-          borderBottom: currentStep === 1 ? '2px solid #0a57e3' : '2px solid transparent',
-          color: currentStep === 1 ? '#0a57e3' : currentStep > 1 ? '#10b981' : 'var(--text-muted)',
+          borderBottom: currentStep === 1 ? '2px solid var(--brand-color)' : '2px solid transparent',
+          color: currentStep === 1 ? 'var(--brand-color)' : currentStep > 1 ? 'var(--color-user)' : 'var(--text-muted)',
           fontWeight: 700,
           fontSize: '0.85rem'
         }}>
           {currentStep > 1 ? (
-            <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: '#ffffff', fontSize: '0.675rem' }}><LuCircleCheck /></span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', backgroundColor: 'var(--color-user)', color: '#ffffff', fontSize: '0.675rem' }}><LuCircleCheck /></span>
           ) : (
             <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', backgroundColor: 'var(--brand-color)', color: '#ffffff', fontSize: '0.725rem' }}>1</span>
           )}
@@ -100,13 +100,13 @@ export default function AdminTasksPage() {
           alignItems: 'center', 
           gap: '8px', 
           paddingBottom: '12px', 
-          borderBottom: currentStep === 2 ? '2px solid #0a57e3' : '2px solid transparent',
-          color: currentStep === 2 ? '#0a57e3' : currentStep > 2 ? '#10b981' : 'var(--text-muted)',
+          borderBottom: currentStep === 2 ? '2px solid var(--brand-color)' : '2px solid transparent',
+          color: currentStep === 2 ? 'var(--brand-color)' : currentStep > 2 ? 'var(--color-user)' : 'var(--text-muted)',
           fontWeight: 700,
           fontSize: '0.85rem'
         }}>
           {currentStep > 2 ? (
-            <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', backgroundcolor: 'var(--color-user)', color: '#ffffff', fontSize: '0.675rem' }}><LuCircleCheck /></span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px', borderRadius: '50%', backgroundColor: 'var(--color-user)', color: '#ffffff', fontSize: '0.675rem' }}><LuCircleCheck /></span>
           ) : (
             <span style={{ 
               display: 'inline-flex', 
@@ -115,7 +115,7 @@ export default function AdminTasksPage() {
               width: '20px', 
               height: '20px', 
               borderRadius: '50%', 
-              backgroundColor: currentStep === 2 ? '#0a57e3' : '#e2e8f0', 
+              backgroundColor: currentStep === 2 ? 'var(--brand-color)' : 'var(--border-color)', 
               color: currentStep === 2 ? '#ffffff' : 'var(--text-muted)', 
               fontSize: '0.725rem' 
             }}>2</span>
@@ -129,8 +129,8 @@ export default function AdminTasksPage() {
           alignItems: 'center', 
           gap: '8px', 
           paddingBottom: '12px', 
-          borderBottom: currentStep === 3 ? '2px solid #0a57e3' : '2px solid transparent',
-          color: currentStep === 3 ? '#0a57e3' : 'var(--text-muted)',
+          borderBottom: currentStep === 3 ? '2px solid var(--brand-color)' : '2px solid transparent',
+          color: currentStep === 3 ? 'var(--brand-color)' : 'var(--text-muted)',
           fontWeight: 700,
           fontSize: '0.85rem'
         }}>
@@ -141,7 +141,7 @@ export default function AdminTasksPage() {
             width: '20px', 
             height: '20px', 
             borderRadius: '50%', 
-            backgroundColor: currentStep === 3 ? '#0a57e3' : '#e2e8f0', 
+            backgroundColor: currentStep === 3 ? 'var(--brand-color)' : 'var(--border-color)', 
             color: currentStep === 3 ? '#ffffff' : 'var(--text-muted)', 
             fontSize: '0.725rem' 
           }}>3</span>
@@ -159,19 +159,19 @@ export default function AdminTasksPage() {
           width: '24px', 
           height: '4px', 
           borderRadius: '2px', 
-          backgroundColor: currentStep >= 1 ? (currentStep > 1 ? '#10b981' : '#0a57e3') : '#e2e8f0' 
+          backgroundColor: currentStep >= 1 ? (currentStep > 1 ? 'var(--color-user)' : 'var(--brand-color)') : 'var(--border-color)' 
         }} />
         <span style={{ 
           width: '24px', 
           height: '4px', 
           borderRadius: '2px', 
-          backgroundColor: currentStep >= 2 ? (currentStep > 2 ? '#10b981' : '#0a57e3') : '#e2e8f0' 
+          backgroundColor: currentStep >= 2 ? (currentStep > 2 ? 'var(--color-user)' : 'var(--brand-color)') : 'var(--border-color)' 
         }} />
         <span style={{ 
           width: '24px', 
           height: '4px', 
           borderRadius: '2px', 
-          backgroundColor: currentStep >= 3 ? '#0a57e3' : '#e2e8f0' 
+          backgroundColor: currentStep >= 3 ? 'var(--brand-color)' : 'var(--border-color)' 
         }} />
       </div>
     );
@@ -273,7 +273,7 @@ export default function AdminTasksPage() {
           style={{
             backgroundColor: 'var(--bg-secondary)',
             border: '1.5px solid var(--border-color)',
-            borderTop: '4px solid #0a57e3', // Blue top indicator bar matching Screenshot
+            borderTop: '4px solid var(--brand-color)', // Blue top indicator bar matching Screenshot
             borderRadius: '0 0 12px 12px',
             padding: '28px 32px',
             boxShadow: 'var(--shadow-sm)',
@@ -883,8 +883,8 @@ export default function AdminTasksPage() {
               width: '56px', 
               height: '56px', 
               borderRadius: '50%', 
-              backgroundColor: customAlert.type === 'success' ? '#e6fbf3' : customAlert.type === 'warning' ? '#fffbeb' : '#eff6ff', 
-              color: customAlert.type === 'success' ? '#10b981' : customAlert.type === 'warning' ? '#f59e0b' : '#0a57e3', 
+              backgroundColor: customAlert.type === 'success' ? 'var(--color-user-light)' : customAlert.type === 'warning' ? 'var(--color-support-light)' : 'var(--brand-light)', 
+              color: customAlert.type === 'success' ? 'var(--color-user)' : customAlert.type === 'warning' ? 'var(--color-support)' : 'var(--brand-color)', 
               display: 'inline-flex', 
               alignItems: 'center', 
               justifyContent: 'center', 

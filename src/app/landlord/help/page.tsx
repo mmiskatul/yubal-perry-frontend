@@ -7,11 +7,11 @@ import {
 } from 'react-icons/lu';
 
 const topics = [
-  { icon: <LuUser />, iconColor: '#6b7280', iconBg: '#f3f4f6', title: 'Getting Started', desc: 'Learn the basics and set up your account for success.' },
-  { icon: <LuHouse />, iconcolor: 'var(--color-user)', iconBg: '#e6fbf3', title: 'Pre-Tenancy', desc: 'Set up new properties and start the pre-tenancy process.' },
-  { icon: <LuMonitor />, iconcolor: 'var(--brand-color)', iconBg: '#eff6ff', title: 'Monitoring', desc: 'Monitor tenant behavior and stay informed.' },
-  { icon: <LuTriangleAlert />, iconColor: '#ef4444', iconBg: '#fff5f5', title: 'Early Warnings', desc: 'Understand alerts and take action quickly.' },
-  { icon: <LuSettings />, iconcolor: 'var(--color-support)', iconBg: '#fffbeb', title: 'Account & Settings', desc: 'Manage your account, team, and preferences.' }
+  { icon: <LuUser />, iconColor: 'var(--text-muted)', iconBg: 'var(--color-guest-light)', title: 'Getting Started', desc: 'Learn the basics and set up your account for success.' },
+  { icon: <LuHouse />, iconColor: 'var(--color-user)', iconBg: 'var(--color-user-light)', title: 'Pre-Tenancy', desc: 'Set up new properties and start the pre-tenancy process.' },
+  { icon: <LuMonitor />, iconColor: 'var(--brand-color)', iconBg: 'var(--brand-light)', title: 'Monitoring', desc: 'Monitor tenant behavior and stay informed.' },
+  { icon: <LuTriangleAlert />, iconColor: '#ef4444', iconBg: 'var(--color-alert-light)', title: 'Early Warnings', desc: 'Understand alerts and take action quickly.' },
+  { icon: <LuSettings />, iconColor: 'var(--color-support)', iconBg: 'var(--color-support-light)', title: 'Account & Settings', desc: 'Manage your account, team, and preferences.' }
 ];
 
 const faqs = [
@@ -53,8 +53,8 @@ export default function LandlordHelpPage() {
             placeholder="Search help articles, topics and guides..."
             value={search}
             onChange={e => setSearch(e.target.value)}
-            style={{ width: '100%', padding: '14px 16px 14px 46px', border: '1px solid var(--border-color)', borderRight: 'none', borderRadius: '8px 0 0 8px', fontSize: '0.875rem', outline: 'none', color: 'var(--text-primary)', boxSizing: 'border-box' }}
-            onFocus={e => e.currentTarget.style.borderColor = '#0a57e3'}
+            style={{ width: '100%', padding: '14px 16px 14px 46px', border: '1px solid var(--border-color)', borderRight: 'none', borderRadius: '8px 0 0 8px', fontSize: '0.875rem', outline: 'none', color: 'var(--text-primary)', boxSizing: 'border-box', backgroundColor: 'var(--bg-secondary)' }}
+            onFocus={e => e.currentTarget.style.borderColor = 'var(--brand-color)'}
             onBlur={e => e.currentTarget.style.borderColor = 'var(--border-color)'}
           />
         </div>
@@ -76,7 +76,7 @@ export default function LandlordHelpPage() {
             <div
               key={i}
               style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', borderRadius: '10px', padding: '20px 18px', boxShadow: 'var(--shadow-sm)', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s' }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a57e3'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(10,87,227,0.1)'; }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--brand-color)'; e.currentTarget.style.boxShadow = '0 4px 12px var(--focus-ring)'; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-color)'; e.currentTarget.style.boxShadow = 'var(--shadow-sm)'; }}
               onClick={() => alert(`Sandbox: Browse ${topic.title} articles`)}
             >
@@ -136,19 +136,19 @@ export default function LandlordHelpPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
             {[
               {
-                icon: <LuMessageSquare />, iconColor: '#7c3aed', iconBg: '#f5f3ff',
+                icon: <LuMessageSquare />, iconColor: 'var(--color-admin)', iconBg: 'var(--color-admin-light)',
                 title: 'Contact Support', detail: 'Get help from our support team',
-                sub: 'Usually replies within 24 hours', subColor: '#7c3aed'
+                sub: 'Usually replies within 24 hours', subColor: 'var(--color-admin)'
               },
               {
-                icon: <LuMail />, iconcolor: 'var(--brand-color)', iconBg: '#eff6ff',
+                icon: <LuMail />, iconColor: 'var(--brand-color)', iconBg: 'var(--brand-light)',
                 title: 'Email Us', detail: 'support@tenantintegrity.com',
-                sub: 'We typically respond within 24 hours', subcolor: 'var(--brand-color)'
+                sub: 'We typically respond within 24 hours', subColor: 'var(--brand-color)'
               },
               {
-                icon: <LuPhone />, iconcolor: 'var(--color-support)', iconBg: '#fffbeb',
+                icon: <LuPhone />, iconColor: 'var(--color-support)', iconBg: 'var(--color-support-light)',
                 title: 'Call Us', detail: '(888) 123-4567',
-                sub: 'Mon - Fri, 9:00 AM - 6:00 PM EST', subcolor: 'var(--color-support)'
+                sub: 'Mon - Fri, 9:00 AM - 6:00 PM EST', subColor: 'var(--color-support)'
               }
             ].map((item, i, arr) => (
               <div

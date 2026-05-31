@@ -27,10 +27,10 @@ export default function AffiliatePayoutsPage() {
   };
 
   const payoutHistory = [
-    { date: 'Mar 15, 2024', amount: '$1,250.00', method: 'Stripe Connect', status: 'Processing', color: '#b45309', bg: '#fef3c7' },
-    { date: 'Feb 15, 2024', amount: '$1,120.00', method: 'Stripe Connect', status: 'Paid', color: 'var(--color-user)', bg: '#e6fbf3' },
-    { date: 'Jan 15, 2024', amount: '$980.50', method: 'Stripe Connect', status: 'Paid', color: 'var(--color-user)', bg: '#e6fbf3' },
-    { date: 'Dec 15, 2023', amount: '$1,450.00', method: 'Stripe Connect', status: 'Paid', color: 'var(--color-user)', bg: '#e6fbf3' }
+    { date: 'Mar 15, 2024', amount: '$1,250.00', method: 'Stripe Connect', status: 'Processing', color: 'var(--color-support)', bg: 'var(--color-support-light)' },
+    { date: 'Feb 15, 2024', amount: '$1,120.00', method: 'Stripe Connect', status: 'Paid', color: 'var(--color-user)', bg: 'var(--color-user-light)' },
+    { date: 'Jan 15, 2024', amount: '$980.50', method: 'Stripe Connect', status: 'Paid', color: 'var(--color-user)', bg: 'var(--color-user-light)' },
+    { date: 'Dec 15, 2023', amount: '$1,450.00', method: 'Stripe Connect', status: 'Paid', color: 'var(--color-user)', bg: 'var(--color-user-light)' }
   ];
 
   return (
@@ -42,7 +42,7 @@ export default function AffiliatePayoutsPage() {
           position: 'fixed',
           top: '20px',
           right: '20px',
-          backgroundcolor: 'var(--color-user)',
+          backgroundColor: 'var(--color-user)',
           color: '#ffffff',
           padding: '12px 24px',
           borderRadius: '8px',
@@ -97,7 +97,7 @@ export default function AffiliatePayoutsPage() {
                     <SiStripe />
                   </div>
                   <strong style={{ color: 'var(--text-primary)' }}>Stripe Connect</strong>
-                  <span style={{ fontSize: '0.6rem', fontWeight: 800, padding: '2px 6px', borderRadius: '4px', backgroundColor: '#d1fae5', color: '#047857' }}>
+                  <span style={{ fontSize: '0.6rem', fontWeight: 800, padding: '2px 6px', borderRadius: '4px', backgroundColor: 'var(--color-user-light)', color: 'var(--color-user)' }}>
                     ACTIVE
                   </span>
                 </div>
@@ -114,7 +114,7 @@ export default function AffiliatePayoutsPage() {
             </div>
 
             {/* Warning verification banner */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: 'var(--color-support-light)', border: '1px solid var(--color-support-border)', borderRadius: '8px', padding: '10px 14px', marginTop: '24px', fontSize: '0.775rem', color: '#b45309', fontWeight: 600 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: 'var(--color-support-light)', border: '1px solid var(--color-support-border)', borderRadius: '8px', padding: '10px 14px', marginTop: '24px', fontSize: '0.775rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
               <span style={{ display: 'flex', fontSize: '0.9rem' }}><LuTriangleAlert /></span>
               <span>Processing | System is verifying transfer details</span>
               <a 
@@ -159,13 +159,13 @@ export default function AffiliatePayoutsPage() {
                 fontWeight: 700,
                 cursor: requesting ? 'not-allowed' : 'pointer',
                 boxShadow: '0 4px 6px -1px rgba(10,87,227,0.15)',
-                transition: 'background-color 0.15s',
+                transition: 'all 0.2s',
                 width: '100%',
                 maxWidth: '240px',
                 textAlign: 'center'
               }}
-              onMouseEnter={e => { if(!requesting) e.currentTarget.style.backgroundColor = '#024ec4'; }}
-              onMouseLeave={e => { if(!requesting) e.currentTarget.style.backgroundColor = '#0a57e3'; }}
+              onMouseEnter={e => { if(!requesting) e.currentTarget.style.opacity = '0.9'; }}
+              onMouseLeave={e => { if(!requesting) e.currentTarget.style.opacity = '1'; }}
             >
               {requesting ? 'Processing Request...' : 'Request Early Payout'}
             </button>

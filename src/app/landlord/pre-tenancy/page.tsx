@@ -174,7 +174,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              style={{ padding: '12px 16px', border: 'none', background: 'none', cursor: 'pointer', fontSize: '0.85rem', fontWeight: activeTab === tab ? 700 : 500, color: activeTab === tab ? '#0a57e3' : 'var(--text-secondary)', borderBottom: activeTab === tab ? '2.5px solid #0a57e3' : '2.5px solid transparent', transition: 'all 0.15s', whiteSpace: 'nowrap' }}
+              style={{ padding: '12px 16px', border: 'none', background: 'none', cursor: 'pointer', fontSize: '0.85rem', fontWeight: activeTab === tab ? 700 : 500, color: activeTab === tab ? 'var(--brand-color)' : 'var(--text-secondary)', borderBottom: activeTab === tab ? '2.5px solid var(--brand-color)' : '2.5px solid transparent', transition: 'all 0.15s', whiteSpace: 'nowrap' }}
             >
               {tab}
             </button>
@@ -322,7 +322,7 @@ function BehavioralReportModal({ applicant, onClose }: { applicant: typeof appli
               {/* Header Status Bar */}
               <div style={{ padding: '16px 20px', backgroundColor: 'var(--color-support-light)', border: '1px solid var(--color-support-border)', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundcolor: 'var(--color-support)' }} />
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--color-support)' }} />
                   <span style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)' }}>Responsiveness:</span>
                   <span style={{ fontSize: '0.75rem', fontWeight: 800, padding: '2px 8px', borderRadius: '12px', backgroundColor: 'var(--color-support-light)', color: 'var(--color-support)', border: '1px solid #ffedd5' }}>Moderate</span>
                 </div>
@@ -858,7 +858,7 @@ export default function LandlordPreTenancyPage() {
               value={search}
               onChange={e => setSearch(e.target.value)}
               style={{ width: '100%', padding: '9px 14px 9px 40px', border: '1px solid var(--border-color)', borderRadius: '8px', fontSize: '0.85rem', outline: 'none', color: 'var(--text-primary)', backgroundColor: 'var(--bg-secondary)', boxSizing: 'border-box' }}
-              onFocus={e => e.currentTarget.style.borderColor = '#0a57e3'}
+              onFocus={e => e.currentTarget.style.borderColor = 'var(--brand-color)'}
               onBlur={e => e.currentTarget.style.borderColor = 'var(--border-color)'}
             />
           </div>
@@ -895,8 +895,8 @@ export default function LandlordPreTenancyPage() {
               </div>
               <div style={{ textAlign: 'left' }}>
                 <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '6px' }}>{a.progress === 100 ? 'Complete' : `Day ${a.day} of ${a.totalDays}`}</div>
-                <div style={{ height: '6px', borderRadius: '3px', backgroundColor: '#e2e8f0', overflow: 'hidden', width: '120px' }}>
-                  <div style={{ height: '100%', width: `${a.progress}%`, borderRadius: '3px', backgroundColor: a.progress === 100 ? '#10b981' : a.trendUp ? '#0a57e3' : '#f59e0b' }} />
+                <div style={{ height: '6px', borderRadius: '3px', backgroundColor: 'var(--border-color)', overflow: 'hidden', width: '120px' }}>
+                  <div style={{ height: '100%', width: `${a.progress}%`, borderRadius: '3px', backgroundColor: a.progress === 100 ? 'var(--color-user)' : a.trendUp ? 'var(--brand-color)' : 'var(--color-support)' }} />
                 </div>
               </div>
               <div style={{ textAlign: 'left' }}>
@@ -927,7 +927,7 @@ export default function LandlordPreTenancyPage() {
         {/* Pagination */}
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '6px', marginTop: '20px', alignItems: 'center' }}>
           {[1, 2].map(p => (
-            <button key={p} onClick={() => setPage(p)} style={{ width: '32px', height: '32px', borderRadius: '6px', border: '1px solid', borderColor: page === p ? '#0a57e3' : 'var(--border-color)', backgroundColor: page === p ? '#0a57e3' : '#ffffff', color: page === p ? '#ffffff' : 'var(--text-secondary)', fontSize: '0.825rem', fontWeight: 700, cursor: 'pointer' }}>{p}</button>
+            <button key={p} onClick={() => setPage(p)} style={{ width: '32px', height: '32px', borderRadius: '6px', border: '1px solid', borderColor: page === p ? 'var(--brand-color)' : 'var(--border-color)', backgroundColor: page === p ? 'var(--brand-color)' : 'var(--bg-secondary)', color: page === p ? '#ffffff' : 'var(--text-secondary)', fontSize: '0.825rem', fontWeight: 700, cursor: 'pointer' }}>{p}</button>
           ))}
           <button style={{ width: '32px', height: '32px', borderRadius: '6px', border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-secondary)', fontSize: '0.9rem', cursor: 'pointer' }} onClick={() => setPage(Math.min(2, page + 1))}>›</button>
         </div>
