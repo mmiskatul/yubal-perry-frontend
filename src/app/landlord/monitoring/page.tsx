@@ -40,9 +40,9 @@ const tenantCards = [
     participation: 62, prevParticipation: 82, change: -14, changeUp: false,
     timing: 'Slower', timingcolor: 'var(--color-support)',
     followThrough: 'Partial', followcolor: 'var(--color-support)',
-    communication: 'Reduced', commColor: '#ef4444',
+    communication: 'Reduced', commcolor: '#ef4444',
     sparkData: [82, 78, 74, 70, 66, 63, 62],
-    sparkColor: '#f97316',
+    sparkcolor: '#f97316',
     insight: 'Engagement has been improving over the week.'
   },
   {
@@ -76,9 +76,9 @@ const tenantCards = [
     participation: 62, prevParticipation: 67, change: -5, changeUp: false,
     timing: 'Slightly Slow', timingcolor: 'var(--color-support)',
     followThrough: 'Partial', followcolor: 'var(--color-support)',
-    communication: 'Less Active', commColor: '#ef4444',
+    communication: 'Less Active', commcolor: '#ef4444',
     sparkData: [67, 66, 65, 64, 63, 62, 62],
-    sparkColor: '#f97316',
+    sparkcolor: '#f97316',
     insight: 'Engagement has been improving over the week.'
   }
 ];
@@ -136,7 +136,7 @@ export default function LandlordMonitoringPage() {
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>{t.unit}</div>
                 </div>
               </div>
-              <span style={{ fontSize: '0.725rem', fontWeight: 800, padding: '4px 12px', borderRadius: '20px', backgroundColor: t.statusBg, color: t.statusColor }}>
+              <span style={{ fontSize: '0.725rem', fontWeight: 800, padding: '4px 12px', borderRadius: '20px', backgroundColor: t.statusBg, color: t.statuscolor }}>
                 {t.status}
               </span>
             </div>
@@ -164,9 +164,9 @@ export default function LandlordMonitoringPage() {
                 <div style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>Interaction Context</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
                   {[
-                    { label: 'Response Timing', value: t.timing, color: t.timingColor },
-                    { label: 'Follow-through', value: t.followThrough, color: t.followColor },
-                    { label: 'Communication', value: t.communication, color: t.commColor }
+                    { label: 'Response Timing', value: t.timing, color: t.timingcolor },
+                    { label: 'Follow-through', value: t.followThrough, color: t.followcolor },
+                    { label: 'Communication', value: t.communication, color: t.commcolor }
                   ].map((ctx, ci) => (
                     <div key={ci} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                       <div style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: `${ctx.color}20`, color: ctx.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.6rem', flexShrink: 0 }}>●</div>
@@ -182,7 +182,7 @@ export default function LandlordMonitoringPage() {
               {/* 7-Day Trend */}
               <div>
                 <div style={{ fontSize: '0.675rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>7-Day Trend</div>
-                <SparkLine data={t.sparkData} color={t.sparkColor} />
+                <SparkLine data={t.sparkData} color={t.sparkcolor} />
               </div>
             </div>
 

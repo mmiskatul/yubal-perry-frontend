@@ -229,7 +229,7 @@ export default function LandlordSettingsPage() {
                     type="checkbox"
                     checked={notifs[item.key as keyof typeof notifs]}
                     onChange={() => setNotifs(prev => ({ ...prev, [item.key]: !prev[item.key as keyof typeof prev] }))}
-                    style={{ marginTop: '2px', accentcolor: 'var(--brand-color)', width: '14px', height: '14px', flexShrink: 0 }}
+                    style={{ marginTop: '2px', accentColor: 'var(--brand-color)', width: '14px', height: '14px', flexShrink: 0 }}
                   />
                   <div>
                     <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-primary)' }}>{item.label}</div>
@@ -250,7 +250,7 @@ export default function LandlordSettingsPage() {
                     type="checkbox"
                     checked={notifs[item.key as keyof typeof notifs]}
                     onChange={() => setNotifs(prev => ({ ...prev, [item.key]: !prev[item.key as keyof typeof prev] }))}
-                    style={{ marginTop: '2px', accentcolor: 'var(--brand-color)', width: '14px', height: '14px', flexShrink: 0 }}
+                    style={{ marginTop: '2px', accentColor: 'var(--brand-color)', width: '14px', height: '14px', flexShrink: 0 }}
                   />
                   <div>
                     <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-primary)' }}>{item.label}</div>

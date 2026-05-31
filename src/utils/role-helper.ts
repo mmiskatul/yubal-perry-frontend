@@ -25,8 +25,8 @@ export function canAccessRoute(role: Role | undefined, path: string): boolean {
   const config = ROLES_CONFIG[role];
   if (!config) return false;
 
-  // Guest paths are always accessible
-  if (['/login', '/signup', '/unauthorized', '/'].includes(path)) {
+  // Guest and onboarding paths are always accessible
+  if (['/login', '/signup', '/onboarding', '/unauthorized', '/'].includes(path)) {
     return true;
   }
 

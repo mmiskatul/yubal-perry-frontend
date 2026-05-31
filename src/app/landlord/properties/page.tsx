@@ -97,7 +97,7 @@ export default function LandlordPropertiesPage() {
       name: newName.trim(),
       address: 'Address to be confirmed',
       status: newType === 'Occupied' ? 'OCCUPIED' : 'VACANT',
-      statusColor: newType === 'Occupied' ? 'var(--color-user)' : 'var(--text-secondary)',
+      statuscolor: newType === 'Occupied' ? 'var(--color-user)' : 'var(--text-secondary)',
       statusBg: newType === 'Occupied' ? 'var(--color-user-light)' : 'var(--color-guest-light)',
       image: '🏠',
       section: 'Pre-Tenancy',
@@ -171,7 +171,7 @@ export default function LandlordPropertiesPage() {
                   <div style={{ fontSize: '0.925rem', fontWeight: 800, color: 'var(--text-primary)' }}>{prop.name}</div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>{prop.address}</div>
                 </div>
-                <span style={{ fontSize: '0.625rem', fontWeight: 800, padding: '3px 8px', borderRadius: '4px', backgroundColor: prop.statusBg, color: prop.statusColor, border: `1px solid ${prop.statusColor}20`, letterSpacing: '0.05em', whiteSpace: 'nowrap', marginLeft: '8px' }}>
+                <span style={{ fontSize: '0.625rem', fontWeight: 800, padding: '3px 8px', borderRadius: '4px', backgroundColor: prop.statusBg, color: prop.statuscolor, border: `1px solid ${prop.statuscolor}20`, letterSpacing: '0.05em', whiteSpace: 'nowrap', marginLeft: '8px' }}>
                   {prop.status}
                 </span>
               </div>
@@ -188,15 +188,15 @@ export default function LandlordPropertiesPage() {
                   </div>
                 ) : prop.sectionProgress !== undefined ? (
                   <div>
-                    <div style={{ fontSize: '0.775rem', color: prop.sectionColor, fontWeight: 600, marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div style={{ fontSize: '0.775rem', color: prop.sectioncolor, fontWeight: 600, marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                       <LuClock style={{ fontSize: '0.8rem' }} /> {prop.sectionDetail}
                     </div>
                     <div style={{ height: '5px', borderRadius: '3px', backgroundColor: 'var(--border-color)', overflow: 'hidden' }}>
-                      <div style={{ height: '100%', width: `${prop.sectionProgress}%`, borderRadius: '3px', backgroundColor: prop.sectionProgressColor || 'var(--brand-color)' }} />
+                      <div style={{ height: '100%', width: `${prop.sectionProgress}%`, borderRadius: '3px', backgroundColor: prop.sectionProgresscolor || 'var(--brand-color)' }} />
                     </div>
                   </div>
                 ) : (
-                  <div style={{ fontSize: '0.775rem', color: prop.sectionColor, display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                  <div style={{ fontSize: '0.775rem', color: prop.sectioncolor, display: 'flex', flexDirection: 'column', gap: '2px' }}>
                     {prop.sectionDetail.split('\n').map((line, li) => (
                       <div key={li} style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
                         {li === 0 && prop.sectionIcon && <span style={{ fontSize: '0.8rem' }}>{prop.sectionIcon}</span>}

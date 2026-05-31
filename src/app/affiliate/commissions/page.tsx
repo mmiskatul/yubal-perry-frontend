@@ -325,7 +325,7 @@ export default function AffiliateCommissionsPage() {
                     padding: '3px 8px', 
                     borderRadius: '6px', 
                     backgroundColor: row.progBg, 
-                    color: row.progColor, 
+                    color: row.progcolor, 
                     fontWeight: 700 
                   }}
                 >
@@ -333,7 +333,7 @@ export default function AffiliateCommissionsPage() {
                 </span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600, color: 'var(--text-primary)' }}>
-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: row.statusColor }} />
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: row.statuscolor }} />
                 {row.status}
               </div>
             </div>

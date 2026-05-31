@@ -10,91 +10,94 @@ interface AuthContextType {
   token: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (email: string, role: Role) => Promise<User>;
+  login: (email: string, password?: string, role?: Role) => Promise<User>;
+  signup: (name: string, email: string, password?: string) => Promise<User>;
+  updateRole: (role: Role) => Promise<User>;
   logout: () => void;
   switchRole: (role: 'SUPER_ADMIN' | 'TENANT' | 'APPLICANT' | 'LANDLORD' | 'AFFILIATE') => void;
   checkPermission: (permission: string) => boolean;
   hasRole: (roles: Role | Role[]) => boolean;
 }
 
-const staticAffiliate: User = {
-  id: 'usr_affiliate_alex',
-  name: 'Alex Johnson',
-  email: 'alex.johnson@email.com',
-  role: 'AFFILIATE',
-  avatarUrl: `https://api.dicebear.com/7.x/adventurer/svg?seed=affiliate`,
-  phoneNumber: '(512) 555-0198',
-  createdAt: new Date().toISOString(),
-  lastLogin: new Date().toISOString(),
-};
-
-const staticTenant: User = {
-  id: 'usr_tenant_alex',
-  name: 'Alex Johnson',
-  email: 'alex.johnson@email.com',
-  role: 'TENANT',
-  avatarUrl: `https://api.dicebear.com/7.x/adventurer/svg?seed=tenant`,
-  phoneNumber: '(512) 555-0198',
-  createdAt: new Date().toISOString(),
-  lastLogin: new Date().toISOString(),
-};
-
-const staticApplicant: User = {
-  id: 'usr_applicant_alex',
-  name: 'Alex Johnson',
-  email: 'alex.johnson@email.com',
-  role: 'APPLICANT',
-  avatarUrl: `https://api.dicebear.com/7.x/adventurer/svg?seed=applicant`,
-  phoneNumber: '(512) 555-0198',
-  createdAt: new Date().toISOString(),
-  lastLogin: new Date().toISOString(),
-};
-
-const staticSuperAdmin: User = {
-  id: 'usr_admin_alex',
-  name: 'Alex Johnson',
-  email: 'alex.johnson@email.com',
-  role: 'SUPER_ADMIN',
-  avatarUrl: `https://api.dicebear.com/7.x/adventurer/svg?seed=admin`,
-  phoneNumber: '(512) 555-0198',
-  createdAt: new Date().toISOString(),
-  lastLogin: new Date().toISOString(),
-};
-
-const staticLandlord: User = {
-  id: 'usr_landlord_alex',
-  name: 'Alex Johnson',
-  email: 'alex.johnson@email.com',
-  role: 'LANDLORD',
-  avatarUrl: `https://api.dicebear.com/7.x/adventurer/svg?seed=landlord`,
-  phoneNumber: '(512) 555-0198',
-  createdAt: new Date().toISOString(),
-  lastLogin: new Date().toISOString(),
-};
+// 5 pre-configured high-fidelity demo users
+const DEFAULT_DEMO_USERS: User[] = [
+  {
+    id: 'usr_admin_alex',
+    name: 'Alex Johnson (Admin)',
+    email: 'admin@tenantintegrity.com',
+    role: 'SUPER_ADMIN',
+    avatarUrl: 'https://api.dicebear.com/7.x/adventurer/svg?seed=admin',
+    phoneNumber: '(512) 555-0100',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 'usr_landlord_alex',
+    name: 'Alex Johnson (Landlord)',
+    email: 'landlord@tenantintegrity.com',
+    role: 'LANDLORD',
+    avatarUrl: 'https://api.dicebear.com/7.x/adventurer/svg?seed=landlord',
+    phoneNumber: '(512) 555-0198',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 'usr_tenant_alex',
+    name: 'Alex Johnson (Tenant)',
+    email: 'tenant@tenantintegrity.com',
+    role: 'TENANT',
+    avatarUrl: 'https://api.dicebear.com/7.x/adventurer/svg?seed=tenant',
+    phoneNumber: '(512) 555-0101',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 'usr_applicant_alex',
+    name: 'Alex Johnson (Applicant)',
+    email: 'applicant@tenantintegrity.com',
+    role: 'APPLICANT',
+    avatarUrl: 'https://api.dicebear.com/7.x/adventurer/svg?seed=applicant',
+    phoneNumber: '(512) 555-0102',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 'usr_affiliate_alex',
+    name: 'Alex Johnson (Affiliate)',
+    email: 'affiliate@tenantintegrity.com',
+    role: 'AFFILIATE',
+    avatarUrl: 'https://api.dicebear.com/7.x/adventurer/svg?seed=affiliate',
+    phoneNumber: '(512) 555-0103',
+    createdAt: new Date().toISOString(),
+  }
+];
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [token, setToken] = useState<string | null>('static_sandbox_jwt');
+  const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
 
-  // Load session from storage or default to TENANT
+  // Load session from storage or default to GUEST (unauthenticated)
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const storedRole = localStorage.getItem('sandbox_active_role');
-      if (storedRole === 'APPLICANT') {
-        setUser(staticApplicant);
-      } else if (storedRole === 'SUPER_ADMIN') {
-        setUser(staticSuperAdmin);
-      } else if (storedRole === 'LANDLORD') {
-        setUser(staticLandlord);
-      } else if (storedRole === 'AFFILIATE') {
-        setUser(staticAffiliate);
-      } else {
-        setUser(staticTenant);
+      // 1. Initialize registered users database in localStorage if not exists
+      const storedUsers = localStorage.getItem('sandbox_registered_users');
+      if (!storedUsers) {
+        localStorage.setItem('sandbox_registered_users', JSON.stringify(DEFAULT_DEMO_USERS));
+      }
+
+      // 2. Load active session
+      const storedUserString = localStorage.getItem('sandbox_active_user');
+      const storedToken = localStorage.getItem('sandbox_active_token');
+
+      if (storedUserString && storedToken) {
+        try {
+          const loadedUser = JSON.parse(storedUserString) as User;
+          setUser(loadedUser);
+          setToken(storedToken);
+        } catch (e) {
+          console.error('Failed to parse active sandbox user', e);
+        }
       }
       setIsLoading(false);
     }
@@ -102,17 +105,31 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const switchRole = (newRole: 'SUPER_ADMIN' | 'TENANT' | 'APPLICANT' | 'LANDLORD' | 'AFFILIATE') => {
     setIsLoading(true);
-    let targetUser = staticTenant;
-    if (newRole === 'APPLICANT') targetUser = staticApplicant;
-    else if (newRole === 'SUPER_ADMIN') targetUser = staticSuperAdmin;
-    else if (newRole === 'LANDLORD') targetUser = staticLandlord;
-    else if (newRole === 'AFFILIATE') targetUser = staticAffiliate;
     
+    // Find the pre-configured user from the database or create one on the fly
     if (typeof window !== 'undefined') {
+      const usersStr = localStorage.getItem('sandbox_registered_users');
+      const registeredUsers = usersStr ? (JSON.parse(usersStr) as User[]) : DEFAULT_DEMO_USERS;
+      let targetUser = registeredUsers.find(u => u.role === newRole);
+      
+      if (!targetUser) {
+        // Fallback fallback if not found in db
+        targetUser = DEFAULT_DEMO_USERS.find(u => u.role === newRole) || {
+          id: `usr_${newRole.toLowerCase()}_mock`,
+          name: `Demo ${newRole}`,
+          email: `${newRole.toLowerCase()}@example.com`,
+          role: newRole,
+          createdAt: new Date().toISOString(),
+        };
+      }
+
+      localStorage.setItem('sandbox_active_user', JSON.stringify(targetUser));
+      localStorage.setItem('sandbox_active_token', 'static_sandbox_jwt');
       localStorage.setItem('sandbox_active_role', newRole);
+      setUser(targetUser);
+      setToken('static_sandbox_jwt');
     }
 
-    setUser(targetUser);
     setIsLoading(false);
 
     // Redirect to default dashboard
@@ -120,12 +137,145 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     router.push(redirectPath);
   };
 
-  const login = async (email: string, role: Role): Promise<User> => {
-    return staticTenant;
+  const login = async (email: string, password?: string, role?: Role): Promise<User> => {
+    setIsLoading(true);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (typeof window !== 'undefined') {
+          const usersStr = localStorage.getItem('sandbox_registered_users') || JSON.stringify(DEFAULT_DEMO_USERS);
+          const registeredUsers = JSON.parse(usersStr) as User[];
+          
+          // Search user by email (case-insensitive)
+          let matchedUser = registeredUsers.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+          // If a specific role is passed (for quick demo login)
+          if (!matchedUser && role) {
+            matchedUser = registeredUsers.find(u => u.role === role);
+          }
+
+          if (matchedUser) {
+            localStorage.setItem('sandbox_active_user', JSON.stringify(matchedUser));
+            localStorage.setItem('sandbox_active_token', 'static_sandbox_jwt');
+            localStorage.setItem('sandbox_active_role', matchedUser.role);
+            
+            setUser(matchedUser);
+            setToken('static_sandbox_jwt');
+            setIsLoading(false);
+            
+            // Redirect to dashboard (or select-role if they registered but didn't select role)
+            if (matchedUser.role === 'GUEST') {
+              router.push('/select-role');
+            } else {
+              const redirectPath = DEFAULT_ROLE_REDIRECTS[matchedUser.role];
+              router.push(redirectPath);
+            }
+            resolve(matchedUser);
+          } else {
+            setIsLoading(false);
+            reject(new Error('User credentials not found. Please register an account.'));
+          }
+        } else {
+          setIsLoading(false);
+          reject(new Error('Window context not available.'));
+        }
+      }, 600); // realistic network delay simulation
+    });
+  };
+
+  const signup = async (name: string, email: string, password?: string): Promise<User> => {
+    setIsLoading(true);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (typeof window !== 'undefined') {
+          const usersStr = localStorage.getItem('sandbox_registered_users') || JSON.stringify(DEFAULT_DEMO_USERS);
+          const registeredUsers = JSON.parse(usersStr) as User[];
+
+          // Prevent duplicate emails
+          const emailExists = registeredUsers.some(u => u.email.toLowerCase() === email.toLowerCase());
+          if (emailExists) {
+            setIsLoading(false);
+            reject(new Error('An account with this email already exists.'));
+            return;
+          }
+
+          // Create new user object. By default, newly registered users are GUEST
+          const newUser: User = {
+            id: `usr_guest_${Math.random().toString(36).substr(2, 9)}`,
+            name,
+            email,
+            role: 'GUEST',
+            avatarUrl: `https://api.dicebear.com/7.x/adventurer/svg?seed=${name}`,
+            createdAt: new Date().toISOString(),
+          };
+
+          // Save to list
+          const updatedUsers = [...registeredUsers, newUser];
+          localStorage.setItem('sandbox_registered_users', JSON.stringify(updatedUsers));
+
+          // Set active session
+          localStorage.setItem('sandbox_active_user', JSON.stringify(newUser));
+          localStorage.setItem('sandbox_active_token', 'static_sandbox_jwt');
+          localStorage.setItem('sandbox_active_role', 'GUEST');
+
+          setUser(newUser);
+          setToken('static_sandbox_jwt');
+          setIsLoading(false);
+          
+          // Direct to intermediate verification!
+          router.push('/verify-email');
+          resolve(newUser);
+        } else {
+          setIsLoading(false);
+          reject(new Error('Window context not available.'));
+        }
+      }, 800);
+    });
+  };
+
+  const updateRole = async (newRole: Role): Promise<User> => {
+    setIsLoading(true);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (typeof window !== 'undefined' && user) {
+          const updatedUser: User = { ...user, role: newRole };
+          
+          // Update in users database in localStorage
+          const usersStr = localStorage.getItem('sandbox_registered_users');
+          if (usersStr) {
+            const registeredUsers = JSON.parse(usersStr) as User[];
+            const idx = registeredUsers.findIndex(u => u.id === user.id);
+            if (idx !== -1) {
+              registeredUsers[idx] = updatedUser;
+              localStorage.setItem('sandbox_registered_users', JSON.stringify(registeredUsers));
+            }
+          }
+
+          localStorage.setItem('sandbox_active_user', JSON.stringify(updatedUser));
+          localStorage.setItem('sandbox_active_token', 'static_sandbox_jwt');
+          localStorage.setItem('sandbox_active_role', newRole);
+          
+          setUser(updatedUser);
+          setIsLoading(false);
+          resolve(updatedUser);
+        } else {
+          setIsLoading(false);
+          reject(new Error('No active session available to associate role.'));
+        }
+      }, 500);
+    });
   };
 
   const logout = () => {
-    console.log('Sandbox sessions are static.');
+    setIsLoading(true);
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('sandbox_active_user');
+      localStorage.removeItem('sandbox_active_token');
+      localStorage.removeItem('sandbox_active_role');
+    }
+    setUser(null);
+    setToken(null);
+    setIsLoading(false);
+    router.push('/login');
   };
 
   const checkPermission = (permission: string): boolean => {
@@ -148,6 +298,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isAuthenticated: !!user,
         isLoading,
         login,
+        signup,
+        updateRole,
         logout,
         switchRole,
         checkPermission,
@@ -156,8 +308,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     >
       {children}
 
-      {/* Floating Sandbox Pill for Dynamic Testing */}
-      {!isLoading && user && (
+      {/* Floating Clearance Sandbox Pill for Dynamic Testing */}
+      {!isLoading && user && user.role !== 'GUEST' && (
         <div
           style={{
             position: 'fixed',
