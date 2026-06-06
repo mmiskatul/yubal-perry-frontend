@@ -88,14 +88,8 @@ export const Sidebar: React.FC = () => {
   return (
     <aside className="sidebar" style={{ '--role-color': roleColor } as React.CSSProperties}>
       {/* Brand logo section */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '32px', paddingLeft: '8px' }}>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" fill="#0a57e3" stroke="#0a57e3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M9 11L11 13L15 9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-        <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.025em', display: 'flex', alignItems: 'center' }}>
-          Tenant <span style={{ color: 'var(--brand-color)', fontWeight: 800, marginLeft: '4px' }}>Integrity™</span>
-        </span>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '32px', paddingLeft: '8px' }}>
+        <img src="/logo.svg" alt="Tenant Integrity" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
       </div>
 
       {/* User Info card */}
