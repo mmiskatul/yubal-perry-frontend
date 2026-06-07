@@ -3,23 +3,29 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function SignupPage() {
   const router = useRouter();
+  const { signup } = useAuth();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      await signup(name, email, password);
+    } catch (err: any) {
+      setError(err.message || 'Signup failed. Please try again.');
       setIsSubmitting(false);
-      router.push('/select-role');
-    }, 800);
+    }
   };
 
   return (
@@ -57,6 +63,23 @@ export default function SignupPage() {
               </Link>
             </p>
           </div>
+
+          {/* Error Notification */}
+          {error && (
+            <div style={{
+              padding: '12px 16px',
+              borderRadius: '8px',
+              backgroundColor: 'rgba(239, 68, 68, 0.1)',
+              border: '1px solid rgba(239, 68, 68, 0.2)',
+              color: '#ef4444',
+              fontSize: '0.875rem',
+              textAlign: 'left',
+              marginBottom: '20px',
+              fontWeight: 500,
+            }}>
+              {error}
+            </div>
+          )}
 
           {/* Form */}
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -312,7 +335,7 @@ export default function SignupPage() {
             <img
               src="/logo.svg"
               alt="Tenant Integrity Systems"
-              style={{ height: '54px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+              style={{ height: '68px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
             />
             <p style={{ fontSize: '0.85rem', fontWeight: 600, margin: 0, opacity: 0.9, letterSpacing: '0.05em' }}>
               RTO Funding LLC - The Human Side of Screening

@@ -89,7 +89,7 @@ export const Sidebar: React.FC = () => {
     <aside className="sidebar" style={{ '--role-color': roleColor } as React.CSSProperties}>
       {/* Brand logo section */}
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '32px', paddingLeft: '8px' }}>
-        <img src="/logo.svg" alt="Tenant Integrity" style={{ height: '36px', width: 'auto', objectFit: 'contain' }} />
+        <img src="/logo.svg" alt="Tenant Integrity" style={{ height: '46px', width: 'auto', objectFit: 'contain' }} />
       </div>
 
       {/* User Info card */}

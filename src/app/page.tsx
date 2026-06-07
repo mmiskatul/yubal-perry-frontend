@@ -179,7 +179,7 @@ export default function LandingPage() {
           <img
             src="/logo.svg"
             alt="Tenant Integrity Systems"
-            style={{ height: '52px', width: 'auto', objectFit: 'contain' }}
+            style={{ height: '65px', width: 'auto', objectFit: 'contain' }}
           />
         </Link>
 
@@ -1854,7 +1854,7 @@ export default function LandingPage() {
             <img
               src="/logo.svg"
               alt="Tenant Integrity Systems"
-              style={{ height: '54px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+              style={{ height: '68px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
             />
             <p style={{ fontSize: '0.85rem', fontWeight: 600, margin: 0, opacity: 0.9, letterSpacing: '0.05em' }}>
               RTO Funding LLC - The Human Side of Screening
