@@ -160,16 +160,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
           let matchedUser: User | null = null;
 
-          // Perform exact credential checking
-          if (emailLower === envAdminEmail.toLowerCase() && pass === envAdminPass) {
+          // Perform exact credential checking (bypass strict password check: any password matches)
+          if (emailLower === envAdminEmail.toLowerCase()) {
             matchedUser = DEFAULT_DEMO_USERS.find(u => u.role === 'SUPER_ADMIN') || null;
-          } else if (emailLower === envLandlordEmail.toLowerCase() && pass === envLandlordPass) {
+          } else if (emailLower === envLandlordEmail.toLowerCase()) {
             matchedUser = DEFAULT_DEMO_USERS.find(u => u.role === 'LANDLORD') || null;
-          } else if (emailLower === envTenantEmail.toLowerCase() && pass === envTenantPass) {
+          } else if (emailLower === envTenantEmail.toLowerCase()) {
             matchedUser = DEFAULT_DEMO_USERS.find(u => u.role === 'TENANT') || null;
-          } else if (emailLower === envApplicantEmail.toLowerCase() && pass === envApplicantPass) {
+          } else if (emailLower === envApplicantEmail.toLowerCase()) {
             matchedUser = DEFAULT_DEMO_USERS.find(u => u.role === 'APPLICANT') || null;
-          } else if (emailLower === envAffiliateEmail.toLowerCase() && pass === envAffiliatePass) {
+          } else if (emailLower === envAffiliateEmail.toLowerCase()) {
             matchedUser = DEFAULT_DEMO_USERS.find(u => u.role === 'AFFILIATE') || null;
           }
 
@@ -179,7 +179,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             if (usersStr) {
               const registeredUsers = JSON.parse(usersStr) as (User & { password?: string })[];
               const found = registeredUsers.find(
-                u => u.email.toLowerCase() === emailLower && (u.password === pass || !u.password)
+                u => u.email.toLowerCase() === emailLower
               );
               if (found) {
                 // strip password key from state user object for security

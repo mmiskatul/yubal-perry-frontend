@@ -15,6 +15,19 @@ export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const handleQuickLogin = async (demoEmail: string, demoPassword?: string) => {
+    setError(null);
+    setIsSubmitting(true);
+    setEmail(demoEmail);
+    setPassword(demoPassword || '');
+    try {
+      await login(demoEmail, demoPassword);
+    } catch (err: any) {
+      setError(err.message || 'Login failed. Please check your credentials.');
+      setIsSubmitting(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -61,6 +74,49 @@ export default function LoginPage() {
                 Create now
               </Link>
             </p>
+          </div>
+
+          {/* Quick Demo Login Option */}
+          <div style={{ marginBottom: '24px', textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '10px' }}>
+              ⚡ Quick Demo Login
+            </span>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              {[
+                { role: 'Admin', email: 'admin@tenantintegrity.com', pass: 'AdminSecurePass2026!', color: '#3b82f6', bg: 'rgba(59, 130, 246, 0.08)' },
+                { role: 'Landlord', email: 'landlord@tenantintegrity.com', pass: 'LandlordSecurePass2026!', color: '#6366f1', bg: 'rgba(99, 102, 241, 0.08)' },
+                { role: 'Tenant', email: 'tenant@tenantintegrity.com', pass: 'TenantSecurePass2026!', color: '#10b981', bg: 'rgba(16, 185, 129, 0.08)' },
+                { role: 'Applicant', email: 'applicant@tenantintegrity.com', pass: 'ApplicantSecurePass2026!', color: '#8b5cf6', bg: 'rgba(139, 92, 246, 0.08)' },
+                { role: 'Affiliate', email: 'affiliate@tenantintegrity.com', pass: 'AffiliateSecurePass2026!', color: '#f59e0b', bg: 'rgba(245, 158, 11, 0.08)' }
+              ].map((demo) => (
+                <button
+                  key={demo.role}
+                  type="button"
+                  onClick={() => handleQuickLogin(demo.email, demo.pass)}
+                  style={{
+                    padding: '6px 12px',
+                    borderRadius: '9999px',
+                    border: `1px solid ${demo.color}30`,
+                    background: demo.bg,
+                    color: demo.color,
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = demo.color;
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = `${demo.color}30`;
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  {demo.role}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Error Notification */}
